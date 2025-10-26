@@ -1,0 +1,57 @@
+# Preface {.unnumbered}
+
+## Description
+
+This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS. 
+
+Topics include two main parts: 
+
+1) SAS programming: data management and manipulation, basic procedures, macro programming;
+2) data analysis: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.
+
+### Prerequisites
+
+MATH 4544/6544, or equivalent.
+
+### Instructor
+
+[Chi-Kuang Yeh](https://chikuang.github.io/), I am an Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.
+
+-   Office: Suite 1407, 25 Park Place.
+-   Email: [cyeh\@gsu.edu](mailto:cyeh@gsu.edu).
+
+## Office Hour
+
+TBA
+
+## Grade Distribution
+
+-   TBA
+
+## Assignment
+
+-   [ ] TBA
+
+## Midterm
+
+-   [ ] TBA
+
+## Topics and Corresponding Lectures
+
+Those chapters are based on the lecture notes. This part will be updated frequently.
+
+| Topic                         | Lecture Covered |
+|-------------------------------|:---------------:|
+| Introduction to R Programming |      1--2       |
+
+## Recommended Textbooks
+
+-   Gelman, A., Carlin, J., Stern, H., Rubin, D., Dunson, D., and Vehtari, A. (2021). [Bayesian Data Analysis](https://sites.stat.columbia.edu/gelman/book/), CRC Press, 3rd Ed.
+
+-   Hoff, P.D. (2009). [A First Course in Bayesian Statistical Methods](https://sites.math.rutgers.edu/~zeilberg/EM20/Hoff.pdf), Springer.
+
+-   McElreath, R. (2018). [Statistical Rethinking: A Bayesian Course with Examples in R and Stan](https://civil.colorado.edu/~balajir/CVEN6833/bayes-resources/RM-StatRethink-Bayes.pdf), CRC Press.
+
+## Side Readings
+
+-   TBA

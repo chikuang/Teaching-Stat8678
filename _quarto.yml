@@ -1,0 +1,42 @@
+project:
+  type: book
+
+book:
+  title: "Stat 8678 - SAS Programming & Data Analysis"
+  author: "Chi-Kuang Yeh"
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - references.qmd
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/chikuang/Teaching-Stat8678
+        aria-label: GitHub
+      - icon: file-pdf
+        href: ./STAT-8678---Applied-Bayesian-Statistics.pdf
+        aria-label: Download PDF
+
+bibliography: references.bib
+
+execute:
+  cache: true
+  freeze: auto
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: custom-callouts.css
+    filters:
+      - addcalloutid.lua
+    cache: true
+  pdf:
+    documentclass: scrreprt
+    filters:
+      - addcalloutid.lua
+    cache: true
+
+editor: visual
