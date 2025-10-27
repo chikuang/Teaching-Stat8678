@@ -27,7 +27,7 @@ execute:
 format:
   html:
     theme:
-      - cosmo
+      - zephyr
       - brand
     css: custom-callouts.css
     filters:

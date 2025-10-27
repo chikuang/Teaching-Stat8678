@@ -6,8 +6,8 @@ This course covers programming using the SAS statistical software package, and i
 
 Topics include two main parts: 
 
-1) SAS programming: data management and manipulation, basic procedures, macro programming;
-2) data analysis: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.
+1) **SAS Programming**: data management and manipulation, basic procedures, macro programming;
+2) **Data Analysis**: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.
 
 ### Prerequisites
 
@@ -42,16 +42,12 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 
 | Topic                         | Lecture Covered |
 |-------------------------------|:---------------:|
-| Introduction to R Programming |      1--2       |
+| Introduction to SAS and modules |      1--       |
 
 ## Recommended Textbooks
 
--   Gelman, A., Carlin, J., Stern, H., Rubin, D., Dunson, D., and Vehtari, A. (2021). [Bayesian Data Analysis](https://sites.stat.columbia.edu/gelman/book/), CRC Press, 3rd Ed.
+- [Statistics 480: Introduction to SAS](https://online.stat.psu.edu/statprogram/stat480), The Pennsylvania State University.
 
--   Hoff, P.D. (2009). [A First Course in Bayesian Statistical Methods](https://sites.math.rutgers.edu/~zeilberg/EM20/Hoff.pdf), Springer.
+- [SAS Training](https://www.sas.com/en_us/training/overview.html), SAS Institute.
 
--   McElreath, R. (2018). [Statistical Rethinking: A Bayesian Course with Examples in R and Stan](https://civil.colorado.edu/~balajir/CVEN6833/bayes-resources/RM-StatRethink-Bayes.pdf), CRC Press.
-
-## Side Readings
-
--   TBA
+- [SAS Resources](https://stats.oarc.ucla.edu/sas/), University of California, Los Angeles.
