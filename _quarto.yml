@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Stat 8678 - SAS Programming & Data Analysis"
+  title: "STAT 8678 - SAS Programming & Data Analysis"
   author: "Chi-Kuang Yeh"
   date: today
   chapters:
@@ -28,7 +28,7 @@ book:
         href: https://github.com/chikuang/Teaching-Stat8678
         aria-label: GitHub
       - icon: file-pdf
-        href: ./STAT-8678---Applied-Bayesian-Statistics.pdf
+        href: ./STAT-8678---SAS-Programming---Data-Analysis
         aria-label: Download PDF
 
 bibliography: references.bib
@@ -40,7 +40,7 @@ execute:
 format:
   html:
     theme:
-      - zephyr
+      - flatly
       - brand
     css: custom-callouts.css
     filters:

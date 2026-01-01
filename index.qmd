@@ -22,7 +22,7 @@ MATH 4544/6544, or equivalent.
 
 ## Office Hour
 
-TBA
+TBA and By appointment
 
 ## Grade Distribution
 
@@ -40,8 +40,8 @@ TBA
 
 Those chapters are based on the lecture notes. This part will be updated frequently.
 
-| Topic                         | Lecture Covered |
-|-------------------------------|:---------------:|
+| Topic                         | Lecture |
+|:------------------------:|:------:|
 | Introduction to SAS and modules |      1--       |
 
 ## Recommended Textbooks
