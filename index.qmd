@@ -2,12 +2,12 @@
 
 ## Description
 
-This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS. 
+This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS.
 
-Topics include two main parts: 
+Topics include two main parts:
 
-1) **SAS Programming**: data management and manipulation, basic procedures, macro programming;
-2) **Data Analysis**: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.
+1)  **SAS Programming**: data management and manipulation, basic procedures, macro programming;
+2)  **Data Analysis**: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.
 
 ### Prerequisites
 
@@ -15,7 +15,7 @@ MATH 4544/6544, or equivalent.
 
 ### Instructor
 
-[Chi-Kuang Yeh](https://chikuang.github.io/), I am an Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.
+[Chi-Kuang Yeh](https://chikuang.github.io/), Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.
 
 -   Office: Suite 1407, 25 Park Place.
 -   Email: [cyeh\@gsu.edu](mailto:cyeh@gsu.edu).
@@ -40,18 +40,17 @@ TBA and By appointment
 
 Those chapters are based on the lecture notes. This part will be updated frequently.
 
-| Topic                         | Lecture |
-|:------------------------:|:------:|
-| Introduction to SAS and modules |      1--       |
+|              Topic              | Lecture |
+|:-------------------------------:|:-------:|
+| Introduction to SAS and modules |   1--   |
 
 ## Recommended Textbooks
 
-- [Statistics 480: Introduction to SAS](https://online.stat.psu.edu/statprogram/stat480), The Pennsylvania State University.
+-   [Statistics 480: Introduction to SAS](https://online.stat.psu.edu/statprogram/stat480), The Pennsylvania State University.
 
-- [SAS Training](https://www.sas.com/en_us/training/overview.html), SAS Institute.
+-   [SAS Training](https://www.sas.com/en_us/training/overview.html), SAS Institute.
 
-- [SAS Resources](https://stats.oarc.ucla.edu/sas/), University of California, Los Angeles.
-
+-   [SAS Resources](https://stats.oarc.ucla.edu/sas/), University of California, Los Angeles.
 
 ## Acknowledgments
 
