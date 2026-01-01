@@ -51,3 +51,8 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 - [SAS Training](https://www.sas.com/en_us/training/overview.html), SAS Institute.
 
 - [SAS Resources](https://stats.oarc.ucla.edu/sas/), University of California, Los Angeles.
+
+
+## Acknowledgments
+
+Special thanks to [Li-Hsiang Lin](https://cas.gsu.edu/profile/li-hsiang-lin/) for providing the base materials given on this website.
