@@ -28,7 +28,7 @@ book:
         href: https://github.com/chikuang/Teaching-Stat8678
         aria-label: GitHub
       - icon: file-pdf
-        href: ./STAT-8678---SAS-Programming---Data-Analysis
+        href: ./STAT-8678---SAS-Programming---Data-Analysis.pdf
         aria-label: Download PDF
 
 bibliography: references.bib
