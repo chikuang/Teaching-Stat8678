@@ -19,27 +19,33 @@ Within SAS, data extraction and categorization into tables are pivotal for ident
 
 Georgia State University (GSU) has purchased license, so we can access SAS University Edition for free!
 
-To install SAS University Edition, choose either of the options:
+To install SAS University Edition, choose from the following options:
 
-**Option 1**: Download on your personal PC: Free SAS license available to GSU students, faculty, and staff via Technology Services (download required; check system requirements): Download from <https://technology.gsu.edu/technology-services/software-equipment/university-licensed-software/> (Need to log-in from your GSU Account)
+* **Option 1**: 
 
-Get Help for the Installation from <https://gsutech.service-now.com/sp>
+    Download on your personal PC: Free SAS license available to GSU students, faculty, and staff via Technology Services (download required; check system requirements): Download from <https://technology.gsu.edu/technology-services/software-equipment/university-licensed-software/> (Need to log-in from your GSU Account)
 
-**Option 2**:
+    Get Help for the Installation from <https://gsutech.service-now.com/sp>
 
--   On Campus Access: SAS can be found on all GSU Library PCs: Floors 1-4 (not available on Library Macs, because there is no Mac version of SAS)
+* **Option 2**:
 
--   Graduate Biostatistics Computer Lab (SPH): 6th floor of the Urban Life building (swipe card access required)
+    -   On Campus Access: SAS can be found on all GSU Library PCs: Floors 1-4 (not available on Library Macs, because there is no Mac version of SAS)
+    
+    -   Graduate Biostatistics Computer Lab (SPH): 6th floor of the Urban Life building (swipe card access required)
+    
+    -   Common MILE Lab whose opening time is
+    
+        -   Monday & Wednesday: 9 -- 18
+        -   Tuesday & Thursday: 9 -- 17
+        -   Friday: 9 -- 15
 
--   Common MILE Lab whose opening time is
+* **Option 3**: 
 
-    -   Monday & Wednesday: 9 -- 18
-    -   Tuesday & Thursday: 9 -- 17
-    -   Friday: 9 -- 15
+    Access via VLab, GSU’s Remote Desktop Environment. Download and Connect to Cisco AnyConnect Client to connect to GSU’s VPN (secureaccess.gsu.edu). Once connected to the VPN, login to VLab at: https://vlab.gsu.edu/ to access SAS.
 
-**Option 3**: Access via VLab, GSU’s Remote Desktop Environment. Download and Connect to Cisco AnyConnect Client to connect to GSU’s VPN (secureaccess.gsu.edu). Once connected to the VPN, login to VLab at: https://vlab.gsu.edu/ to access SAS.
+* **Option 4**: 
 
-**Option 4**: Access via SAS OnDemand for Academics/SAS Studio. If you do not already have one, create a SAS profile at <https://welcome.oda.sas.com/> Then, sign in with credentials and click SAS®Studio to access the web-based SAS environment.
+    Access via SAS OnDemand for Academics/SAS Studio. If you do not already have one, create a SAS profile at <https://welcome.oda.sas.com/> Then, sign in with credentials and click SAS®Studio to access the web-based SAS environment.
 
 ### SAS Windows
 
@@ -67,15 +73,15 @@ The example below is written in the SAS Program window. The program creates a da
 “People” with 3 variables (columns) which are ‘gender’, ‘height’, and ‘weight’ and 14 observations
 (rows). Note that the values of the variables on each line are separated by one or more blanks. A
 few other things that you should note:
-• All SAS statements end with a semicolon
-• More than one SAS statement can be put on a line, or a SAS statement can continue across
-several lines, if every statement ends with a semicolon.
-• Data listed as part of the program is also terminated with a semicolon. Data does not have
+
++ All SAS statements end with a semicolon (**;**)
++ More than one SAS statement can be put on a line, or a SAS statement can continue across several lines, if every statement ends with a semicolon.
++ Data listed as part of the program is also terminated with a semicolon. Data does not have
 to be entered in the program; it can also be read from files that are external to the SAS
 program (more on that next week)
-• gender is a character variables as indicated by the $, and height and weight are numeric
++ gender is a character variables as indicated by the $, and height and weight are numeric
 variables.
-• Once the dataset is created, various SAS procedures (called PROCs) can be used to analyze
++ Once the dataset is created, various SAS procedures (called PROCs) can be used to analyze
 the data and present results. We will start with a listing of the data created with a procedure
 called PROC PRINT.
 
@@ -112,9 +118,8 @@ run;
 The LOG window gives information on the execution of the program. If your program did not execute properly you should examine the log for error messages that may explain the failure. The
 program would then be modified if necessary and rerun.
 
-SAS creates a new window called the “Results Viewer” when the program is executed and produces
-output. This window is in HTML format and a new tab for the window is created below the left-
-hand windows.
+SAS creates a new window called the **Results Viewer** when the program is executed and produces
+output. This window is in HTML format and a new tab for the window is created below the left-hand windows.
 
 
 
