@@ -22,11 +22,13 @@ MATH 4544/6544, or equivalent.
 
 ## Office Hour
 
-TBA and By appointment
+TBA and by appointment for now
 
 ## Grade Distribution
 
--   TBA
+-   Assignments: 60%
+-   Exam: 20%
+-   Project: 20%
 
 ## Assignment
 
