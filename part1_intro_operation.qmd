@@ -81,7 +81,7 @@ The programming structure of SAS consists of **three** significant steps:
 ![](figs/part1/operation_3steps.png)
 
 ``` r
-*Syntax of the SAS program:
+*Syntax of the SAS program:;
 DATA dataset name; /* Name of the data set. */
 INPUT var1,var2; /* Defines the variables in this data set. */
 NEW_VAR; /* Creates a new variable. */
@@ -122,10 +122,10 @@ title2 'Your name';
 ```
 
 ``` r
-data people;
-input gender $ height weight;
+DATA people;
+INPUT gender $ height weight;
 
-datalines;
+DATALINES;
 m 63 125
 m 76 195
 f 62 109
@@ -142,8 +142,8 @@ m 72 220
 f 66 155
 ;
 
-proc print data=people;
-run;
+PROC PRINT DATA=people;
+RUN;
 ```
 
 The LOG window gives information on the execution of the program. If your program did not execute properly you should examine the log for error messages that may explain the failure. The program would then be modified if necessary and rerun.
