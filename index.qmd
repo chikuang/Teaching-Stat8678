@@ -42,10 +42,13 @@ TBA and by appointment for now
 
 Those chapters are based on the lecture notes. This part will be updated frequently.
 
-|              Topic              | Lecture |
-|:-------------------------------:|:-------:|
-| Introduction to SAS and modules |   1--   |
+| Status |              Topic              | Lecture |
+|:------:|:---------------:|:-------:|
+|   ✅   | Welcome and Overview            |   1   |
+|    🚧  ️   | Basic SAS Operation            |   2--   |
+|️ ⏳  | SAS Syntax | TBA|
 
+ <!-- 🚧🛠️⏳   -->
 ## Recommended Textbooks
 
 -   [Statistics 480: Introduction to SAS](https://online.stat.psu.edu/statprogram/stat480), The Pennsylvania State University.

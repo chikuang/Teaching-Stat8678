@@ -9,7 +9,7 @@ book:
     - index.qmd
     - part: "Introduction"
       chapters: 
-      - part1_intro.qmd
+      - part1_intro_operation.qmd
       - part1_sas_syntax.qmd
       - part1_import_export.qmd
       - part1_rv.qmd
