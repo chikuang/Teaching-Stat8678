@@ -45,10 +45,11 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 | Status |        Topic         | Lecture |
 |:------:|:--------------------:|:-------:|
 |   ✅   | Welcome and Overview |    1    |
-|   ✅  ️   | Basic SAS Operation  |   2   |
-|  ️ ⏳   |      SAS Syntax      |   3-   |
+|  ✅ ️   | Basic SAS Operation  |    2    |
+|  ️ ⏳   |      SAS Syntax      |  3    |
+|  ️ ⏳   |      Import and Export Data      |   4    |
 
-<!-- 🚧🛠️⏳   --> 
+<!-- 🚧🛠️⏳   -->
 
 ## Recommended Textbooks
 

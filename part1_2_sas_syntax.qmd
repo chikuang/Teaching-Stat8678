@@ -1,24 +1,22 @@
 # Working with SAS Syntax
 
->Learning objective:
+> Learning objective:
 >
->1.  Identify the characteristics of SAS statements.
->2.  Explain SAS syntax rules.
->3.  Insert SAS comments using two methods.
->4.  Identify SAS syntax errors.
->5.  Diagnose and correct a program with errors.
->6.  Save the corrected program
+> 1.  Identify the characteristics of SAS statements.
+> 2.  Explain SAS syntax rules.
+> 3.  Insert SAS comments using two methods.
+> 4.  Identify SAS syntax errors.
+> 5.  Diagnose and correct a program with errors.
+> 6.  Save the corrected program
 
 In general, writing a SAS program is to write a sequence of steps, and a step is a sequence of SAS statements:
 
 ![](figs/part1/syntax_1.png)
 
-::: {.callout-example}
+::: callout-example
 How many statements are in the following step?
 
 ![](figs/part1/syntax_ex1.png)
-
-
 :::
 
 ## SAS Statments
@@ -53,7 +51,7 @@ There are two ways to insert comments in a SAS program:
 * This is a comment in SAS;
 ```
 
-2.  Using slash-asterisk (/\*) to begin the comment and asterisk-slash (*/) to end the comment.
+2.  Using slash-asterisk (/\*) to begin the comment and asterisk-slash (\*/) to end the comment.
 
 ``` r
 /* This is a comment in SAS */
@@ -69,31 +67,27 @@ Syntax errors occur when program statements do not conform to the rules of the S
 
 Examples of syntax errors:
 
-- misspelled keywords
-- unmatched quotation marks
-- missing semicolons
-- invalid options
+-   misspelled keywords
+-   unmatched quotation marks
+-   missing semicolons
+-   invalid options
 
 When SAS encounters a syntax error, SAS prints a warning or an error message to the log; for example,
 
 ![](figs/part1/syntax_error1.png)
 
-When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log:
-+ the word **ERROR** or **WARNING**
-+ the location of the error
-+ an explanation of the error
+When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log: + the word **ERROR** or **WARNING** + the location of the error + an explanation of the error
 
-::: {.callout-example}
+::: callout-example
 This program has three syntax errors. What are the errors?
 
 ![](figs/part1/syntax_ex2.png)
-
 :::
 
-## Solution
+## Solution to the example
 
-1. Exercise 1: 5
+1.  Exercise 1: 5
 
-2. Exercise 2: 
+2.  Exercise 2:
 
 ![](figs/part1/syntax_ex2_2.png)
