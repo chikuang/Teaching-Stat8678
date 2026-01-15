@@ -11,7 +11,7 @@ Topics include two main parts:
 
 ### Prerequisites
 
-MATH 4544/6544, or equivalent.
+MATH 4544/6544 -- Biostatistics, or equivalent.
 
 ### Instructor
 
@@ -22,7 +22,7 @@ MATH 4544/6544, or equivalent.
 
 ## Office Hour
 
-TBA and by appointment for now
+10:00--13:00 on Monday, or by appointment.
 
 ## Grade Distribution
 
@@ -42,13 +42,14 @@ TBA and by appointment for now
 
 Those chapters are based on the lecture notes. This part will be updated frequently.
 
-| Status |              Topic              | Lecture |
-|:------:|:---------------:|:-------:|
-|   ✅   | Welcome and Overview            |   1   |
-|    🚧  ️   | Basic SAS Operation            |   2--   |
-|️ ⏳  | SAS Syntax | TBA|
+| Status |        Topic         | Lecture |
+|:------:|:--------------------:|:-------:|
+|   ✅   | Welcome and Overview |    1    |
+|   ✅  ️   | Basic SAS Operation  |   2   |
+|  ️ ⏳   |      SAS Syntax      |   3-   |
 
- <!-- 🚧🛠️⏳   -->
+<!-- 🚧🛠️⏳   --> 
+
 ## Recommended Textbooks
 
 -   [Statistics 480: Introduction to SAS](https://online.stat.psu.edu/statprogram/stat480), The Pennsylvania State University.

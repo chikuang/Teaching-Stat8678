@@ -11,8 +11,14 @@ Objective
 
 In general, writing a SAS program is to write a sequence of steps, and a step is a sequence of SAS statements:
 
-::: callout-exercise
-Exercise 2-1: How many statements are in the following step?
+![](figs/part1/syntax_1.png)
+
+::: {.callout-example}
+How many statements are in the following step?
+
+![](figs/part1/syntax_ex1.png)
+
+
 :::
 
 ## SAS Statments
@@ -47,7 +53,7 @@ There are two ways to insert comments in a SAS program:
 * This is a comment in SAS;
 ```
 
-2.  Using slash-asterisk (/*) to begin the comment and asterisk-slash (*/) to end the comment.
+2.  Using slash-asterisk (/\*) to begin the comment and asterisk-slash (*/) to end the comment.
 
 ``` r
 /* This is a comment in SAS */
@@ -55,12 +61,39 @@ There are two ways to insert comments in a SAS program:
 
 Avoid placing the /\* comment symbols in columns 1 and 2. On some operating environments, SAS might interpret these symbols as a request to end the SAS job or session. An example is given below:
 
+![](figs/part1/syntax_2.png)
+
 ## Diagnosing and Correcting Syntax Errors
 
 Syntax errors occur when program statements do not conform to the rules of the SAS language.
 
 Examples of syntax errors:
 
--   misspelled keywords
--   unmatched quotation marks
--   missing semicolons
+- misspelled keywords
+- unmatched quotation marks
+- missing semicolons
+- invalid options
+
+When SAS encounters a syntax error, SAS prints a warning or an error message to the log; for example,
+
+![](figs/part1/syntax_error1.png)
+
+When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log:
++ the word **ERROR** or **WARNING**
++ the location of the error
++ an explanation of the error
+
+::: {.callout-example}
+This program has three syntax errors. What are the errors?
+
+![](figs/part1/syntax_ex2.png)
+
+:::
+
+## Solution
+
+1. Exercise 1: 5
+
+2. Exercise 2: 
+
+![](figs/part1/syntax_ex2_2.png)

@@ -15,7 +15,6 @@ SAS (Statistical Analysis Software) is a prominent tool in the field of Data Ana
 
 Within SAS, data extraction and categorization into tables are pivotal for identifying and understanding data trends. This versatile suite supports advanced analytics, business intelligence, predictive analysis, and data management, facilitating effective operation in dynamic and compet- itive business environments. Additionally, SAS’s platform-independent nature allows it to operate seamlessly across various operating systems, including Linux, Windows, Mac, and Ubuntu. SAS provides extensive support to programmatically transform and analyze data in the comparison of drag and drop interface of other Business Intelligence tools. It provides very fine control over data manipulation and analysis.
 
-
 ![](figs/part1/operation_flowchart.png)
 
 ### SAS Installzation
@@ -30,7 +29,9 @@ To install SAS University Edition, choose from the following options:
 
 ![](figs/part1/operation_sas_install.png)
 
-    Get Help for the Installation from <https://gsutech.service-now.com/sp>
+```         
+Get Help for the Installation from <https://gsutech.service-now.com/sp>
+```
 
 -   **Option 2**:
 
@@ -60,23 +61,21 @@ Once SAS has started, the screen will look similar to the following: The main SA
 
 -   The menu and toolbar along the top of the window
 -   The **explorer/results browser** along the left hand side, where you can a listing of the results of successful SAS program.
-- The **log** to the top right. This gives you information about possible errors after you have run your SAS program.
+-   The **log** to the top right. This gives you information about possible errors after you have run your SAS program.
 -   The **program editor** below the log on the bottom right, where you create your SAS program.
-- The windows bar along the bottom for you to switch all windows.
-
-
+-   The windows bar along the bottom for you to switch all windows.
 
 The **Editor (Program Editor)** window is a text editor that facilitates writing SAS programs (code). The Log window displays system messages, errors, and resource usage and is thus used to review program statements. The Output window displays output from statistical procedures run within the SAS program; however this is no longer the default. In SAS 9.3 output is sent to the Results Viewer which opens automatically when you run a procedure that generates output. The Results window displays a map of the Output window, and is useful for navigating the results of complicated analyses. Finally, the Explorer window contains all of the data sets in the current SAS session.
 
 These windows can be moved or resized as desired. Only one SAS window is active at a time. The active window will have a shaded title bar at the top of the window, and a highlighted windows bar at the bottom of the screen. In the above example, the Program Editor is the active window, with an ”*Untitled*” program name. Note that the menu options for the SAS toolbar along the top of the screen depend on which window is currently active. (The active window can be changed by clicking on that window with the mouse, or by selecting the desired window from the Window menu.)
 
-## SAS Program 
+## SAS Program
 
 The programming structure of SAS consists of **three** significant steps:
 
-+ **DATA** step: create and modify a SAS data set for follow-up analysis
-+ **PROC** step: conduct data analysis
-+ **OUTPUT** step: show the analysis results
+-   **DATA** step: create and modify a SAS data set for follow-up analysis
+-   **PROC** step: conduct data analysis
+-   **OUTPUT** step: show the analysis results
 
 ![](figs/part1/operation_3steps.png)
 
@@ -95,14 +94,12 @@ RUN;
 SAS dataset is used to organize data values in a tabular form, i.e., in the form of rows for observations and columns for variables.
 
 ::: {.callout-definition title = "SAS Dataset"}
-A SAS data set is a matrix whose each column is for each **variable** and whose each row for each **observation** (e.g., subject).
+A SAS data set is a matrix whose each column is for each **variable** and whose each row for each **observation** (e.g., subject). 
 :::
 
-Data sets can be entered in the SAS programming code or can be read in from a variety of external
-sources, such as text files, csv files, and Microsoft Excel. In subsequent classes we will discuss reading in data sets from external files. Once a data set has been created, commands or procedures can operate on these data sets.
+Data sets can be entered in the SAS programming code or can be read in from a variety of external sources, such as text files, csv files, and Microsoft Excel. In subsequent classes we will discuss reading in data sets from external files. Once a data set has been created, commands or procedures can operate on these data sets.
 
-Other than these steps programming structure also includes data set, label, variables, values, and
-run.
+Other than these steps programming structure also includes data set, label, variables, values, and run.
 
 ## SAS Examples
 
@@ -155,7 +152,9 @@ SAS creates a new window called the **Results Viewer** when the program is execu
 The data can be sorted (in our case by *gender*) using **PROC SORT** by adding the following lines to the program. We can then go ahead and print our new dataset sorted by gender with the proc print step.
 
 ::: {.callout-note title = "Reminder"}
-Any procedural step we do must begin with PROC and every line must end with a semicolon and the command run;
+
+Any procedural step we do must begin with PROC and every line must end with a semicolon and the command run; 
+
 :::
 
 ``` r
@@ -168,19 +167,13 @@ title3 "Raw data sorted only by gender";
 RUN;
 ```
 
-
 ::: {.callout-note title = "Note"}
-Any time we use PROC SORT our original dataset is sorted. SAS does not create a copy then sort!
+Any time we use PROC SORT our original dataset is sorted. SAS does not create a copy then sort! 
 :::
-
 
 ## Generating Summary Statistics
 
-The last procedure to be executed in this exercise is **PROC UNIVARIATE**. This procedure will
-allow us to see summary statistics for any *quantitative variable*. The output from PROC UNIVARIATE  will be important for the early part of this statistical methods class. It will provide
-measures of central tendency (mean, median, mode) and measures of dispersion (variance, standard
-deviation, range) as well as other basic statistics.
-
+The last procedure to be executed in this exercise is **PROC UNIVARIATE**. This procedure will allow us to see summary statistics for any *quantitative variable*. The output from PROC UNIVARIATE will be important for the early part of this statistical methods class. It will provide measures of central tendency (mean, median, mode) and measures of dispersion (variance, standard deviation, range) as well as other basic statistics.
 
 ``` r
 PROC UNIVARIATE DATA=PEOPLE PLOT;
@@ -191,9 +184,7 @@ PROC UNIVARIATE DATA=PEOPLE PLOT;
 RUN;
 ```
 
-
-The code below applies the procedure only to the variable gender. It can be run on any quantitative
-variable and it could be run on several variables at the same time by listing several variables in the **VAR** statement, which would provide a separate analysis for each variable.
+The code below applies the procedure only to the variable gender. It can be run on any quantitative variable and it could be run on several variables at the same time by listing several variables in the **VAR** statement, which would provide a separate analysis for each variable.
 
 The results for PROC UNIVARIATE will be listed in the results viewer.
 
@@ -201,43 +192,30 @@ The results for PROC UNIVARIATE will be listed in the results viewer.
 
 Other Note
 
-+ SAS does not distinguish between upper-case letters or lower-case letters in the program,
-either can be used. However, it does distinguish between upper and lower case in datasets,
-so the character strings “Carol”, “carol” and “CAROL” would be considered different values
-of the variable “name” in the program above.
+-   SAS does not distinguish between upper-case letters or lower-case letters in the program, either can be used. However, it does distinguish between upper and lower case in datasets, so the character strings “Carol”, “carol” and “CAROL” would be considered different values of the variable “name” in the program above.
 
-+ Comments: Additionally, you may add comments anywhere in your program either by beginning
-the statement with an asterisk (*) and ending it with a semicolon (;) or by beginning
-with /* and ending with */. These comments may be thought of as marginal notes, and will
-show in the program editor and log, but not in the output window.
-
+-   Comments: Additionally, you may add comments anywhere in your program either by beginning the statement with an asterisk (\*) and ending it with a semicolon (;) or by beginning with /\* and ending with \*/. These comments may be thought of as marginal notes, and will show in the program editor and log, but not in the output window.
 
 Shortcuts:
 
-+ F3 or the “running man”: submits/run your program; 
-+ F4: recalls text once the program editor;
-+ F5: directs user to the program editor;
-+ F6: directs user to the log;
-+ F7: directs user to the output;
-+ Ctrl+E clears content in the current window.
-+ Also, text can be copied with Ctrl+C, cut with  Ctrl+X, or pasted with Ctrl+V.
+-   F3 or the “running man”: submits/run your program;
+-   F4: recalls text once the program editor;
+-   F5: directs user to the program editor;
+-   F6: directs user to the log;
+-   F7: directs user to the output;
+-   Ctrl+E clears content in the current window.
+-   Also, text can be copied with Ctrl+C, cut with Ctrl+X, or pasted with Ctrl+V.
 
 ## Data Type
 
 We can classify variables into *quantitative* variables and *qualitative* variables:
 
-+ Qualitative variables yield non-numerical information. Qualitative variables are often referred to as categorical variables, such as blood type. Qualitative variables can be further classified as
-  - A nominal variable is a qualitative variable where no ordering is possible or implied in
-the levels, such as gender.
-  - A ordinal variable is a qualitative variable with an order implied in the levels, such as
-health ( poor, reasonable, good, or excellent)
-
-+ Quantitative variables yield numerical measurements. Quantitative variables can be further
-classified as discrete or continuous.
-  - A discrete variable can assume only a countable number of values, such as headache
-severity scores.
-  - A continuous variable is one that can take any one of an uncountable number of values
-in an interval, such as weight.
+-   Qualitative variables yield non-numerical information. Qualitative variables are often referred to as categorical variables, such as blood type. Qualitative variables can be further classified as
+    -   A nominal variable is a qualitative variable where no ordering is possible or implied in the levels, such as gender.
+    -   A ordinal variable is a qualitative variable with an order implied in the levels, such as health ( poor, reasonable, good, or excellent)
+-   Quantitative variables yield numerical measurements. Quantitative variables can be further classified as discrete or continuous.
+    -   A discrete variable can assume only a countable number of values, such as headache severity scores.
+    -   A continuous variable is one that can take any one of an uncountable number of values in an interval, such as weight.
 
 ![](figs/part1/operation_data_type.jpg)
 
@@ -278,12 +256,11 @@ survey_data |>
   )
 ```
 
-
 **Answer**:
 
-+ Age: Continuous variable; 
-+ SEX: qualitative; 
-+ HAPPY: Discrete variable; 
-+ TVHOURS: Continuous variable 
-:::
+-   Age: Continuous variable;
+-   SEX: qualitative;
+-   HAPPY: Discrete variable;
+-   TVHOURS: Continuous variable 
 
+:::
