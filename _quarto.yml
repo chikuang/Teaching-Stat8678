@@ -9,10 +9,10 @@ book:
     - index.qmd
     - part: "Introduction"
       chapters: 
-      - part1_intro_operation.qmd
-      - part1_sas_syntax.qmd
-      - part1_import_export.qmd
-      - part1_rv.qmd
+      - part1_1_intro_operation.qmd
+      - part1_2_sas_syntax.qmd
+      - part1_3_import_export.qmd
+      - part1_4_rv.qmd
     - part: "Statistical Analysis"
       chapters:
       - part2_intro_inference1.qmd

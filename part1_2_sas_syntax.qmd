@@ -1,13 +1,13 @@
 # Working with SAS Syntax
 
-Objective
-
-1.  Identify the characteristics of SAS statements.
-2.  Explain SAS syntax rules.
-3.  Insert SAS comments using two methods.
-4.  Identify SAS syntax errors.
-5.  Diagnose and correct a program with errors.
-6.  Save the corrected program
+>Learning objective:
+>
+>1.  Identify the characteristics of SAS statements.
+>2.  Explain SAS syntax rules.
+>3.  Insert SAS comments using two methods.
+>4.  Identify SAS syntax errors.
+>5.  Diagnose and correct a program with errors.
+>6.  Save the corrected program
 
 In general, writing a SAS program is to write a sequence of steps, and a step is a sequence of SAS statements:
 

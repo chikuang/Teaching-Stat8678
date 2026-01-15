@@ -1,11 +1,11 @@
 # Introduction to Basic SAS Operation
 
-Learning objective:
-
-1.  Familiarize ourselves with SAS windows (editor, log, output)
-2.  Create a dataset
-3.  Sorting Data (by 1 or more variables)
-4.  Obtain summary statistics of variables
+>Learning objective:
+>
+>1.  Familiarize ourselves with SAS windows (editor, log, output)
+>2.  Create a dataset
+>3.  Sorting Data (by 1 or more variables)
+>4.  Obtain summary statistics of variables
 
 ## Introduction to SAS
 
