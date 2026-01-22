@@ -76,7 +76,11 @@ When SAS encounters a syntax error, SAS prints a warning or an error message to 
 
 ![](figs/part1/syntax_error1.png)
 
-When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log: + the word **ERROR** or **WARNING** + the location of the error + an explanation of the error
+When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log:
+
+-   the word **ERROR** or **WARNING**
+
+-   the location of the error + an explanation of the error
 
 ::: callout-example
 This program has three syntax errors. What are the errors?

@@ -32,11 +32,12 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 
 ## Assignment
 
--   [ ] TBA
+-   [ ] A1, due on Jan 28, 2026
+-   [ ] A2 TBA
 
 ## Midterm
 
--   [ ] TBA
+-   [ ] March 4, 2026
 
 ## Topics and Corresponding Lectures
 
@@ -46,7 +47,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |:------:|:--------------------:|:-------:|
 |   ✅   | Welcome and Overview |    1    |
 |  ✅ ️   | Basic SAS Operation  |    2    |
-|  ️ ⏳   |      SAS Syntax      |  3    |
+|  ️✅    |      SAS Syntax      |  3    |
 |  ️ ⏳   |      Import and Export Data      |   4    |
 
 <!-- 🚧🛠️⏳   -->
