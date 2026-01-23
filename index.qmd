@@ -49,6 +49,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |  ✅ ️   | Basic SAS Operation  |    2    |
 |  ️✅    |      SAS Syntax      |  3    |
 |  ️ ⏳   |      Import and Export Data      |   4    |
+|  ️ ⏳   |      Random Variable      |   5    |
 
 <!-- 🚧🛠️⏳   -->
 

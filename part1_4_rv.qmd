@@ -1,1 +1,143 @@
 # Random Variables
+
+> Learning Objectives
+>
+>
+> 1. Distinguish between **discrete** and **continuous** random variables  
+> 2. Define random variables for real-world data problems  
+> 3. Identify appropriate probability distributions for common data types  
+> 4. Connect random variables to **data columns** used in SAS programs to represent a real world question
+
+
+## What Is a Random Variable?
+
+A **random variable (RV)** is a numerical quantity whose value depends on the outcome of a random experiment.
+
+We typically denote a random variable by an uppercase letter, such as  $X$ and its realized value by a lowercase letter, such as  $X = x$. The random variable can be *continuous* or *discrete*.
+
+
+
+In practice, we often observe multiple realizations, or running the random experiment multiple times, say $n$ times or $n$ realizations. We denote these realizations as:
+$$X_1 = x_1, \; X_2 = x_2, \; \ldots, \; X_n = x_n.$$
+The number $n$ is called the **sample size**.
+
+::: {.callout-example }
+Exercise: Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
+
++ Number of emails received by a server in one hour
+($X = 0, 1, 2, \ldots$: discrete)
++ Time (in minutes) until a machine fails
+($X = x \in [0, \infty)$: continuous)
++ Total number of defects on a manufactured item
+($X = 0, 1, 2, \ldots$: discrete)
++ Daily maximum temperature in Atlanta (in degrees Fahrenheit)
+($X = x \in (-\infty, \infty)$: continuous)
++ Whether a randomly selected loan defaults within one year
+($X = 1 \text{ if default, } 0 \text{ otherwise}$: discrete)
+:::
+
+::: {.callout-example title = "Exercise 1"}
+Exercise: Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
+
+1. Number of transactions made by a customer in a day 
+2. Response time (in seconds) of a web service request 
+3. Count of hospital admissions in a city per week  discrete)
+4. Proportion of time a system is idle during a day
+:::
+
+## Discrete vs Continuous Random Variables
+
+### Discrete Random Variables
+
+A **discrete random variable** takes values in a **finite or countable set**.
+
+**Examples:**
+
+- Number of heads in three coin flips  
+- Number of students passing an exam  
+- Number of events occurring in a fixed time period  
+
+A discrete random variable is described by a **probability mass function (PMF)**:
+
+| Value of $X$ | $x_1$ | $x_2$ | $x_3$ | … | $x_m$ |
+|--------------|--------|--------|--------|---|--------|
+| Probability | $p_1$ | $p_2$ | $p_3$ | … | $p_m$ |
+
+These probabilities satisfy:
+
+- $0 \le p_i \le 1$
+- $\sum_{i=1}^m p_i = 1$
+
+---
+
+### Example: Discrete Probability Calculation
+
+Suppose the length $X$ (in minutes) of an international phone call has distribution:
+
+| X | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| P(X) | 0.2 | 0.5 | 0.2 | 0.1 |
+
+Then:
+
+- $P(X \le 2) = 0.7$
+- $P(X < 2) = 0.2$
+- $P(X > 1) = 0.8$
+
+## Common Discrete Distributions
+
+### Bernoulli Distribution
+
+Used for **binary outcomes**:
+
+- success / failure
+- yes / no
+- 1 / 0
+
+Notation: $X \sim \text{Ber}(p)$, where $p$ is the probability of success.
+
+**Example:**  
+Whether a patient has diabetes (1 = yes, 0 = no).
+
+
+### Poisson Distribution
+
+Used to model **counts of events over time or space**.
+
+Notation:
+$X \sim \text{Poi}(\lambda)$
+
+where $\lambda$ is the **mean rate**.
+
+**Examples:**
+
++ Number of trades per day
++ Number of system failures per week
++ Number of arrivals to a service queue
+
+---
+
+## Continuous Random Variables
+
+A **continuous random variable** can take **any value in an interval**.
+
+**Examples:**
+
+- Height of individuals
+- Time until failure of a component
+- Test scores treated as continuous
+
+Probabilities are defined using **density functions**, not point probabilities.
+
+---
+
+
+
+## Solution to the exercise
+
+Answer of the exercise 
+
+1. Number of transactions made by a customer in a day ($X = 0, 1, 2, \ldots$: discrete)
+2. Response time (in seconds) of a web service request ($X = x > 0$: continuous)
+3. Count of hospital admissions in a city per week ($X = 0, 1, 2, \ldots$: discrete)
+4. Proportion of time a system is idle during a day ($X = x \in [0,1]$: continuous)
