@@ -36,7 +36,7 @@ Exercise: Define whether the following random variables are discrete or continuo
 ($X = 1 \text{ if default, } 0 \text{ otherwise}$: discrete)
 :::
 
-::: {.callout-example title = "Exercise 1"}
+::: {.callout-exercise}
 Exercise: Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
 
 1. Number of transactions made by a customer in a day 
@@ -65,24 +65,24 @@ A discrete random variable is described by a **probability mass function (PMF)**
 
 These probabilities satisfy:
 
-- $0 \le p_i \le 1$
-- $\sum_{i=1}^m p_i = 1$
+- $0 \le p_i \le 1$,
+- $\sum_{i=1}^m p_i = 1$.
 
----
+We calculate the probability of events modelled by discrete random variables by summing up the probability $p_i$ for the values $x_i$ that make up the event.
 
-### Example: Discrete Probability Calculation
-
+::: {.callout-exercise title = "Discrete Probability Calculation"}
 Suppose the length $X$ (in minutes) of an international phone call has distribution:
 
 | X | 1 | 2 | 3 | 4 |
 |---|---|---|---|---|
 | P(X) | 0.2 | 0.5 | 0.2 | 0.1 |
 
-Then:
+Then, calculate the following probabilities
 
-- $P(X \le 2) = 0.7$
-- $P(X < 2) = 0.2$
-- $P(X > 1) = 0.8$
+a. $P(X \le 2)$
+b. $P(X < 2)$
+c. $P(X > 1)$
+:::
 
 ## Common Discrete Distributions
 
@@ -99,6 +99,7 @@ Notation: $X \sim \text{Ber}(p)$, where $p$ is the probability of success.
 **Example:**  
 Whether a patient has diabetes (1 = yes, 0 = no).
 
+How to specify the probability $p$ will be discussed in the following lecture. This is related to the procedure of statistical inference.
 
 ### Poisson Distribution
 
@@ -115,11 +116,11 @@ where $\lambda$ is the **mean rate**.
 + Number of system failures per week
 + Number of arrivals to a service queue
 
----
+Similar to the probability $p$ from the Bernoulli distribution, how to specify the rate $\lambda$ will be discussed in the following lecture.
 
 ## Continuous Random Variables
 
-A **continuous random variable** can take **any value in an interval**.
+A **continuous random variable** can take **any value $x$ in an interval**.
 
 **Examples:**
 
@@ -127,17 +128,125 @@ A **continuous random variable** can take **any value in an interval**.
 - Time until failure of a component
 - Test scores treated as continuous
 
-Probabilities are defined using **density functions**, not point probabilities.
+Probabilities are defined using **density functions**, not point probabilities. Some common continuous distributions are as follows.
 
----
+### Normal Distribution
 
+The normal distribution is also called the **Gaussian distribution**. It is characterized by two parameters: the mean $\mu$ and the standard deviation $\sigma$. It is unimodal and symmetric around the mean which is the centre of the mass. A continuous random variable $X$ that has a normal distribution is said to be *normal* or *normally distributed*. 
+
+Notation: $X \sim N(\mu, \sigma^2)$. Sometimes the standard deviation may be used instead of the variance, which is the square of the variance.
+
+Institution of the normal distribution:
+
+- mean: $\mu$
+- variance: $\sigma^2$
+
+``` {r normal}
+# Example: plot normal distribution with mean = 0, sd = 1
+x <- seq(-4, 4, length=100)
+y <- dnorm(x, mean=0, sd=1)
+library(ggplot2)
+# use ggplot2
+data.frame(x, y) |>
+  ggplot(aes(x=x, y=y)) +
+  geom_line() +
+  ggtitle("Normal Distribution N(0,1)") +
+  xlab("x") + ylab("Density") + theme_minimal() +
+  geom_vline(xintercept=0, linetype="dashed", color="red")
+```
+
+A distribution plot of the normal distribution with mean 0 and standard deviation 1 is shown above. It is often referred as the *standard normal distribution*. In practice, we would like to "standardized" the data to have mean 0 and standard deviation 1 for the subsequent analysis.
+
+Normal distribution play an important role in statistical inference. One of the important property is the 68-95-99.7 rule:
+- About 68% of the data falls within one standard deviation of the mean
+- About 95% of the data falls within two standard deviations of the mean
+- About 99.7% of the data falls within three standard deviations of the mean
+
+``` {r 68-95-99.7}
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x)
+
+library(ggplot2)
+
+df <- data.frame(x, y)
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_line(linewidth = 1) +
+  theme_minimal() +
+  labs(
+    title = "Normal Distribution with 68–95–99.7 Rule",
+    x = NULL,
+    y = "Density"
+  ) +
+  
+  # remove numeric x-axis ticks and labels
+  scale_x_continuous(breaks = NULL) +
+  
+  # vertical reference lines
+  geom_vline(xintercept = 0, linewidth = 0.8) +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed", color = "red") +
+  geom_vline(xintercept = c(-2, 2), linetype = "dashed", color = "blue") +
+  geom_vline(xintercept = c(-3, 3), linetype = "dashed", color = "darkgreen") +
+  
+  # percentage labels
+  annotate("text", x = 0, y = 0.38, label = "68%", color = "red") +
+  annotate("text", x = 0, y = 0.33, label = "95%", color = "blue") +
+  annotate("text", x = 0, y = 0.28, label = "99.7%", color = "darkgreen") +
+  
+  # mu and sigma labels only
+  annotate("text", x =  0, y = -0.01, label = expression(mu), vjust = 1.5) +
+  annotate("text", x =  1, y = -0.01, label = expression(sigma),  vjust = 1.5, color = "red") +
+  annotate("text", x = -1, y = -0.01, label = expression(-sigma), vjust = 1.5, color = "red") +
+  annotate("text", x =  2, y = -0.01, label = expression(2*sigma),  vjust = 1.5, color = "blue") +
+  annotate("text", x = -2, y = -0.01, label = expression(-2*sigma), vjust = 1.5, color = "blue") +
+  annotate("text", x =  3, y = -0.01, label = expression(3*sigma),  vjust = 1.5, color = "darkgreen") +
+  annotate("text", x = -3, y = -0.01, label = expression(-3*sigma), vjust = 1.5, color = "darkgreen")
+```
+
+### Exponential Distribution
+
+The exponential distribution is another common distribution where a few outcomes are most likely with a rapidly decreasing probability for larger values. It is often used to model waiting times or lifetimes of objects. It is similar to the *geometric distribution* in the discrete case.
+
+Two ways to specify the parameter.
+
+1. $X \sim \text{Exp}(\lambda)$, where $\lambda$ is the *rate* parameter.
+2. $X \sim \text{Exp}(\beta)$, where $\beta$ is the *scale* parameter, and $\beta = 1/\lambda$.
+
+The notation is either $X \sim \text{Exp}(\lambda)$ or $X \sim \text{Exp}(\beta)$. But to be sure which parameterization is used, we need to check the definition of the distribution.
+
+::: {.callout-example}
+Please define adequate random variables for the following data example, and thaink about what distribution can be used to model the data.
+
++ Suppose we want to know whether the rate of diabetes of a certain area is too high. The researchers randomly discuss with 10 individuals in a certain area to know whether they have diabetes. The data are collected as "yes" or "no" answers as follows
+
+| Individual | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|------------|---|---|---|---|---|---|---|---|---|----|
+| Outcome    | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0  |
+
++ A comapny that manufactures light blulb claims that a particular type of light bulb will last 850 hours on average. To justify the claim more scientifically, a researcher randomly selects 10 light bulbs of that type and measures the lifetimes (in hours) of the light bulbs as follows:
+
+| Light Bulb | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
+|------------|-----|-----|-----|-----|-----|-----|-----|-----|
+| | 831 | 832 | 840 | 819 | 822 | 836 | 829 | 817 | 899 | 823 | 
+
+:::
+
+In the following classes we will assume the dataset we have can be well-modelled represented for the underline studies. The data collection, however, is beyond the scope of the class. For those interested in data collection, please refer to the *survey sampling* or *experimental design* area.
 
 
 ## Solution to the exercise
 
 Answer of the exercise 
 
+Exercise 1
+
 1. Number of transactions made by a customer in a day ($X = 0, 1, 2, \ldots$: discrete)
 2. Response time (in seconds) of a web service request ($X = x > 0$: continuous)
 3. Count of hospital admissions in a city per week ($X = 0, 1, 2, \ldots$: discrete)
 4. Proportion of time a system is idle during a day ($X = x \in [0,1]$: continuous)
+
+Exercise 2:
+
+- $P(X \le 2) = 0.7$
+- $P(X < 2) = 0.2$
+- $P(X > 1) = 0.8$
