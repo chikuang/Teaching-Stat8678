@@ -27,10 +27,9 @@ The **PROC IMPORT** statement is the best way to enter external data sets. The C
 
 ``` r
 PROC IMPORT OUT= GRADES_temp
-DATAFILE= "Put Your Path Here/grades_temp.csv"
-DBMS=CSV REPLACE;
-GETNAMES=YES;
-DATAROW=2;
+  DATAFILE= "Put Your Path Here/grades_temp.csv" DBMS=CSV REPLACE;
+  GETNAMES=YES;
+  DATAROW=2;
 RUN;
 ```
 
@@ -75,8 +74,7 @@ This can be done by
 
 ``` r
 PROC EXPORT DATA= GRADES
-  OUTFILE= "Put Your Path Here/grade_v2.csv"
-  DBMS=CSV REPLACE;
+  OUTFILE= "Put Your Path Here/grade_v2.csv" DBMS=CSV REPLACE;
   REPLACE;
 RUN;
 ```
