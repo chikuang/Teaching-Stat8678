@@ -46,14 +46,7 @@ $$
 
 However, the true value of $\mu$ is unknown because we cannot observe all realizations of this process. As a result, statistical inference is required. 
 
-If $\mu$ were known, no inference would be necessary.
-
-
-What we can do is to collect data: Suppose, we randomly select $20$ cases from previous results
-under the same type of court. The data is
-
-What we can do in practice is to **collect data**.  
-Suppose we randomly select 20 court cases of the same type from historical records
+If $\mu$ were known, no inference would be necessary. What we can do in practice is to **collect data**. Suppose we randomly select 20 court cases of the same type from historical records
 and observe their case lengths (in days):
 
 $$
@@ -82,9 +75,8 @@ X_i \stackrel{\text{i.i.d.}}{\sim} N(\mu, \sigma^2),
 \qquad i = 1, \ldots, 20.
 $$
 
-Here, both $\mu$ and $\sigma^2$ are unknown parameters.
-In this example, our primary interest lies in estimating the population mean $\\mu$,
-while the variance $\\sigma^2$ is treated as a nuisance parameter.
+Here, both $\mu$ and $\sigma^2$ are unknown parameters. In this example, our primary interest lies in estimating the population mean $\mu$,
+while the variance $\sigma^2$ is treated as a nuisance parameter.
 
 We can use the **maximum likelihood estimator** (MLE) or the **method of moments estimator** (MME) to construct a point estimator of $\mu$. Under this model, however, they are coincide.
 The resulting estimator is the **sample mean**, denoted by
@@ -105,34 +97,39 @@ mean $\mu$. In this model, both methods lead to the same estimator: the
 **sample mean**. We denote this estimator by
 
 $$
-\hat{\mu} = \bar{X}.
+\hat{\mu} = \bar{X}_n.
 $$
 
-Pay careful attention to the notation. We use a **capital letter** $\bar{X}$
-to emphasize that the estimator itself is a **random variable**.
-Since the estimator is a function of the random variables
-$X_1, \ldots, X_n$, it is also random and therefore follows a probability
-distribution.
-
-The probability distribution of an estimator is called its
-**sampling distribution**. We will return to the concept of sampling distributions later in the course.
+Pay careful attention to the notation. We use a **capital letter** $\bar{X}_n$ to emphasize that the estimator itself is a **random variable**.
+Since the estimator is a function of the random variables $X_1, \ldots, X_n$, it is also random and therefore follows a probability distribution. The probability distribution of an estimator is called its **sampling distribution**. We will return to the concept of sampling distributions later in the course.
 
 ### Formal Definitions
 
 To be more precise, we introduce the following definitions.
 
-- A **statistic** is any function of the random variables
-  $X_1, \ldots, X_n$.  
-  Because it is a function of random variables, a statistic is itself
-  a random variable and therefore has a probability distribution.
+- A **statistic** is any function of the random variables $X_1, \ldots, X_n$. Because it is a function of random variables, a statistic is itself a random variable and therefore has a probability distribution. If we use the parametric model to describe it, then there is a distribution that depends on the unknown parameters.
 
-- A **(point) estimator** of a parameter $\theta$, denoted by $\hat{\theta}$,
-  is a statistic used to estimate $\theta$.
-  Consequently, an estimator is a random variable.
+- A **(point) estimator** of a parameter $\theta$, denoted by $\hat{\theta}$, is a statistic used to estimate $\theta$. (Note, an estimator is a random variable because it is a statistics).
 
-- A **(point) estimate** is the numerical value obtained by evaluating
-  the estimator using the observed data
-  $x_1, \ldots, x_n$.
+- A **(point) estimate** is the numerical value obtained by evaluating the estimator using the observed data $x_1, \ldots, x_n$. In particular, we use **lowercase notation** to indicate an estimate. For example, $\bar{x}_n$ denotes the observed value of the estimator $\bar{X}_n$.
 
-In particular, we use **lowercase notation** to indicate an estimate.
-For example, $\bar{x}$ denotes the observed value of the estimator $\bar{X}$.
+
+So far, we have constructed a point estimator (and hence a point estimate).
+To construct a confidence interval or perform hypothesis testing, we need
+to know the **sampling distribution** of the estimator $\bar{X}_n$.
+
+Under the normal model with unknown variance, the sampling distribution can be
+expressed as
+
+$$
+\frac{\bar{X} - \mu}{S / \sqrt{n}} \sim t_{n-1},
+$$
+
+where
+
+$$
+S = \sqrt{\frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n - 1}},
+$$
+
+and $t_{n-1}$ denotes the **Student's $t$ distribution** with
+$n - 1$ degrees of freedom.
