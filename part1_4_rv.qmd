@@ -15,9 +15,9 @@ We typically denote a random variable by an uppercase letter, such as $X$ and it
 
 In practice, we often observe multiple realizations, or running the random experiment multiple times, say $n$ times or $n$ realizations. We denote these realizations as: $$X_1 = x_1, \; X_2 = x_2, \; \ldots, \; X_n = x_n.$$ The number $n$ is called the **sample size**.
 
-::: {callout-example}
+::: {.callout-example}
 
-Exercise: Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
+Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
 
 -   Number of emails received by a server in one hour ($X = 0, 1, 2, \ldots$: discrete)
 -   Time (in minutes) until a machine fails ($X = x \in [0, \infty)$: continuous)
@@ -26,9 +26,9 @@ Exercise: Define whether the following random variables are discrete or continuo
 -   Whether a randomly selected loan defaults within one year ($X = 1 \text{ if default, } 0 \text{ otherwise}$: discrete)
 :::
 
-::: {callout-exercise}
+::: {.callout-exercise}
 
-Exercise: Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
+Define whether the following random variables are discrete or continuous, and the possible values that $X$ takes.
 
 1.  Number of transactions made by a customer in a day
 2.  Response time (in seconds) of a web service request
@@ -45,8 +45,8 @@ A **discrete random variable** takes values in a **finite or countable set**.
 
 **Examples:**
 
--   Number of heads in three coin flips\
--   Number of students passing an exam\
+-   Number of heads in three coin flips
+-   Number of students passing an exam
 -   Number of events occurring in a fixed time period
 
 A discrete random variable is described by a **probability mass function (PMF)**:
