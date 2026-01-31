@@ -45,12 +45,13 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 
 | Status |        Topic         | Lecture |
 |:------:|:--------------------:|:-------:|
+|        | **📘 Part 1: Basics** |         |
 |   ✅   | Welcome and Overview |    1    |
-|  ✅ ️   | Basic SAS Operation  |    2    |
-|  ️✅    |      SAS Syntax      |  3    |
-|  ️ ⏳   |      Import and Export Data      |   4    |
-|  ️ ⏳   |      Random Variable      |   5    |
-
+|   ✅   | Basic SAS Operation  |    2    |
+|   ✅   | SAS Syntax           |    3    |
+|   ✅   | Import and Export Data |  4    |
+|   ⏳   | Random Variable      |    5    |
+|        | **📘 Part 2: Statistical Analysis** |         |
 <!-- 🚧🛠️⏳   -->
 
 ## Recommended Textbooks
