@@ -1,0 +1,68 @@
+\contentsline {chapter}{Preface}{5}{chapter*.2}%
+\contentsline {section}{Description}{5}{chapter*.2}%
+\contentsline {subsection}{Prerequisites}{5}{Item.2}%
+\contentsline {subsection}{Instructor}{5}{Item.2}%
+\contentsline {section}{Office Hour}{5}{Item.2}%
+\contentsline {section}{Grade Distribution}{6}{Item.2}%
+\contentsline {section}{Assignment}{6}{Item.2}%
+\contentsline {section}{Midterm}{6}{Item.2}%
+\contentsline {section}{Topics and Corresponding Lectures}{6}{Item.2}%
+\contentsline {section}{Recommended Textbooks}{6}{table.0.1}%
+\contentsline {section}{Acknowledgments}{7}{table.0.1}%
+\contentsline {part}{\numberline {I}Introduction}{8}{part.1}%
+\contentsline {chapter}{\numberline {1}Introduction to Basic SAS Operation}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction to SAS}{9}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}SAS Installzation}{10}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}SAS Windows}{11}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}SAS Program}{13}{section.1.2}%
+\contentsline {section}{\numberline {1.3}SAS Dataset}{15}{section.1.3}%
+\contentsline {section}{\numberline {1.4}SAS Examples}{15}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Creating a Dataset}{15}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Sorting Data}{16}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Generating Summary Statistics}{17}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Other notes}{17}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Data Type}{18}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Working with SAS Syntax}{21}{chapter.2}%
+\contentsline {section}{\numberline {2.1}SAS Statments}{22}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Diagnosing and Correcting Syntax Errors}{25}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Solution to the example}{26}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Import and Export Dataset}{28}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Reading from External Files}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Export a File from SAS}{30}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Import \& Export in SAS Virtual Studio}{30}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Solution to the example}{32}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Random Variables}{33}{chapter.4}%
+\contentsline {section}{\numberline {4.1}What Is a Random Variable?}{33}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Discrete vs Continuous Random Variables}{34}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Discrete Random Variables}{34}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Common Discrete Distributions}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Bernoulli Distribution}{35}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Poisson Distribution}{35}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Continuous Random Variables}{35}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Normal Distribution}{36}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Exponential Distribution}{37}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Solution to the exercise}{38}{section.4.5}%
+\contentsline {part}{\numberline {II}Statistical Analysis}{39}{part.2}%
+\contentsline {chapter}{\numberline {5}Introduction to Statistical Inference -- part I}{40}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Probability versus Statistics}{40}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Example: One-Sample Mean Problem}{40}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Problem Formulation}{41}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Formal Definitions}{42}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Confidence Interval for \(\mitmu \)}{43}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Hypothesis Testing for \(\mitmu \)}{43}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Revisit the data example by using SAS}{44}{section.5.3}%
+\contentsline {section}{\numberline {5.4}More about hypothesis and confidence intervals}{44}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}How to construct a confidence interval?}{44}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Rearranging the Inequality}{45}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Large-Sample Confidence Interval}{45}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}3.2 Hypothesis Testing and Confidence Intervals Always Agree}{45}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Interpretation of the \(p\)-value}{45}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Computing the \(p\)-value}{46}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Connection to Confidence Intervals}{46}{subsection.5.5.3}%
+\contentsline {chapter}{\numberline {6}Introduction to Statistical Inference -- part II}{48}{chapter.6}%
+\contentsline {chapter}{\numberline {7}One Sample Nonparametric Test}{49}{chapter.7}%
+\contentsline {chapter}{\numberline {8}One Sample Proportion Test}{50}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Writing SAS Macro Program: Using One Sample Variance Test/CI as Example}{51}{chapter.9}%
+\contentsline {chapter}{\numberline {10}\(\mitchi ^2\) Goodness of Fit Test}{52}{chapter.10}%
+\contentsline {chapter}{References}{53}{chapter*.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

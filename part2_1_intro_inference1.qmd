@@ -131,5 +131,318 @@ $$
 S = \sqrt{\frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n - 1}},
 $$
 
-and $t_{n-1}$ denotes the **Student's $t$ distribution** with
-$n - 1$ degrees of freedom.
+and $t_{n-1}$ denotes the **Student's $t$ distribution** with $n - 1$ degrees of freedom.
+
+
+### Confidence Interval for $\mu$
+
+Based on this sampling distribution, a $(1 - \alpha) \times 100\%$ confidence
+interval for $\mu$ is given by
+
+$$
+\left[
+\bar{X} - t_{n-1,\alpha/2} \frac{S}{\sqrt{n}},
+\;
+\bar{X} + t_{n-1,\alpha/2} \frac{S}{\sqrt{n}}
+\right].
+$$
+
+### Hypothesis Testing for $\mu$
+
+Using the same sampling distribution, we can conduct one of the following
+hypothesis tests:
+
+- **Two-sided test**
+  $$
+  H_0: \mu = \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu \neq \mu_0
+  $$
+
+- **Left-tailed test**
+  $$
+  H_0: \mu = \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu < \mu_0
+  $$
+
+- **Right-tailed test**
+  $$
+  H_0: \mu = \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu > \mu_0
+  $$
+
+In some textbooks, equivalent hypotheses are written as
+
+- $$
+  H_0: \mu = \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu \neq \mu_0
+  $$
+
+- $$
+  H_0: \mu \ge \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu < \mu_0
+  $$
+
+- $$
+  H_0: \mu \le \mu_0
+  \quad \text{vs.} \quad
+  H_1: \mu > \mu_0
+  $$
+
+Fortunately, **SAS** can perform point estimation, confidence interval
+construction, and hypothesis testing simultaneously, provided we clearly
+specify:
+
+- **The statistical question**  
+  (one-sample mean, one-sample variance, two-sample problem, etc.)
+
+- **The inferential goal**  
+  (point estimation, confidence interval, hypothesis testing)
+
+- **The statistical model and method**  
+  (for example, why we use the $t$ distribution for the one-sample mean problem instead of the normal distribution or another alternative)
+  
+One of the main goals of this course is to help you build a mental “library” of statistical tools. Later, when you encounter a statistical question, you will be able to identify an appropriate method and then use SAS to obtain numerical results for interpretation.
+
+## Revisit the data example by using SAS
+
+The court length data can be read by the following DATA step:
+
+``` r
+DATA TIME;
+  INPUT TIME @@;
+DATALINES;
+43 90 84 87 116 95 86 99 93 92
+121 71 66 98 79 102 60 112 105 98
+;
+RUN;
+```
+
+
+The only variable in the DATA set, time, is assumed to be normally distributed. The trailing at signs (@@) indicate that there is more than one observation on a line. The following statements invoke PROC TTEST for a one-sample t test:
+
+``` r
+PROC TTEST H0=80 PLOTS(SHOWH0) SIDES=U ALPHA=0.1;
+  VAR TIME;
+RUN;
+```
+
+## More about hypothesis and confidence intervals
+
+### How to construct a confidence interval?
+
+Consider a **95% confidence interval** for the population mean $\mu$.
+Under the normal approximation (or by the Central Limit Theorem), we have
+
+$$
+P(-1.96 < Z < 1.96) \approx 0.95,
+$$
+
+where $Z$ is a standard normal random variable.
+
+Equivalently, this can be written as
+
+$$
+P\left(
+-1.96
+<
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+<
+1.96
+\right)
+\approx 0.95.
+$$
+
+
+### Rearranging the Inequality
+
+Rearranging the terms inside the probability statement yields
+
+$$
+P\left(
+\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}}
+<
+\mu
+<
+\bar{X} + 1.96 \frac{\sigma}{\sqrt{n}}
+\right)
+\approx 0.95.
+$$
+
+---
+
+### Large-Sample Confidence Interval
+
+Thus, a **large-sample 95% confidence interval** for $\mu$ is given by
+
+$$
+\left[
+\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}},
+\;
+\bar{X} + 1.96 \frac{\sigma}{\sqrt{n}}
+\right].
+$$
+
+More compactly, we often write this interval as
+
+$$
+\bar{X} \pm 1.96 \frac{\sigma}{\sqrt{n}}.
+$$
+
+## 3.2 Hypothesis Testing and Confidence Intervals Always Agree
+
+### Interpretation of the $p$-value
+
+The **$p$-value** is the probability of observing data **at least as favorable to the
+alternative hypothesis $H_A$** as the data actually observed, **assuming the null
+hypothesis $H_0$ is true**.
+
+In this example, the observed sample mean is either greater than $3.56$ or less
+than $3.18$, and the null hypothesis assumes the true population mean is
+$\mu = 3.37$.
+
+---
+
+### Computing the $p$-value
+
+We compute the $p$-value as
+
+$$
+P(\bar{X} > 3.56 \text{ or } \bar{X} < 3.18 \mid \mu = 3.37).
+$$
+
+This can be written as the sum of two tail probabilities:
+
+$$
+P(\bar{X} > 3.56 \mid \mu = 3.37) + P(\bar{X} < 3.18 \mid \mu = 3.37).
+$$
+
+Standardizing using the normal distribution yields
+
+$$
+P\left(
+Z > \frac{3.56 - 3.37}{0.31 / \sqrt{147}}
+\right)
++
+P\left(
+Z < \frac{3.18 - 3.37}{0.31 / \sqrt{147}}
+\right).
+$$
+
+Evaluating the standardized values gives
+
+$$
+P(Z > 7.43) + P(Z < -7.43).
+$$
+
+This probability is extremely small:
+
+$$
+10^{-13} \approx 0.
+$$
+
+---
+
+### Connection to Confidence Intervals
+
+Because the $p$-value is essentially zero, we strongly reject $H_0$ at any
+reasonable significance level.
+
+Equivalently, the hypothesized value $\mu = 3.37$ does **not** lie inside the
+corresponding confidence interval for $\mu$.
+
+``` {r, echo = FALSE, message=FALSE, warning=FALSE}
+# r code: two-sided p-value picture using ggplot2
+# goal: draw a standard normal curve, two dashed cutoffs at ±z0,
+#       and cross-hatched shaded tails similar to the slide
+
+# packages
+library(ggplot2)
+library(dplyr)
+
+# choose the cutoff (example: z0 = 1.96 for 95% central region)
+z0 <- 1.96
+
+# curve grid
+df <- tibble(
+  x = seq(-3.2, 3.2, length.out = 2001),
+  y = dnorm(x)
+)
+
+# tail regions for shading
+df_left  <- df %>% filter(x <= -z0)
+df_right <- df %>% filter(x >=  z0)
+
+# cross-hatch helper: draw many short diagonal segments inside a polygon
+# (this gives a visual similar to the yellow cross-hatching)
+make_hatch <- function(xmin, xmax, ymin_fun, step = 0.12, seg = 0.18) {
+  xs <- seq(xmin, xmax, by = step)
+  tibble(
+    x    = xs,
+    xend = xs + seg,
+    y    = 0,
+    yend = ymin_fun(xs + seg) * 0.85
+  )
+}
+
+h_left1  <- make_hatch(min(df_left$x),  -z0, function(xx) dnorm(xx))
+h_left2  <- h_left1 %>% mutate(xend = x - 0.02, x = x + 0.18)  # second direction
+
+h_right1 <- make_hatch(z0, max(df_right$x), function(xx) dnorm(xx))
+h_right2 <- h_right1 %>% mutate(xend = x - 0.02, x = x + 0.18)
+
+# build plot
+ggplot(df, aes(x, y)) +
+  # normal curve
+  geom_line(linewidth = 1) +
+
+  # light tail fill (optional, helps the hatch stand out)
+  geom_area(data = df_left,  fill = "gold", alpha = 0.15) +
+  geom_area(data = df_right, fill = "gold", alpha = 0.15) +
+
+  # dashed cutoff lines
+  geom_vline(xintercept = c(-z0, z0), linetype = "dashed") +
+
+  # cross-hatching (two directions) for each tail
+  geom_segment(data = h_left1,
+               aes(x = x, y = y, xend = xend, yend = yend),
+               inherit.aes = FALSE, color = "goldenrod", linewidth = 0.8) +
+  geom_segment(data = h_left2,
+               aes(x = x, y = y, xend = xend, yend = yend),
+               inherit.aes = FALSE, color = "goldenrod", linewidth = 0.8) +
+  geom_segment(data = h_right1,
+               aes(x = x, y = y, xend = xend, yend = yend),
+               inherit.aes = FALSE, color = "goldenrod", linewidth = 0.8) +
+  geom_segment(data = h_right2,
+               aes(x = x, y = y, xend = xend, yend = yend),
+               inherit.aes = FALSE, color = "goldenrod", linewidth = 0.8) +
+
+  # axes and labels
+  scale_x_continuous(breaks = -3:3, limits = c(-3.2, 3.2)) +
+  labs(x = NULL, y = NULL) +
+
+  # add |z| labels (like the slide)
+  annotate("text", x = -z0, y = -0.02, label = expression(-"|"*Z*"|"),
+           size = 6, vjust = 1) +
+  annotate("text", x =  z0, y = -0.02, label = expression("|"*Z*"|"),
+           size = 6, vjust = 1) +
+
+  # theme to mimic the clean slide style
+  theme_classic(base_size = 14) +
+  theme(
+    axis.ticks.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.line.y  = element_blank(),
+    plot.margin  = margin(10, 10, 20, 10)
+  ) +
+  coord_cartesian(clip = "off")
+```
+
+This illustrates a key principle:
+
+> **Hypothesis testing and confidence intervals always lead to the same conclusion
+when they are constructed at compatible significance levels.**
