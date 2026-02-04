@@ -43,19 +43,18 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 
 Those chapters are based on the lecture notes. This part will be updated frequently.
 
-| Status |                Topic                | Lecture |
-|:------:|:-----------------------------------:|:-------:|
-|   ✅   |        Welcome and Overview         |    1    |
-|        |        **📘 Part 1: Basics**        |         |
-|   ✅   |         Basic SAS Operation         |    2    |
-|   ✅   |             SAS Syntax              |    3    |
-|   ✅   |       Import and Export Data        |    4    |
-|   ⏳   |           Random Variable           |    5    |
-|        | **📘 Part 2: Statistical Analysis** |         |
-|        | **One Sample Problem as Example** |         |
-|     ⏳ | Introduction to Statistical Inference         |  6| 
-
-
+| Status |                 Topic                 | Lecture |
+|:------:|:-------------------------------------:|:-------:|
+|   ✅   |         Welcome and Overview          |    1    |
+|        |         **📘 Part 1: Basics**         |         |
+|   ✅   |          Basic SAS Operation          |    2    |
+|   ✅   |              SAS Syntax               |    3    |
+|   ✅   |        Import and Export Data         |    4    |
+|   ✅   |            Random Variable            |    5    |
+|        |  **📘 Part 2: Statistical Analysis**  |         |
+|        |   **One Sample Problem as Example**   |         |
+|   ⏳   | Introduction to Statistical Inference I|    6    |
+|   ⏳   | Introduction to Statistical Inference  II|    7  |
 
 <!-- 🚧🛠️⏳   -->
 
