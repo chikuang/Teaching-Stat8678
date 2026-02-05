@@ -16,8 +16,8 @@ book:
     - part: "Statistical Analysis"
       chapters:
       - part2_1_intro_inference1.qmd
-      - part2_intro_inference2.qmd
-      - part2_1sample_nonparametric_test.qmd
+      - part2_2_intro_inference2.qmd
+      - part2_3_1sample_nonparametric_test.qmd
       - part2_1sample_proportion_test.qmd
       - part2_sas_marco.qmd
       - part2_chi_square.qmd

@@ -1,4 +1,4 @@
-# Introduction to Statistical Inference -- part I
+# Introduction to Statistical Inference I
 
 > Learning Objectives
 >
@@ -22,14 +22,15 @@ There are three common goals of statistical inference:
 -   **Interval estimation**
 -   **Hypothesis testing**
 
-::: callout-note
+::: {.callout-note}
+
 Note that there may be multiple valid methods for achieving each goal, even when working with the same dataset.
+
 :::
 
 ## Example: One-Sample Mean Problem
 
-The term *one sample* does **not** mean that there is only one observation.\
-Instead, it means that there is **one population** under study.
+The term *one sample* does **not** mean that there is only one observation. Instead, it means that there is **one population** under study.
 
 In this problem, we are interested in making inference about the population mean, denoted by $\mu$.
 
@@ -201,11 +202,11 @@ PROC TTEST H0=80 PLOTS(SHOWH0) SIDES=2 ALPHA=0.1;
 RUN;
 ```
 
-+ THE VAR statement indicates that the *time* variable is being studies
-+ the H0= option specifies that the mean of the time variable should be compared to the null value rather than the default value of 0
-+ the PLOTS(SHOWH0) option requests that this null value be displayed on all relevant graphs
-+ the SIDE=2 option specifies that a the focus of the research question, namely whether the mean count case length is not equal to 80days, rather than greater or less than 80 days (in which case you would use the SIDE=L or SIDE=U options, respectively)
-+ the ALPHA=0.1 option requests 90% confidence interval rather than the default 95% confidence interval
+-   THE VAR statement indicates that the *time* variable is being studies
+-   the H0= option specifies that the mean of the time variable should be compared to the null value rather than the default value of 0
+-   the PLOTS(SHOWH0) option requests that this null value be displayed on all relevant graphs
+-   the SIDE=2 option specifies that a the focus of the research question, namely whether the mean count case length is not equal to 80days, rather than greater or less than 80 days (in which case you would use the SIDE=L or SIDE=U options, respectively)
+-   the ALPHA=0.1 option requests 90% confidence interval rather than the default 95% confidence interval
 
 The output is presented in the table below.
 
@@ -217,7 +218,6 @@ Some SAS procedures produce graphs as automatically as they produce tables if th
 
 :::
 
-
 ``` r
 
 ODS GRAPHICS ON;
@@ -227,18 +227,15 @@ PROC TTEST H0=80 PLOTS(SHOWH0) SIDES=U ALPHA=0.1;
 RUN;
 
 ODS GRAPHICS OFF;
-
 ```
 
 you will see the following results which include the same table you see in the last figure but with two more figures. We will talk those two Figures in the following classes, especially the QQ plot.
-
 
 ![](figs/part2/L6_inference1/L6_table.png)
 
 ![](figs/part2/L6_inference1/ttest_plot_2side.png)
 
 ![](figs/part2/L6_inference1/ttest_plot_2side1.png)
-
 
 ## More about hypothesis and confidence intervals
 
@@ -280,7 +277,7 @@ P\left(
 \approx 0.95.
 $$
 
------
+------------------------------------------------------------------------
 
 ### Large-Sample Confidence Interval
 
@@ -307,7 +304,6 @@ $$
 The $p$-value is the probability of observing data **at least as favorable to the alternative hypothesis** $H_A$ as the data actually observed, **assuming the null hypothesis** $H_0$ is true.
 
 In this example, the observed sample mean is either greater than $3.56$ or less than $3.18$, and the null hypothesis assumes the true population mean is $\mu = 3.37$.
-
 
 ### Computing the $p$-value
 
@@ -346,7 +342,6 @@ This probability is extremely small:
 $$
 10^{-13} \approx 0.
 $$
-
 
 ### Connection to Confidence Intervals
 
