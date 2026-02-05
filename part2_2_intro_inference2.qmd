@@ -214,7 +214,8 @@ If the observed data are very unlikely to occur under the conditions described b
 
 A commonly used decision rule is based on a significance level of 0.05. If the p-value is less than or equal to 0.05, this is typically taken as evidence against the null hypothesis, and we reject it in favor of the alternative hypothesis. However, a p-value cannot be used to prove that a hypothesis is true. Instead, it quantifies the strength of evidence against the null hypothesis.
 
-### Example: Court Length Data
+
+::: {.callout-example title="(Continue) Court Case Length"}
 
 Consider the court length data. Suppose we conduct a hypothesis test with
 $$
@@ -233,3 +234,5 @@ we reject the null hypothesis. At the 5% significance level, there is strong sta
 If the p-value is greater than 0.05, we **do not reject** the null hypothesis. This does **not** mean that the null hypothesis is true. Rather, it means that the data do not provide strong enough evidence to conclude that the population mean court length differs from 80.
 
 In hypothesis testing, failing to reject the null hypothesis should be interpreted as *insufficient evidence*, not as confirmation of the null hypothesis.
+
+:::

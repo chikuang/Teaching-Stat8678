@@ -1,2 +1,8 @@
 # One Sample Nonparametric Test
 
+> Learning Objectives
+>
+> 1. Be familiar with the difference about parameter tests and nonparameteric tests
+> 2. Applied the one sample non-parametricc test to do inference for one sample mean problem
+
+## Motivation
