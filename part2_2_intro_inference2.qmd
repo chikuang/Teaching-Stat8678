@@ -162,10 +162,9 @@ When we report a point estimate, it is desirable to understand whether the estim
 
 + **Consistent**: As the sample size increases, the estimator becomes closer to the true parameter value.
 
-+ **Unbiased**:  
-  The expected value of the estimator equals the true population parameter. For example, the sample mean is an unbiased estimator of the population mean.
++ **Unbiased**: The expected value of the estimator equals the true population parameter. For example, the sample mean is an unbiased estimator of the population mean.
 
-+ **Efficient (or best unbiased)**  Among all unbiased and consistent estimators, it has the smallest variance, meaning the estimator varies less from sample to sample.
++ **Efficient (or best unbiased)**: Among all unbiased and consistent estimators, it has the smallest variance, meaning the estimator varies less from sample to sample.
 
 How to rigorously verify these properties is a major topic in theoretical statistics courses. In practice, when these properties are unknown or difficult to assess, the safest interpretation of a point estimate is simply to report it with its associated unit. For example, using the court length data, we may state:
 
