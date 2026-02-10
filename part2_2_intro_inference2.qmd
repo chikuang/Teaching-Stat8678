@@ -2,26 +2,22 @@
 
 > Learning Objectives
 >
-> 1. Distinguish between a *probability problem* and a *statistical (inference) problem*
-2. Apply the *one-sample $t$ test* to inference for a population mean
-3. Conduct *model diagnostics* for the normality assumption
-4. Correctly *interpret point estimates, confidence intervals, and hypothesis tests*
+> 1.  Distinguish between a *probability problem* and a *statistical (inference) problem*
+> 2.  Apply the *one-sample* $t$ test to inference for a population mean
+> 3.  Conduct *model diagnostics* for the normality assumption
+> 4.  Correctly *interpret point estimates, confidence intervals, and hypothesis tests*
 
 ## 1. Recall: One-Sample Mean Problem
 
-In the previous class, we studied inference for a *population mean* and show how to run SAS to obtain the statistical inference result from one sample $t$ test. The example for illusrtratioe is to study the mean length of a certain type of the court case, i.e., 
-$$
+In the previous class, we studied inference for a *population mean* and show how to run SAS to obtain the statistical inference result from one sample $t$ test. The example for illusrtratioe is to study the mean length of a certain type of the court case, i.e., $$
 \mu = \text{the mean length of a certain type of court case}.
-$$
-The data for the study is
+$$ The data for the study is
 
 $$
 43,\; 90,\; 84,\; 87,\; 116,\; 95,\; 86,\; 99,\; 93,\; 92,
 $$ $$
 121,\; 71,\; 66,\; 98,\; 79,\; 102,\; 60,\; 112,\; 105,\; 98.
-$$
-and we implement the statistical model: 
-$$
+$$ and we implement the statistical model: $$
 X_i \stackrel{\text{i.i.d.}}{\sim} N(\mu, \sigma^2),
 \qquad i = 1, \ldots, 20.
 $$
@@ -40,74 +36,74 @@ ODS GRAPHICS OFF;
 
 and obtain the statistical results. The results let us know
 
-+ A point estimate of $\mu$
-+ An interval estimate of $\mu$
-+ A hypothesis testing under $H_0:\mu=80$ versus $H_1$,
+-   A point estimate of $\mu$
+-   An interval estimate of $\mu$
+-   A hypothesis testing under $H_0:\mu=80$ versus $H_1$,
 
 from $t$-distribution for the one sample mean problem.
 
-From the example, we may think the beginning of conducting statistical analysis procedure as 
+From the example, we may think the beginning of conducting statistical analysis procedure as
 
-i. Formulate the statistical problem
+i.  Formulate the statistical problem
+
 ii. Collection the adequate dataset and think the dataset as realization of some random variables
-iii. Think some statistical models (i.e., assumptions) to be considered for the random variables. This step may include some [iv]
+
+iii. Think some statistical models (i.e., assumptions) to be considered for the random variables. This step may include some \[iv\]
 
 iv. preliminary data analysis
 
 In this lecture, we will continue the remaining two steps:
 
-v. Model diagnostics
+v.  Model diagnostics
+
+<!-- -->
+
 vi. Interpret the results
 
 ## Model Diagnostics
 
 In this step, we pause and think carefully about the assumptions underlying our analysis.
 
-**Question:**  
+**Question:**
 
 > What statistical models are we implementing?
 
 In this course, the key assumptions for the one-sample mean problem are:
 
-- **A normality assumption**
-- **An independence assumption**
+-   **A normality assumption**
+-   **An independence assumption**
 
-The independence assumption is primarily determined by *how the data are collected*.   Once the data have been sampled, this assumption is generally *not testable* from the data alone.  
-We therefore assume that the sampling process was conducted correctly and focus our attention on checking the *normality assumption*. 
-
-There are two types of methods
+The independence assumption is primarily determined by *how the data are collected*. Once the data have been sampled, this assumption is generally *not testable* from the data alone.\
+We therefore assume that the sampling process was conducted correctly and focus our attention on checking the *normality assumption*.
 
 There are two broad classes of methods:
 
-+ *Graphical (visual) diagnostics*
-+ *Formal hypothesis testing methods*
+-   *Graphical (visual) diagnostics*
+-   *Formal hypothesis testing methods*
 
 ### Graphical Diagnostics for Normality
 
 Common graphical tools include:
 
-- **Histogram and Density Plots**:   
-  A kernel density estimate (KDE) provides a smooth estimate of the underlying probability density function, analogous to a histogram but without binning. KDEs represent the data using a continuous curve and are particularly useful for visualizing distributional shape.
+-   **Histogram and Density Plots**:\
+    A kernel density estimate (KDE) provides a smooth estimate of the underlying probability density function, analogous to a histogram but without binning. KDEs represent the data using a continuous curve and are particularly useful for visualizing distributional shape.
 
-- **Q–Q Plot (Quantile–Quantile Plot)**  
-  A Q–Q plot compares *empirical quantiles* of the observed data with *theoretical quantiles* from a normal distribution.  
-  If the normality assumption is reasonable, the points should fall approximately along a straight line.
-  
+-   **Q–Q Plot (Quantile–Quantile Plot)**\
+    A Q–Q plot compares *empirical quantiles* of the observed data with *theoretical quantiles* from a normal distribution.\
+    If the normality assumption is reasonable, the points should fall approximately along a straight line.
+
 ![](figs/part2/L6_inference1/ttest_plot_2side.png)
 
 ![](figs/part2/L6_inference1/ttest_plot_2side1.png)
-  
-  
-  
+
 ### Formal Hypothesis Testing for Normality
 
-In addition to graphical methods, we can also assess the normality assumption using *formal numerical tests*.  
+In addition to graphical methods, we can also assess the normality assumption using *formal numerical tests*.\
 One commonly used method is the **Kolmogorov–Smirnov (K–S) test**, which evaluates whether a sample plausibly comes from a specified distribution, such as the normal distribution.
 
 The K–S test is widely used because many statistical procedures rely on the assumption that the data are normally distributed. When this assumption is violated, standard inference procedures may no longer be valid. The following step-by-step example demonstrates how to perform a Kolmogorov–Smirnov test for normality using **SAS**.
 
 **Step 1: Create the dataset**
-
 
 ``` r
 DATA time;
@@ -130,19 +126,14 @@ RUN;
 
 ![](figs/part2/L7_inference2/KS.png)
 
-
-::: {.callout-note}
-
+::: callout-note
 ### Remarks
 
-Graphical diagnostics are informal but highly informative.  
-They allow us to detect skewness, heavy tails, and outliers that may invalidate normal-based inference.  
+Graphical diagnostics are informal but highly informative.\
+They allow us to detect skewness, heavy tails, and outliers that may invalidate normal-based inference.
 
 Formal hypothesis tests for normality will be introduced next, but should always be interpreted in conjunction with these visual tools.
-
 :::
-
-
 
 ::: {.callout-note title = "Important Note"}
 
@@ -160,11 +151,11 @@ Point estimation is the process of using sample data to compute a single numeric
 
 When we report a point estimate, it is desirable to understand whether the estimator has good statistical properties. In particular, we often examine whether a point estimator is:
 
-+ **Consistent**: As the sample size increases, the estimator becomes closer to the true parameter value.
+-   **Consistent**: As the sample size increases, the estimator becomes closer to the true parameter value.
 
-+ **Unbiased**: The expected value of the estimator equals the true population parameter. For example, the sample mean is an unbiased estimator of the population mean.
+-   **Unbiased**: The expected value of the estimator equals the true population parameter. For example, the sample mean is an unbiased estimator of the population mean.
 
-+ **Efficient (or best unbiased)**: Among all unbiased and consistent estimators, it has the smallest variance, meaning the estimator varies less from sample to sample.
+-   **Efficient (or best unbiased)**: Among all unbiased and consistent estimators, it has the smallest variance, meaning the estimator varies less from sample to sample.
 
 How to rigorously verify these properties is a major topic in theoretical statistics courses. In practice, when these properties are unknown or difficult to assess, the safest interpretation of a point estimate is simply to report it with its associated unit. For example, using the court length data, we may state:
 
@@ -182,18 +173,18 @@ As an example, suppose the 90% confidence interval for the population mean court
 
 The width of a confidence interval depends on several factors:
 
-- **Sample size**  
-  Larger samples typically produce narrower (more precise) confidence intervals.
+-   **Sample size**\
+    Larger samples typically produce narrower (more precise) confidence intervals.
 
-- **Variability of the outcome**  
-  For continuous outcomes, higher variability (larger standard deviation) leads to wider intervals.
+-   **Variability of the outcome**\
+    For continuous outcomes, higher variability (larger standard deviation) leads to wider intervals.
 
-- **Outcome type**  
-  - For binary outcomes, precision depends on the event probability.
-  - For time-to-event outcomes, precision depends on the number of observed events.
+-   **Outcome type**
+
+    -   For binary outcomes, precision depends on the event probability.
+    -   For time-to-event outcomes, precision depends on the number of observed events.
 
 All of these factors influence the standard error of the estimator, which directly determines the width of the confidence interval.
-
 
 ### Hypothesis Testing
 
@@ -213,16 +204,12 @@ If the observed data are very unlikely to occur under the conditions described b
 
 A commonly used decision rule is based on a significance level of 0.05. If the p-value is less than or equal to 0.05, this is typically taken as evidence against the null hypothesis, and we reject it in favor of the alternative hypothesis. However, a p-value cannot be used to prove that a hypothesis is true. Instead, it quantifies the strength of evidence against the null hypothesis.
 
-
 ::: {.callout-example title="(Continue) Court Case Length"}
-
-Consider the court length data. Suppose we conduct a hypothesis test with
-$$
+Consider the court length data. Suppose we conduct a hypothesis test with $$
 H_0: \mu = 80 
 \quad \text{versus} \quad 
 H_1: \mu > 80,
-$$
-and obtain a p-value of 0.0164.
+$$ and obtain a p-value of 0.0164.
 
 If we choose a significance level of 0.05, then since $0.0164 < 0.05,$
 
@@ -233,5 +220,4 @@ we reject the null hypothesis. At the 5% significance level, there is strong sta
 If the p-value is greater than 0.05, we **do not reject** the null hypothesis. This does **not** mean that the null hypothesis is true. Rather, it means that the data do not provide strong enough evidence to conclude that the population mean court length differs from 80.
 
 In hypothesis testing, failing to reject the null hypothesis should be interpreted as *insufficient evidence*, not as confirmation of the null hypothesis.
-
 :::
