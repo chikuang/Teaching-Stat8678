@@ -1,1 +1,576 @@
 # Writing SAS Macro Program: Using One Sample Variance Test/CI as Example
+
+
+> Learning Objectives
+>
+> 1. Apply hypothesis testing and confidence interval construction for **one population variance**.
+> 2. Use this example to motivate **writing reusable SAS macro programs**.
+
+## Motivation
+
+In many applications, we may care more about the **population variance** $\sigma^2$ than the population mean $\mu$. For instance, in a manufacturing process, a **large variance** in product measurements indicates unstable quality, even if the mean is acceptable. This is not the only instance, as there are many interesting scientific questions that involve the population variance both in academia and in industry.
+
+### Examples
+
+::: {.callout-example title="SCUBA Diving"}
+
+  A SCUBA instructor records the dive depths of students during checkout.
+  Although everyone should be at the same depth, the instructor is interested
+  in how much the depths vary.
+
+  The instructor believes the standard deviation is **3 feet**, while the assistant
+  thinks it is **less than 3 feet**.
+
+  The hypotheses are:
+
+  $$
+  H_0 : \sigma^2 = 3^2
+  \qquad \text{vs} \qquad
+  H_1 : \sigma^2 < 3^2
+  $$
+  
+:::
+
+::: {.callout-example title = "Manufacturing Quality"}
+
+  A company produces metal pipes of a standard length.
+  Twenty years ago, the pipe lengths were normally distributed with
+  standard deviation **1.1 cm**.
+
+  The company now tests a random sample of **30 pipes** and wants to construct
+  a **95% confidence interval** for $\sigma^2$ to determine whether the production
+  quality has changed.
+
+:::
+
+For the examples above, the quantity of the interest is the population variance. But we need something to estiamte it. Let $s^2$ denote the sample variance. Then the pivotal quantity
+
+$$
+\frac{(n-1)s^2}{\sigma^2},
+$$
+
+which follows a chi-square distribution:
+
+$$
+\frac{(n-1)s^2}{\sigma^2} \sim \chi^2_{n-1},
+$$
+where 
+
+- $n$ : sample size  
+- $s^2$ : sample variance  
+- $\sigma^2$ : population variance  
+
+You may think that $s$ as the randomvariable in this test. The distribution is called chi-square distribution which depends on a parameter named the *degrees of freedom* denoted by $\mathrm{df}=n-1$. A test of a single variance may be right-tailed, left-tailed or two-sided. This chi-square result is the foundation for both
+**confidence intervals** and **hypothesis tests** for $\sigma^2$.
+
+::: {.callout-note title="Note"}
+
+A $(1-\alpha)\times 100\%$ confidence interval for the population variance is
+
+$$
+\left(
+\frac{(n-1)s^2}{\chi^2_{1-\alpha/2,\;n-1}},
+\;
+\frac{(n-1)s^2}{\chi^2_{\alpha/2,\;n-1}}
+\right),
+$$
+
+where $\chi^2_{p,\;n-1}$ denotes the $p$-th quantile of the
+$\chi^2_{n-1}$ distribution.
+
+I won't expect you to know the expression here for now.
+
+:::
+
+> **Problem**
+>
+> Unfortunately, if you check the built-in SAS procedures, you will find that **there is no basic procedure** that directly handles the **one-sample variance inference problem**.
+> 
+> The good news is that SAS provides a powerful **MACRO programming language**, which allows us to **write our own SAS procedures**.
+>
+
+
+## SAS Macro Program
+
+When you write a program that will be run **repeatedly**, you may want to seriously consider using **macros**, because:
+
+- **MARCROS allow centralized changes**:  
+  You can make a change in one location, and SAS will cascade that change throughout your program.
+
+- **MACROS promote code reuse**:  
+  You can write a section of code once and reuse it many times, either within the same program or across different programs.
+
+- **MARCROS enable data-driven programming**:  
+  SAS can decide what actions to take based on actual data values.
+
+In general, macro code takes **longer to write and debug** than standard SAS code. Therefore, macros are usually **not recommended** for programs that will only be run a few times.
+
+However, if you find yourself writing **similar code repeatedly**, macros can significantly improve efficiency and reduce errors.
+
+
+Macros can help in several ways:
+
+1. You can make a **single small change**, and SAS will propagate that change throughout your program.
+2. You can **reuse code blocks**, avoiding duplication.
+3. You can build **data-driven programs**, allowing SAS to adapt automatically to different datasets or inputs.
+
+## How Macros Work
+
+When you submit a standard SAS program, SAS **compiles and executes it immediately**. When you write macro code, there is an **additional step**:
+
+- SAS first sends MARCO statements to the **macro processor**.
+- The macro processor **resolves the macro code**, generating standard SAS code.
+- SAS then compiles and executes the generated code.
+
+Because you are writing a program that **writes another program**, this process is sometimes referred to as **meta-programming**.
+
+## Designing Your Own Macros
+
+To design effective SAS macros, we need to understand two fundamental concepts:
+
+### Macros vs. Macro Variables
+
+As you construct macro programs, you will work with two basic building blocks:
+
+- **MACROS** v.s.
+- **MACRO variables**
+
+We will study each of these in detail in the next section.
+
+
+## Macros vs. Macro Variables
+
+To design your own SAS macros, we need to clearly distinguish between **macros** and **macro variables**.  
+These are the two basic building blocks of SAS macro programming.
+
+---
+
+### How the Macro Processor Works
+
+Conceptually, the workflow looks like this:
+
+- You write **macro code**
+- The **macro processor** resolves it
+- The output is **ordinary SAS code**, which is then compiled and executed
+
+---
+
+### Naming Conventions
+
+You can tell macros and macro variables apart by their prefixes:
+
+- **Macro variables** start with an ampersand: `&`
+- **Macros** start with a percent sign: `%`
+
+Examples:
+- `&alpha`, `&n`
+- `%myMacro`, `%DO`, `%IF`
+
+---
+
+### Macro Variables
+
+A **macro variable** is similar to a data variable, but with important differences:
+
+- It does **not belong to a dataset**
+- It has **only one value**
+- That value is **always character**
+- The value is **substituted directly into your program**
+
+A macro variable’s value can be:
+- A variable name
+- A number
+- Text
+- Any string you want substituted into your SAS code
+
+---
+
+### Macros
+
+A **macro** is a larger unit of code that can contain:
+
+- DATA steps
+- PROC steps
+- Macro logic such as  
+  `%IF–%THEN–%ELSE`, `%DO–%END`
+
+Macros often—but not always—use macro variables.
+
+---
+
+## Think Globally and Locally: Scope of Macro Variables
+
+Macro variables come in two scopes:
+
+- **Local macro variables**
+- **Global macro variables**
+
+### Local Macro Variables
+- Defined **inside a macro**
+- Exist **only within that macro**
+- Cannot be referenced outside the macro
+
+### Global Macro Variables
+- Defined in **open code** (outside any macro)
+- Can be used **anywhere in the program**
+
+### Common Mistakes to Avoid
+- Using a local macro variable outside its macro
+- Accidentally creating **both local and global macro variables with the same name**
+
+Keeping scope in mind will save you a lot of debugging time.
+
+---
+
+## You May Quote Me on That
+
+The macro processor **does not resolve macro references inside single quotes**.
+
+- ❌ `'&var'` → macro not resolved
+- ✅ `"&var"` → macro resolved
+
+**Rule of thumb:**  
+Use **double quotes** when quoted strings contain macro variables.
+
+---
+
+## Substituting Text with `%LET`
+
+The `%LET` statement assigns a value to a macro variable.
+
+```r
+%LET alpha = 0.05;
+
+%MACRO macro_name(param1, param2, ..., paramk);
+   /* macro code */
+%MEND macro_name;
+
+```
+
+## 3. A Simple Example of Writing SAS Macros
+
+Before writing our own macros, let us first understand how **macro variables** work through a simple example.
+
+---
+
+### Example 1: Global Macro Variable
+
+SAS provides a built-in **global macro variable** called `SYSDATE`, which represents the system date.
+
+Suppose we want to print the system date automatically in the title of a SAS report every time the report is generated. The advantage is that we do **not** need to manually update the date in the code.
+
+We use the built-in SAS dataset `CARS` from the `SASHELP` library.
+
+```r
+PROC PRINT DATA=SASHELP.CARS;
+  WHERE MAKE = 'Audi' AND TYPE = 'Sports';
+  TITLE "Sales as of &SYSDAY &SYSDATE";
+RUN;
+
+```
+
+Example 1 (Continued): Local Macro Variables
+
+
+Macro variables are referenced in SAS statements using the ampersand (&) character.
+
+Now suppose we want our program to be more flexible. Instead of hard-coding the car MAKE and TYPE, we define macro variables so that we can easily change them without modifying multiple lines of code.
+
+``` r
+
+%LET MAKE_NAME = Audi;
+%LET TYPE_NAME = Sports;
+
+PROC PRINT DATA=SASHELP.CARS;
+  WHERE MAKE = "&MAKE_NAME" AND TYPE = "&TYPE_NAME";
+  TITLE "Sales as of &SYSDAY &SYSDATE";
+RUN;
+```
+
+
+Reusing the Same Program with Different Values
+
+Now, suppose we want to view Audi vehicles of type Wagon.
+We only need to change one line of code.
+
+
+``` r
+
+%LET MAKE_NAME = Audi;
+%LET TYPE_NAME = Wagon;
+
+PROC PRINT DATA=SASHELP.CARS;
+  WHERE MAKE = "&MAKE_NAME" AND TYPE = "&TYPE_NAME";
+  TITLE "Sales as of &SYSDAY &SYSDATE";
+RUN;
+
+```
+
+### Example 1 (Continued): Writing a Macro Program
+
+So far, we have used macro variables to make our SAS programs more flexible.  
+Now we take one more step forward and define a **macro program**, which is a reusable block of SAS code.
+
+---
+
+#### Defining a Macro
+
+The following program defines a macro called `show_result`.  
+This macro takes two arguments:
+- `make_`: the car manufacturer
+- `type_`: the vehicle type
+
+```r
+%MACRO show_result(make_, type_);
+
+PROC PRINT DATA=SASHELP.CARS;
+  WHERE MAKE = "&make_" AND TYPE = "&type_";
+  TITLE "Sales as of &SYSDAY &SYSDATE";
+RUN;
+
+%MEND;
+```
+
+Calling a Macro
+Once a macro is defined, it can be called just like a function.
+
+``` r
+%show_result(BMW, SUV);
+```
+
+Why Use Macro Programs?
+Macro programs allow you to:
+	•	Avoid rewriting the same code repeatedly
+	•	Centralize logic in one place
+	•	Make programs easier to maintain and extend
+	•	Write data-driven and parameterized SAS programs
+
+This idea becomes especially powerful when we need to repeat the same analysis for many datasets or parameter values.
+
+
+4. Revisit the One-Sample Variance Test
+
+
+As discussed earlier, SAS does not provide a built-in procedure for conducting
+one-sample variance inference (confidence intervals or hypothesis tests).
+
+However, SAS allows us to overcome this limitation by writing our own macro procedures.
+
+Fortunately, a one-sample variance inference macro is commonly used and can be written in a general form.
+In this course, we will use a macro named vartest.sas, which is shared in the course materials.
+
+In the next section, we will:
+	•	Examine the structure of the variance-test macro
+	•	Understand how macro parameters control the analysis
+	•	Apply the macro to real data examples
+	
+	
+---
+
+# Topic 9: Writing SAS Macro Programs  
+## One-Sample Variance Test and Confidence Interval
+
+**STAT 8678 — SAS Programming**  
+Spring 2026
+
+---
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Understand **why SAS macros are needed** for certain inference problems  
+- Distinguish between **macros** and **macro variables**  
+- Explain how the **SAS macro processor** works  
+- Write and interpret a **simple SAS macro**  
+- Use a macro to perform **one-sample variance inference**, including:
+  - Hypothesis testing  
+  - Confidence intervals  
+
+---
+
+## 1. Motivation: Why Care About Variance?
+
+In many applications, **variability** is more important than the mean.
+
+Examples include:
+
+- **Manufacturing**: Large variance in product dimensions indicates unstable quality.  
+- **Environmental monitoring**: High variance may signal abnormal conditions.  
+- **Education or training**: Inconsistent outcomes may be more concerning than average performance.  
+
+We denote the population variance by $\sigma^2$.
+
+---
+
+### Example 1: SCUBA Diving Depths
+
+An instructor records dive depths for students:
+
+- The instructor believes the **standard deviation is 3 feet**.  
+- The assistant believes the variability is **less than 3 feet**.  
+
+The hypotheses are:
+
+$$
+H_0: \sigma^2 = 3^2
+\qquad \text{vs.} \qquad
+H_1: \sigma^2 < 3^2
+$$
+
+---
+
+### Example 2: Manufacturing Quality
+
+- Pipe lengths were historically normally distributed.  
+- The standard deviation was **1.1 cm**.  
+- A random sample of $n = 30$ pipes is collected.  
+- The goal is to construct a **95% confidence interval for $\sigma^2$**.  
+
+---
+
+## 2. Statistical Theory Behind the Test
+
+If the data are normally distributed, the following pivotal quantity holds:
+
+$$
+\frac{(n-1)s^2}{\sigma^2} \sim \chi^2_{n-1}
+$$
+
+where:
+
+- $n$ is the sample size  
+- $s^2$ is the sample variance  
+
+This result allows us to construct both:
+
+- **Hypothesis tests**  
+- **Confidence intervals** for $\sigma^2$ and $\sigma$  
+
+---
+
+### Confidence Interval for Variance
+
+A $(1-\alpha)\times 100\%$ confidence interval for $\sigma^2$ is:
+
+$$
+\left[
+\frac{(n-1)s^2}{\chi^2_{1-\alpha/2}},
+\;
+\frac{(n-1)s^2}{\chi^2_{\alpha/2}}
+\right]
+$$
+
+A confidence interval for $\sigma$ is obtained by taking square roots of the bounds.
+
+---
+
+## 3. The Problem in SAS
+
+There is **no built-in SAS procedure** for one-sample variance testing or confidence interval construction.
+
+- No `PROC VARTEST`  
+- No direct equivalent to `PROC TTEST` for variance  
+
+**Solution:** Write our own procedure using **SAS macros**.
+
+---
+
+## 4. What Is a SAS Macro?
+
+A **macro** is a program that **writes SAS code**.
+
+Key idea:
+
+> You are writing a program that generates another program.
+
+This is sometimes called **meta-programming**.
+
+---
+
+### Why Use Macros?
+
+Macros allow you to:
+
+- Make changes in **one location** that affect the entire program  
+- **Reuse code** without copy-and-paste  
+- Write **data-driven** programs  
+- Automate repetitive analyses  
+
+---
+
+## 5. How the SAS Macro Processor Works
+
+Conceptually:
+
+Macro statements
+↓
+Macro processor
+↓
+Standard SAS code
+
+Execution steps:
+
+1. SAS sends macro code to the **macro processor**  
+2. Macros are **resolved**  
+3. The resulting SAS code is compiled and executed  
+
+---
+
+## 6. Macros vs. Macro Variables
+
+### Macro Variables
+
+- Begin with `&`  
+- Always **character values**  
+- Do **not** belong to a dataset  
+- Used for **text substitution**  
+
+Example:
+
+```sas
+%LET alpha = 0.05;
+```
+Macros
+	•	Begin with %
+	•	Can contain:
+	•	DATA steps
+	•	PROC steps
+	•	Macro logic (%IF, %DO, %END)
+	•	Often use macro variables internally
+	
+Example:
+
+%MACRO mymacro();
+  PROC PRINT DATA=example;
+  RUN;
+%MEND;
+
+7. Scope: Global vs. Local Macro Variables
+
+Macro variables can be:
+	•	Global: defined outside macros
+	•	Local: defined inside macros
+
+Rules:
+	•	Global macro variables can be used anywhere
+	•	Local macro variables can only be used inside the macro that defines them
+
+Common mistakes include:
+	•	Using a local macro variable outside its macro
+	•	Accidentally creating local and global variables with the same name
+
+⸻
+
+8. Substituting Text with %LET
+
+
+``` r
+%vartest(
+  version = 1.1,
+  data    = mydata,
+  var     = response,
+  alpha   = 0.05,
+  sigma0  = 1.1
+);
+```
