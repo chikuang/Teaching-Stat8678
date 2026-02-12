@@ -56,7 +56,9 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |        |    **One Sample Problem as Example**     |         |
 |   ✅   | Introduction to Statistical Inference I  |    6    |
 |   ✅   | Introduction to Statistical Inference II |    7    |
-|   ⏳   |      One Sample Nonparametric Test       |    8    |
+|   ✅   |      One Sample Nonparametric Test       |    8    |
+|   ⏳   |      One Sample Proportion  Test       |    9   |
+|   ⏳   |      Introduction to SAS Marco       |    10   |
 
 <!-- 🚧🛠️⏳   -->
 
