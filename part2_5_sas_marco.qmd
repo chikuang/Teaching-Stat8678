@@ -1,4 +1,4 @@
-# Writing SAS Macro Program: with example in One Sample Variance Test/CI
+# SAS Macro Program in One Sample Variance Problem
 
 > Learning Objectives
 >
@@ -231,7 +231,7 @@ The `%LET` statement assigns a value to a macro variable.
 
 ```
 
-## 3. A Simple Example of Writing SAS Macros
+## Writing SAS Macros with Car dataset
 
 Before writing our own macros, let us first understand how **macro variables** work through a simple example.
 
