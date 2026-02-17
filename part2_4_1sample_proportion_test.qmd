@@ -140,6 +140,7 @@ we will instead rely on **exact binomial methods**, which do not require large-s
 
 Suppose a college has six majors, labelled A, B, C, D, E, and F.
 For each major, we observe:
+
 	+ the number of students who graduated within four years (Grads), and
 	+ the total number of students in that major (Total).
 	

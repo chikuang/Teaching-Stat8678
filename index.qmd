@@ -34,7 +34,8 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 
 -   [x] A1, due on Jan 28, 2026
 -   [x] A2, due on Feb 8, 2026
--   [ ] A3, due on Feb 15, 2026
+-   [x] A3, due on Feb 15, 2026
+-   [x] A4, TBD
 
 ## Midterm
 
@@ -57,7 +58,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   | Introduction to Statistical Inference I  |    6    |
 |   ✅   | Introduction to Statistical Inference II |    7    |
 |   ✅   |      One Sample Nonparametric Test       |    8    |
-|   ⏳   |        One Sample Proportion Test        |    9    |
+|   ✅    |        One Sample Proportion Test        |    9    |
 |   ⏳   |        Introduction to SAS Marco         |   10    |
 |   ⏳   |        Chi-Square GoF test|   11   |
 |   ⏳   |        Power Analysis and Calculation       |   12    |
