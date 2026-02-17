@@ -20,7 +20,8 @@ book:
       - part2_3_1sample_nonparametric_test.qmd
       - part2_4_1sample_proportion_test.qmd
       - part2_5_sas_marco.qmd
-      - part2_chi_square.qmd
+      - part2_6_chi-square.qmd
+      - part2_7_power.qmd
     - references.qmd
   navbar:
     right:
