@@ -15,9 +15,7 @@ Similar to linear regression, in essence, a goodness-of-fit test compares:
 - **Observed values**, and  
 - **Expected (fitted or predicted) values** under a specified model.
 
----
-
-## Hypotheses for a Goodness-of-Fit Test
+**Hypotheses for a Goodness-of-Fit Test**
 
 A goodness-of-fit test examines the following hypotheses:
 
@@ -31,7 +29,6 @@ $$
 H_1 : \text{the model } M_0 \text{ does not fit}.
 $$
 
----
 
 ## Example: Categorical Data (Dice Example)
 
@@ -46,7 +43,7 @@ $$
 
 In this setting, the goodness-of-fit test asks whether the probability in each cell is equal to the specified value $\pi_0$.
 
----
+
 
 ## Hypotheses in Probability Vector Form
 
@@ -62,7 +59,7 @@ $$
 H_1 : \boldsymbol{\pi} \neq \boldsymbol{\pi}_0.
 $$
 
----
+
 
 ## One-Way Contingency Table
 
@@ -92,11 +89,11 @@ In other words, under the null hypothesis, we assume the data come from a partic
 
 The rationale behind model fitting is the assumption that a complex data-generating mechanism can be reasonably approximated by a simpler model. The goodness-of-fit test is applied to assess whether this assumption is supported by the data.
 
-## 1. Test Statistics
+## Test Statistics
 
 There are two commonly used test statistics for the $\chi^2$ goodness-of-fit test.
 
-### 1.1 Pearson Goodness-of-Fit Test Statistic
+**Pearson Goodness-of-Fit Test Statistic**
 
 The Pearson goodness-of-fit statistic is defined as
 
@@ -376,8 +373,6 @@ E_4 &= 1611 \times \frac{1}{16} = 100.7.
 \end{aligned}
 $$
 
----
-
 ### Goodness-of-fit results
 
 Using these expected counts, we compute the goodness-of-fit statistics and obtain
@@ -394,15 +389,13 @@ p \approx 0.69.
 $$
 
 
-### Conclusion
-
-Since the $p$-value is much larger than the significance level $\alpha = 0.05$, we **fail to reject**
+> Since the $p$-value is much larger than the significance level $\alpha = 0.05$, we **fail to reject**
 the null hypothesis. The observed data are therefore **consistent with the genetic theory**
 predicting a $9:3:3:1$ ratio.
 
 
 
-### SAS Code: Goodness-of-Fit Test
+#### SAS Code: Goodness-of-Fit Test
 
 **Step 1: Enter the observed counts**
 
