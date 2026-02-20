@@ -35,7 +35,7 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 -   [x] A1, due on Jan 28, 2026
 -   [x] A2, due on Feb 8, 2026
 -   [x] A3, due on Feb 15, 2026
--   [x] A4, TBD
+-   [ ] A4, TBD
 
 ## Midterm
 
