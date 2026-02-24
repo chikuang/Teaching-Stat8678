@@ -60,7 +60,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   |      One Sample Nonparametric Test       |    8    |
 |   ✅    |        One Sample Proportion Test        |    9    |
 |   ✅     |        Introduction to SAS Marco         |   10    |
-|   ⏳   |        Chi-Square GoF test|   11   |ı
+|  ✅    |        Chi-Square GoF test|   11   |
 |   ⏳   |        Power Analysis and Calculation       |   12    |
 |   ⏳   |        TBA    |   13  |
 |   ⏳   |         Exam   | 14  |

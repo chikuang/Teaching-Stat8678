@@ -2,9 +2,9 @@
 
 > Learning Objectives
 >
-> 1. Explain what is a diagnostic test.
-> 2. Explain what is a one-way contingency table. 
-> 3. Apply the diagnostic test to perform inference for analyzing a one-way contingency table.
+> 1.  Explain what is a diagnostic test.
+> 2.  Explain what is a one-way contingency table.
+> 3.  Apply the diagnostic test to perform inference for analyzing a one-way contingency table.
 
 ## Motivation: What Is a Goodness-of-Fit Test?
 
@@ -108,7 +108,7 @@ where
 -   $O_j = X_j$ is the observed count in cell $j$, and\
 -   $E_j = \mathbb{E}(X_j) = n\pi_{0j}$ is the expected count in cell $j$ under the null hypothesis.
 
-### 1.2 Deviance Test Statistic
+### Deviance Test Statistic
 
 The deviance statistic is defined as
 
@@ -135,7 +135,7 @@ Note that $X^2$ and $G^2$ are both functions of the observed data $X$ and a vect
 
 We will encounter these statistics repeatedly throughout the course, particularly in the analysis of two-way and $k$-way contingency tables, and when assessing the fit of log-linear and logistic regression models.
 
-## 2. How Do They Work?
+## How Do They Work?
 
 Both $X^2$ and $G^2$ measure how closely the assumed model—here, a multinomial model $\text{Mult}(n, \pi_0)$—fits the observed data.
 
@@ -152,7 +152,7 @@ When the null hypothesis $H_0$ is true, both statistics have an approximate chi-
 Suppose that we roll a die 30 times and observe the following table showing the number of times each face appears.
 
 | Categories | 1 | 2 | 3 | 4 | 5 | 6 |
-|------------------|---------|---------|---------|---------|---------|---------|
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | Number of Observations | $O_1 = 3$ | $O_2 = 7$ | $O_3 = 5$ | $O_4 = 10$ | $O_5 = 2$ | $O_6 = 3$ |
 | Expected Observations |  |  |  |  |  |  |
 
