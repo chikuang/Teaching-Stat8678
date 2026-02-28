@@ -169,7 +169,7 @@ RUN;
 
 ![](figs/part2/L12_power/power_3.png)
 
-We can also expect that if we actually know the standard deviation is samller, 
+We can also expect that if we actually know the standard deviation is smaller, we would need fewer light bulbs to achieve the same power. We can vary the standard deviation in `PROC POWER` to see how it affects the required sample size.
 
 ```r
 PROC POWER;
@@ -184,7 +184,7 @@ RUN;
 
 ![](figs/part2/L12_power/power_4.png)
 
-Here, varying ``STDDEV` to show how reduced variability lowers required sample size, while keeping the hypothesis, effect size, and power fixed.
+Here, varying `STDDEV` to show how reduced variability lowers required sample size, while keeping the hypothesis, effect size, and power fixed.
 
 ## Discussion 
 

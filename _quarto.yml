@@ -22,6 +22,7 @@ book:
       - part2_5_sas_marco.qmd
       - part2_6_chi-square.qmd
       - part2_7_power.qmd
+      - part2_8_2sample_t.qmd
     - references.qmd
   navbar:
     right:
