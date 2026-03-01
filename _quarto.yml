@@ -23,6 +23,9 @@ book:
       - part2_6_chi-square.qmd
       - part2_7_power.qmd
       - part2_8_2sample_t.qmd
+    - part: "Regression Analysis"
+      chapters:
+      - part3_1_ANOVA.qmd
     - references.qmd
   navbar:
     right:

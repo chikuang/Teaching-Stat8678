@@ -61,9 +61,17 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅    |        One Sample Proportion Test        |    9    |
 |   ✅     |        Introduction to SAS Marco         |   10    |
 |  ✅    |        Chi-Square GoF test|   11   |
-|    ✅    |        Power Analysis and Calculation     (Record)  |   12  |
+|    ✅    |        Power Analysis and Calculation     (Recorded)  |   12  |
 |   ⏳   |         Two Sample $t$-test for Independent and Paired Datasets   |   13  |
+|        |   **📜Exam  **    |         |
 |   ⏳   |         Exam   | 14  |
+|        |   **📘 Part 3: Regression Analysis **    |         |
+|   ⏳   |         Analysis of Variance   | 14  |
+|   ⏳   |         Intro to Regression Analysis     | 15  |
+|     |        ⛱ Spring Break  🌊    |   |
+|   ⏳   |         Regression with Interaction Effects   | 16  |
+|   ⏳   |         Linear Mixed Effects Model I   | 17  |
+|   ⏳   |         Linear Mixed Effects Model II   | 18  |
 <!-- 🚧🛠️⏳   -->
 
 ## Recommended Textbooks
