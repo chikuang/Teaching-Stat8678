@@ -7,19 +7,18 @@
 
 One of the strengths of SAS as a data analysis tool is its ability to read data from many sources, subset or combine data sets, and modify the datasets to accomplish various tasks. The most common types of external data sets used in SAS are EXCEL files (XLS extent), comma separated value files (CSV extent) and various space separate text files (PRN or TXT extent). A CSV file is actually a text file and can be read in any text reader (NOTEPAD or WORDPAD in Windows). In fact, the SAS files themselves, as well as the LOG and the LST files produced by a SAS by a batch submit, are also simple text files.
 
-| Format   | Description                                         | File Extension |
-|----------|-----------------------------------------------------|----------------|
-| WK1      | Lotus 1 spreadsheet                                 | .WK1           |
-| WK3      | Lotus 3 spreadsheet                                 | .WK3           |
-| WK4      | Lotus 4 spreadsheet                                 | .WK4           |
-| EXCEL    | Excel Version 4 or 5 spreadsheet                    | .XLS           |
-| EXCEL4  | Excel Version 4 spreadsheet                         | .XLS           |
-| EXCEL5  | Excel Version 5 spreadsheet                         | .XLS           |
-| EXCEL97 | Excel 97 spreadsheet                                | .XLS           |
-| DLM      | delimited file (default delimiter is a blank)       | .*             |
-| TAB      | delimited file (tab-delimited values)               | .TXT           |
-| CSV      | delimited file (comma-separated values)             | .CSV           |
-
+| Format  | Description                                   | File Extension |
+|---------|-----------------------------------------------|----------------|
+| WK1     | Lotus 1 spreadsheet                           | .WK1           |
+| WK3     | Lotus 3 spreadsheet                           | .WK3           |
+| WK4     | Lotus 4 spreadsheet                           | .WK4           |
+| EXCEL   | Excel Version 4 or 5 spreadsheet              | .XLS           |
+| EXCEL4  | Excel Version 4 spreadsheet                   | .XLS           |
+| EXCEL5  | Excel Version 5 spreadsheet                   | .XLS           |
+| EXCEL97 | Excel 97 spreadsheet                          | .XLS           |
+| DLM     | delimited file (default delimiter is a blank) | .\*            |
+| TAB     | delimited file (tab-delimited values)         | .TXT           |
+| CSV     | delimited file (comma-separated values)       | .CSV           |
 
 ## Reading from External Files
 
@@ -41,9 +40,6 @@ The **GETNAMES** = YES or NO statement for spreadsheets and delimited external f
 
 The **DATAROW** argument tells SAS where to start reading for input data. In our case it is row 2 since row 1 is used for variable names.
 
-
-
-
 We use the print procedure to see the dataset,
 
 ``` r
@@ -51,7 +47,7 @@ PROC PRINT DATA=GRADES_temp;
 RUN
 ```
 
-The first few rows are shown as follows 
+The first few rows are shown as follows
 
 ![](figs/part1/import_1.png)
 
@@ -81,20 +77,20 @@ RUN;
 
 We will talk about more reorganizing skills in SAS in the next topic.
 
-::: {.callout-example}
-Which statement is true concerning the DATALINES statement based on reading the comment? 
+::: callout-example
+Which statement is true concerning the DATALINES statement based on reading the comment?
 
-a. The DATALINES statement is used when reading data located in a raw data file.
+a.  The DATALINES statement is used when reading data located in a raw data file.
 
-b. The DATALINES statement is used when reading data located directly in the program.
+b.  The DATALINES statement is used when reading data located directly in the program.
 :::
 
 ## Import & Export in SAS Virtual Studio
 
-The key is 
+The key is
 
-+ Upload data before conducting “Import”
-+ Download data after conducting “Export”
+-   Upload data before conducting “Import”
+-   Download data after conducting “Export”
 
 ![](figs/part1/import_2.png)
 

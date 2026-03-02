@@ -2,4 +2,133 @@
 
 > Learning Objectives
 >
-> 1.  TBA
+>  1. Understand what **ANOVA (Analysis of Variance)** is.
+> 2. Explain **why and when** ANOVA is needed.
+> 3. Recognize the connection between **two-sample t-tests** and **one-way ANOVA**.
+> 4. Formulate ANOVA models and hypotheses.
+> 5. Perform one-way ANOVA in **SAS** and interpret the output.
+
+## Introduction
+
+In the previous lecture, we studied the **two-sample t-test**, where the goal was to compare the means of **two independent populations**.
+
+Recall the equal-variance two-sample model:
+$$
+X_{1i} \stackrel{iid}{\sim} N(\mu_1, \sigma^2), \quad i = 1, \ldots, n_1,
+$$
+$$
+X_{2j} \stackrel{iid}{\sim} N(\mu_2, \sigma^2), \quad j = 1, \ldots, n_2,
+$$
+with inference focused on the mean difference
+$$
+\mu_1 - \mu_2.
+$$
+
+The corresponding hypothesis test was:
+$$
+H_0: \mu_1 = \mu_2.
+$$
+
+
+## From Two-Sample t-Test to ANOVA
+
+A natural question arises:
+
+> **What if we want to compare more than two population means?**
+
+For example:
+- Comparing test scores across **three or more teaching methods**
+- Comparing average yields across **multiple fertilizer types**
+- Comparing mean response times across **several algorithms**
+
+Running multiple pairwise t-tests is **not appropriate**, because:
+- It inflates the **Type I error rate**
+- It leads to inconsistent inference
+
+This motivates the need for **ANOVA**.
+
+## ANOVA as a Generalization of the Two-Sample t-Test
+
+To unify the two-sample setting, we can rewrite the data using an **indicator variable**.
+
+Let the combined data be:
+$$
+\{(I_{i,2}, Y_i)\}_{i=1}^{n_1+n_2},
+$$
+where
+$$
+I_{i,2} =
+\begin{cases}
+1, & \text{if observation } i \text{ comes from group 2}, \\
+0, & \text{otherwise}.
+\end{cases}
+$$
+
+Then the two-sample model can be written as a **linear model**:
+$$
+Y_i = \alpha + \beta_1 I_{i,2} + \varepsilon_i,
+$$
+where
+$$
+\varepsilon_i \stackrel{iid}{\sim} N(0, \sigma^2).
+$$
+
+- $\alpha$ represents the mean of group 1
+- $\beta_1 = \mu_2 - \mu_1$
+- Testing $\mu_1 = \mu_2$ is equivalent to testing:
+$$
+H_0: \beta_1 = 0
+$$
+
+## Extending to Multiple Groups
+
+Suppose now we have **$K > 2$** groups.
+
+ANOVA extends this idea by modeling:
+$$
+Y_{ij} = \mu + \tau_j + \varepsilon_{ij},
+$$
+where:
+- $\mu$ is the overall mean
+- $\tau_j$ is the effect of group \(j\)
+- $\varepsilon_{ij} \stackrel{iid}{\sim} N(0, \sigma^2)$
+
+The **ANOVA null hypothesis** is:
+$$
+H_0: \mu_1 = \mu_2 = \cdots = \mu_K,
+$$
+or equivalently,
+$$
+H_0: \tau_1 = \tau_2 = \cdots = \tau_K = 0.
+$$
+
+## Why ANOVA Works
+
+ANOVA answers a single question:
+
+> **Is the variability *between* group means larger than the variability *within* groups?**
+
+This is formalized using the **F-statistic**, which compares:
+
+- **Between-group variation**
+- **Within-group variation**
+
+If between-group variation is sufficiently large relative to within-group variation, we reject $H_0$.
+
+## What’s Next
+
+In the remainder of this lecture, we will cover:
+
+- The ANOVA decomposition:
+  - Total Sum of Squares
+  - Between-Group Sum of Squares
+  - Within-Group Sum of Squares
+- The ANOVA table
+- One-way ANOVA in **SAS** using `PROC ANOVA` and `PROC GLM`
+- Post-hoc comparisons (Tukey, Bonferroni)
+
+---
+
+> **Key takeaway:**  
+> The two-sample t-test is a *special case* of ANOVA.  
+> ANOVA provides a unified framework for comparing **multiple means simultaneously** while controlling error rates.
