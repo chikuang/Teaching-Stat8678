@@ -40,7 +40,7 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 
 ## Midterm
 
--   [ ] March 4, 2026
+-   [x] March 4, 2026
 
 ## Topics and Corresponding Lectures
 
@@ -66,7 +66,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |    ✅    |         Class Activity I |   13  |
 |   ⏳   |         Two Sample $t$-test for Independent and Paired Datasets   |   15  |
 |        |   **📜Exam  **    |         |
-|   ⏳   |         Exam   | 14 |
+|    ✅     |         Exam   | 14 |
 |        |   **📘 Part 3: Regression Analysis **    |         |
 |   ⏳   |         Analysis of Variance   | 16  |
 |   ⏳   |         Intro to Regression Analysis     | 17  |
