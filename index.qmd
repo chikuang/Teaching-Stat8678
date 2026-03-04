@@ -35,7 +35,8 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 -   [x] A1, due on Jan 28, 2026
 -   [x] A2, due on Feb 8, 2026
 -   [x] A3, due on Feb 15, 2026
--   [ ] A4, due on Feb 28, 2026
+-   [x] A4, due on Feb 28, 2026
+-   [ ] A5, TBA
 
 ## Midterm
 
@@ -62,10 +63,10 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅     |        Introduction to SAS Marco         |   10    |
 |  ✅    |        Chi-Square GoF test|   11   |
 |    ✅    |        Power Analysis and Calculation     (Recorded)  |   12  |
-|   ⏳   |         Class Activity I |   13  |
-|   ⏳   |         Two Sample $t$-test for Independent and Paired Datasets   |   14  |
+|    ✅    |         Class Activity I |   13  |
+|   ⏳   |         Two Sample $t$-test for Independent and Paired Datasets   |   15  |
 |        |   **📜Exam  **    |         |
-|   ⏳   |         Exam   | 15  |
+|   ⏳   |         Exam   | 14 |
 |        |   **📘 Part 3: Regression Analysis **    |         |
 |   ⏳   |         Analysis of Variance   | 16  |
 |   ⏳   |         Intro to Regression Analysis     | 17  |
