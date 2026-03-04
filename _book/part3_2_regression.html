@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Introduction to Statistical Inference I – STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>14&nbsp; Regression Analysis – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part2_2_intro_inference2.html" rel="next">
-<link href="./part1_4_rv.html" rel="prev">
+<link href="./part3_3_regression_interaction.html" rel="next">
+<link href="./part3_1_ANOVA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -177,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html">Statistical Analysis</a></li><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference I</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_2_regression.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -241,7 +241,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2_1_intro_inference1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part2_1_intro_inference1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference I</span></span></a>
   </div>
 </li>
@@ -306,7 +306,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part3_2_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="./part3_2_regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></span></a>
   </div>
 </li>
@@ -351,26 +351,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#probability-versus-statistics" id="toc-probability-versus-statistics" class="nav-link active" data-scroll-target="#probability-versus-statistics"><span class="header-section-number">5.1</span> Probability versus Statistics</a></li>
-  <li><a href="#example-one-sample-mean-problem" id="toc-example-one-sample-mean-problem" class="nav-link" data-scroll-target="#example-one-sample-mean-problem"><span class="header-section-number">5.2</span> Example: One-Sample Mean Problem</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">14.1</span> Introduction</a></li>
+  <li><a href="#correlation-vs-regression" id="toc-correlation-vs-regression" class="nav-link" data-scroll-target="#correlation-vs-regression"><span class="header-section-number">14.2</span> Correlation vs Regression</a></li>
+  <li><a href="#correlation-between-two-variables" id="toc-correlation-between-two-variables" class="nav-link" data-scroll-target="#correlation-between-two-variables"><span class="header-section-number">14.3</span> Correlation between Two Variables</a></li>
+  <li><a href="#regression-in-sas" id="toc-regression-in-sas" class="nav-link" data-scroll-target="#regression-in-sas"><span class="header-section-number">14.4</span> Regression in SAS</a>
   <ul class="collapse">
-  <li><a href="#problem-formulation" id="toc-problem-formulation" class="nav-link" data-scroll-target="#problem-formulation"><span class="header-section-number">5.2.1</span> Problem Formulation</a></li>
-  <li><a href="#formal-definitions" id="toc-formal-definitions" class="nav-link" data-scroll-target="#formal-definitions"><span class="header-section-number">5.2.2</span> Formal Definitions</a></li>
-  <li><a href="#confidence-interval-for-mu" id="toc-confidence-interval-for-mu" class="nav-link" data-scroll-target="#confidence-interval-for-mu"><span class="header-section-number">5.2.3</span> Confidence Interval for <span class="math inline">\(\mu\)</span></a></li>
-  <li><a href="#hypothesis-testing-for-mu" id="toc-hypothesis-testing-for-mu" class="nav-link" data-scroll-target="#hypothesis-testing-for-mu"><span class="header-section-number">5.2.4</span> Hypothesis Testing for <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model"><span class="header-section-number">14.4.1</span> Regression Model</a></li>
   </ul></li>
-  <li><a href="#revisit-the-data-example-by-using-sas" id="toc-revisit-the-data-example-by-using-sas" class="nav-link" data-scroll-target="#revisit-the-data-example-by-using-sas"><span class="header-section-number">5.3</span> Revisit the data example by using SAS</a></li>
-  <li><a href="#more-about-hypothesis-and-confidence-intervals" id="toc-more-about-hypothesis-and-confidence-intervals" class="nav-link" data-scroll-target="#more-about-hypothesis-and-confidence-intervals"><span class="header-section-number">5.4</span> More about hypothesis and confidence intervals</a>
+  <li><a href="#interpreting-the-regression-output" id="toc-interpreting-the-regression-output" class="nav-link" data-scroll-target="#interpreting-the-regression-output"><span class="header-section-number">14.5</span> Interpreting the Regression Output</a>
   <ul class="collapse">
-  <li><a href="#how-to-construct-a-confidence-interval" id="toc-how-to-construct-a-confidence-interval" class="nav-link" data-scroll-target="#how-to-construct-a-confidence-interval"><span class="header-section-number">5.4.1</span> How to construct a confidence interval?</a></li>
-  <li><a href="#rearranging-the-inequality" id="toc-rearranging-the-inequality" class="nav-link" data-scroll-target="#rearranging-the-inequality"><span class="header-section-number">5.4.2</span> Rearranging the Inequality</a></li>
-  <li><a href="#large-sample-confidence-interval" id="toc-large-sample-confidence-interval" class="nav-link" data-scroll-target="#large-sample-confidence-interval"><span class="header-section-number">5.4.3</span> Large-Sample Confidence Interval</a></li>
+  <li><a href="#example-prediction" id="toc-example-prediction" class="nav-link" data-scroll-target="#example-prediction"><span class="header-section-number">14.5.1</span> Example Prediction</a></li>
+  <li><a href="#testing-the-slope" id="toc-testing-the-slope" class="nav-link" data-scroll-target="#testing-the-slope"><span class="header-section-number">14.5.2</span> Testing the Slope</a></li>
   </ul></li>
-  <li><a href="#hypothesis-testing-and-confidence-intervals-always-agree" id="toc-hypothesis-testing-and-confidence-intervals-always-agree" class="nav-link" data-scroll-target="#hypothesis-testing-and-confidence-intervals-always-agree"><span class="header-section-number">5.5</span> 3.2 Hypothesis Testing and Confidence Intervals Always Agree</a>
+  <li><a href="#assumption-validation-for-linear-regression" id="toc-assumption-validation-for-linear-regression" class="nav-link" data-scroll-target="#assumption-validation-for-linear-regression"><span class="header-section-number">14.6</span> Assumption Validation for Linear Regression</a>
   <ul class="collapse">
-  <li><a href="#interpretation-of-the-p-value" id="toc-interpretation-of-the-p-value" class="nav-link" data-scroll-target="#interpretation-of-the-p-value"><span class="header-section-number">5.5.1</span> Interpretation of the <span class="math inline">\(p\)</span>-value</a></li>
-  <li><a href="#computing-the-p-value" id="toc-computing-the-p-value" class="nav-link" data-scroll-target="#computing-the-p-value"><span class="header-section-number">5.5.2</span> Computing the <span class="math inline">\(p\)</span>-value</a></li>
-  <li><a href="#connection-to-confidence-intervals" id="toc-connection-to-confidence-intervals" class="nav-link" data-scroll-target="#connection-to-confidence-intervals"><span class="header-section-number">5.5.3</span> Connection to Confidence Intervals</a></li>
+  <li><a href="#residual-diagnostics" id="toc-residual-diagnostics" class="nav-link" data-scroll-target="#residual-diagnostics"><span class="header-section-number">14.6.1</span> Residual Diagnostics</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -378,9 +373,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html">Statistical Analysis</a></li><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference I</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_2_regression.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference I</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></h1>
 </div>
 
 
@@ -400,317 +395,237 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>Learning Objectives</p>
 <ol type="1">
-<li>Be familar with the difference about a probability problem and a statistical problem</li>
-<li>Applied the one sample t-test to do inference for one sample mean problem</li>
+<li>Understand what <strong>regression analysis</strong> is.</li>
+<li>Explain the difference between <strong>correlation</strong> and <strong>regression</strong>.</li>
+<li>Fit a <strong>simple linear regression model</strong>.</li>
+<li>Interpret regression coefficients and statistical tests.</li>
+<li>Perform regression analysis in <strong>SAS</strong> and interpret the output.</li>
+<li>Check the <strong>assumptions of linear regression</strong> using diagnostic plots.</li>
 </ol>
 </blockquote>
-<section id="probability-versus-statistics" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="probability-versus-statistics"><span class="header-section-number">5.1</span> Probability versus Statistics</h2>
+<section id="introduction" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">14.1</span> Introduction</h2>
+<p>In many studies, the goal is not only to determine whether variables are related, but also to <em>quantify how one variable influences another</em>.</p>
+<p>For example:</p>
 <ul>
-<li><p>In <em>probability</em>, we assume that random variables<br>
-<span class="math inline">\(X_1, \ldots, X_n\)</span> follow a distribution with <strong>known parameters</strong>.<br>
-Under this model, we can calculate probabilities of events of interest.</p></li>
-<li><p>In <em>statistics</em>, although we still use a distribution to model<br>
-<span class="math inline">\(X_1, \ldots, X_n\)</span>, the <strong>parameters of the distribution are assumed to be unknown</strong>.<br>
-Our primary goal is to use observed data, the realization<br>
-<span class="math inline">\(X_1 = x_1, \ldots, X_n = x_n\)</span>—to make inference about these unknown parameters.</p></li>
+<li>How does height affect weight?</li>
+<li>How does study time affect exam score?</li>
+<li>How does advertising expenditure affect sales?</li>
 </ul>
-<p>There are three common goals of statistical inference:</p>
+<p>These types of questions are addressed using <em>regression analysis</em>.</p>
+<p>Regression analysis studies the relationship between a <strong>dependent variable</strong> and one or more <strong>independent variables</strong>, and can also be used for <strong>prediction</strong>.</p>
+</section>
+<section id="correlation-vs-regression" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="correlation-vs-regression"><span class="header-section-number">14.2</span> Correlation vs Regression</h2>
+<p>Before fitting a regression model, it is often useful to examine the <strong>correlation between variables</strong>.</p>
+<p><strong>Correlation</strong></p>
 <ul>
-<li><strong>Point estimation</strong></li>
-<li><strong>Interval estimation</strong></li>
-<li><strong>Hypothesis testing</strong></li>
+<li>Measures the <em>strength and direction of linear association</em> between two variables.</li>
+<li>The correlation coefficient ranges from <em>-1 to 1</em>.</li>
+<li>Correlation is <strong>symmetric</strong>, meaning it does not distinguish between predictor and response variables.</li>
 </ul>
-<div id="callout-1" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that there may be multiple valid methods for achieving each goal, even when working with the same dataset.</p>
-</div>
-</div>
-</section>
-<section id="example-one-sample-mean-problem" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="example-one-sample-mean-problem"><span class="header-section-number">5.2</span> Example: One-Sample Mean Problem</h2>
-<p>The term <em>one sample</em> does <strong>not</strong> mean that there is only one observation. Instead, it means that there is <strong>one population</strong> under study.</p>
-<p>In this problem, we are interested in making inference about the population mean, denoted by <span class="math inline">\(\mu\)</span>.</p>
-<section id="problem-formulation" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="problem-formulation"><span class="header-section-number">5.2.1</span> Problem Formulation</h3>
-<p>Suppose we want to conduct statistical inference on the mean length of a certain type of court case. Let <span class="math display">\[
-\mu = \text{the mean length of a certain type of court case}.
-\]</span></p>
-<p>However, the true value of <span class="math inline">\(\mu\)</span> is unknown because we cannot observe all realizations of this process. As a result, statistical inference is required.</p>
-<p>If <span class="math inline">\(\mu\)</span> were known, no inference would be necessary. What we can do in practice is to <strong>collect data</strong>. Suppose we randomly select 20 court cases of the same type from historical records and observe their case lengths (in days):</p>
-<p><span class="math display">\[
-43,\; 90,\; 84,\; 87,\; 116,\; 95,\; 86,\; 99,\; 93,\; 92,
-\]</span> <span class="math display">\[
-121,\; 71,\; 66,\; 98,\; 79,\; 102,\; 60,\; 112,\; 105,\; 98.
-\]</span></p>
-<p>From a statistical perspective, these observed values are treated as <strong>realizations of random variables</strong>. Specifically, we denote</p>
-<p><span class="math display">\[
-X_1 = 43,\; X_2 = 90,\; \ldots,\; X_{20} = 98.
-\]</span></p>
-<p>To model the data, we assume that the random variables <span class="math display">\[
-X_1, X_2, \ldots, X_{20}
-\]</span> are <strong>independent and identically distributed</strong> according to a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, that is,</p>
-<p><span class="math display">\[
-X_i \stackrel{\text{i.i.d.}}{\sim} N(\mu, \sigma^2),
-\qquad i = 1, \ldots, 20.
-\]</span></p>
-<p>Here, both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are unknown parameters. In this example, our primary interest lies in estimating the population mean <span class="math inline">\(\mu\)</span>, while the variance <span class="math inline">\(\sigma^2\)</span> is treated as a nuisance parameter.</p>
-<p>We can use the <strong>maximum likelihood estimator</strong> (MLE) or the <strong>method of moments estimator</strong> (MME) to construct a point estimator of <span class="math inline">\(\mu\)</span>. Under this model, however, they are coincide. The resulting estimator is the <strong>sample mean</strong>, denoted by</p>
-<p><span class="math display">\[
-\hat{\mu} = \bar{X}_{20},
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\bar{X}_{20} = \frac{1}{20} \sum_{i=1}^{20} X_i.
-\]</span></p>
-<p>Under the assumed model, we may use either the <strong>maximum likelihood estimator</strong> or the <strong>method of moments</strong> to construct a point estimator for the population mean <span class="math inline">\(\mu\)</span>. In this model, both methods lead to the same estimator: the <strong>sample mean</strong>. We denote this estimator by</p>
-<p><span class="math display">\[
-\hat{\mu} = \bar{X}_n.
-\]</span></p>
-<p>Pay careful attention to the notation. We use a <strong>capital letter</strong> <span class="math inline">\(\bar{X}_n\)</span> to emphasize that the estimator itself is a <strong>random variable</strong>. Since the estimator is a function of the random variables <span class="math inline">\(X_1, \ldots, X_n\)</span>, it is also random and therefore follows a probability distribution. The probability distribution of an estimator is called its <strong>sampling distribution</strong>. We will return to the concept of sampling distributions later in the course.</p>
-</section>
-<section id="formal-definitions" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="formal-definitions"><span class="header-section-number">5.2.2</span> Formal Definitions</h3>
-<p>To be more precise, we introduce the following definitions.</p>
-<ul>
-<li><p>A <strong>statistic</strong> is any function of the random variables <span class="math inline">\(X_1, \ldots, X_n\)</span>. Because it is a function of random variables, a statistic is itself a random variable and therefore has a probability distribution. If we use the parametric model to describe it, then there is a distribution that depends on the unknown parameters.</p></li>
-<li><p>A <strong>(point) estimator</strong> of a parameter <span class="math inline">\(\theta\)</span>, denoted by <span class="math inline">\(\hat{\theta}\)</span>, is a statistic used to estimate <span class="math inline">\(\theta\)</span>. (Note, an estimator is a random variable because it is a statistics).</p></li>
-<li><p>A <strong>(point) estimate</strong> is the numerical value obtained by evaluating the estimator using the observed data <span class="math inline">\(x_1, \ldots, x_n\)</span>. In particular, we use <strong>lowercase notation</strong> to indicate an estimate. For example, <span class="math inline">\(\bar{x}_n\)</span> denotes the observed value of the estimator <span class="math inline">\(\bar{X}_n\)</span>.</p></li>
-</ul>
-<p>So far, we have constructed a point estimator (and hence a point estimate). To construct a confidence interval or perform hypothesis testing, we need to know the <strong>sampling distribution</strong> of the estimator <span class="math inline">\(\bar{X}_n\)</span>.</p>
-<p>Under the normal model with unknown variance, the sampling distribution can be expressed as</p>
-<p><span class="math display">\[
-\frac{\bar{X} - \mu}{S / \sqrt{n}} \sim t_{n-1},
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-S = \sqrt{\frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n - 1}},
-\]</span></p>
-<p>and <span class="math inline">\(t_{n-1}\)</span> denotes the <strong>Student’s</strong> <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
-</section>
-<section id="confidence-interval-for-mu" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="confidence-interval-for-mu"><span class="header-section-number">5.2.3</span> Confidence Interval for <span class="math inline">\(\mu\)</span></h3>
-<p>Based on this sampling distribution, a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> is given by</p>
-<p><span class="math display">\[
-\left[
-\bar{X} - t_{n-1,\alpha/2} \frac{S}{\sqrt{n}},
-\;
-\bar{X} + t_{n-1,\alpha/2} \frac{S}{\sqrt{n}}
-\right].
-\]</span></p>
-</section>
-<section id="hypothesis-testing-for-mu" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="hypothesis-testing-for-mu"><span class="header-section-number">5.2.4</span> Hypothesis Testing for <span class="math inline">\(\mu\)</span></h3>
-<p>Using the same sampling distribution, we can conduct one of the following hypothesis tests:</p>
-<ul>
-<li><p><strong>Two-sided test</strong> <span class="math display">\[
-H_0: \mu = \mu_0
-\quad \text{vs.} \quad
-H_1: \mu \neq \mu_0
-\]</span></p></li>
-<li><p><strong>Left-tailed test</strong> <span class="math display">\[
-H_0: \mu = \mu_0
-\quad \text{vs.} \quad
-H_1: \mu &lt; \mu_0
-\]</span></p></li>
-<li><p><strong>Right-tailed test</strong> <span class="math display">\[
-H_0: \mu = \mu_0
-\quad \text{vs.} \quad
-H_1: \mu &gt; \mu_0
-\]</span></p></li>
-</ul>
-<p>In some textbooks, equivalent hypotheses are written as</p>
-<ul>
-<li><p><span class="math display">\[
-H_0: \mu = \mu_0
-\quad \text{vs.} \quad
-H_1: \mu \neq \mu_0
-\]</span></p></li>
-<li><p><span class="math display">\[
-H_0: \mu \ge \mu_0
-\quad \text{vs.} \quad
-H_1: \mu &lt; \mu_0
-\]</span></p></li>
-<li><p><span class="math display">\[
-H_0: \mu \le \mu_0
-\quad \text{vs.} \quad
-H_1: \mu &gt; \mu_0
-\]</span></p></li>
-</ul>
-<p>Fortunately, <strong>SAS</strong> can perform point estimation, confidence interval construction, and hypothesis testing simultaneously, provided we clearly specify:</p>
-<ul>
-<li><p><strong>The statistical question</strong><br>
-(one-sample mean, one-sample variance, two-sample problem, etc.)</p></li>
-<li><p><strong>The inferential goal</strong><br>
-(point estimation, confidence interval, hypothesis testing)</p></li>
-<li><p><strong>The statistical model and method</strong><br>
-(for example, why we use the <span class="math inline">\(t\)</span> distribution for the one-sample mean problem instead of the normal distribution or another alternative)</p></li>
-</ul>
-<p>One of the main goals of this course is to help you build a mental “library” of statistical tools. Later, when you encounter a statistical question, you will be able to identify an appropriate method and then use SAS to obtain numerical results for interpretation.</p>
-</section>
-</section>
-<section id="revisit-the-data-example-by-using-sas" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="revisit-the-data-example-by-using-sas"><span class="header-section-number">5.3</span> Revisit the data example by using SAS</h2>
-<p>The court length data can be read by the following DATA step:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA TIME;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  INPUT TIME <span class="sc">@</span><span class="er">@</span>;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DATALINES;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">43</span> <span class="dv">90</span> <span class="dv">84</span> <span class="dv">87</span> <span class="dv">116</span> <span class="dv">95</span> <span class="dv">86</span> <span class="dv">99</span> <span class="dv">93</span> <span class="dv">92</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">121</span> <span class="dv">71</span> <span class="dv">66</span> <span class="dv">98</span> <span class="dv">79</span> <span class="dv">102</span> <span class="dv">60</span> <span class="dv">112</span> <span class="dv">105</span> <span class="dv">98</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The only variable in the DATA set, <em>time</em>, is assumed to be normally distributed. The trailing at signs (@@) indicate that there is more than one observation on a line. The following statements invoke PROC TTEST for a one-sample t test:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC TTEST H0<span class="ot">=</span><span class="dv">80</span> <span class="fu">PLOTS</span>(SHOWH0) SIDES<span class="ot">=</span><span class="dv">2</span> ALPHA<span class="ot">=</span><span class="fl">0.1</span>;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  VAR TIME;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>THE VAR statement indicates that the <em>time</em> variable is being studies</li>
-<li>the H0= option specifies that the mean of the time variable should be compared to the null value rather than the default value of 0</li>
-<li>the PLOTS(SHOWH0) option requests that this null value be displayed on all relevant graphs</li>
-<li>the SIDE=2 option specifies that a the focus of the research question, namely whether the mean count case length is not equal to 80days, rather than less or greater than 80 days (in which case you would use the SIDE=L or SIDE=U options, respectively)</li>
-<li>the ALPHA=0.1 option requests 90% confidence interval rather than the default 95% confidence interval</li>
-</ul>
-<p>The output is presented in the table below.</p>
-<p><img src="figs/part2/L6_inference1/L6_table.png" class="img-fluid"></p>
-<div id="callout-2" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Some SAS procedures produce graphs as automatically as they produce tables if the ODS GRAPHICS option is used. The graphs are integrated with tables in the ODS output.</p>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ODS GRAPHICS ON;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>PROC TTEST H0<span class="ot">=</span><span class="dv">80</span> <span class="fu">PLOTS</span>(SHOWH0) SIDES<span class="ot">=</span>U ALPHA<span class="ot">=</span><span class="fl">0.1</span>;</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  VAR TIME;</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>RUN;</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ODS GRAPHICS OFF;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>you will see the following results which include the same table you see in the last figure but with two more figures. We will talk those two Figures in the following classes, especially the QQ plot.</p>
-<p><img src="figs/part2/L6_inference1/L6_table.png" class="img-fluid"></p>
-<p><img src="figs/part2/L6_inference1/ttest_plot_2side.png" class="img-fluid"></p>
-<p><img src="figs/part2/L6_inference1/ttest_plot_2side1.png" class="img-fluid"></p>
-</section>
-<section id="more-about-hypothesis-and-confidence-intervals" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="more-about-hypothesis-and-confidence-intervals"><span class="header-section-number">5.4</span> More about hypothesis and confidence intervals</h2>
-<section id="how-to-construct-a-confidence-interval" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="how-to-construct-a-confidence-interval"><span class="header-section-number">5.4.1</span> How to construct a confidence interval?</h3>
-<p>Consider a <strong>95% confidence interval</strong> for the population mean <span class="math inline">\(\mu\)</span>. Under the normal approximation (or by the Central Limit Theorem), we have</p>
-<p><span class="math display">\[
-P(-1.96 &lt; Z &lt; 1.96) \approx 0.95,
-\]</span></p>
-<p>where <span class="math inline">\(Z\)</span> is a standard normal random variable.</p>
-<p>Equivalently, this can be written as</p>
-<p><span class="math display">\[
-P\left(
--1.96
-&lt;
-\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
-&lt;
-1.96
-\right)
-\approx 0.95.
-\]</span></p>
-</section>
-<section id="rearranging-the-inequality" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="rearranging-the-inequality"><span class="header-section-number">5.4.2</span> Rearranging the Inequality</h3>
-<p>Rearranging the terms inside the probability statement yields</p>
-<p><span class="math display">\[
-P\left(
-\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}}
-&lt;
-\mu
-&lt;
-\bar{X} + 1.96 \frac{\sigma}{\sqrt{n}}
-\right)
-\approx 0.95.
-\]</span></p>
-<hr>
-</section>
-<section id="large-sample-confidence-interval" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="large-sample-confidence-interval"><span class="header-section-number">5.4.3</span> Large-Sample Confidence Interval</h3>
-<p>Thus, a <strong>large-sample 95% confidence interval</strong> for <span class="math inline">\(\mu\)</span> is given by</p>
-<p><span class="math display">\[
-\left[
-\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}},
-\;
-\bar{X} + 1.96 \frac{\sigma}{\sqrt{n}}
-\right].
-\]</span></p>
-<p>More compactly, we often write this interval as</p>
-<p><span class="math display">\[
-\bar{X} \pm 1.96 \frac{\sigma}{\sqrt{n}}.
-\]</span></p>
-</section>
-</section>
-<section id="hypothesis-testing-and-confidence-intervals-always-agree" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="hypothesis-testing-and-confidence-intervals-always-agree"><span class="header-section-number">5.5</span> 3.2 Hypothesis Testing and Confidence Intervals Always Agree</h2>
-<section id="interpretation-of-the-p-value" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="interpretation-of-the-p-value"><span class="header-section-number">5.5.1</span> Interpretation of the <span class="math inline">\(p\)</span>-value</h3>
-<p>The <span class="math inline">\(p\)</span>-value is the probability of observing data <strong>at least as favorable to the alternative hypothesis</strong> <span class="math inline">\(H_A\)</span> as the data actually observed, <strong>assuming the null hypothesis</strong> <span class="math inline">\(H_0\)</span> is true.</p>
-<p>In this example, the observed sample mean is either greater than <span class="math inline">\(3.56\)</span> or less than <span class="math inline">\(3.18\)</span>, and the null hypothesis assumes the true population mean is <span class="math inline">\(\mu = 3.37\)</span>.</p>
-</section>
-<section id="computing-the-p-value" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="computing-the-p-value"><span class="header-section-number">5.5.2</span> Computing the <span class="math inline">\(p\)</span>-value</h3>
-<p>We compute the <span class="math inline">\(p\)</span>-value as</p>
-<p><span class="math display">\[
-P(\bar{X} &gt; 3.56 \text{ or } \bar{X} &lt; 3.18 \mid \mu = 3.37).
-\]</span></p>
-<p>This can be written as the sum of two tail probabilities:</p>
-<p><span class="math display">\[
-P(\bar{X} &gt; 3.56 \mid \mu = 3.37) + P(\bar{X} &lt; 3.18 \mid \mu = 3.37).
-\]</span></p>
-<p>Standardizing using the normal distribution yields</p>
-<p><span class="math display">\[
-P\left(
-Z &gt; \frac{3.56 - 3.37}{0.31 / \sqrt{147}}
-\right)
-+
-P\left(
-Z &lt; \frac{3.18 - 3.37}{0.31 / \sqrt{147}}
-\right).
-\]</span></p>
-<p>Evaluating the standardized values gives</p>
-<p><span class="math display">\[
-P(Z &gt; 7.43) + P(Z &lt; -7.43).
-\]</span></p>
-<p>This probability is extremely small:</p>
-<p><span class="math display">\[
-10^{-13} \approx 0.
-\]</span></p>
-</section>
-<section id="connection-to-confidence-intervals" class="level3" data-number="5.5.3">
-<h3 data-number="5.5.3" class="anchored" data-anchor-id="connection-to-confidence-intervals"><span class="header-section-number">5.5.3</span> Connection to Confidence Intervals</h3>
-<p>Because the <span class="math inline">\(p\)</span>-value is essentially zero, we strongly reject <span class="math inline">\(H_0\)</span> at any reasonable significance level.</p>
-<p>Equivalently, the hypothesized value <span class="math inline">\(\mu = 3.37\)</span> does <strong>not</strong> lie inside the corresponding confidence interval for <span class="math inline">\(\mu\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="part2_1_intro_inference1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This illustrates a key principle:</p>
+<p>However:</p>
 <blockquote class="blockquote">
-<p><strong>Hypothesis testing and confidence intervals always lead to the same conclusion when they are constructed at compatible significance levels.</strong></p>
+<p><strong>Correlation does not imply causation.</strong></p>
 </blockquote>
+<p>A strong correlation between two variables does not necessarily mean that one variable <strong>causes</strong> the other.</p>
+<p>Regression analysis goes further by specifying a <strong>directional relationship</strong> between variables.</p>
+</section>
+<section id="correlation-between-two-variables" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="correlation-between-two-variables"><span class="header-section-number">14.3</span> Correlation between Two Variables</h2>
+<p>Suppose in a health screening, measurements are taken on several individuals:</p>
+<ul>
+<li>Gender</li>
+<li>Height</li>
+<li>Weight</li>
+<li>Age</li>
+</ul>
+<p>An example dataset of such is given below.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA measurement;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  INPUT gender <span class="sc">$</span> height weight age;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  DATALINES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">68</span> <span class="dv">155</span> <span class="dv">23</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">61</span> <span class="dv">99</span> <span class="dv">20</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">63</span> <span class="dv">115</span> <span class="dv">21</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">70</span> <span class="dv">205</span> <span class="dv">45</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">69</span> <span class="dv">170</span> <span class="dv">35</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">65</span> <span class="dv">125</span> <span class="dv">30</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">72</span> <span class="dv">220</span> <span class="dv">48</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To examine the correlation between every paired variables, we can use the <code>PROC CORR</code> procedure in SAS.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC CORR DATA<span class="ot">=</span>measurement;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  TITLE <span class="st">"Correlation Analysis"</span>;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  VAR height weight age;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="figs/part3/regression1.png" class="img-fluid"></p>
+<p>The output will show the correlation coefficients between each pair of variables, along with the corresponding p-values to test for statistical significance.</p>
+<p>The output from PROC CORR provides:</p>
+<ul>
+<li>Descriptive statistics for each variable</li>
+<li>A Pearson correlation matrix</li>
+</ul>
+<p><strong>Interpretation of the output</strong></p>
+<p>The top number in each cell is the Pearson correlation coefficient, which measures the strength of the linear association between two variables.</p>
+<p>The number below it is the p-value for testing</p>
+<p><span class="math display">\[
+H_0 : \rho = 0
+\]</span></p>
+<p>against</p>
+<p><span class="math display">\[
+H_1 : \rho \ne 0
+\]</span></p>
+<p>For example:</p>
+<ul>
+<li>The correlation between height and weight is 0.9716.</li>
+<li>The corresponding p-value is 0.003.</li>
+</ul>
+<p>Since the p-value is less than 0.05, we conclude that height and weight are significantly correlated.</p>
+<p>The correlation matrix is symmetric along the diagonal line, and each variable has a correlation of 1 with itself.</p>
+<p>Important Note</p>
+<p>Even when two variables show a strong correlation, this does not necessarily imply a causal relationship.</p>
+<p>A strong association may occur because:</p>
+<ul>
+<li>another hidden (confounding) variable influences both variables, or</li>
+<li>the relationship is coincidental.</li>
+</ul>
+</section>
+<section id="regression-in-sas" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="regression-in-sas"><span class="header-section-number">14.4</span> Regression in SAS</h2>
+<p>Suppose our research question is:</p>
+<blockquote class="blockquote">
+<p>to investigate the <em>impact of one variable on another</em>, or to <em>predict the value of one variable based on another</em>.</p>
+</blockquote>
+<p>If this is the case, the regression model can be used to achieve these goals.</p>
+<p>In the example dataset, we are interested in studying the relationship between <strong>height</strong> and <strong>weight</strong>. For example:</p>
+<ul>
+<li>Does <strong>height influence weight</strong>?</li>
+<li>Can we <strong>predict a person’s weight given their height</strong>?</li>
+</ul>
+<p>To answer this question, we use a <strong>simple linear regression model</strong>.</p>
+<p>The regression model can be written as</p>
+<p><span class="math display">\[
+\text{Weight} \sim \text{Height}
+\]</span></p>
+<p>which means we model <strong>weight as a function of height</strong>.</p>
+<section id="regression-model" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="regression-model"><span class="header-section-number">14.4.1</span> Regression Model</h3>
+<p>The mathematical form of the simple linear regression model is</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \epsilon
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> is the <strong>dependent variable</strong> (weight)</li>
+<li><span class="math inline">\(X\)</span> is the <strong>independent variable</strong> (height)</li>
+<li><span class="math inline">\(\beta_0\)</span> is the <strong>intercept</strong></li>
+<li><span class="math inline">\(\beta_1\)</span> is the <strong>slope</strong></li>
+<li><span class="math inline">\(\epsilon\)</span> is the <strong>random error term</strong></li>
+</ul>
+<p>with</p>
+<p><span class="math display">\[
+\epsilon \sim N(0,\sigma^2).
+\]</span></p>
+<p>The slope <span class="math inline">\(\beta_1\)</span> represents the <strong>change in the expected value of <span class="math inline">\(Y\)</span> for a one-unit increase in <span class="math inline">\(X\)</span></strong>.</p>
+<p><strong>SAS Implementation</strong></p>
+<p>In SAS, we fit the regression model using the <code>PROC REG</code> procedure.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>measurement;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  TITLE <span class="st">"Example of Linear Regression"</span>;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  MODEL weight <span class="ot">=</span> height;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In this code:</p>
+<ul>
+<li><code>PROC REG</code> fits a linear regression model.</li>
+<li><code>MODEL weight = height</code> specifies that weight is the response variable and height is the predictor variable.</li>
+</ul>
+<p><img src="figs/part3/regression2.png" class="img-fluid"> <img src="figs/part3/regression3.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="interpreting-the-regression-output" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="interpreting-the-regression-output"><span class="header-section-number">14.5</span> Interpreting the Regression Output</h2>
+<p>Linear regression assumes that the <strong>dependent variable</strong> (e.g., <span class="math inline">\(Y\)</span>) depends linearly on the <strong>independent variable</strong> (<span class="math inline">\(X\)</span>).<br>
+The simple linear regression model is</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \epsilon
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is the <strong>intercept</strong></li>
+<li><span class="math inline">\(\beta_1\)</span> is the <strong>slope</strong></li>
+<li><span class="math inline">\(\epsilon\)</span> is the <strong>random error term</strong></li>
+</ul>
+<p>with</p>
+<p><span class="math display">\[
+\epsilon \sim N(0, \sigma^2)
+\]</span></p>
+<p>The regression output provides estimates for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.<br>
+In this example, the fitted regression equation is</p>
+<p><span class="math display">\[
+\text{weight} = -592.64458 + 11.19127 \times \text{height}
+\]</span></p>
+<p>This equation can be used to <strong>predict weight from height</strong>.</p>
+<section id="example-prediction" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="example-prediction"><span class="header-section-number">14.5.1</span> Example Prediction</h3>
+<p>For a person who is <strong>70 inches tall</strong>, the predicted weight is</p>
+<p><span class="math display">\[
+\hat{weight}
+=
+-592.64458 + 11.19127 \times 70
+=
+190.66
+\]</span></p>
+<p>Thus, the predicted weight for a <strong>70-inch-tall person</strong> is approximately <strong>190.66 pounds</strong>.</p>
+</section>
+<section id="testing-the-slope" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="testing-the-slope"><span class="header-section-number">14.5.2</span> Testing the Slope</h3>
+<p>In the regression output, the <strong>Parameter Estimates</strong> table includes the following columns:</p>
+<ul>
+<li><strong>Standard Error</strong></li>
+<li><strong>t Value</strong></li>
+<li><strong>Pr &gt; |t|</strong> (p-value)</li>
+</ul>
+<p>These values are used to test the hypothesis</p>
+<p><span class="math display">\[
+H_0 : \beta_1 = 0
+\]</span></p>
+<p>which means that the predictor variable has <strong>no linear effect</strong> on the response variable.</p>
+<p>If the p-value is <strong>small (e.g., less than 0.05)</strong>, we reject the null hypothesis.</p>
+<p>In this example, the p-value for the slope is <strong>0.0003</strong>, which is much smaller than 0.05.</p>
+<p>Therefore, we conclude that <strong>height has a statistically significant linear effect on weight</strong>.</p>
+</section>
+</section>
+<section id="assumption-validation-for-linear-regression" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="assumption-validation-for-linear-regression"><span class="header-section-number">14.6</span> Assumption Validation for Linear Regression</h2>
+<p>Linear regression assumes that the <strong>relationship between two variables is linear</strong>, and that the <strong>residuals</strong> are <strong>normally distributed</strong>.</p>
+<p>Residuals are defined as</p>
+<p><span class="math display">\[
+\text{Residual} = Y - \hat{Y}
+\]</span></p>
+<p>where <span class="math inline">\(Y\)</span> is the observed value and <span class="math inline">\(\hat{Y}\)</span> is the predicted value from the regression model.</p>
+<p>These assumptions can be checked using <strong>scatter plots</strong> and <strong>residual plots</strong>.</p>
+<p>The SAS regression procedure also produces several diagnostic figures that help evaluate the model assumptions.</p>
+<p>The main diagnostic plots are shown below.</p>
+<section id="residual-diagnostics" class="level3" data-number="14.6.1">
+<h3 data-number="14.6.1" class="anchored" data-anchor-id="residual-diagnostics"><span class="header-section-number">14.6.1</span> Residual Diagnostics</h3>
+<p>From the <strong>residual plot</strong>, we should check the following:</p>
+<ul>
+<li><p><strong>Does the residual plot show an evenly scattered pattern around 0?</strong></p>
+<p>A random “white-noise-like” scatter around zero suggests that the <strong>linear model fits the data well</strong>.</p></li>
+<li><p><strong>Do the residuals follow a normal distribution?</strong></p>
+<p>This can be examined using <strong>normality diagnostics</strong>, such as a <strong>Q–Q plot</strong> or formal statistical tests.</p></li>
+</ul>
+<p>The normality of residuals can be checked using the following SAS code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>measurement;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TITLE <span class="st">"Regression and residual plots"</span>;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>MODEL weight <span class="ot">=</span> height;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>OUTPUT OUT<span class="ot">=</span>myout R<span class="ot">=</span>resid;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="ot">=</span>myout NORMAL;</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>QQPLOT resid <span class="sc">/</span> <span class="fu">NORMAL</span>(<span class="at">mu=</span>est <span class="at">sigma=</span>est <span class="at">color=</span>red <span class="at">l=</span><span class="dv">1</span>);</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="figs/part3/regression4.png" class="img-fluid"> <img src="figs/part3/regression6.png" class="img-fluid"> <img src="figs/part3/regression7.png" class="img-fluid"> <img src="figs/part3/regression8.png" class="img-fluid"></p>
+<p>As we can see that, the <span class="math inline">\(p\)</span>-value for normality validation is <span class="math inline">\(0.3544\)</span>, which is greater than <span class="math inline">\(0.05\)</span>, so we fail to reject the null hypothesis of normality.</p>
 
 
 </section>
@@ -1119,13 +1034,13 @@ P(Z &gt; 7.43) + P(Z &lt; -7.43).
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part1_4_rv.html" class="pagination-link" aria-label="Random Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span>
+      <a href="./part3_1_ANOVA.html" class="pagination-link" aria-label="Analysis of Variance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part2_2_intro_inference2.html" class="pagination-link" aria-label="Introduction to Statistical Inference II">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference II</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part3_3_regression_interaction.html" class="pagination-link" aria-label="Regression with Interaction">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

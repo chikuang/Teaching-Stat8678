@@ -1,0 +1,95 @@
+# Regression with Interaction
+
+> Learning Objectives
+>
+> 1. Understand interaction effects in regression models
+> 2. Distinguish between main effects and interaction effects
+> 3. Interpret regression coefficients in an interaction model
+> 4. Compute and interpret simple slopes
+
+
+## Introduction
+
+**Main Effects vs Interaction Effects**
+
+In a main-effects regression model, each predictor affects the response independently.
+
+For example, suppose we want to predict weight using sex and height:
+
+$$
+\text{Weight} = \beta_0 + \beta_s \text{SEX} + \beta_h \text{HEIGHT}
+$$
+
+Here:
+
++ $\beta_s$ represents the effect of sex
++ $\beta_h$ represents the effect of height
+
+In this model, the effect of height is assumed to be the same for males and females.
+
+However, this assumption may not be realistic. It is possible that height affects weight differently for males and females.
+
+To allow the relationship to vary, we add an interaction term.
+
+Interaction Model
+
+The regression model with interaction becomes
+
+$$
+\text{Weight} =
+\beta_0
++
+\beta_s \text{SEX}
++
+\beta_h \text{HEIGHT}
++
+\beta_{sh} (\text{SEX} \times \text{HEIGHT})
+$$
+
+Important interpretation rule:
+
+::: {.callout-note title="Warning: Important"}
+
+When an interaction is included, the coefficients of the individual variables are no longer overall main effects.
+
+Instead, they represent the effect when the interacting variable equals 0.
+
+:::
+
+Interpreting the Interaction Model
+
+Assume
+
++ SEX = 0 for males
++ SEX = 1 for females
+
+Model for males
+
+Substitute $SEX = 0$
+
+$$
+\text{Weight}_{male} =
+\beta_0 + \beta_h \text{HEIGHT}
+$$
+
+Model for females
+
+Substitute $SEX = 1$
+
+$$
+\text{Weight}_{female} =
+\beta_0 + \beta_s + (\beta_h + \beta{sh}) \text{HEIGHT}
+$$
+
+Interpretation:
+
++ Male slope = $\beta_h$
++ Female slope = $\beta_h + \beta_{sh}$
+
+Thus,
+
+$$
+\beta_{sh}
+$$
+
+measures how the slope changes between males and females.

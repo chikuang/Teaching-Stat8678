@@ -26,6 +26,8 @@ book:
     - part: "Regression Analysis"
       chapters:
       - part3_1_ANOVA.qmd
+      - part3_2_regression.qmd
+      - part3_3_regression_interaction.qmd
     - part: "Hands on Class"
       chapters:
       - exercise_1_macro.qmd
