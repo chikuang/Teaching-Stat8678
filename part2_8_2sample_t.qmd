@@ -184,9 +184,9 @@ In `PROC TTEST`, SAS reports results from **two different methods** by default:
 
 - **Method: Pooled**  
   This corresponds to the **two-sample equal-variance t-test**, which assumes  
-  \[
+  $$
   \sigma_1^2 = \sigma_2^2.
-  \]
+  $$
   The test statistic uses a **pooled variance estimator**.
 
 - **Method: Satterthwaite**  

@@ -8,88 +8,230 @@
 > 4. Compute and interpret simple slopes
 
 
-## Introduction
+## Main Effects Versus Interaction Effects in Regression
 
-**Main Effects vs Interaction Effects**
+In a *main-effects model*, each input variable’s effect on the response variable is estimated as the **average effect across levels of all other input variables**.  
+This means the effect of each predictor is **assumed to be constant** regardless of the values of the other predictors.
 
-In a main-effects regression model, each predictor affects the response independently.
-
-For example, suppose we want to predict weight using sex and height:
+For example, suppose we want to predict *weight** using a person’s *sex* and *height*. A regression model with only main effects can be written as
 
 $$
-\text{Weight} = \beta_0 + \beta_s \text{SEX} + \beta_h \text{HEIGHT}
+\text{weight} = \beta_0 + \beta_s \text{SEX} + \beta_h \text{HEIGHT}
 $$
 
-Here:
+The coefficient describing the effect of **height on weight**, $\beta_h$, represents a **weighted average of the height effects for males and females**, had we modeled them separately.  
 
-+ $\beta_s$ represents the effect of sex
-+ $\beta_h$ represents the effect of height
-
-In this model, the effect of height is assumed to be the same for males and females.
-
-However, this assumption may not be realistic. It is possible that height affects weight differently for males and females.
-
-To allow the relationship to vary, we add an interaction term.
-
-Interaction Model
+Thus, the resulting main effect of height is **assumed to be the same for both males and females**. However, it may be reasonable to suspect that **the effect of height differs by sex**.  To allow the effect of height to vary across groups, we add an **interaction term**.
 
 The regression model with interaction becomes
-
 $$
-\text{Weight} =
+\text{weight} =
 \beta_0
 +
 \beta_s \text{SEX}
 +
 \beta_h \text{HEIGHT}
 +
-\beta_{sh} (\text{SEX} \times \text{HEIGHT})
+\beta_{sh}(\text{SEX} \times \text{HEIGHT})
 $$
 
-Important interpretation rule:
+::: {.callout-warning title="Important"}
 
-::: {.callout-note title="Warning: Important"}
+In a regression model that includes **interaction terms**, the coefficients of the individual variables (often called **main effects**) are **no longer interpreted as overall main effects**.
 
-When an interaction is included, the coefficients of the individual variables are no longer overall main effects.
-
-Instead, they represent the effect when the interacting variable equals 0.
+Instead, they represent the effect **when the interacting variable equals 0**.
 
 :::
 
-Interpreting the Interaction Model
+Thus:
 
-Assume
+- $\beta_h$ represents the effect of **HEIGHT when SEX = 0**  
+- $\beta_s$ represents the effect of **SEX when HEIGHT = 0**
 
-+ SEX = 0 for males
-+ SEX = 1 for females
+If we code
 
-Model for males
+- SEX = 0 → male  
+- SEX = 1 → female  
 
-Substitute $SEX = 0$
+then we can construct the regression equations for **males and females** separately.
 
-$$
-\text{Weight}_{male} =
-\beta_0 + \beta_h \text{HEIGHT}
-$$
+## Regression Equation for Males
 
-Model for females
-
-Substitute $SEX = 1$
+Substitute $SEX = 0$ into the interaction model:
 
 $$
-\text{Weight}_{female} =
-\beta_0 + \beta_s + (\beta_h + \beta{sh}) \text{HEIGHT}
+\begin{aligned}
+\text{weight}_{male}
+&= \beta_0 + \beta_s(0) + \beta_h \text{HEIGHT} + \beta_{sh}(0)\text{HEIGHT} \\
+&= \beta_0 + \beta_h \text{HEIGHT}
+\end{aligned}
 $$
 
-Interpretation:
+Substitute $SEX = 1$:
 
-+ Male slope = $\beta_h$
-+ Female slope = $\beta_h + \beta_{sh}$
+$$
+\begin{aligned}
+\text{weight}_{female}
+&= \beta_0 + \beta_s(1) + \beta_h \text{HEIGHT} + \beta_{sh}(1)\text{HEIGHT} \\
+&= \beta_0 + \beta_s + \beta_h \text{HEIGHT} + \beta_{sh}\text{HEIGHT} \\
+&= \beta_0 + \beta_s + (\beta_h + \beta_{sh})\text{HEIGHT}
+\end{aligned}
+$$
 
-Thus,
+
+Thus, **slope for males** is $\beta_h$ and the **slope for females** is $\beta_h + \beta_{sh}$.
+
+**Interpretation**
+
+The interaction coefficient $\beta_{sh}$ represents **how much the slope of height changes between males and females**.
+
+- Male slope = $\beta_h$  
+- Female slope = $\beta_h + \beta_{sh}$  
+
+Therefore, if $\beta_{sh} \neq 0$, the **effect of height on weight differs by sex**.
+
+### Interpreting the Interaction Coefficient
+
+From the previous equations, we can see that the effect of **HEIGHT** differs for males and females.
+
+- For males (SEX = 0), the slope of height is  
+$$
+\beta_h
+$$
+
+- For females (SEX = 1), the slope of height is  
+$$
+\beta_h + \beta_{sh}
+$$
+
+Thus, **HEIGHT has a different effect for males and females**.
+
+The interaction coefficient
 
 $$
 \beta_{sh}
 $$
 
-measures how the slope changes between males and females.
+represents the **difference between the height effects for males and females**.
+
+In other words, a one-unit increase in **SEX** (changing from male to female) changes the slope of **HEIGHT** by $\beta_{sh}$.
+
+It is important to note that this interpretation holds when the **main effects are included in the model together with the interaction term**.  
+If the interaction term were entered **without the corresponding main effects**, the interpretation of the coefficient would change.
+
+---
+
+### Example: Checking Regression Assumptions in SAS
+
+The following SAS code fits a regression model and produces diagnostic plots for checking model assumptions.
+
+``` r
+PROC REG DATA=MEASUREMENT;
+    TITLE "Regression and Residual Plots";
+    MODEL WEIGHT = HEIGHT;
+    OUTPUT OUT=MYOUT R=RESID;
+RUN;
+
+PROC UNIVARIATE DATA=MYOUT NORMAL;
+    QQPLOT RESID / NORMAL(MU=EST SIGMA=EST COLOR=RED L=1);
+RUN;
+```
+
+Description of the Code
+
++ PROC REG fits the linear regression model relating weight to height.
++ OUTPUT OUT=myout R=resid saves the residual values from the regression model into a new dataset called myout.
++ PROC UNIVARIATE is used to examine the distribution of the residuals.
++ QQPLOT resid produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.
+
+
+# PROC PLM
+
+This section relies heavily on **PROC PLM** to estimate, compare, and visualize the **conditional effects of interactions**.  
+Before applying it to interaction models, we briefly introduce **PROC PLM** in general.
+
+`PROC PLM` performs various analyses and plotting functions **after a regression model has been fitted**.  
+It can be used for:
+
+- testing **custom hypotheses** about model parameters,
+- computing **predicted values**,
+- estimating **simple effects and contrasts**, and
+- creating **visualizations of predicted values**.
+
+Unlike most SAS procedures, **PROC PLM does not directly use a dataset as input**.  
+Instead, it reads from an **item store**, which contains information about a previously fitted model.
+
+An item store can be created by several SAS modeling procedures, including:
+
+- `PROC GLM`
+- `PROC GENMOD`
+- `PROC LOGISTIC`
+- `PROC PHREG`
+- `PROC MIXED`
+- `PROC GLIMMIX`
+
+These procedures create the item store using a `STORE` statement.  
+Later, `PROC PLM` accesses this stored model using the `RESTORE=` option.
+
+---
+
+## Common PROC PLM Statements
+
+The following statements are commonly used when analyzing interaction models:
+
+- **`ESTIMATE`**
+
+  Used to estimate **linear combinations of model coefficients**, including:
+  - predicted means
+  - contrasts
+  - **simple slopes**
+  - conditional effects
+
+  This statement is very flexible but may require more coding.
+
+---
+
+- **`SLICE`**
+
+  Used to estimate **simple effects** by comparing **marginal means** within levels of another factor.
+
+---
+
+- **`LSMESTIMATE`**
+
+  A hybrid of `ESTIMATE` and `LSMEANS`.  
+  It estimates **differences between marginal means** and is commonly used for **simple effect comparisons**.
+
+---
+
+- **`LSMEANS`**
+
+  Used to compute **least squares means (marginal means)** and test **differences between them**.
+
+---
+
+- **`EFFECTPLOT`**
+
+  Used to plot **predicted values of the response variable** across a range of values for one or two predictors.
+
+  This is particularly useful for visualizing:
+
+  - interaction effects  
+  - simple slopes  
+  - conditional relationships
+
+If additional predictors are included in the model, `EFFECTPLOT` will **fix their values automatically**:
+
+- at the **mean** for continuous predictors
+- at the **reference category** for categorical predictors.
+
+``` r
+PROC GLM DATA=EXERCISE;
+MODEL LOSS = HOURS|EFFORT;
+STORE CONTCONT;
+RUN;
+
+PROC PLM RESTORE=CONTCONT;
+EFFECTPLOT INTERACTION(X=HOURS SLICEBY=EFFORT);
+RUN;
+```
