@@ -39,19 +39,19 @@ For example:
 - Comparing average yields across **multiple fertilizer types** 
 - Comparing mean response times across **several algorithms**
 
-Running multiple pairwise t-tests is **not appropriate**, because: 
+Running multiple pairwise $t$-tests is **not appropriate**, because: 
 
 - It inflates the **Type I error rate** 
 - It leads to inconsistent inference
 
 This motivates the need for **ANOVA**.
 
-## ANOVA as a Generalization of the Two-Sample t-Test
+## ANOVA as a Generalization of the Two-Sample $t$-Test
 
 To unify the two-sample setting, we can rewrite the data using an **indicator variable**.
 
 Let the combined data be: $$
-\{(I_{i,2}, Y_i)\}_{i=1}^{n_1+n_2},
+\{(I_{i,2}, X_i)\}_{i=1}^{n_1+n_2},
 $$ where $$
 I_{i,2} =
 \begin{cases}
@@ -61,7 +61,7 @@ I_{i,2} =
 $$
 
 Then the two-sample model can be written as a **linear model**: $$
-Y_i = \alpha + \beta_1 I_{i,2} + \varepsilon_i,\quad \varepsilon_i \stackrel{iid}{\sim} N(0, \sigma^2).
+X_i = \alpha + \beta_1 I_{i,2} + \varepsilon_i,\quad \varepsilon_i \stackrel{iid}{\sim} N(0, \sigma^2).
 $$  {#eq-model2}
 
 Here, note that models @eq-model1 and the linear model @eq-model2 are **equivalent**. Specifically:
