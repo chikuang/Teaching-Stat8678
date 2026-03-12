@@ -55,7 +55,6 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   |          Import and Export Data          |    4    |
 |   ✅   |             Random Variable              |    5    |
 |        |   **📘 Part 2: Statistical Analysis**    |         |
-|        |    **One Sample Problem as Example**     |         |
 |   ✅   | Introduction to Statistical Inference I  |    6    |
 |   ✅   | Introduction to Statistical Inference II |    7    |
 |   ✅   |      One Sample Nonparametric Test       |    8    |
@@ -63,14 +62,13 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅     |        Introduction to SAS Marco         |   10    |
 |  ✅    |        Chi-Square GoF test|   11   |
 |    ✅    |        Power Analysis and Calculation     (Recorded)  |   12  |
-|    ✅    |         Class Activity I |   13  |
+|   🛠️  |         Class Activity I |   13  |
+|    | **📜 Exam 🖌️ **  | 14 |
 | ✅    |         Two Sample $t$-test for Independent and Paired Datasets   |   15  |
-|        |   **📜Exam  **    |         |
-|    ✅     |         Exam   | 14 |
 |        |   **📘 Part 3: Regression Analysis **    |         |
-|   ⏳   |         Analysis of Variance   | 16  |
-|   ⏳   |         Intro to Regression Analysis     | 17  |
+|   ✅   |         Analysis of Variance   | 16  |
 |     |        ⛱ Spring Break  🌊    |   |
+|   ⏳   |         Intro to Regression Analysis     | 17  |
 |   ⏳   |         Regression with Interaction Effects   | 18  |
 |   ⏳   |         Linear Mixed Effects Model I   | 19  |
 |   ⏳   |         Linear Mixed Effects Model II   | 20  |
