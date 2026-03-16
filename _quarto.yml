@@ -31,6 +31,7 @@ book:
     - part: "Hands on Class"
       chapters:
       - exercise_1_macro.qmd
+      - exercise_2_t_ANOVA.qmd
     - references.qmd
   navbar:
     right:

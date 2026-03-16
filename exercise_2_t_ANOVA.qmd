@@ -1,0 +1,361 @@
+# Two-Sample t-Test and ANOVA in SAS
+
+> Learning Objectives
+>
+> In this hands-on session, we will practice applying **two-sample t-tests** and **one-way ANOVA** in **SAS** using a built-in dataset from **SASHELP**.
+> The goal is to help you develop a **systematic workflow** for comparing group means and interpreting the results.
+>
+> By the end of this activity, you should be able to:
+>
+> 1.  Understand when to use a **two-sample t-test**.
+> 2.  Understand when to use **one-way ANOVA**.
+> 3.  Identify the response variable and grouping variable in SAS code.
+> 4.  Write SAS code for two-sample t-tests and ANOVA.
+> 5.  Interpret p-values, assumptions, and post-hoc comparisons.
+
+## Guideline: How to Analyze Group Mean Comparisons in SAS
+
+Based on experience, a reliable way to solve mean-comparison problems is to follow **three steps**:
+  
+  **Step 1: Understand the data and the question**
+  
+  -   Identify the **response variable**
+  -   Identify the **grouping variable**
+  -   Determine how many groups are being compared
+
+**Step 2: Choose the correct inferential method**
+  
+  -   If there are **two groups**, use a **two-sample t-test**
+  -   If there are **three or more groups**, use **one-way ANOVA**
+  
+  **Step 3: Write SAS code and interpret the output**
+  
+  -   Run the statistical procedure
+-   Check assumptions when appropriate
+-   Interpret the p-value in context
+-   For ANOVA, if the global test is significant, run a **multiple comparison procedure**
+  
+  > 💡 This same workflow is also useful when analyzing grouped data in **R** or **Python**.
+
+## Practice Examples in this Activity
+
+To practice these steps, in this activity, we will:
+  
+  1.  Use a **two-sample t-test** to compare city fuel efficiency between cars from **Asia** and the **USA**
+  2.  Use **one-way ANOVA** to compare **horsepower** across different vehicle types
+
+Eventually, you will see that the **two-sample t-test is a special case of ANOVA**.
+
+## Dataset for this exercise: `SASHELP.CARS`
+
+In this activity, we use the built-in SAS dataset `SASHELP.CARS`.
+
+This dataset contains information on many car models and includes variables such as:
+  
+  -   `Origin`: region where the car was produced
+-   `Type`: vehicle type
+-   `MPG_City`: city miles per gallon
+-   `MPG_Highway`: highway miles per gallon
+-   `Horsepower`: engine horsepower
+-   `Weight`: vehicle weight
+
+Since `SASHELP.CARS` is built into SAS OnDemand / SAS Studio, **no data import is required**.
+
+## First Practice: Two-Sample t-Test
+
+In this first example, we compare the **city fuel efficiency** (`MPG_City`) of cars from **Asia** and the **USA**.
+
+### Step 1: Explore the Dataset
+
+First, look at the structure of the dataset and preview a few rows.
+
+```r
+PROC CONTENTS DATA=SASHELP.CARS;
+RUN;
+
+PROC PRINT DATA=SASHELP.CARS (OBS=10);
+RUN;
+```
+
+At this stage:
+  
+-   Focus on identifying useful variables
+-   Decide which variable is the **response**
+-   Decide which variable defines the **groups**
+  
+### Step 2: Create a Dataset with Two Groups
+  
+Since we only want to compare **Asia** and **USA**, we subset the built-in dataset.
+
+```r
+DATA CARS_SUB;
+  SET SASHELP.CARS;
+
+  IF ORIGIN IN ("Asia", "USA");
+RUN;
+```
+
+Key idea:
+  
+-   `MPG_City` is the response variable
+-   `Origin` is the grouping variable
+-   There are **two groups**, so the correct method is a **two-sample t-test**
+  
+  ### Step 3: Run the Two-Sample t-Test
+  
+  The hypotheses are
+
+$$
+  H_0: \mu_{\text{Asia}} = \mu_{\text{USA}}
+$$
+  
+  and
+
+$$
+  H_1: \mu_{\text{Asia}} \neq \mu_{\text{USA}}.
+$$
+  
+Use the following code:
+  
+```r
+PROC TTEST DATA=CARS_SUB;
+CLASS ORIGIN;
+VAR MPG_CITY;
+RUN;
+```
+
+### Code Description
+
+-   `CLASS ORIGIN` defines the grouping variable
+-   `VAR MPG_CITY` defines the response variable
+-   `PROC TTEST` performs the two-sample t-test
+
+### Step 4: Visualize the Two Groups
+
+It is often helpful to examine the two groups visually.
+
+```r
+PROC SGPLOT DATA=CARS_SUB;
+TITLE "City MPG by Car Origin";
+VBOX MPG_CITY / CATEGORY=ORIGIN;
+RUN;
+```
+
+### In-Class Questions
+
+1.  Which group appears to have the larger mean city MPG?
+2.  What is the null hypothesis being tested?
+3.  If the p-value is smaller than 0.05, what conclusion should we make?
+4.  Does SAS report only one t-test result, or more than one method?
+  
+## Second Practice: One-Way ANOVA
+  
+In this second example, we compare **horsepower** across different **vehicle types**.
+
+### Step 1: Understand the Problem
+
+Now the response variable is
+
+-   `Horsepower`
+
+and the grouping variable is
+
+-   `Type`
+
+Since `Type` has **more than two levels**, we use **one-way ANOVA**.
+
+### Step 2: Compute Summary Statistics
+
+Before fitting the ANOVA model, compute summary statistics by group.
+
+```r
+PROC MEANS DATA=SASHELP.CARS N MEAN STD;
+CLASS TYPE;
+VAR HORSEPOWER;
+RUN;
+```
+
+This code helps you inspect:
+  
+  -   sample size in each group
+-   mean horsepower in each group
+-   standard deviation in each group
+
+### Step 3: Visualize the Groups
+
+```r
+PROC SGPLOT DATA=SASHELP.CARS;
+TITLE "Horsepower by Vehicle Type";
+VBOX HORSEPOWER / CATEGORY=TYPE;
+RUN;
+```
+
+### Step 4: Write the Global Hypotheses
+
+The one-way ANOVA hypotheses are
+
+$$
+  H_0: \mu_1 = \mu_2 = \cdots = \mu_k
+$$
+  
+  versus
+
+$$
+  H_1: \text{At least one group mean differs.}
+$$
+  
+  ### Step 5: Fit the ANOVA Model
+  
+  ```r
+PROC ANOVA DATA=SASHELP.CARS;
+CLASS TYPE;
+MODEL HORSEPOWER = TYPE;
+RUN;
+```
+
+### Code Description
+
+-   `CLASS TYPE` defines the grouping variable
+-   `MODEL HORSEPOWER = TYPE` tests whether mean horsepower differs across vehicle types
+-   The global ANOVA test is based on the **F-statistic**
+  
+  ### In-Class Questions
+  
+  1.  What does the global ANOVA test tell us?
+  2.  If the ANOVA p-value is smaller than 0.05, what can we conclude?
+  3.  If the ANOVA test is significant, do we immediately know which groups differ?
+  
+## Assumption Checking for ANOVA
+  
+  One important ANOVA assumption is **homogeneity of variances**.
+
+We can check this using **Levene’s test**.
+
+```r
+PROC ANOVA DATA=SASHELP.CARS;
+CLASS TYPE;
+MODEL HORSEPOWER = TYPE;
+MEANS TYPE / HOVTEST=LEVENE WELCH;
+RUN;
+```
+
+### Code Description
+
+-   `HOVTEST=LEVENE` requests **Levene’s test** for equal variances
+-   `WELCH` requests **Welch’s ANOVA**, which is useful when the equal variance assumption is questionable
+
+### In-Class Questions
+
+1.  What does Levene’s test check?
+2.  If Levene’s test has a p-value below 0.05, what does that suggest?
+3.  Why might Welch’s ANOVA be preferable in that case?
+  
+## Multiple Comparison After ANOVA
+  
+If the global ANOVA test is significant, we often want to know:
+  
+  > Which groups are different?
+  
+We can do this with a **multiple comparison procedure**.
+
+### Example: Tukey Test
+
+```r
+PROC ANOVA DATA=SASHELP.CARS;
+CLASS TYPE;
+MODEL HORSEPOWER = TYPE;
+MEANS TYPE / TUKEY;
+RUN;
+```
+
+### Code Description
+
+-   `TUKEY` requests Tukey’s multiple comparison procedure
+-   This compares all pairs of group means while controlling the overall error rate
+
+### In-Class Questions
+
+1.  Why should we only interpret Tukey results after the global ANOVA test is significant?
+2.  What is the purpose of a post-hoc test?
+3.  How is this different from simply running many separate t-tests?
+  
+## Compare the Two Methods
+  
+At this point, compare the two procedures used in this activity.
+
+### Two-Sample t-Test
+
+Used when:
+  
+-   there are **exactly two groups**
+-   the goal is to compare **two group means**
+  
+Example in this activity:
+
+-   `MPG_City` for **Asia vs USA**
+
+### One-Way ANOVA
+
+Used when:
+
+-   there are **three or more groups**
+-   the goal is to determine whether **at least one mean differs**
+  
+Example in this activity:
+  
+-   `Horsepower` across **vehicle types**
+  
+### Important Connection
+  
+When there are only **two groups**, the **two-sample t-test** and **one-way ANOVA** test the **same null hypothesis**.
+
+So:
+  
+  > The **two-sample t-test is a special case of ANOVA**.
+
+## Suggested Practice Tasks
+
+Work through the following during class.
+
+### Task 1
+
+Compare **MPG_Highway** between **Asia** and **Europe** cars.
+
+Suggested steps:
+  
+1.  Create a subset dataset
+2.  Identify the response and grouping variables
+3.  Run a two-sample t-test
+4.  Draw a boxplot
+5.  Interpret the p-value
+
+### Task 2
+
+Test whether **vehicle weight** differs by **Origin**.
+
+Suggested steps:
+  
+1.  Compute summary statistics
+2.  Draw a boxplot
+3.  Fit the ANOVA model
+4.  Check the p-value
+5.  If needed, perform a multiple comparison test
+
+## Summary
+
+By following the group-comparison workflow, you have practiced how to:
+  
+1.  Identify whether a problem involves **two groups** or **multiple groups**
+2.  Choose between a **two-sample t-test** and **one-way ANOVA**
+3.  Write SAS code for both procedures
+4.  Interpret p-values and global test results
+5.  Check assumptions and perform post-hoc comparisons
+
+This same workflow applies directly to:
+  
+-   regression with categorical predictors,
+-   factorial ANOVA,
+-   linear models,
+-   and many later topics in data analysis.
+
+Once you master this pattern, mean-comparison problems become much more systematic and easier to solve.

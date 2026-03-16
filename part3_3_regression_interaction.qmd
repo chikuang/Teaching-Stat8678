@@ -139,19 +139,17 @@ RUN;
 
 Description of the Code
 
-+ PROC REG fits the linear regression model relating weight to height.
-+ OUTPUT OUT=myout R=resid saves the residual values from the regression model into a new dataset called myout.
-+ PROC UNIVARIATE is used to examine the distribution of the residuals.
-+ QQPLOT resid produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.
++ `PROC REG` fits the linear regression model relating weight to height.
++ `OUTPUT OUT=myout R=resid` saves the residual values from the regression model into a new dataset called myout.
++ `PROC UNIVARIATE` is used to examine the distribution of the residuals.
++ `QQPLOT RESID` produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.
 
 
-# PROC PLM
+## PROC PLM
 
-This section relies heavily on **PROC PLM** to estimate, compare, and visualize the **conditional effects of interactions**.  
-Before applying it to interaction models, we briefly introduce **PROC PLM** in general.
+This section relies heavily on **PROC PLM** to estimate, compare, and visualize the **conditional effects of interactions**. Before applying it to interaction models, we briefly introduce **PROC PLM** in general.
 
-`PROC PLM` performs various analyses and plotting functions **after a regression model has been fitted**.  
-It can be used for:
+`PROC PLM` performs various analyses and plotting functions **after a regression model has been fitted**.   It can be used for:
 
 - testing **custom hypotheses** about model parameters,
 - computing **predicted values**,
@@ -173,15 +171,12 @@ An item store can be created by several SAS modeling procedures, including:
 These procedures create the item store using a `STORE` statement.  
 Later, `PROC PLM` accesses this stored model using the `RESTORE=` option.
 
----
 
-## Common PROC PLM Statements
+**Common PROC PLM Statements**
 
 The following statements are commonly used when analyzing interaction models:
 
-- **`ESTIMATE`**
-
-  Used to estimate **linear combinations of model coefficients**, including:
+- **`ESTIMATE`**L Used to estimate **linear combinations of model coefficients**, including:
   - predicted means
   - contrasts
   - **simple slopes**
@@ -189,33 +184,14 @@ The following statements are commonly used when analyzing interaction models:
 
   This statement is very flexible but may require more coding.
 
----
 
-- **`SLICE`**
+- **`SLICE`**: Used to estimate **simple effects** by comparing **marginal means** within levels of another factor.
 
-  Used to estimate **simple effects** by comparing **marginal means** within levels of another factor.
+- **`LSMESTIMATE`**: A hybrid of `ESTIMATE` and `LSMEANS`.  It estimates **differences between marginal means** and is commonly used for **simple effect comparisons**.
 
----
+- **`LSMEANS`**: Used to compute **least squares means (marginal means)** and test **differences between them**.
 
-- **`LSMESTIMATE`**
-
-  A hybrid of `ESTIMATE` and `LSMEANS`.  
-  It estimates **differences between marginal means** and is commonly used for **simple effect comparisons**.
-
----
-
-- **`LSMEANS`**
-
-  Used to compute **least squares means (marginal means)** and test **differences between them**.
-
----
-
-- **`EFFECTPLOT`**
-
-  Used to plot **predicted values of the response variable** across a range of values for one or two predictors.
-
-  This is particularly useful for visualizing:
-
+- **`EFFECTPLOT`**: Used to plot **predicted values of the response variable** across a range of values for one or two predictors. This is particularly useful for visualizing:
   - interaction effects  
   - simple slopes  
   - conditional relationships
