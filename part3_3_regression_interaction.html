@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chi-Kuang Yeh">
-<meta name="dcterms.date" content="2026-03-23">
 
-<title>STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>15&nbsp; Regression with Interaction – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1_1_intro_operation.html" rel="next">
+<link href="./exercise_1_macro.html" rel="next">
+<link href="./part3_2_regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -143,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_3_regression_interaction.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -157,7 +191,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -278,7 +312,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part3_3_regression_interaction.html" class="sidebar-item-text sidebar-link">
+  <a href="./part3_3_regression_interaction.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></span></a>
   </div>
 </li>
@@ -323,49 +357,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#main-effects-versus-interaction-effects-in-regression" id="toc-main-effects-versus-interaction-effects-in-regression" class="nav-link active" data-scroll-target="#main-effects-versus-interaction-effects-in-regression"><span class="header-section-number">15.1</span> Main Effects Versus Interaction Effects in Regression</a></li>
+  <li><a href="#regression-equation-for-males" id="toc-regression-equation-for-males" class="nav-link" data-scroll-target="#regression-equation-for-males"><span class="header-section-number">15.2</span> Regression Equation for Males</a>
   <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#interpreting-the-interaction-coefficient" id="toc-interpreting-the-interaction-coefficient" class="nav-link" data-scroll-target="#interpreting-the-interaction-coefficient"><span class="header-section-number">15.2.1</span> Interpreting the Interaction Coefficient</a></li>
+  <li><a href="#example-checking-regression-assumptions-in-sas" id="toc-example-checking-regression-assumptions-in-sas" class="nav-link" data-scroll-target="#example-checking-regression-assumptions-in-sas"><span class="header-section-number">15.2.2</span> Example: Checking Regression Assumptions in SAS</a></li>
   </ul></li>
-  <li><a href="#office-hour" id="toc-office-hour" class="nav-link" data-scroll-target="#office-hour">Office Hour</a></li>
-  <li><a href="#grade-distribution" id="toc-grade-distribution" class="nav-link" data-scroll-target="#grade-distribution">Grade Distribution</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
-  <li><a href="#midterm" id="toc-midterm" class="nav-link" data-scroll-target="#midterm">Midterm</a></li>
-  <li><a href="#topics-and-corresponding-lectures" id="toc-topics-and-corresponding-lectures" class="nav-link" data-scroll-target="#topics-and-corresponding-lectures">Topics and Corresponding Lectures</a></li>
-  <li><a href="#recommended-textbooks" id="toc-recommended-textbooks" class="nav-link" data-scroll-target="#recommended-textbooks">Recommended Textbooks</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
-  </ul></li>
+  <li><a href="#proc-plm" id="toc-proc-plm" class="nav-link" data-scroll-target="#proc-plm"><span class="header-section-number">15.3</span> PROC PLM</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_3_regression_interaction.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">STAT 8678 - SAS Programming &amp; Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chi-Kuang Yeh </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -375,218 +389,197 @@ window.Quarto = {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS.</p>
-<p>Topics include two main parts:</p>
+<blockquote class="blockquote">
+<p>Learning Objectives</p>
 <ol type="1">
-<li><strong>SAS Programming</strong>: data management and manipulation, basic procedures, macro programming;</li>
-<li><strong>Data Analysis</strong>: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.</li>
+<li>Understand interaction effects in regression models</li>
+<li>Distinguish between main effects and interaction effects</li>
+<li>Interpret regression coefficients in an interaction model</li>
+<li>Compute and interpret simple slopes</li>
 </ol>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>MATH 4544/6544 – Biostatistics, or equivalent.</p>
-</section>
-<section id="instructor" class="level3">
-<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p><a href="https://chikuang.github.io/">Chi-Kuang Yeh</a>, Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.</p>
+</blockquote>
+<section id="main-effects-versus-interaction-effects-in-regression" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="main-effects-versus-interaction-effects-in-regression"><span class="header-section-number">15.1</span> Main Effects Versus Interaction Effects in Regression</h2>
+<p>In a <em>main-effects model</em>, each input variable’s effect on the response variable is estimated as the <strong>average effect across levels of all other input variables</strong>.<br>
+This means the effect of each predictor is <strong>assumed to be constant</strong> regardless of the values of the other predictors.</p>
+<p>For example, suppose we want to predict *weight** using a person’s <em>sex</em> and <em>height</em>. A regression model with only main effects can be written as</p>
+<p><span class="math display">\[
+\text{weight} = \beta_0 + \beta_s \text{SEX} + \beta_h \text{HEIGHT}
+\]</span></p>
+<p>The coefficient describing the effect of <strong>height on weight</strong>, <span class="math inline">\(\beta_h\)</span>, represents a <strong>weighted average of the height effects for males and females</strong>, had we modeled them separately.</p>
+<p>Thus, the resulting main effect of height is <strong>assumed to be the same for both males and females</strong>. However, it may be reasonable to suspect that <strong>the effect of height differs by sex</strong>. To allow the effect of height to vary across groups, we add an <strong>interaction term</strong>.</p>
+<p>The regression model with interaction becomes <span class="math display">\[
+\text{weight} =
+\beta_0
++
+\beta_s \text{SEX}
++
+\beta_h \text{HEIGHT}
++
+\beta_{sh}(\text{SEX} \times \text{HEIGHT})
+\]</span></p>
+<div id="callout-1" class="callout callout-style-default callout-warning callout-titled" title="Important">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a regression model that includes <strong>interaction terms</strong>, the coefficients of the individual variables (often called <strong>main effects</strong>) are <strong>no longer interpreted as overall main effects</strong>.</p>
+<p>Instead, they represent the effect <strong>when the interacting variable equals 0</strong>.</p>
+</div>
+</div>
+<p>Thus:</p>
 <ul>
-<li>Office: Suite 1407, 25 Park Place.</li>
-<li>Email: <a href="mailto:cyeh@gsu.edu">cyeh@gsu.edu</a>.</li>
+<li><span class="math inline">\(\beta_h\)</span> represents the effect of <strong>HEIGHT when SEX = 0</strong><br>
+</li>
+<li><span class="math inline">\(\beta_s\)</span> represents the effect of <strong>SEX when HEIGHT = 0</strong></li>
 </ul>
-</section>
-</section>
-<section id="office-hour" class="level2">
-<h2 class="anchored" data-anchor-id="office-hour">Office Hour</h2>
-<p>10:00–13:00 on Monday, or by appointment.</p>
-</section>
-<section id="grade-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="grade-distribution">Grade Distribution</h2>
+<p>If we code</p>
 <ul>
-<li>Assignments: 60%</li>
-<li>Exam: 20%</li>
-<li>Project: 20%</li>
+<li>SEX = 0 → male<br>
+</li>
+<li>SEX = 1 → female</li>
 </ul>
+<p>then we can construct the regression equations for <strong>males and females</strong> separately.</p>
 </section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">A1, due on Jan 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A2, due on Feb 8, 2026</label></li>
-<li><label><input type="checkbox" checked="">A3, due on Feb 15, 2026</label></li>
-<li><label><input type="checkbox" checked="">A4, due on Feb 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A5, due on Mar 18, 2026</label></li>
-<li><label><input type="checkbox">A6, TBA</label></li>
-</ul>
-</section>
-<section id="midterm" class="level2">
-<h2 class="anchored" data-anchor-id="midterm">Midterm</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">March 4, 2026</label></li>
-</ul>
-</section>
-<section id="topics-and-corresponding-lectures" class="level2">
-<h2 class="anchored" data-anchor-id="topics-and-corresponding-lectures">Topics and Corresponding Lectures</h2>
-<p>Those chapters are based on the lecture notes. This part will be updated frequently.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 71%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Status</th>
-<th style="text-align: center;">Topic</th>
-<th style="text-align: center;">Lecture</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Welcome and Overview</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 1: Basics</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Basic SAS Operation</td>
-<td style="text-align: center;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">SAS Syntax</td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Import and Export Data</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Random Variable</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 2: Statistical Analysis</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference I</td>
-<td style="text-align: center;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference II</td>
-<td style="text-align: center;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Nonparametric Test</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Proportion Test</td>
-<td style="text-align: center;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to SAS Marco</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Chi-Square GoF test</td>
-<td style="text-align: center;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Power Analysis and Calculation (Recorded)</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity I</td>
-<td style="text-align: center;">13</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📜 Exam 🖌️ </strong></td>
-<td style="text-align: center;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Datasets</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 3: Regression Analysis </strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Analysis of Variance</td>
-<td style="text-align: center;">16</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">⛱ Spring Break 🌊</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity II</td>
-<td style="text-align: center;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Intro to Regression Analysis</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Regression with Interaction Effects</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model I</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model II</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-</tbody>
-</table>
-<!-- 🚧🛠️⏳   -->
-</section>
-<section id="recommended-textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-textbooks">Recommended Textbooks</h2>
+<section id="regression-equation-for-males" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="regression-equation-for-males"><span class="header-section-number">15.2</span> Regression Equation for Males</h2>
+<p>Substitute <span class="math inline">\(SEX = 0\)</span> into the interaction model:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{weight}_{male}
+&amp;= \beta_0 + \beta_s(0) + \beta_h \text{HEIGHT} + \beta_{sh}(0)\text{HEIGHT} \\
+&amp;= \beta_0 + \beta_h \text{HEIGHT}
+\end{aligned}
+\]</span></p>
+<p>Substitute <span class="math inline">\(SEX = 1\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{weight}_{female}
+&amp;= \beta_0 + \beta_s(1) + \beta_h \text{HEIGHT} + \beta_{sh}(1)\text{HEIGHT} \\
+&amp;= \beta_0 + \beta_s + \beta_h \text{HEIGHT} + \beta_{sh}\text{HEIGHT} \\
+&amp;= \beta_0 + \beta_s + (\beta_h + \beta_{sh})\text{HEIGHT}
+\end{aligned}
+\]</span></p>
+<p>Thus, <strong>slope for males</strong> is <span class="math inline">\(\beta_h\)</span> and the <strong>slope for females</strong> is <span class="math inline">\(\beta_h + \beta_{sh}\)</span>.</p>
+<p><strong>Interpretation</strong></p>
+<p>The interaction coefficient <span class="math inline">\(\beta_{sh}\)</span> represents <strong>how much the slope of height changes between males and females</strong>.</p>
 <ul>
-<li><p><a href="https://online.stat.psu.edu/statprogram/stat480">Statistics 480: Introduction to SAS</a>, The Pennsylvania State University.</p></li>
-<li><p><a href="https://www.sas.com/en_us/training/overview.html">SAS Training</a>, SAS Institute.</p></li>
-<li><p><a href="https://stats.oarc.ucla.edu/sas/">SAS Resources</a>, University of California, Los Angeles.</p></li>
+<li>Male slope = <span class="math inline">\(\beta_h\)</span><br>
+</li>
+<li>Female slope = <span class="math inline">\(\beta_h + \beta_{sh}\)</span></li>
+</ul>
+<p>Therefore, if <span class="math inline">\(\beta_{sh} \neq 0\)</span>, the <strong>effect of height on weight differs by sex</strong>.</p>
+<section id="interpreting-the-interaction-coefficient" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="interpreting-the-interaction-coefficient"><span class="header-section-number">15.2.1</span> Interpreting the Interaction Coefficient</h3>
+<p>From the previous equations, we can see that the effect of <strong>HEIGHT</strong> differs for males and females.</p>
+<ul>
+<li><p>For males (SEX = 0), the slope of height is<br>
+<span class="math display">\[
+\beta_h
+\]</span></p></li>
+<li><p>For females (SEX = 1), the slope of height is<br>
+<span class="math display">\[
+\beta_h + \beta_{sh}
+\]</span></p></li>
+</ul>
+<p>Thus, <strong>HEIGHT has a different effect for males and females</strong>.</p>
+<p>The interaction coefficient</p>
+<p><span class="math display">\[
+\beta_{sh}
+\]</span></p>
+<p>represents the <strong>difference between the height effects for males and females</strong>.</p>
+<p>In other words, a one-unit increase in <strong>SEX</strong> (changing from male to female) changes the slope of <strong>HEIGHT</strong> by <span class="math inline">\(\beta_{sh}\)</span>.</p>
+<p>It is important to note that this interpretation holds when the <strong>main effects are included in the model together with the interaction term</strong>.<br>
+If the interaction term were entered <strong>without the corresponding main effects</strong>, the interpretation of the coefficient would change.</p>
+<hr>
+</section>
+<section id="example-checking-regression-assumptions-in-sas" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="example-checking-regression-assumptions-in-sas"><span class="header-section-number">15.2.2</span> Example: Checking Regression Assumptions in SAS</h3>
+<p>The following SAS code fits a regression model and produces diagnostic plots for checking model assumptions.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>MEASUREMENT;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    TITLE <span class="st">"Regression and Residual Plots"</span>;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    MODEL WEIGHT <span class="ot">=</span> HEIGHT;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    OUTPUT OUT<span class="ot">=</span>MYOUT R<span class="ot">=</span>RESID;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="ot">=</span>MYOUT NORMAL;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    QQPLOT RESID <span class="sc">/</span> <span class="fu">NORMAL</span>(<span class="at">MU=</span>EST <span class="at">SIGMA=</span>EST <span class="at">COLOR=</span>RED <span class="at">L=</span><span class="dv">1</span>);</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Description of the Code</p>
+<ul>
+<li><code>PROC REG</code> fits the linear regression model relating weight to height.</li>
+<li><code>OUTPUT OUT=myout R=resid</code> saves the residual values from the regression model into a new dataset called myout.</li>
+<li><code>PROC UNIVARIATE</code> is used to examine the distribution of the residuals.</li>
+<li><code>QQPLOT RESID</code> produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.</li>
 </ul>
 </section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>Special thanks to <a href="https://cas.gsu.edu/profile/li-hsiang-lin/">Li-Hsiang Lin</a> for providing the base materials given on this website.</p>
+</section>
+<section id="proc-plm" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="proc-plm"><span class="header-section-number">15.3</span> PROC PLM</h2>
+<p>This section relies heavily on <strong>PROC PLM</strong> to estimate, compare, and visualize the <strong>conditional effects of interactions</strong>. Before applying it to interaction models, we briefly introduce <strong>PROC PLM</strong> in general.</p>
+<p><code>PROC PLM</code> performs various analyses and plotting functions <strong>after a regression model has been fitted</strong>. It can be used for:</p>
+<ul>
+<li>testing <strong>custom hypotheses</strong> about model parameters,</li>
+<li>computing <strong>predicted values</strong>,</li>
+<li>estimating <strong>simple effects and contrasts</strong>, and</li>
+<li>creating <strong>visualizations of predicted values</strong>.</li>
+</ul>
+<p>Unlike most SAS procedures, <strong>PROC PLM does not directly use a dataset as input</strong>.<br>
+Instead, it reads from an <strong>item store</strong>, which contains information about a previously fitted model.</p>
+<p>An item store can be created by several SAS modeling procedures, including:</p>
+<ul>
+<li><code>PROC GLM</code></li>
+<li><code>PROC GENMOD</code></li>
+<li><code>PROC LOGISTIC</code></li>
+<li><code>PROC PHREG</code></li>
+<li><code>PROC MIXED</code></li>
+<li><code>PROC GLIMMIX</code></li>
+</ul>
+<p>These procedures create the item store using a <code>STORE</code> statement.<br>
+Later, <code>PROC PLM</code> accesses this stored model using the <code>RESTORE=</code> option.</p>
+<p><strong>Common PROC PLM Statements</strong></p>
+<p>The following statements are commonly used when analyzing interaction models:</p>
+<ul>
+<li><p><strong><code>ESTIMATE</code></strong>L Used to estimate <strong>linear combinations of model coefficients</strong>, including:</p>
+<ul>
+<li>predicted means</li>
+<li>contrasts</li>
+<li><strong>simple slopes</strong></li>
+<li>conditional effects</li>
+</ul>
+<p>This statement is very flexible but may require more coding.</p></li>
+<li><p><strong><code>SLICE</code></strong>: Used to estimate <strong>simple effects</strong> by comparing <strong>marginal means</strong> within levels of another factor.</p></li>
+<li><p><strong><code>LSMESTIMATE</code></strong>: A hybrid of <code>ESTIMATE</code> and <code>LSMEANS</code>. It estimates <strong>differences between marginal means</strong> and is commonly used for <strong>simple effect comparisons</strong>.</p></li>
+<li><p><strong><code>LSMEANS</code></strong>: Used to compute <strong>least squares means (marginal means)</strong> and test <strong>differences between them</strong>.</p></li>
+<li><p><strong><code>EFFECTPLOT</code></strong>: Used to plot <strong>predicted values of the response variable</strong> across a range of values for one or two predictors. This is particularly useful for visualizing:</p>
+<ul>
+<li>interaction effects<br>
+</li>
+<li>simple slopes<br>
+</li>
+<li>conditional relationships</li>
+</ul></li>
+</ul>
+<p>If additional predictors are included in the model, <code>EFFECTPLOT</code> will <strong>fix their values automatically</strong>:</p>
+<ul>
+<li>at the <strong>mean</strong> for continuous predictors</li>
+<li>at the <strong>reference category</strong> for categorical predictors.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC GLM DATA<span class="ot">=</span>EXERCISE;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>MODEL LOSS <span class="ot">=</span> HOURS<span class="sc">|</span>EFFORT;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>STORE CONTCONT;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>PROC PLM RESTORE<span class="ot">=</span>CONTCONT;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>EFFECTPLOT <span class="fu">INTERACTION</span>(<span class="at">X=</span>HOURS <span class="at">SLICEBY=</span>EFFORT);</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -992,10 +985,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./part3_2_regression.html" class="pagination-link" aria-label="Regression Analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1_1_intro_operation.html" class="pagination-link" aria-label="Introduction to Basic SAS Operation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Basic SAS Operation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise_1_macro.html" class="pagination-link" aria-label="Writing Macro in SAS">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Writing Macro in SAS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

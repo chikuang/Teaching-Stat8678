@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chi-Kuang Yeh">
-<meta name="dcterms.date" content="2026-03-23">
 
-<title>STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>2&nbsp; Working with SAS Syntax – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1_1_intro_operation.html" rel="next">
+<link href="./part1_3_import_export.html" rel="next">
+<link href="./part1_1_intro_operation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -143,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1_1_intro_operation.html">Introduction</a></li><li class="breadcrumb-item"><a href="./part1_2_sas_syntax.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working with SAS Syntax</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -157,7 +191,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -178,7 +212,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1_2_sas_syntax.html" class="sidebar-item-text sidebar-link">
+  <a href="./part1_2_sas_syntax.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working with SAS Syntax</span></span></a>
   </div>
 </li>
@@ -323,49 +357,25 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
-  </ul></li>
-  <li><a href="#office-hour" id="toc-office-hour" class="nav-link" data-scroll-target="#office-hour">Office Hour</a></li>
-  <li><a href="#grade-distribution" id="toc-grade-distribution" class="nav-link" data-scroll-target="#grade-distribution">Grade Distribution</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
-  <li><a href="#midterm" id="toc-midterm" class="nav-link" data-scroll-target="#midterm">Midterm</a></li>
-  <li><a href="#topics-and-corresponding-lectures" id="toc-topics-and-corresponding-lectures" class="nav-link" data-scroll-target="#topics-and-corresponding-lectures">Topics and Corresponding Lectures</a></li>
-  <li><a href="#recommended-textbooks" id="toc-recommended-textbooks" class="nav-link" data-scroll-target="#recommended-textbooks">Recommended Textbooks</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
-  </ul></li>
+  <li><a href="#sas-statments" id="toc-sas-statments" class="nav-link active" data-scroll-target="#sas-statments"><span class="header-section-number">2.1</span> SAS Statments</a></li>
+  <li><a href="#diagnosing-and-correcting-syntax-errors" id="toc-diagnosing-and-correcting-syntax-errors" class="nav-link" data-scroll-target="#diagnosing-and-correcting-syntax-errors"><span class="header-section-number">2.2</span> Diagnosing and Correcting Syntax Errors</a></li>
+  <li><a href="#solution-to-the-example" id="toc-solution-to-the-example" class="nav-link" data-scroll-target="#solution-to-the-example"><span class="header-section-number">2.3</span> Solution to the example</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1_1_intro_operation.html">Introduction</a></li><li class="breadcrumb-item"><a href="./part1_2_sas_syntax.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working with SAS Syntax</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">STAT 8678 - SAS Programming &amp; Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working with SAS Syntax</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chi-Kuang Yeh </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -375,218 +385,85 @@ window.Quarto = {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS.</p>
-<p>Topics include two main parts:</p>
+<blockquote class="blockquote">
+<p>Learning objective:</p>
 <ol type="1">
-<li><strong>SAS Programming</strong>: data management and manipulation, basic procedures, macro programming;</li>
-<li><strong>Data Analysis</strong>: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.</li>
+<li>Identify the characteristics of SAS statements.</li>
+<li>Explain SAS syntax rules.</li>
+<li>Insert SAS comments using two methods.</li>
+<li>Identify SAS syntax errors.</li>
+<li>Diagnose and correct a program with errors.</li>
+<li>Save the corrected program</li>
 </ol>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>MATH 4544/6544 – Biostatistics, or equivalent.</p>
-</section>
-<section id="instructor" class="level3">
-<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p><a href="https://chikuang.github.io/">Chi-Kuang Yeh</a>, Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.</p>
+</blockquote>
+<p>In general, writing a SAS program is to write a sequence of steps, and a step is a sequence of SAS statements:</p>
+<p><img src="figs/part1/syntax_1.png" class="img-fluid"></p>
+<div class="callout-example">
+<p>How many statements are in the following step?</p>
+<p><img src="figs/part1/syntax_ex1.png" class="img-fluid"></p>
+</div>
+<section id="sas-statments" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sas-statments"><span class="header-section-number">2.1</span> SAS Statments</h2>
+<p>SAS statements have these characteristics (Check the highlight context in the following examples):</p>
 <ul>
-<li>Office: Suite 1407, 25 Park Place.</li>
-<li>Email: <a href="mailto:cyeh@gsu.edu">cyeh@gsu.edu</a>.</li>
+<li>Usually begin with an identifying keyword.</li>
+<li>Always end with a semicolon.</li>
 </ul>
-</section>
-</section>
-<section id="office-hour" class="level2">
-<h2 class="anchored" data-anchor-id="office-hour">Office Hour</h2>
-<p>10:00–13:00 on Monday, or by appointment.</p>
-</section>
-<section id="grade-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="grade-distribution">Grade Distribution</h2>
+<p><img src="figs/part1/syntax_fig0.png" class="img-fluid"></p>
+<p>SAS programming statements are easier to read if you begin DATA, PROC, and RUN statements in column one and indent the other statements. This makes it more structured. Also, consistent spacing also makes a SAS program easier to read.</p>
+<p><img src="figs/part1/syntax_fig1.png" class="img-fluid"></p>
+<p>Overall, we can type SAS statements in the following ways:</p>
 <ul>
-<li>Assignments: 60%</li>
-<li>Exam: 20%</li>
-<li>Project: 20%</li>
+<li>One or more blanks can be used to separate words.</li>
+<li>They can begin and end in any column.</li>
+<li>A single statement can span multiple lines.</li>
+<li>Several statements can be on the same line.</li>
 </ul>
+<p><img src="figs/part1/syntax_fig2.png" class="img-fluid"></p>
+<p>Sometimes we may want to make comments/notes to easy remember our SAS statements or to let other people easily understand what our code want to say. These comments are text that SAS ignores during processing. You can use comments anywhere in a SAS program to document the purpose of the program, explain segments of the program, or mark SAS code as non-executing text.</p>
+<p>There are two ways to insert comments in a SAS program:</p>
+<ol type="1">
+<li>Using an asterisk (*) to begin the comment and a semicolon (;) to end the comment.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> This is a comment <span class="cf">in</span> SAS;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Using slash-asterisk (/*) to begin the comment and asterisk-slash (*/) to end the comment.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span> This is a comment <span class="cf">in</span> SAS <span class="sc">*</span><span class="er">/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Avoid placing the /* comment symbols in columns 1 and 2. On some operating environments, SAS might interpret these symbols as a request to end the SAS job or session. An example is given below:</p>
+<p><img src="figs/part1/syntax_2.png" class="img-fluid"></p>
 </section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">A1, due on Jan 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A2, due on Feb 8, 2026</label></li>
-<li><label><input type="checkbox" checked="">A3, due on Feb 15, 2026</label></li>
-<li><label><input type="checkbox" checked="">A4, due on Feb 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A5, due on Mar 18, 2026</label></li>
-<li><label><input type="checkbox">A6, TBA</label></li>
-</ul>
-</section>
-<section id="midterm" class="level2">
-<h2 class="anchored" data-anchor-id="midterm">Midterm</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">March 4, 2026</label></li>
-</ul>
-</section>
-<section id="topics-and-corresponding-lectures" class="level2">
-<h2 class="anchored" data-anchor-id="topics-and-corresponding-lectures">Topics and Corresponding Lectures</h2>
-<p>Those chapters are based on the lecture notes. This part will be updated frequently.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 71%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Status</th>
-<th style="text-align: center;">Topic</th>
-<th style="text-align: center;">Lecture</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Welcome and Overview</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 1: Basics</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Basic SAS Operation</td>
-<td style="text-align: center;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">SAS Syntax</td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Import and Export Data</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Random Variable</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 2: Statistical Analysis</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference I</td>
-<td style="text-align: center;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference II</td>
-<td style="text-align: center;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Nonparametric Test</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Proportion Test</td>
-<td style="text-align: center;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to SAS Marco</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Chi-Square GoF test</td>
-<td style="text-align: center;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Power Analysis and Calculation (Recorded)</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity I</td>
-<td style="text-align: center;">13</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📜 Exam 🖌️ </strong></td>
-<td style="text-align: center;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Datasets</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 3: Regression Analysis </strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Analysis of Variance</td>
-<td style="text-align: center;">16</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">⛱ Spring Break 🌊</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity II</td>
-<td style="text-align: center;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Intro to Regression Analysis</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Regression with Interaction Effects</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model I</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model II</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-</tbody>
-</table>
-<!-- 🚧🛠️⏳   -->
-</section>
-<section id="recommended-textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-textbooks">Recommended Textbooks</h2>
+<section id="diagnosing-and-correcting-syntax-errors" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="diagnosing-and-correcting-syntax-errors"><span class="header-section-number">2.2</span> Diagnosing and Correcting Syntax Errors</h2>
+<p>Syntax errors occur when program statements do not conform to the rules of the SAS language.</p>
+<p>Examples of syntax errors:</p>
 <ul>
-<li><p><a href="https://online.stat.psu.edu/statprogram/stat480">Statistics 480: Introduction to SAS</a>, The Pennsylvania State University.</p></li>
-<li><p><a href="https://www.sas.com/en_us/training/overview.html">SAS Training</a>, SAS Institute.</p></li>
-<li><p><a href="https://stats.oarc.ucla.edu/sas/">SAS Resources</a>, University of California, Los Angeles.</p></li>
+<li>misspelled keywords</li>
+<li>unmatched quotation marks</li>
+<li>missing semicolons</li>
+<li>invalid options</li>
 </ul>
+<p>When SAS encounters a syntax error, SAS prints a warning or an error message to the log; for example,</p>
+<p><img src="figs/part1/syntax_error1.png" class="img-fluid"></p>
+<p>When SAS encounters a syntax error, SAS underlines the error and the following information is written to the SAS log:</p>
+<ul>
+<li><p>the word <strong>ERROR</strong> or <strong>WARNING</strong></p></li>
+<li><p>the location of the error + an explanation of the error</p></li>
+</ul>
+<div class="callout-example">
+<p>This program has three syntax errors. What are the errors?</p>
+<p><img src="figs/part1/syntax_ex2.png" class="img-fluid"></p>
+</div>
 </section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>Special thanks to <a href="https://cas.gsu.edu/profile/li-hsiang-lin/">Li-Hsiang Lin</a> for providing the base materials given on this website.</p>
+<section id="solution-to-the-example" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="solution-to-the-example"><span class="header-section-number">2.3</span> Solution to the example</h2>
+<ol type="1">
+<li><p>Exercise 1: 5</p></li>
+<li><p>Exercise 2:</p></li>
+</ol>
+<p><img src="figs/part1/syntax_ex2_2.png" class="img-fluid"></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -992,10 +869,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./part1_1_intro_operation.html" class="pagination-link" aria-label="Introduction to Basic SAS Operation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Basic SAS Operation</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1_1_intro_operation.html" class="pagination-link" aria-label="Introduction to Basic SAS Operation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Basic SAS Operation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part1_3_import_export.html" class="pagination-link" aria-label="Import and Export Dataset">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Import and Export Dataset</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

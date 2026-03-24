@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chi-Kuang Yeh">
-<meta name="dcterms.date" content="2026-03-23">
 
-<title>STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>14&nbsp; Regression Analysis – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1_1_intro_operation.html" rel="next">
+<link href="./part3_3_regression_interaction.html" rel="next">
+<link href="./part3_1_ANOVA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -143,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_2_regression.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -157,7 +191,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -272,7 +306,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part3_2_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="./part3_2_regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></span></a>
   </div>
 </li>
@@ -323,20 +357,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">14.1</span> Introduction</a></li>
+  <li><a href="#correlation-vs-regression" id="toc-correlation-vs-regression" class="nav-link" data-scroll-target="#correlation-vs-regression"><span class="header-section-number">14.2</span> Correlation vs Regression</a></li>
+  <li><a href="#correlation-between-two-variables" id="toc-correlation-between-two-variables" class="nav-link" data-scroll-target="#correlation-between-two-variables"><span class="header-section-number">14.3</span> Correlation between Two Variables</a></li>
+  <li><a href="#regression-in-sas" id="toc-regression-in-sas" class="nav-link" data-scroll-target="#regression-in-sas"><span class="header-section-number">14.4</span> Regression in SAS</a>
   <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model"><span class="header-section-number">14.4.1</span> Regression Model</a></li>
   </ul></li>
-  <li><a href="#office-hour" id="toc-office-hour" class="nav-link" data-scroll-target="#office-hour">Office Hour</a></li>
-  <li><a href="#grade-distribution" id="toc-grade-distribution" class="nav-link" data-scroll-target="#grade-distribution">Grade Distribution</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
-  <li><a href="#midterm" id="toc-midterm" class="nav-link" data-scroll-target="#midterm">Midterm</a></li>
-  <li><a href="#topics-and-corresponding-lectures" id="toc-topics-and-corresponding-lectures" class="nav-link" data-scroll-target="#topics-and-corresponding-lectures">Topics and Corresponding Lectures</a></li>
-  <li><a href="#recommended-textbooks" id="toc-recommended-textbooks" class="nav-link" data-scroll-target="#recommended-textbooks">Recommended Textbooks</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#interpreting-the-regression-output" id="toc-interpreting-the-regression-output" class="nav-link" data-scroll-target="#interpreting-the-regression-output"><span class="header-section-number">14.5</span> Interpreting the Regression Output</a>
+  <ul class="collapse">
+  <li><a href="#example-prediction" id="toc-example-prediction" class="nav-link" data-scroll-target="#example-prediction"><span class="header-section-number">14.5.1</span> Example Prediction</a></li>
+  <li><a href="#testing-the-slope" id="toc-testing-the-slope" class="nav-link" data-scroll-target="#testing-the-slope"><span class="header-section-number">14.5.2</span> Testing the Slope</a></li>
+  </ul></li>
+  <li><a href="#assumption-validation-for-linear-regression" id="toc-assumption-validation-for-linear-regression" class="nav-link" data-scroll-target="#assumption-validation-for-linear-regression"><span class="header-section-number">14.6</span> Assumption Validation for Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#residual-diagnostics" id="toc-residual-diagnostics" class="nav-link" data-scroll-target="#residual-diagnostics"><span class="header-section-number">14.6.1</span> Residual Diagnostics</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -344,28 +379,16 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_2_regression.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">STAT 8678 - SAS Programming &amp; Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Analysis</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chi-Kuang Yeh </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -375,215 +398,240 @@ window.Quarto = {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS.</p>
-<p>Topics include two main parts:</p>
+<blockquote class="blockquote">
+<p>Learning Objectives</p>
 <ol type="1">
-<li><strong>SAS Programming</strong>: data management and manipulation, basic procedures, macro programming;</li>
-<li><strong>Data Analysis</strong>: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.</li>
+<li>Understand what <strong>regression analysis</strong> is.</li>
+<li>Explain the difference between <strong>correlation</strong> and <strong>regression</strong>.</li>
+<li>Fit a <strong>simple linear regression model</strong>.</li>
+<li>Interpret regression coefficients and statistical tests.</li>
+<li>Perform regression analysis in <strong>SAS</strong> and interpret the output.</li>
+<li>Check the <strong>assumptions of linear regression</strong> using diagnostic plots.</li>
 </ol>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>MATH 4544/6544 – Biostatistics, or equivalent.</p>
-</section>
-<section id="instructor" class="level3">
-<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p><a href="https://chikuang.github.io/">Chi-Kuang Yeh</a>, Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.</p>
+</blockquote>
+<section id="introduction" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">14.1</span> Introduction</h2>
+<p>In many studies, the goal is not only to determine whether variables are related, but also to <em>quantify how one variable influences another</em>.</p>
+<p>For example:</p>
 <ul>
-<li>Office: Suite 1407, 25 Park Place.</li>
-<li>Email: <a href="mailto:cyeh@gsu.edu">cyeh@gsu.edu</a>.</li>
+<li>How does height affect weight?</li>
+<li>How does study time affect exam score?</li>
+<li>How does advertising expenditure affect sales?</li>
 </ul>
+<p>These types of questions are addressed using <em>regression analysis</em>.</p>
+<p>Regression analysis studies the relationship between a <strong>dependent variable</strong> and one or more <strong>independent variables</strong>, and can also be used for <strong>prediction</strong>.</p>
 </section>
-</section>
-<section id="office-hour" class="level2">
-<h2 class="anchored" data-anchor-id="office-hour">Office Hour</h2>
-<p>10:00–13:00 on Monday, or by appointment.</p>
-</section>
-<section id="grade-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="grade-distribution">Grade Distribution</h2>
+<section id="correlation-vs-regression" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="correlation-vs-regression"><span class="header-section-number">14.2</span> Correlation vs Regression</h2>
+<p>Before fitting a regression model, it is often useful to examine the <strong>correlation between variables</strong>.</p>
+<p><strong>Correlation</strong></p>
 <ul>
-<li>Assignments: 60%</li>
-<li>Exam: 20%</li>
-<li>Project: 20%</li>
+<li>Measures the <em>strength and direction of linear association</em> between two variables.</li>
+<li>The correlation coefficient ranges from <em>-1 to 1</em>.</li>
+<li>Correlation is <strong>symmetric</strong>, meaning it does not distinguish between predictor and response variables.</li>
 </ul>
+<p>However:</p>
+<blockquote class="blockquote">
+<p><strong>Correlation does not imply causation.</strong></p>
+</blockquote>
+<p>A strong correlation between two variables does not necessarily mean that one variable <strong>causes</strong> the other.</p>
+<p>Regression analysis goes further by specifying a <strong>directional relationship</strong> between variables.</p>
 </section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">A1, due on Jan 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A2, due on Feb 8, 2026</label></li>
-<li><label><input type="checkbox" checked="">A3, due on Feb 15, 2026</label></li>
-<li><label><input type="checkbox" checked="">A4, due on Feb 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A5, due on Mar 18, 2026</label></li>
-<li><label><input type="checkbox">A6, TBA</label></li>
-</ul>
-</section>
-<section id="midterm" class="level2">
-<h2 class="anchored" data-anchor-id="midterm">Midterm</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">March 4, 2026</label></li>
-</ul>
-</section>
-<section id="topics-and-corresponding-lectures" class="level2">
-<h2 class="anchored" data-anchor-id="topics-and-corresponding-lectures">Topics and Corresponding Lectures</h2>
-<p>Those chapters are based on the lecture notes. This part will be updated frequently.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 71%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Status</th>
-<th style="text-align: center;">Topic</th>
-<th style="text-align: center;">Lecture</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Welcome and Overview</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 1: Basics</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Basic SAS Operation</td>
-<td style="text-align: center;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">SAS Syntax</td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Import and Export Data</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Random Variable</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 2: Statistical Analysis</strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference I</td>
-<td style="text-align: center;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference II</td>
-<td style="text-align: center;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Nonparametric Test</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Proportion Test</td>
-<td style="text-align: center;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to SAS Marco</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Chi-Square GoF test</td>
-<td style="text-align: center;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Power Analysis and Calculation (Recorded)</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity I</td>
-<td style="text-align: center;">13</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📜 Exam 🖌️ </strong></td>
-<td style="text-align: center;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Datasets</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 3: Regression Analysis </strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Analysis of Variance</td>
-<td style="text-align: center;">16</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">⛱ Spring Break 🌊</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity II</td>
-<td style="text-align: center;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Intro to Regression Analysis</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Regression with Interaction Effects</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model I</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model II</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-</tbody>
-</table>
-<!-- 🚧🛠️⏳   -->
-</section>
-<section id="recommended-textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-textbooks">Recommended Textbooks</h2>
+<section id="correlation-between-two-variables" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="correlation-between-two-variables"><span class="header-section-number">14.3</span> Correlation between Two Variables</h2>
+<p>Suppose in a health screening, measurements are taken on several individuals:</p>
 <ul>
-<li><p><a href="https://online.stat.psu.edu/statprogram/stat480">Statistics 480: Introduction to SAS</a>, The Pennsylvania State University.</p></li>
-<li><p><a href="https://www.sas.com/en_us/training/overview.html">SAS Training</a>, SAS Institute.</p></li>
-<li><p><a href="https://stats.oarc.ucla.edu/sas/">SAS Resources</a>, University of California, Los Angeles.</p></li>
+<li>Gender</li>
+<li>Height</li>
+<li>Weight</li>
+<li>Age</li>
+</ul>
+<p>An example dataset of such is given below.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA measurement;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  INPUT gender <span class="sc">$</span> height weight age;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  DATALINES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">68</span> <span class="dv">155</span> <span class="dv">23</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">61</span> <span class="dv">99</span> <span class="dv">20</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">63</span> <span class="dv">115</span> <span class="dv">21</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">70</span> <span class="dv">205</span> <span class="dv">45</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">69</span> <span class="dv">170</span> <span class="dv">35</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  F <span class="dv">65</span> <span class="dv">125</span> <span class="dv">30</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  M <span class="dv">72</span> <span class="dv">220</span> <span class="dv">48</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To examine the correlation between every paired variables, we can use the <code>PROC CORR</code> procedure in SAS.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC CORR DATA<span class="ot">=</span>measurement;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  TITLE <span class="st">"Correlation Analysis"</span>;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  VAR height weight age;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="figs/part3/regression1.png" class="img-fluid"></p>
+<p>The output will show the correlation coefficients between each pair of variables, along with the corresponding p-values to test for statistical significance.</p>
+<p>The output from PROC CORR provides:</p>
+<ul>
+<li>Descriptive statistics for each variable</li>
+<li>A Pearson correlation matrix</li>
+</ul>
+<p><strong>Interpretation of the output</strong></p>
+<p>The top number in each cell is the Pearson correlation coefficient, which measures the strength of the linear association between two variables.</p>
+<p>The number below it is the p-value for testing</p>
+<p><span class="math display">\[
+H_0 : \rho = 0
+\]</span></p>
+<p>against</p>
+<p><span class="math display">\[
+H_1 : \rho \ne 0
+\]</span></p>
+<p>For example:</p>
+<ul>
+<li>The correlation between height and weight is 0.9716.</li>
+<li>The corresponding p-value is 0.003.</li>
+</ul>
+<p>Since the p-value is less than 0.05, we conclude that height and weight are significantly correlated.</p>
+<p>The correlation matrix is symmetric along the diagonal line, and each variable has a correlation of 1 with itself.</p>
+<p>Important Note</p>
+<p>Even when two variables show a strong correlation, this does not necessarily imply a causal relationship.</p>
+<p>A strong association may occur because:</p>
+<ul>
+<li>another hidden (confounding) variable influences both variables, or</li>
+<li>the relationship is coincidental.</li>
 </ul>
 </section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>Special thanks to <a href="https://cas.gsu.edu/profile/li-hsiang-lin/">Li-Hsiang Lin</a> for providing the base materials given on this website.</p>
+<section id="regression-in-sas" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="regression-in-sas"><span class="header-section-number">14.4</span> Regression in SAS</h2>
+<p>Suppose our research question is:</p>
+<blockquote class="blockquote">
+<p>to investigate the <em>impact of one variable on another</em>, or to <em>predict the value of one variable based on another</em>.</p>
+</blockquote>
+<p>If this is the case, the regression model can be used to achieve these goals.</p>
+<p>In the example dataset, we are interested in studying the relationship between <strong>height</strong> and <strong>weight</strong>. For example:</p>
+<ul>
+<li>Does <strong>height influence weight</strong>?</li>
+<li>Can we <strong>predict a person’s weight given their height</strong>?</li>
+</ul>
+<p>To answer this question, we use a <strong>simple linear regression model</strong>.</p>
+<p>The regression model can be written as</p>
+<p><span class="math display">\[
+\text{Weight} \sim \text{Height}
+\]</span></p>
+<p>which means we model <strong>weight as a function of height</strong>.</p>
+<section id="regression-model" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="regression-model"><span class="header-section-number">14.4.1</span> Regression Model</h3>
+<p>The mathematical form of the simple linear regression model is</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \epsilon
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> is the <strong>dependent variable</strong> (weight)</li>
+<li><span class="math inline">\(X\)</span> is the <strong>independent variable</strong> (height)</li>
+<li><span class="math inline">\(\beta_0\)</span> is the <strong>intercept</strong></li>
+<li><span class="math inline">\(\beta_1\)</span> is the <strong>slope</strong></li>
+<li><span class="math inline">\(\epsilon\)</span> is the <strong>random error term</strong></li>
+</ul>
+<p>with</p>
+<p><span class="math display">\[
+\epsilon \sim N(0,\sigma^2).
+\]</span></p>
+<p>The slope <span class="math inline">\(\beta_1\)</span> represents the <strong>change in the expected value of <span class="math inline">\(Y\)</span> for a one-unit increase in <span class="math inline">\(X\)</span></strong>.</p>
+<p><strong>SAS Implementation</strong></p>
+<p>In SAS, we fit the regression model using the <code>PROC REG</code> procedure.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>measurement;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  TITLE <span class="st">"Example of Linear Regression"</span>;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  MODEL weight <span class="ot">=</span> height;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In this code:</p>
+<ul>
+<li><code>PROC REG</code> fits a linear regression model.</li>
+<li><code>MODEL weight = height</code> specifies that weight is the response variable and height is the predictor variable.</li>
+</ul>
+<p><img src="figs/part3/regression2.png" class="img-fluid"> <img src="figs/part3/regression3.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="interpreting-the-regression-output" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="interpreting-the-regression-output"><span class="header-section-number">14.5</span> Interpreting the Regression Output</h2>
+<p>Linear regression assumes that the <strong>dependent variable</strong> (e.g., <span class="math inline">\(Y\)</span>) depends linearly on the <strong>independent variable</strong> (<span class="math inline">\(X\)</span>).<br>
+The simple linear regression model is</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \epsilon
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is the <strong>intercept</strong></li>
+<li><span class="math inline">\(\beta_1\)</span> is the <strong>slope</strong></li>
+<li><span class="math inline">\(\epsilon\)</span> is the <strong>random error term</strong></li>
+</ul>
+<p>with</p>
+<p><span class="math display">\[
+\epsilon \sim N(0, \sigma^2)
+\]</span></p>
+<p>The regression output provides estimates for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.<br>
+In this example, the fitted regression equation is</p>
+<p><span class="math display">\[
+\text{weight} = -592.64458 + 11.19127 \times \text{height}
+\]</span></p>
+<p>This equation can be used to <strong>predict weight from height</strong>.</p>
+<section id="example-prediction" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="example-prediction"><span class="header-section-number">14.5.1</span> Example Prediction</h3>
+<p>For a person who is <strong>70 inches tall</strong>, the predicted weight is</p>
+<p><span class="math display">\[
+\hat{weight}
+=
+-592.64458 + 11.19127 \times 70
+=
+190.66
+\]</span></p>
+<p>Thus, the predicted weight for a <strong>70-inch-tall person</strong> is approximately <strong>190.66 pounds</strong>.</p>
+</section>
+<section id="testing-the-slope" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="testing-the-slope"><span class="header-section-number">14.5.2</span> Testing the Slope</h3>
+<p>In the regression output, the <strong>Parameter Estimates</strong> table includes the following columns:</p>
+<ul>
+<li><strong>Standard Error</strong></li>
+<li><strong>t Value</strong></li>
+<li><strong>Pr &gt; |t|</strong> (p-value)</li>
+</ul>
+<p>These values are used to test the hypothesis</p>
+<p><span class="math display">\[
+H_0 : \beta_1 = 0
+\]</span></p>
+<p>which means that the predictor variable has <strong>no linear effect</strong> on the response variable.</p>
+<p>If the p-value is <strong>small (e.g., less than 0.05)</strong>, we reject the null hypothesis.</p>
+<p>In this example, the p-value for the slope is <strong>0.0003</strong>, which is much smaller than 0.05.</p>
+<p>Therefore, we conclude that <strong>height has a statistically significant linear effect on weight</strong>.</p>
+</section>
+</section>
+<section id="assumption-validation-for-linear-regression" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="assumption-validation-for-linear-regression"><span class="header-section-number">14.6</span> Assumption Validation for Linear Regression</h2>
+<p>Linear regression assumes that the <strong>relationship between two variables is linear</strong>, and that the <strong>residuals</strong> are <strong>normally distributed</strong>.</p>
+<p>Residuals are defined as</p>
+<p><span class="math display">\[
+\text{Residual} = Y - \hat{Y}
+\]</span></p>
+<p>where <span class="math inline">\(Y\)</span> is the observed value and <span class="math inline">\(\hat{Y}\)</span> is the predicted value from the regression model.</p>
+<p>These assumptions can be checked using <strong>scatter plots</strong> and <strong>residual plots</strong>.</p>
+<p>The SAS regression procedure also produces several diagnostic figures that help evaluate the model assumptions.</p>
+<p>The main diagnostic plots are shown below.</p>
+<section id="residual-diagnostics" class="level3" data-number="14.6.1">
+<h3 data-number="14.6.1" class="anchored" data-anchor-id="residual-diagnostics"><span class="header-section-number">14.6.1</span> Residual Diagnostics</h3>
+<p>From the <strong>residual plot</strong>, we should check the following:</p>
+<ul>
+<li><p><strong>Does the residual plot show an evenly scattered pattern around 0?</strong></p>
+<p>A random “white-noise-like” scatter around zero suggests that the <strong>linear model fits the data well</strong>.</p></li>
+<li><p><strong>Do the residuals follow a normal distribution?</strong></p>
+<p>This can be examined using <strong>normality diagnostics</strong>, such as a <strong>Q–Q plot</strong> or formal statistical tests.</p></li>
+</ul>
+<p>The normality of residuals can be checked using the following SAS code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>measurement;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TITLE <span class="st">"Regression and residual plots"</span>;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>MODEL weight <span class="ot">=</span> height;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>OUTPUT OUT<span class="ot">=</span>myout R<span class="ot">=</span>resid;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>PROC UNIVARIATE DATA<span class="ot">=</span>myout NORMAL;</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>QQPLOT resid <span class="sc">/</span> <span class="fu">NORMAL</span>(<span class="at">mu=</span>est <span class="at">sigma=</span>est <span class="at">color=</span>red <span class="at">l=</span><span class="dv">1</span>);</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="figs/part3/regression4.png" class="img-fluid"> <img src="figs/part3/regression6.png" class="img-fluid"> <img src="figs/part3/regression7.png" class="img-fluid"> <img src="figs/part3/regression8.png" class="img-fluid"></p>
+<p>As we can see that, the <span class="math inline">\(p\)</span>-value for normality validation is <span class="math inline">\(0.3544\)</span>, which is greater than <span class="math inline">\(0.05\)</span>, so we fail to reject the null hypothesis of normality.</p>
 
 
 </section>
@@ -992,10 +1040,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./part3_1_ANOVA.html" class="pagination-link" aria-label="Analysis of Variance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1_1_intro_operation.html" class="pagination-link" aria-label="Introduction to Basic SAS Operation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Basic SAS Operation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part3_3_regression_interaction.html" class="pagination-link" aria-label="Regression with Interaction">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regression with Interaction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

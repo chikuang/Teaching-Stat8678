@@ -36,7 +36,7 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 -   [x] A2, due on Feb 8, 2026
 -   [x] A3, due on Feb 15, 2026
 -   [x] A4, due on Feb 28, 2026
--   [ ] A5, due on Mar 18, 2026
+-   [x] A5, due on Mar 18, 2026
 -   [ ] A6, TBA
 
 ## Midterm
@@ -69,10 +69,11 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |        |   **📘 Part 3: Regression Analysis **    |         |
 |   ✅   |         Analysis of Variance   | 16  |
 |     |        ⛱ Spring Break  🌊    |   |
-|   ⏳   |         Intro to Regression Analysis     | 17  |
-|   ⏳   |         Regression with Interaction Effects   | 18  |
-|   ⏳   |         Linear Mixed Effects Model I   | 19  |
-|   ⏳   |         Linear Mixed Effects Model II   | 20  |
+|   🛠️  |         Class Activity II |17  |
+|   ⏳   |         Intro to Regression Analysis     | TBA |
+|   ⏳   |         Regression with Interaction Effects   | TBA|
+|   ⏳   |         Linear Mixed Effects Model I   |  TBA |
+|   ⏳   |         Linear Mixed Effects Model II   | TBA|
 <!-- 🚧🛠️⏳   -->
 
 ## Recommended Textbooks

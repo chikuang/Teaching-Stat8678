@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chi-Kuang Yeh">
-<meta name="dcterms.date" content="2026-03-23">
 
-<title>STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>3&nbsp; Import and Export Dataset – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1_1_intro_operation.html" rel="next">
+<link href="./part1_4_rv.html" rel="next">
+<link href="./part1_2_sas_syntax.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -143,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1_1_intro_operation.html">Introduction</a></li><li class="breadcrumb-item"><a href="./part1_3_import_export.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Import and Export Dataset</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -157,7 +191,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -184,7 +218,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1_3_import_export.html" class="sidebar-item-text sidebar-link">
+  <a href="./part1_3_import_export.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Import and Export Dataset</span></span></a>
   </div>
 </li>
@@ -323,49 +357,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
-  </ul></li>
-  <li><a href="#office-hour" id="toc-office-hour" class="nav-link" data-scroll-target="#office-hour">Office Hour</a></li>
-  <li><a href="#grade-distribution" id="toc-grade-distribution" class="nav-link" data-scroll-target="#grade-distribution">Grade Distribution</a></li>
-  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
-  <li><a href="#midterm" id="toc-midterm" class="nav-link" data-scroll-target="#midterm">Midterm</a></li>
-  <li><a href="#topics-and-corresponding-lectures" id="toc-topics-and-corresponding-lectures" class="nav-link" data-scroll-target="#topics-and-corresponding-lectures">Topics and Corresponding Lectures</a></li>
-  <li><a href="#recommended-textbooks" id="toc-recommended-textbooks" class="nav-link" data-scroll-target="#recommended-textbooks">Recommended Textbooks</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
-  </ul></li>
+  <li><a href="#reading-from-external-files" id="toc-reading-from-external-files" class="nav-link active" data-scroll-target="#reading-from-external-files"><span class="header-section-number">3.1</span> Reading from External Files</a></li>
+  <li><a href="#export-a-file-from-sas" id="toc-export-a-file-from-sas" class="nav-link" data-scroll-target="#export-a-file-from-sas"><span class="header-section-number">3.2</span> Export a File from SAS</a></li>
+  <li><a href="#import-export-in-sas-virtual-studio" id="toc-import-export-in-sas-virtual-studio" class="nav-link" data-scroll-target="#import-export-in-sas-virtual-studio"><span class="header-section-number">3.3</span> Import &amp; Export in SAS Virtual Studio</a></li>
+  <li><a href="#solution-to-the-example" id="toc-solution-to-the-example" class="nav-link" data-scroll-target="#solution-to-the-example"><span class="header-section-number">3.4</span> Solution to the example</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1_1_intro_operation.html">Introduction</a></li><li class="breadcrumb-item"><a href="./part1_3_import_export.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Import and Export Dataset</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">STAT 8678 - SAS Programming &amp; Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Import and Export Dataset</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chi-Kuang Yeh </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -375,218 +386,170 @@ window.Quarto = {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>This course covers programming using the SAS statistical software package, and it provides an introduction to data analysis stressing the implementation using SAS.</p>
-<p>Topics include two main parts:</p>
+<blockquote class="blockquote">
+<p>Learning objective:</p>
 <ol type="1">
-<li><strong>SAS Programming</strong>: data management and manipulation, basic procedures, macro programming;</li>
-<li><strong>Data Analysis</strong>: descriptive statistical analysis, one- and two-sample inference, basic categorical data analysis, regression analysis, and other selected topics.</li>
+<li>Import a csv file into SAS</li>
+<li>Export a csv file from SAS after data process</li>
 </ol>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>MATH 4544/6544 – Biostatistics, or equivalent.</p>
-</section>
-<section id="instructor" class="level3">
-<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p><a href="https://chikuang.github.io/">Chi-Kuang Yeh</a>, Assistant Professor in the Department of Mathematics and Statistics, Georgia State University.</p>
-<ul>
-<li>Office: Suite 1407, 25 Park Place.</li>
-<li>Email: <a href="mailto:cyeh@gsu.edu">cyeh@gsu.edu</a>.</li>
-</ul>
-</section>
-</section>
-<section id="office-hour" class="level2">
-<h2 class="anchored" data-anchor-id="office-hour">Office Hour</h2>
-<p>10:00–13:00 on Monday, or by appointment.</p>
-</section>
-<section id="grade-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="grade-distribution">Grade Distribution</h2>
-<ul>
-<li>Assignments: 60%</li>
-<li>Exam: 20%</li>
-<li>Project: 20%</li>
-</ul>
-</section>
-<section id="assignment" class="level2">
-<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">A1, due on Jan 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A2, due on Feb 8, 2026</label></li>
-<li><label><input type="checkbox" checked="">A3, due on Feb 15, 2026</label></li>
-<li><label><input type="checkbox" checked="">A4, due on Feb 28, 2026</label></li>
-<li><label><input type="checkbox" checked="">A5, due on Mar 18, 2026</label></li>
-<li><label><input type="checkbox">A6, TBA</label></li>
-</ul>
-</section>
-<section id="midterm" class="level2">
-<h2 class="anchored" data-anchor-id="midterm">Midterm</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">March 4, 2026</label></li>
-</ul>
-</section>
-<section id="topics-and-corresponding-lectures" class="level2">
-<h2 class="anchored" data-anchor-id="topics-and-corresponding-lectures">Topics and Corresponding Lectures</h2>
-<p>Those chapters are based on the lecture notes. This part will be updated frequently.</p>
+</blockquote>
+<p>One of the strengths of SAS as a data analysis tool is its ability to read data from many sources, subset or combine data sets, and modify the datasets to accomplish various tasks. The most common types of external data sets used in SAS are EXCEL files (XLS extent), comma separated value files (CSV extent) and various space separate text files (PRN or TXT extent). A CSV file is actually a text file and can be read in any text reader (NOTEPAD or WORDPAD in Windows). In fact, the SAS files themselves, as well as the LOG and the LST files produced by a SAS by a batch submit, are also simple text files.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 71%">
-<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 65%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Status</th>
-<th style="text-align: center;">Topic</th>
-<th style="text-align: center;">Lecture</th>
+<th>Format</th>
+<th>Description</th>
+<th>File Extension</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Welcome and Overview</td>
-<td style="text-align: center;">1</td>
+<td>WK1</td>
+<td>Lotus 1 spreadsheet</td>
+<td>.WK1</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 1: Basics</strong></td>
-<td style="text-align: center;"></td>
+<td>WK3</td>
+<td>Lotus 3 spreadsheet</td>
+<td>.WK3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Basic SAS Operation</td>
-<td style="text-align: center;">2</td>
+<td>WK4</td>
+<td>Lotus 4 spreadsheet</td>
+<td>.WK4</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">SAS Syntax</td>
-<td style="text-align: center;">3</td>
+<td>EXCEL</td>
+<td>Excel Version 4 or 5 spreadsheet</td>
+<td>.XLS</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Import and Export Data</td>
-<td style="text-align: center;">4</td>
+<td>EXCEL4</td>
+<td>Excel Version 4 spreadsheet</td>
+<td>.XLS</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Random Variable</td>
-<td style="text-align: center;">5</td>
+<td>EXCEL5</td>
+<td>Excel Version 5 spreadsheet</td>
+<td>.XLS</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 2: Statistical Analysis</strong></td>
-<td style="text-align: center;"></td>
+<td>EXCEL97</td>
+<td>Excel 97 spreadsheet</td>
+<td>.XLS</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference I</td>
-<td style="text-align: center;">6</td>
+<td>DLM</td>
+<td>delimited file (default delimiter is a blank)</td>
+<td>.*</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to Statistical Inference II</td>
-<td style="text-align: center;">7</td>
+<td>TAB</td>
+<td>delimited file (tab-delimited values)</td>
+<td>.TXT</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Nonparametric Test</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">One Sample Proportion Test</td>
-<td style="text-align: center;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Introduction to SAS Marco</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Chi-Square GoF test</td>
-<td style="text-align: center;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Power Analysis and Calculation (Recorded)</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity I</td>
-<td style="text-align: center;">13</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📜 Exam 🖌️ </strong></td>
-<td style="text-align: center;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Datasets</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>📘 Part 3: Regression Analysis </strong></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">Analysis of Variance</td>
-<td style="text-align: center;">16</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">⛱ Spring Break 🌊</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">🛠️</td>
-<td style="text-align: center;">Class Activity II</td>
-<td style="text-align: center;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Intro to Regression Analysis</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Regression with Interaction Effects</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model I</td>
-<td style="text-align: center;">TBA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⏳</td>
-<td style="text-align: center;">Linear Mixed Effects Model II</td>
-<td style="text-align: center;">TBA</td>
+<td>CSV</td>
+<td>delimited file (comma-separated values)</td>
+<td>.CSV</td>
 </tr>
 </tbody>
 </table>
-<!-- 🚧🛠️⏳   -->
+<section id="reading-from-external-files" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="reading-from-external-files"><span class="header-section-number">3.1</span> Reading from External Files</h2>
+<p>The <strong>PROC IMPORT</strong> statement is the best way to enter external data sets. The CSV file we will be using is called “grades.csv”. Download and save it in your favourite folder and mark the complete path to it. Then use the following code to import it, making sure you put the correct path on the <strong>DATAFILE</strong> argument.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PROC IMPORT OUT<span class="ot">=</span> GRADES_temp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  DATAFILE<span class="ot">=</span> <span class="st">"Put Your Path Here/grades_temp.csv"</span> DBMS<span class="ot">=</span>CSV REPLACE;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  GETNAMES<span class="ot">=</span>YES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  DATAROW<span class="ot">=</span><span class="dv">2</span>;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <strong>IMPORT</strong> statement reads the dataset and stores it as the value designated by “OUT” in this case it will be saved as “Grades” in the library “Work”.</p>
+<p>The <strong>DBMS</strong> statement defines the type of input SAS should be reading. The following table gives you all the possible choices. The REPLACE argument forces SAS to overwrite any older datasets with the same name.</p>
+<p>The <strong>GETNAMES</strong> = YES or NO statement for spreadsheets and delimited external files, determines whether to generate SAS variable names from the column names in the input file’s first row of data. If you specify <strong>GETNAMES</strong> = NO or if the column names are not valid SAS names, PROC IMPORT uses the variable names VAR0, VAR1, VAR2, and so on. You may replace the equals sign with a blank.</p>
+<p>The <strong>DATAROW</strong> argument tells SAS where to start reading for input data. In our case it is row 2 since row 1 is used for variable names.</p>
+<p>We use the print procedure to see the dataset,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC PRINT DATA<span class="ot">=</span>GRADES_temp;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RUN</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The first few rows are shown as follows</p>
+<p><img src="figs/part1/import_1.png" class="img-fluid"></p>
 </section>
-<section id="recommended-textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-textbooks">Recommended Textbooks</h2>
+<section id="export-a-file-from-sas" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="export-a-file-from-sas"><span class="header-section-number">3.2</span> Export a File from SAS</h2>
+<p>After reading a dataset into SAS, we may need to conduct some initial step/analysis to re-organize dataset for doing further data analysis. In the <em>grade</em> example, the first row shows the maximum points available for each quiz. We need to remove this row so that our analysis is correct. This can be done by the following SAS code</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DATA GRADES;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  SET GRADES_temp NOBS<span class="ot">=</span>COUNT</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    IF _n_        <span class="sc">&lt;=</span> <span class="dv">1</span> THEN DELETE;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note: GRADES_temp is the name of the old dataset and <em>GRADES</em> is the name of the new dataset after the first row is deleted.</p>
+<p>After re-organize the dataset, we may want to export the updated dataset for use in the future:</p>
+<p>This can be done by</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PROC EXPORT DATA<span class="ot">=</span> GRADES</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  OUTFILE<span class="ot">=</span> <span class="st">"Put Your Path Here/grade_v2.csv"</span> DBMS<span class="ot">=</span>CSV REPLACE;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  REPLACE;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We will talk about more reorganizing skills in SAS in the next topic.</p>
+<div class="callout-example">
+<p>Which statement is true concerning the DATALINES statement based on reading the comment?</p>
+<ol type="a">
+<li><p>The DATALINES statement is used when reading data located in a raw data file.</p></li>
+<li><p>The DATALINES statement is used when reading data located directly in the program.</p></li>
+</ol>
+</div>
+</section>
+<section id="import-export-in-sas-virtual-studio" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="import-export-in-sas-virtual-studio"><span class="header-section-number">3.3</span> Import &amp; Export in SAS Virtual Studio</h2>
+<p>The key is</p>
 <ul>
-<li><p><a href="https://online.stat.psu.edu/statprogram/stat480">Statistics 480: Introduction to SAS</a>, The Pennsylvania State University.</p></li>
-<li><p><a href="https://www.sas.com/en_us/training/overview.html">SAS Training</a>, SAS Institute.</p></li>
-<li><p><a href="https://stats.oarc.ucla.edu/sas/">SAS Resources</a>, University of California, Los Angeles.</p></li>
+<li>Upload data before conducting “Import”</li>
+<li>Download data after conducting “Export”</li>
 </ul>
+<p><img src="figs/part1/import_2.png" class="img-fluid"></p>
+<p>A example given below will be demonstrated during the class.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span> Generated <span class="fu">Code</span> (IMPORT) <span class="sc">*</span><span class="er">/</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="er">/*</span> Source File<span class="sc">:</span> grades_temp.csv <span class="sc">*</span><span class="er">/</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="er">/*</span> Source Path<span class="sc">:</span> <span class="er">/</span>home<span class="sc">/</span>u63733881<span class="sc">/</span>sasuser.v94 <span class="sc">*</span><span class="er">/</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="er">/*</span> Code generated on<span class="sc">:</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">20</span><span class="sc">/</span><span class="dv">24</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">49</span> PM <span class="sc">*</span><span class="er">/</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>%<span class="fu">web_drop_table</span>(WORK.IMPORT);</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>FILENAME REFFILE <span class="st">'/home/u63733881/sasuser.v94/grades_temp.csv'</span>;</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>PROC IMPORT DATAFILE<span class="ot">=</span>REFFILE</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    DBMS<span class="ot">=</span>CSV</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    OUT<span class="ot">=</span>WORK.grades_temp;</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    GETNAMES<span class="ot">=</span>YES;</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>PROC CONTENTS DATA<span class="ot">=</span>WORK.grades_temp; </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>PROC print data<span class="ot">=</span>WORK.grades_temp;</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>DATA WORK.grades;</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>SET WORK.grades_temp NOBS<span class="ot">=</span>COUNT;</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>IF _n_ <span class="sc">&lt;=</span> <span class="dv">1</span> THEN DELTE;</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>PROC PRINT DATA<span class="ot">=</span>WORK.grades;</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>PROC EXPORT data<span class="ot">=</span>WORK.grades</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    OUTFILE <span class="ot">=</span> <span class="st">"/home/u63733881/sasuser.v94/grades_2.csv"</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    DBMS <span class="ot">=</span> csv</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    REPLACE;</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="acknowledgments" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>Special thanks to <a href="https://cas.gsu.edu/profile/li-hsiang-lin/">Li-Hsiang Lin</a> for providing the base materials given on this website.</p>
+<section id="solution-to-the-example" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="solution-to-the-example"><span class="header-section-number">3.4</span> Solution to the example</h2>
+<p>Answer of the example: b</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -992,10 +955,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./part1_2_sas_syntax.html" class="pagination-link" aria-label="Working with SAS Syntax">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working with SAS Syntax</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1_1_intro_operation.html" class="pagination-link" aria-label="Introduction to Basic SAS Operation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Basic SAS Operation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part1_4_rv.html" class="pagination-link" aria-label="Random Variables">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
