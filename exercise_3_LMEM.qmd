@@ -1,0 +1,109 @@
+# Exercise 3: Linear Mixed Effects Model (Advanced)
+
+> Learning Objectives
+>
+> By the end of this activity, you should be able to:
+>
+> 1.  Identify clustered and hierarchical data structures
+> 2.  Specify linear mixed models with multiple random effects
+> 3.  Implement PROC MIXED in SAS
+> 4.  Interpret fixed and random effects
+> 5.  Understand interaction + mixed effects
+
+
+## Dataset: Multi-Location Crop Yield Study
+
+We now consider a more complex dataset:
+
+-   5 locations (randomly sampled farms)
+-   2 machine types (draper, stripper)
+-   2 crop varieties
+-   multiple observations per combination
+
+
+## SAS Dataset
+
+``` r
+DATA crop;
+INPUT location $ machine $ variety $ yield;
+DATALINES;
+A draper v1 35.2
+A draper v2 34.8
+A stripper v1 38.5
+A stripper v2 39.1
+B draper v1 30.5
+B draper v2 31.2
+B stripper v1 34.0
+B stripper v2 35.5
+C draper v1 28.9
+C draper v2 29.5
+C stripper v1 32.1
+C stripper v2 33.0
+D draper v1 36.0
+D draper v2 35.7
+D stripper v1 40.2
+D stripper v2 41.0
+E draper v1 33.3
+E draper v2 34.1
+E stripper v1 37.5
+E stripper v2 38.0
+;
+RUN;
+```
+
+## Step 1: Identify Model Structure
+
+### Task 1
+
+Identify:
+
+-   Response variable: \_\_\_\_\_\_\_\_
+-   Fixed effects: \_\_\_\_\_\_\_\_
+-   Random effects: \_\_\_\_\_\_\_\_
+
+
+## Step 2: Write the Full Model
+
+$$
+Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} + 
+\beta_3 (machine \times variety) + u_{location} + \epsilon
+$$
+
+
+## Step 3: Implement in SAS
+
+``` sas
+PROC MIXED DATA=crop;
+    CLASS location machine variety;
+    MODEL yield = machine variety machine*variety;
+    RANDOM location;
+RUN;
+```
+
+### Step 4: Interpretation
+
+Suppose:
+
+-   machine effect = 3.2
+-   interaction = 1.1
+
+Interpret:
+
+-   machine effect: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+-   interaction: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+### Step 5: Model Comparison
+
+| Model              | AIC |
+|--------------------|-----|
+| No random effect   | 210 |
+| With random effect | 165 |
+
+Which is better? Why?
+
+
+# Key Takeaways
+
+-   Mixed models handle clustered data
+-   Random effects capture variability across groups
+-   Interaction allows flexible modeling

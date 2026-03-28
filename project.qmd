@@ -1,0 +1,214 @@
+# Final Project: Data Analysis Using SAS {.unnumbered}
+
+> **Weight**: 20% of final grade  
+> **Last modified**: March 28, 2026
+> **Due Date**: Apr 27, 2026
+
+## 🎯 Project Overview
+
+The goal of the final project is to apply **statistical methods and SAS programming skills** learned throughout the course to conduct a **complete data analysis pipeline**.
+
+Students will:
+
+- Work with a **real-world open dataset**
+- Perform **data cleaning, visualization, and modeling**
+- Use **SAS procedures and macros**
+- Communicate results clearly through a **written report**
+
+## 📊 Data Requirement
+
+You must use a **public/open dataset**.
+
+### Recommended sources:
+
+- UCI Machine Learning Repository  
+- Kaggle (public datasets only)  
+- Data.gov  
+- CDC / WHO datasets  
+- Built-in SAS datasets (e.g., `sashelp.cars`, `sashelp.heart`, etc.)
+
+### Requirements:
+
+- At least **100 observations**
+- At least **3–5 variables**
+- Must include:
+  - At least **one categorical variable**
+  - At least **one numerical variable**
+
+## Group:
+
+You can form group of **2–3 students**. If you prefer to work alone, that is also acceptable. PhD students MUST work individually.
+
+## Project Components
+
+Your project must include the following components:
+
+
+**Research Question (10%)**
+
+Clearly state:
+
+- What question are you trying to answer?
+- Why is it interesting or important?
+
+Examples:
+
+- Does treatment A outperform treatment B?
+- What factors affect income?
+- Is there an association between two categorical variables?
+
+**Data Cleaning & Preparation (15%)**
+
+- Import dataset into SAS
+- Handle:
+  - Missing values
+  - Data types
+  - Outliers (if necessary)
+
+Suggested tools:
+
+- `DATA` step
+- `PROC IMPORT`
+- `PROC FORMAT`
+
+**Exploratory Data Analysis (EDA) (15%)**
+
+Use SAS to explore the data:
+
+- Summary statistics:
+  - `PROC MEANS`
+  - `PROC FREQ`
+- Visualizations:
+  - `PROC SGPLOT`
+
+Examples:
+
+- Histograms
+- Boxplots
+- Scatterplots
+
+**Statistical Analysis (30%)**
+
+You must include **at least TWO of the following methods**:
+
+- Chi-square test (`PROC FREQ`)
+- Two-sample t-test (`PROC TTEST`)
+- ANOVA (`PROC ANOVA` or `PROC GLM`)
+- Regression (`PROC REG`)
+- Correlation (`PROC CORR`)
+
+You should:
+
+- State hypotheses
+- Report test statistics and p-values
+- Interpret results in context
+
+**SAS Macro (15%)**
+
+You must create **at least one SAS macro**.
+
+Examples:
+
+- A macro for:
+  - Summary statistics
+  - Running multiple regressions
+  - Automating hypothesis tests
+
+Your macro must:
+
+- Take at least **2 input arguments**
+- Be reusable
+- Be clearly documented
+
+Example structure:
+
+```r
+%MACRO analysis(data, var);
+    PROC MEANS DATA=&data;
+        VAR &var;
+    RUN;
+%MEND;
+```
+
+**Interpretation & Conclusion (15%)**
+
+You must:
+
++ Explain results in plain language
++ Connect findings to your research question
++ Discuss:
++ Limitations
++ Possible improvements
+
+##  📄 Deliverables
+
+**1. Written Report (PDF)**
+
+Length: 8--10 pages (excluding references and appendices). You may put additional Figures and Tables in the appendix.
+
+Include:
+
++ Introduction
++ Data description
++ Methods
++ Results
++ Conclusion
+
+**2. SAS Code File (.sas)**
+
+Must include:
+
++ Clean and well-commented code
++ Macro implementation
+
+**3. (Optional Bonus +5%)**
+
++ Visualization dashboard
++ Additional modeling (e.g., interaction, model comparison)
++ Advanced macro usage
+
+
+## 📊 Grading Breakdown
+
+| Component | Points |
+|:---:|:---:|
+| Research Question | 10 |
+| Data Preparation | 15 |
+| EDA | 15 |
+| Statistical Analysis | 30 |
+| SAS Macro | 15 |
+| Interpretation | 15 |
+| **Total** | **100 (20% course weight)** |
+
+
+::: {.callout-warning title="Important Notes"}
+
++ You must write your own SAS code
++ Collaboration is allowed for discussion, but not for code sharing between the groups
++ Plagiarism will result in zero credit
+
+:::
+
+::: {.callout-note title="💡 Suggested Workflow"}
+
+1.	Pick dataset early
+2.	Perform EDA first
+3.	Decide appropriate statistical methods
+4.	Write SAS code
+5.	Wrap repeated tasks into macros
+6.	Write report last
+
+:::
+
+::: {.callout-note title="Key Learning Outcome"}
+
+This project integrates:
+
++ Statistical thinking
++ SAS programming
++ Reproducible analysis
++ Communication skills
+
+This is designed to simulate a real-world data analysis task.
+
+:::
