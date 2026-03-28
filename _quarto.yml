@@ -28,6 +28,8 @@ book:
       - part3_1_ANOVA.qmd
       - part3_2_regression.qmd
       - part3_3_regression_interaction.qmd
+      - part3_4_LMEM_I.qmd
+      - part3_5_LMEM_II.qmd
     - part: "Hands on Class"
       chapters:
       - exercise_1_macro.qmd

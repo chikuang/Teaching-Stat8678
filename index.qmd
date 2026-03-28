@@ -63,13 +63,13 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅     |        Introduction to SAS Marco         |   10    |
 |  ✅    |        Chi-Square GoF test|   11   |
 |    ✅    |        Power Analysis and Calculation     (Recorded)  |   12  |
-|   🛠️  |         Class Activity I |   13  |
+| ✅ ️  |        🛠  Class Activity I |   13  |
 |    | **📜 Exam 🖌️ **  | 14 |
 | ✅    |         Two Sample $t$-test for Independent and Paired Datasets   |   15  |
 |        |   **📘 Part 3: Regression Analysis **    |         |
 |   ✅   |         Analysis of Variance   | 16  |
 |     |        ⛱ Spring Break  🌊    |   |
-|   🛠️  |         Class Activity II |17  |
+|   ✅   |        🛠 Class Activity II  |17  |
 |   ✅   |         Intro to Regression Analysis     | 18 |
 |   ⏳   |         Regression with Interaction Effects   | TBA|
 |   ⏳   |         Linear Mixed Effects Model I   |  TBA |

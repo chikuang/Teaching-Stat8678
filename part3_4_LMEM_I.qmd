@@ -1,0 +1,265 @@
+# Linear Mixed Effect Models I
+
+> Learning Objectives
+>
+> By the end of this lecture, you should be able to:
+>
+> 1. Understand the difference between **fixed effects** and **random effects**
+> 2. Recognize **clustered** and **longitudinal** data structures
+> 3. Formulate **linear mixed models mathematically**
+> 4. Implement LMM in **SAS using PROC MIXED**
+> 5. Interpret model outputs
+
+## Introduction
+
+In previous lectures, we studied linear regression models of the form:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i \sim N(0, \sigma^2)
+$$
+
+A key assumption is:
+
+> Observations are **independent**
+
+However, this assumption often fails in real applications.
+
+::: {.callout-example title = "Clustered Data"}
+
+- Students within schools
+- Patients within hospitals
+
+Observations within the same group tend to be **similar**, leading to:
+
+$$
+\text{Corr}(Y_{ij}, Y_{ik}) \neq 0
+$$
+
+:::
+
+
+::: {.callout-example title = "Longitudinal Data"}
+
+Repeated measurements on the same subject
+
+Example 
+
+- Measuring performance across trials
+
+This leads to:
+
+$$
+Y_{i1}, Y_{i2}, \dots, Y_{iT} \text{ are correlated}
+$$
+
+:::
+
+This can be written as the additive structure of the **fixed effects** and **random effects**.
+
+::: {.callout-definition title = "Fixed vs Random Effects"}
+
+**Fixed Effects**
+
+- Parameters associated with **entire population**
+- Example:
+
+$$
+\beta_1 = \text{effect of treatment}
+$$
+
+
+**Random Effects**
+
+- Capture **subject-specific variation**
+
+Let:
+
+$$
+u_i \sim N(0, \sigma_u^2)
+$$
+
+Then each subject has its own deviation.
+
+:::
+
+This can be modelled using something called Linear Mixed 
+
+## Linear Mixed Effect Model (LMEM)
+
+A general LMEM is:
+
+$$
+Y_{ij} = \beta_0 + \beta_1 X_{ij} + u_i + \epsilon_{ij},
+$$
+
+where
+
+- $u_i \sim N(0, \sigma_u^2)$ (random effect)
+- $\epsilon_{ij} \sim N(0, \sigma^2)$ (residual)
+
+**Interpretation**
+
+- $\beta_0, \beta_1$: fixed effects
+- $u_i$: subject-specific deviation
+- $Y_{ij}$ are correlated because of shared $u_i$
+
+## Variance Structure
+
+We can derive:
+
+$$
+\text{Var}(Y_{ij}) = \sigma_u^2 + \sigma^2
+$$
+
+$$
+\text{Cov}(Y_{ij}, Y_{ik}) = \sigma_u^2
+$$
+
+Thus:
+
+$$
+\text{Corr}(Y_{ij}, Y_{ik}) = \frac{\sigma_u^2}{\sigma_u^2 + \sigma^2}
+$$
+
+
+## Example Dataset
+
+``` r
+DATA performance;
+    INPUT id $ age group $ trial score;
+    DATALINES;
+SY 34 A 1 14.3
+SY 34 A 2 21.4
+SY 34 A 3 27.6
+SY 34 A 4 31.1
+SY 34 A 5 33.2
+WL 33 A 1 13.2
+WL 33 A 2 21.4
+WL 33 A 3 23.3
+WL 33 A 4 30.0
+WL 33 A 5 38.6
+ZN 43 B 1 15.9
+ZN 43 B 2 23.4
+ZN 43 B 3 22.0
+ZN 43 B 4 29.0
+ZN 43 B 5 33.6
+;
+RUN;
+```
+
+**Step 1: Incorrect Model (Ignoring Correlation)**
+
+```r
+PROC REG DATA=performance;
+    MODEL score = trial;
+RUN;
+```
+
+Problem:
+
+- Assumes independence
+- Underestimates variance
+
+
+**Step 2: Random Intercept Model**
+
+``` r
+PROC MIXED DATA=performance;
+    CLASS id;
+    MODEL score = trial;
+    RANDOM INTERCEPT / SUBJECT=id;
+RUN;
+```
+
+Model:
+
+$$
+Y_{ij} = \beta_0 + \beta_1 \cdot trial_{ij} + u_i + \epsilon_{ij}
+$$
+
+
+**Step 3: Add Fixed Effects**
+
+```r 
+PROC MIXED DATA=performance;
+    CLASS id group;
+    MODEL score = trial group;
+    RANDOM INTERCEPT / SUBJECT=id;
+RUN;
+```
+
+Model:
+
+$$
+Y_{ij} = \beta_0 + \beta_1 trial_{ij} + \beta_2 group_i + u_i + \epsilon_{ij}
+$$
+
+
+**Step 4: Random Slope Model**
+
+```sas
+PROC MIXED DATA=performance;
+    CLASS id;
+    MODEL score = trial;
+    RANDOM INTERCEPT trial / SUBJECT=id;
+RUN;
+```
+
+Model:
+
+$$
+Y_{ij} = \beta_0 + \beta_1 trial_{ij} + u_{0i} + u_{1i} trial_{ij} + \epsilon_{ij}
+$$
+
+
+## Conceptual Visualization
+
+- Regression: one line
+- Mixed model: multiple lines (one per subject)
+
+
+## In-Class Questions
+
+::: {.callout-exercise}
+
+Which variable is most appropriate as a random effect?
+
+(A) trial  
+(B) score  
+(C) id  
+(D) group  
+
+:::
+
+::: {.callout-exercise}
+
+Why include random effects?
+
+(A) Increase sample size  
+(B) Model dependence  
+(C) Remove variables  
+(D) Normalize data  
+
+:::
+
+::: {.callout-exercise}
+
+Ignoring clustering leads to:
+
+(A) Correct inference  
+(B) Smaller errors  
+(C) Incorrect standard errors  
+(D) Better prediction  
+
+:::
+
+::: {.callout-note title = "Key Takeaways"}
+
+- Mixed models handle **correlated data**
+- Random effects introduce **dependence structure**
+- Important for:
+  - Longitudinal data
+  - Clustered data
+- Implemented via `PROC MIXED` in SAS
+
+:::

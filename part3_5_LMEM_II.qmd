@@ -1,0 +1,156 @@
+# Linear Mixed Effect Models II
+
+> Learning Objectives
+>
+> By the end of this lecture, you should be able to:
+>
+> 1. Implement **linear mixed models in SAS using `PROC MIXED`**
+> 2. Understand the roles of **MODEL, RANDOM, and CLASS statements**
+> 3. Interpret key outputs such as:
+>     - Covariance parameter estimates
+>     - Type 3 tests of fixed effects
+>     - Fit statistics
+> 4. Compare **fixed-effects models vs mixed-effects models**
+> 5. Recognize how modeling correlation changes inference
+
+## Introduction
+
+In the previous lecture, we introduced the **conceptual framework of linear mixed models**:
+
+$$
+Y = X\beta + Z\gamma + \epsilon
+$$
+
+- $X\beta$: fixed effects (population-level)
+- $Z\gamma$: random effects (cluster-level variability)
+- $\epsilon$: residual error
+
+In this lecture, we focus on **how to implement this model in SAS** using `PROC MIXED`.
+
+## Why PROC MIXED?
+
+Recall:
+
+- `PROC REG` → assumes independence
+- `PROC GLM` → handles categorical variables
+- `PROC MIXED` → handles **dependence + clustering**
+
+Typical use cases:
+
+- Clustered data (e.g., families, schools)
+- Longitudinal data (repeated measures)
+
+
+## Key Syntax in PROC MIXED
+
+```sas
+PROC MIXED DATA=dataset;
+    CLASS categorical_variables;
+    MODEL response = fixed_effects;
+    RANDOM random_effects / SUBJECT=cluster;
+RUN;
+```
+
+::: {.callout-example title="Family Height"}
+
+```sas
+DATA heights;
+INPUT Family Gender $ Height @@;
+DATALINES;
+1 F 67 1 F 66 1 F 64 1 M 71 1 M 72
+2 F 63 2 F 67 2 M 69 2 M 68 2 M 70
+3 F 63 3 M 64
+4 F 67 4 F 66 4 M 67 4 M 67 4 M 69
+;
+RUN;
+```
+
+
+
+## Understanding the Data Structure
+
+**Cluster = Family**
+
+Observations within a family are correlated.
+
+
+## Step 1: Fixed Effects Model
+
+```sas
+PROC MIXED DATA=heights;
+    CLASS Family Gender;
+    MODEL Height = Gender Family Family*Gender;
+RUN;
+```
+
+### Interpretation
+
+- Equivalent to ANOVA
+- Assumes independence
+
+---
+
+## Step 2: Mixed Effects Model
+
+```sas
+PROC MIXED DATA=heights;
+    CLASS Family Gender;
+    MODEL Height = Gender;
+    RANDOM Family Family*Gender;
+RUN;
+```
+
+---
+
+## Model Interpretation
+
+$$
+Y_{ij} = \beta_0 + \beta_1 Gender_{ij} + u_{Family} + u_{Family*Gender} + \epsilon_{ij}
+$$
+
+
+## Key Output Tables
+
+### Covariance Parameter Estimates
+
+- Variance components for:
+  - Family
+  - Interaction
+  - Residual
+
+
+:::
+
+### Type 3 Tests
+
+- Hypothesis testing for fixed effects
+
+
+### Fit Statistics
+
+- AIC
+- BIC
+- Likelihood
+
+
+## Key Insight
+
+Modeling correlation changes:
+
+- Standard errors
+- p-values
+- inference
+
+## Summary
+
+- `PROC MIXED` handles correlated data
+- `MODEL` = fixed effects
+- `RANDOM` = random effects
+- Proper modeling is essential
+
+
+## Key Takeaways
+
+- Mixed models handle clustered data
+- Random effects capture dependence
+- Ignoring correlation leads to incorrect conclusions
