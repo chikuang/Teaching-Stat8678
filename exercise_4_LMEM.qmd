@@ -1,4 +1,4 @@
-# Exercise 3: Linear Mixed Effects Model (Advanced)
+# Exercise 4: Linear Mixed Effects Model
 
 > Learning Objectives
 >
@@ -10,7 +10,6 @@
 > 4.  Interpret fixed and random effects
 > 5.  Understand interaction + mixed effects
 
-
 ## Dataset: Multi-Location Crop Yield Study
 
 We now consider a more complex dataset:
@@ -19,7 +18,6 @@ We now consider a more complex dataset:
 -   2 machine types (draper, stripper)
 -   2 crop varieties
 -   multiple observations per combination
-
 
 ## SAS Dataset
 
@@ -61,14 +59,12 @@ Identify:
 -   Fixed effects: \_\_\_\_\_\_\_\_
 -   Random effects: \_\_\_\_\_\_\_\_
 
-
 ## Step 2: Write the Full Model
 
 $$
 Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} + 
 \beta_3 (machine \times variety) + u_{location} + \epsilon
 $$
-
 
 ## Step 3: Implement in SAS
 
@@ -100,7 +96,6 @@ Interpret:
 | With random effect | 165 |
 
 Which is better? Why?
-
 
 # Key Takeaways
 

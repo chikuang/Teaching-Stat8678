@@ -1,0 +1,292 @@
+# Exercise 3: Linear Regression and Interaction
+
+> Learning Objectives
+>
+> By the end of this activity, you should be able to:
+>
+> 1.  Fit and interpret a simple linear regression model in SAS
+> 2.  Check regression assumptions
+> 3.  Understand when interaction is needed
+> 4.  Fit and interpret regression with interaction
+> 5.  Visualize and interpret interaction effects
+
+## Structure of This Activity
+
+This activity follows a three-stage workflow:
+
+1.  Build a baseline regression model
+2.  Diagnose model assumptions
+3.  Extend to an interaction model
+
+## Dataset for This Exercise
+
+We will use a dataset relating:
+
+-   height
+-   sex
+-   weight
+
+``` r
+DATA MEASUREMENT;
+    INPUT SEX $ HEIGHT WEIGHT;
+    DATALINES;
+Male 67.07 163.61
+Male 66.98 162.23
+Male 69.13 163.06
+Male 67.31 163.76
+Male 66.25 163.84
+Male 72.20 168.39
+Male 71.39 168.19
+Male 60.81 159.14
+Male 64.78 160.58
+Male 68.13 163.63
+Male 63.15 161.36
+Male 73.91 170.46
+Male 74.38 166.68
+Male 69.77 164.70
+Male 73.86 170.27
+Male 65.34 161.75
+Male 72.75 169.74
+Male 63.92 160.03
+Male 61.85 161.79
+Male 71.25 170.94
+Male 61.68 157.11
+Male 70.71 165.60
+Male 65.73 165.85
+Male 68.04 163.39
+Male 62.76 160.00
+Male 63.05 161.20
+Male 61.34 158.26
+Male 60.59 157.50
+Male 74.35 167.14
+Male 61.36 161.91
+Female 65.42 158.25
+Female 65.76 158.12
+Female 74.60 182.54
+Female 65.67 161.15
+Female 66.06 161.69
+Female 62.60 159.56
+Female 72.26 177.10
+Female 65.48 158.31
+Female 66.87 167.29
+Female 64.29 162.77
+Female 71.11 170.03
+Female 62.40 154.43
+Female 60.95 153.28
+Female 63.15 156.38
+Female 72.54 171.83
+Female 70.49 175.26
+Female 72.68 171.63
+Female 67.37 161.84
+Female 68.11 165.04
+Female 70.48 168.12
+Female 64.33 160.85
+Female 71.84 177.00
+Female 69.55 171.59
+Female 64.69 156.69
+Female 74.90 182.22
+Female 71.89 168.57
+Female 73.25 176.51
+Female 72.43 174.51
+Female 71.01 172.05
+Female 63.16 155.14
+;
+RUN;
+```
+
+## Part 1: Simple Linear Regression
+
+Fit a simple regression model:
+
+``` r
+PROC REG DATA=MEASUREMENT;
+    MODEL WEIGHT = HEIGHT;
+RUN;
+QUIT;
+```
+
+### Questions
+
+1.  What is the estimated slope?
+2.  Interpret the slope in context.
+3.  Is HEIGHT a significant predictor?
+4.  What does the intercept represent here?
+
+## Part 2: Diagnostic Checking
+
+``` r
+PROC REG DATA=MEASUREMENT;
+    MODEL WEIGHT = HEIGHT;
+    OUTPUT OUT=MYOUT R=RESID;
+RUN;
+QUIT;
+
+PROC UNIVARIATE DATA=MYOUT NORMAL;
+    QQPLOT RESID / NORMAL(MU=EST SIGMA=EST);
+RUN;
+```
+
+### Questions
+
+1.  Are the residuals approximately normal?
+2.  Do you see any obvious violations of model assumptions?
+3.  What would you check next if the model looked problematic?
+
+## Part 3: Add a Categorical Variable
+
+Now include SEX:
+
+``` r
+PROC GLM DATA=MEASUREMENT;
+    CLASS SEX;
+    MODEL WEIGHT = HEIGHT SEX;
+RUN;
+QUIT;
+```
+
+### Questions
+
+1.  What does the coefficient or effect of SEX represent?
+2.  Does this model assume the same slope for males and females?
+3.  Is SEX associated with average differences in weight after accounting for HEIGHT?
+
+## Key Concept
+
+This model assumes:
+
+> The effect of HEIGHT is the same for both groups.
+
+## Part 4: Visual Check for Interaction
+
+``` r
+PROC SGPLOT DATA=MEASUREMENT;
+    REG X=HEIGHT Y=WEIGHT / GROUP=SEX;
+RUN;
+```
+
+### Questions
+
+1.  Are the two fitted lines roughly parallel?
+2.  Do you suspect interaction?
+3.  Which group appears to have the steeper slope?
+
+## Part 5: Fit the Interaction Model
+
+``` r
+PROC GLM DATA=MEASUREMENT;
+    CLASS SEX;
+    MODEL WEIGHT = HEIGHT SEX HEIGHT*SEX;
+RUN;
+QUIT;
+```
+
+### Questions
+
+1.  Is the interaction term significant?
+2.  How does this model differ from the previous one?
+3.  Should we keep the interaction term?
+
+## Part 6: Interpret the Model
+
+The interaction model is
+
+$$
+\text{weight}
+=
+\beta_0 + \beta_s \text{SEX} + \beta_h \text{HEIGHT} + \beta_{sh}(\text{SEX} \times \text{HEIGHT}).
+$$
+
+Assume coding:
+
+-   SEX = 0 for males
+-   SEX = 1 for females
+
+### Task
+
+Derive the fitted equations for each group.
+
+#### For males
+
+$$
+\text{weight}_{male} = \beta_0 + \beta_h \text{HEIGHT}
+$$
+
+#### For females
+
+$$
+\text{weight}_{female} = \beta_0 + \beta_s + (\beta_h + \beta_{sh})\text{HEIGHT}
+$$
+
+### Questions
+
+1.  What is the slope for males?
+2.  What is the slope for females?
+3.  What does $\beta_{sh}$ represent?
+
+## Key Insight
+
+> Interaction = difference in slopes.
+
+## Part 7: Visualization Using PROC PLM
+
+``` r
+PROC GLM DATA=MEASUREMENT;
+    CLASS SEX;
+    MODEL WEIGHT = HEIGHT SEX HEIGHT*SEX;
+    STORE INTMODEL;
+RUN;
+QUIT;
+
+PROC PLM RESTORE=INTMODEL;
+    EFFECTPLOT INTERACTION(X=HEIGHT SLICEBY=SEX);
+RUN;
+```
+
+### Questions
+
+1.  Does the plot confirm interaction?
+2.  Which group changes faster as HEIGHT increases?
+3.  Is the interaction easier to understand using the plot?
+
+## Part 8: Numerical Interpretation Practice
+
+Suppose the fitted interaction model is
+
+$$
+\widehat{\text{weight}}
+=
+20 + 5\text{SEX} + 2\text{HEIGHT} + 1(\text{SEX}\times\text{HEIGHT}).
+$$
+
+### Questions
+
+1.  What is the slope for males?
+2.  What is the slope for females?
+3.  For a person of height 70, what is the predicted weight for a male?
+4.  For a person of height 70, what is the predicted weight for a female?
+
+## Final Reflection
+
+Discuss the following:
+
+1.  When should we include an interaction term?
+2.  Why is interpretation harder once interaction is added?
+3.  What is the danger of ignoring interaction when it is truly present?
+
+## Summary
+
+-   A simple regression model assumes a constant effect.
+-   Adding a group variable still assumes equal slopes unless interaction is included.
+-   Interaction allows the effect of one variable to depend on another.
+-   Once interaction is present, interpretation becomes conditional.
+-   Visualization is often the clearest way to understand interaction.
+
+## Instructor Timing Guide (75 minutes)
+
+| Section          |   Time |
+|------------------|-------:|
+| Part 1–2         | 20 min |
+| Part 3–4         | 15 min |
+| Part 5–6         | 20 min |
+| Part 7–8         | 15 min |
+| Final reflection |  5 min |

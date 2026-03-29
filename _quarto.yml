@@ -37,7 +37,8 @@ book:
       chapters:
       - exercise_1_macro.qmd
       - exercise_2_t_ANOVA.qmd
-      - exercise_3_LMEM.qmd
+      - exercise_3_regression.qmd
+      - exercise_4_LMEM.qmd
     - references.qmd
   navbar:
     right:

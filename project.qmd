@@ -1,7 +1,7 @@
 # Final Project: Data Analysis Using SAS {.unnumbered}
 
-> **Weight**: 20% of final grade  
-> **Last modified**: March 28, 2026
+> **Weight**: 20% of final grade\
+> **Last modified**: March 28, 2026\
 > **Due Date**: Apr 27, 2026
 
 ## 🎯 Project Overview

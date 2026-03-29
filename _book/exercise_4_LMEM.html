@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Two Sample t-test for Independent and Paired Data – STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>21&nbsp; Exercise 4: Linear Mixed Effects Model – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part3_1_ANOVA.html" rel="next">
-<link href="./part2_7_power.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./exercise_3_regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -179,7 +179,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html">Statistical Analysis</a></li><li class="breadcrumb-item"><a href="./part2_8_2sample_t.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise_1_macro.html">Hands on Class</a></li><li class="breadcrumb-item"><a href="./exercise_4_LMEM.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -285,7 +285,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2_8_2sample_t.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part2_8_2sample_t.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Data</span></span></a>
   </div>
 </li>
@@ -372,8 +372,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_3_LMEM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 3: Linear Mixed Effects Model (Advanced)</span></span></a>
+  <a href="./exercise_3_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 3: Linear Regression and Interaction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_4_LMEM.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -394,28 +400,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inference-goals-of-the-two-sample-t-test" id="toc-inference-goals-of-the-two-sample-t-test" class="nav-link active" data-scroll-target="#inference-goals-of-the-two-sample-t-test"><span class="header-section-number">12.1</span> Inference Goals of the Two Sample <em>t</em>-Test</a></li>
-  <li><a href="#sample-sas-code" id="toc-sample-sas-code" class="nav-link" data-scroll-target="#sample-sas-code"><span class="header-section-number">12.2</span> Sample SAS code</a>
+  <li><a href="#dataset-multi-location-crop-yield-study" id="toc-dataset-multi-location-crop-yield-study" class="nav-link active" data-scroll-target="#dataset-multi-location-crop-yield-study"><span class="header-section-number">21.1</span> Dataset: Multi-Location Crop Yield Study</a></li>
+  <li><a href="#sas-dataset" id="toc-sas-dataset" class="nav-link" data-scroll-target="#sas-dataset"><span class="header-section-number">21.2</span> SAS Dataset</a></li>
+  <li><a href="#step-1-identify-model-structure" id="toc-step-1-identify-model-structure" class="nav-link" data-scroll-target="#step-1-identify-model-structure"><span class="header-section-number">21.3</span> Step 1: Identify Model Structure</a>
   <ul class="collapse">
-  <li><a href="#two-independent-sample-t-test" id="toc-two-independent-sample-t-test" class="nav-link" data-scroll-target="#two-independent-sample-t-test"><span class="header-section-number">12.2.1</span> Two Independent Sample <span class="math inline">\(t\)</span>-test</a></li>
-  <li><a href="#paired-sample-t-test" id="toc-paired-sample-t-test" class="nav-link" data-scroll-target="#paired-sample-t-test"><span class="header-section-number">12.2.2</span> Paired Sample <span class="math inline">\(t\)</span>-test</a></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1"><span class="header-section-number">21.3.1</span> Task 1</a></li>
   </ul></li>
-  <li><a href="#statistical-assumptions-of-the-two-sample-t-test" id="toc-statistical-assumptions-of-the-two-sample-t-test" class="nav-link" data-scroll-target="#statistical-assumptions-of-the-two-sample-t-test"><span class="header-section-number">12.3</span> Statistical Assumptions of the Two Sample <span class="math inline">\(t\)</span>-Test</a></li>
-  <li><a href="#other-two-sample-tests" id="toc-other-two-sample-tests" class="nav-link" data-scroll-target="#other-two-sample-tests"><span class="header-section-number">12.4</span> Other Two-Sample Tests</a>
+  <li><a href="#step-2-write-the-full-model" id="toc-step-2-write-the-full-model" class="nav-link" data-scroll-target="#step-2-write-the-full-model"><span class="header-section-number">21.4</span> Step 2: Write the Full Model</a></li>
+  <li><a href="#step-3-implement-in-sas" id="toc-step-3-implement-in-sas" class="nav-link" data-scroll-target="#step-3-implement-in-sas"><span class="header-section-number">21.5</span> Step 3: Implement in SAS</a>
   <ul class="collapse">
-  <li><a href="#two-proportion-z-test" id="toc-two-proportion-z-test" class="nav-link" data-scroll-target="#two-proportion-z-test"><span class="header-section-number">12.4.1</span> Two-Proportion <em>Z</em> Test</a></li>
-  <li><a href="#two-sample-variance-f-test" id="toc-two-sample-variance-f-test" class="nav-link" data-scroll-target="#two-sample-variance-f-test"><span class="header-section-number">12.4.2</span> Two-Sample Variance <em>F</em> Test</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.4.3</span> Summary</a></li>
+  <li><a href="#step-4-interpretation" id="toc-step-4-interpretation" class="nav-link" data-scroll-target="#step-4-interpretation"><span class="header-section-number">21.5.1</span> Step 4: Interpretation</a></li>
+  <li><a href="#step-5-model-comparison" id="toc-step-5-model-comparison" class="nav-link" data-scroll-target="#step-5-model-comparison"><span class="header-section-number">21.5.2</span> Step 5: Model Comparison</a></li>
   </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways"><span class="header-section-number">22</span> Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2_1_intro_inference1.html">Statistical Analysis</a></li><li class="breadcrumb-item"><a href="./part2_8_2sample_t.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise_1_macro.html">Hands on Class</a></li><li class="breadcrumb-item"><a href="./exercise_4_LMEM.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Two Sample <span class="math inline">\(t\)</span>-test for Independent and Paired Data</span></h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></h1>
 </div>
 
 
@@ -434,339 +440,124 @@ window.Quarto = {
 
 <blockquote class="blockquote">
 <p>Learning Objectives</p>
+<p>By the end of this activity, you should be able to:</p>
 <ol type="1">
-<li>Distinguish between <strong>independent</strong> and <strong>paired</strong> two-sample t-tests.</li>
-<li>Identify the <strong>appropriate test</strong> based on study design.</li>
-<li>State the <strong>model assumptions</strong> for each test.</li>
-<li>Perform two-sample t-tests in <strong>SAS</strong> using <code>PROC TTEST</code>.</li>
-<li>Interpret <strong>test statistics, p-values, and confidence intervals</strong>.</li>
+<li>Identify clustered and hierarchical data structures</li>
+<li>Specify linear mixed models with multiple random effects</li>
+<li>Implement PROC MIXED in SAS</li>
+<li>Interpret fixed and random effects</li>
+<li>Understand interaction + mixed effects</li>
 </ol>
 </blockquote>
-<p>In many applications, we want to compare <strong>two populations</strong>, for example:</p>
+<section id="dataset-multi-location-crop-yield-study" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="dataset-multi-location-crop-yield-study"><span class="header-section-number">21.1</span> Dataset: Multi-Location Crop Yield Study</h2>
+<p>We now consider a more complex dataset:</p>
 <ul>
-<li>Treatment vs control groups</li>
-<li>Male vs female outcomes</li>
-<li>Before vs after an intervention</li>
-<li>Method A vs Method B</li>
-</ul>
-<p>The key question is:</p>
-<blockquote class="blockquote">
-<p><strong>Are the population means different?</strong></p>
-</blockquote>
-<p>This leads to <strong>two-sample inference</strong>.</p>
-<p><img src="figs/part2/L13_2sample_t/2sample_t_1.png" class="img-fluid"></p>
-<p>Since we see that there are different scenarios for the <span class="math inline">\(t\)</span>-test, we may have another question:</p>
-<blockquote class="blockquote">
-<p><strong>Which <span class="math inline">\(t\)</span>-test should I use?</strong></p>
-</blockquote>
-<p>The answer depends on the <strong>study design</strong>. We will discuss two main types of two-sample <span class="math inline">\(t\)</span>-tests:</p>
-<ol type="1">
-<li><strong>Independent two-sample <span class="math inline">\(t\)</span>-test</strong>: Used when the two samples are independent of each other (e.g., treatment vs control groups).</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*==========================================================</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  Create the dataset <span class="cf">for</span> two<span class="sc">-</span>sample t<span class="sc">-</span>test example</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Variables<span class="sc">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    Species <span class="sc">:</span> group <span class="fu">indicator</span> (<span class="dv">1</span> or <span class="dv">2</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    Height  <span class="sc">:</span> numeric response</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span><span class="er">========================================================*/</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>DATA my_data;</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    INPUT Species Height;</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">13</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">15</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">15</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">17</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">18</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">18</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">19</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">20</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="dv">21</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">15</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">15</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">16</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">18</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">20</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">21</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">23</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">23</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="dv">24</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>RUN;</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span> Optional<span class="sc">:</span> check the data <span class="sc">*</span><span class="er">/</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>PROC PRINT DATA<span class="ot">=</span>my_data;</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><img src="figs/part2/L13_2sample_t/2sample_t_2.png" class="img-fluid" style="width:30.0%"></p>
-<ol start="2" type="1">
-<li><strong>Paired two-sample <span class="math inline">\(t\)</span>-test</strong>: Used when the two samples are related or paired (e.g., before vs after measurements on the same subjects).</li>
-</ol>
-<p><img src="figs/part2/L13_2sample_t/2sample_t_3.png" class="img-fluid" style="width:50.0%"></p>
-<section id="inference-goals-of-the-two-sample-t-test" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="inference-goals-of-the-two-sample-t-test"><span class="header-section-number">12.1</span> Inference Goals of the Two Sample <em>t</em>-Test</h2>
-<p>Suppose the two population means are denoted by:</p>
-<p><span class="math display">\[\mu_1 \quad \text{and} \quad \mu_2.\]</span></p>
-<p>A two-sample <span class="math inline">\(t\)</span>-test always begins with the same <strong>null hypothesis</strong>:</p>
-<p><span class="math display">\[ H_0: \mu_1 = \mu_2 .\]</span></p>
-<p>That is, the two population means are equal. The alternatively hypothesis can take different forms.</p>
-<p><strong>Alternative Hypotheses</strong></p>
-<p>Depending on the scientific question, the alternative hypothesis can take one of three forms.</p>
-<ol type="1">
-<li>Two-sided (two-tailed): <span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span></li>
-</ol>
-<blockquote class="blockquote">
-<p>The two population means are different.</p>
-</blockquote>
-<ol start="2" type="1">
-<li>Left-tailed: <span class="math inline">\(H_1: \mu_1 &lt; \mu_2\)</span></li>
-</ol>
-<blockquote class="blockquote">
-<p>Population 1 has a <em>smaller</em> mean than population 2.</p>
-</blockquote>
-<ol start="3" type="1">
-<li>Right-tailed: <span class="math inline">\(H_1: \mu_1 &gt; \mu_2\)</span></li>
-</ol>
-<blockquote class="blockquote">
-<p>Population 1 has a <em>larger</em> mean than population 2.</p>
-</blockquote>
-<p><strong>Confidence Interval Interpretation</strong></p>
-<p>When constructing a confidence interval, inference is made on the <strong>difference of means</strong>: <span class="math inline">\(\mu_1 - \mu_2\)</span>.</p>
-<ul>
-<li>If the confidence interval <strong>contains 0</strong>, we fail to reject <span class="math inline">\(H_0\)</span>.</li>
-<li>If the confidence interval <strong>does not contain 0</strong>, we reject <span class="math inline">\(H_0\)</span>.</li>
+<li>5 locations (randomly sampled farms)</li>
+<li>2 machine types (draper, stripper)</li>
+<li>2 crop varieties</li>
+<li>multiple observations per combination</li>
 </ul>
 </section>
-<section id="sample-sas-code" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="sample-sas-code"><span class="header-section-number">12.2</span> Sample SAS code</h2>
-<section id="two-independent-sample-t-test" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="two-independent-sample-t-test"><span class="header-section-number">12.2.1</span> Two Independent Sample <span class="math inline">\(t\)</span>-test</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*======================================================</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  Example<span class="sc">:</span> Two<span class="sc">-</span>Sample t<span class="sc">-</span><span class="fu">Test</span> (Independent Samples)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  STAT <span class="dv">8678</span> — Two<span class="sc">-</span>Sample t<span class="sc">-</span>Test</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span><span class="er">====================================================*/</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="er">/*</span><span class="sc">------------------------------</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  Create the dataset</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------</span><span class="er">*/</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DATA my_data;</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    INPUT Species <span class="sc">$</span> Height;</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">13</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">15</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">15</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">16</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">17</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">18</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">18</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">19</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">20</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">21</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">15</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">15</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">16</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">18</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">19</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">20</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">21</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">23</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">23</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="dv">24</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>RUN;</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span><span class="sc">------------------------------</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  Two<span class="sc">-</span>sample t<span class="sc">-</span>test</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  H0<span class="sc">:</span> μ1 − μ2 <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  Two<span class="sc">-</span>sided test, α <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------</span><span class="er">*/</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>PROC TTEST DATA<span class="ot">=</span>my_data</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>           SIDES<span class="ot">=</span><span class="dv">2</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>           ALPHA<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>           H0<span class="ot">=</span><span class="dv">0</span>;</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    CLASS Species;</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    VAR Height;</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><img src="figs/part2/L13_2sample_t/2sample_t_4.png" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p><strong>Note on Two-Sample t-Test Methods in SAS</strong></p>
-</blockquote>
-<p>In <code>PROC TTEST</code>, SAS reports results from <strong>two different methods</strong> by default:</p>
+<section id="sas-dataset" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="sas-dataset"><span class="header-section-number">21.2</span> SAS Dataset</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA crop;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>INPUT location <span class="sc">$</span> machine <span class="sc">$</span> variety <span class="sc">$</span> yield;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DATALINES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A draper v1 <span class="fl">35.2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A draper v2 <span class="fl">34.8</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>A stripper v1 <span class="fl">38.5</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>A stripper v2 <span class="fl">39.1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>B draper v1 <span class="fl">30.5</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>B draper v2 <span class="fl">31.2</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>B stripper v1 <span class="fl">34.0</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>B stripper v2 <span class="fl">35.5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>C draper v1 <span class="fl">28.9</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>C draper v2 <span class="fl">29.5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>C stripper v1 <span class="fl">32.1</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>C stripper v2 <span class="fl">33.0</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>D draper v1 <span class="fl">36.0</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>D draper v2 <span class="fl">35.7</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>D stripper v1 <span class="fl">40.2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>D stripper v2 <span class="fl">41.0</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>E draper v1 <span class="fl">33.3</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>E draper v2 <span class="fl">34.1</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>E stripper v1 <span class="fl">37.5</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>E stripper v2 <span class="fl">38.0</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-1-identify-model-structure" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="step-1-identify-model-structure"><span class="header-section-number">21.3</span> Step 1: Identify Model Structure</h2>
+<section id="task-1" class="level3" data-number="21.3.1">
+<h3 data-number="21.3.1" class="anchored" data-anchor-id="task-1"><span class="header-section-number">21.3.1</span> Task 1</h3>
+<p>Identify:</p>
 <ul>
-<li><p><strong>Method: Pooled</strong><br>
-This corresponds to the <strong>two-sample equal-variance t-test</strong>, which assumes<br>
-<span class="math display">\[
-\sigma_1^2 = \sigma_2^2.
-\]</span> The test statistic uses a <strong>pooled variance estimator</strong>.</p></li>
-<li><p><strong>Method: Satterthwaite</strong><br>
-This corresponds to the <strong>two-sample unequal-variance t-test</strong>, also known as the<br>
-<strong>Welch t-test</strong>.<br>
-No assumption of equal variances is required, and the degrees of freedom are approximated using the <strong>Satterthwaite formula</strong>.</p></li>
+<li>Response variable: ________</li>
+<li>Fixed effects: ________</li>
+<li>Random effects: ________</li>
 </ul>
-<blockquote class="blockquote">
-<p><strong>Practical guidance:</strong><br>
-When the equal-variance assumption is questionable, the <strong>Satterthwaite (Welch) test</strong> is generally preferred and is the default recommendation in modern practice.</p>
-</blockquote>
-</section>
-<section id="paired-sample-t-test" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="paired-sample-t-test"><span class="header-section-number">12.2.2</span> Paired Sample <span class="math inline">\(t\)</span>-test</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span> Create dataset <span class="sc">*</span><span class="er">/</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DATA test_scores;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    INPUT PRE POST;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">88</span> <span class="dv">91</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dv">82</span> <span class="dv">84</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dv">84</span> <span class="dv">88</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dv">93</span> <span class="dv">90</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span> <span class="dv">79</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="dv">78</span> <span class="dv">80</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="dv">84</span> <span class="dv">88</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="dv">87</span> <span class="dv">90</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="dv">95</span> <span class="dv">90</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="dv">91</span> <span class="dv">96</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="dv">83</span> <span class="dv">88</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="dv">89</span> <span class="dv">89</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="dv">77</span> <span class="dv">81</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="dv">68</span> <span class="dv">74</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="dv">91</span> <span class="dv">92</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>RUN;</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span>view dataset<span class="sc">*</span><span class="er">/</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>PROC PRINT DATA<span class="ot">=</span>test_scores;</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span>perform paired samples t<span class="sc">-</span>test<span class="sc">*</span><span class="er">/</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>PROC TTEST DATA<span class="ot">=</span>test_scores ALPHA<span class="ot">=</span>.<span class="dv">05</span>;</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>PAIRED PRE<span class="sc">*</span>POST;</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><img src="figs/part2/L13_2sample_t/2sample_t_5_paired.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="statistical-assumptions-of-the-two-sample-t-test" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="statistical-assumptions-of-the-two-sample-t-test"><span class="header-section-number">12.3</span> Statistical Assumptions of the Two Sample <span class="math inline">\(t\)</span>-Test</h2>
-<p>The validity of a two-sample <span class="math inline">\(t\)</span>-test relies on the following assumptions:</p>
-<ol type="1">
-<li><p><strong>Continuous data</strong><br>
-The response variable is continuous (not discrete or categorical).</p></li>
-<li><p><strong>Normality</strong><br>
-The data in each population follow a normal distribution.</p>
-<ul>
-<li>In practice, the two-sample t-test is reasonably robust to mild departures from normality, especially for moderate or large sample sizes.</li>
-</ul></li>
-<li><p><strong>Equal variances (for the pooled t-test)</strong><br>
-The population variances of the two groups are equal: <span class="math display">\[
-\sigma_1^2 = \sigma_2^2.
+<section id="step-2-write-the-full-model" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="step-2-write-the-full-model"><span class="header-section-number">21.4</span> Step 2: Write the Full Model</h2>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} +
+\beta_3 (machine \times variety) + u_{location} + \epsilon
 \]</span></p>
-<ul>
-<li>If this assumption is violated, the <strong>Welch (Aspin–Welch / Satterthwaite) two-sample t-test</strong> should be used instead.</li>
-</ul></li>
-<li><p><strong>Independence of samples</strong><br>
-The two samples are independent of each other.</p>
-<ul>
-<li>There is no relationship between individuals in Sample 1 and Sample 2.</li>
-<li>If observations are paired or matched, a <strong>paired t-test</strong> should be used instead.</li>
-</ul></li>
-<li><p><strong>Random sampling</strong><br>
-Both samples are simple random samples from their respective populations.<br>
-Each individual in the population has an equal probability of being selected.</p></li>
-</ol>
 </section>
-<section id="other-two-sample-tests" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="other-two-sample-tests"><span class="header-section-number">12.4</span> Other Two-Sample Tests</h2>
-<p>As discussed in the one-population setting, there are several hypothesis tests related to the two-sample problem beyond the two-sample <em>t</em>-test. The most common ones include:</p>
-<section id="two-proportion-z-test" class="level3" data-number="12.4.1">
-<h3 data-number="12.4.1" class="anchored" data-anchor-id="two-proportion-z-test"><span class="header-section-number">12.4.1</span> Two-Proportion <em>Z</em> Test</h3>
-<p>This test is used to compare <strong>two population proportions</strong>.</p>
-<p><strong>Hypothesis Testing</strong></p>
-<p>Let <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> denote the two population proportions.</p>
+<section id="step-3-implement-in-sas" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="step-3-implement-in-sas"><span class="header-section-number">21.5</span> Step 3: Implement in SAS</h2>
+<pre class="sas"><code>PROC MIXED DATA=crop;
+    CLASS location machine variety;
+    MODEL yield = machine variety machine*variety;
+    RANDOM location;
+RUN;</code></pre>
+<section id="step-4-interpretation" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="step-4-interpretation"><span class="header-section-number">21.5.1</span> Step 4: Interpretation</h3>
+<p>Suppose:</p>
 <ul>
-<li><p><strong>Null hypothesis</strong> <span class="math display">\[
-H_0: p_1 = p_2
-\]</span> (the two population proportions are equal)</p></li>
-<li><p><strong>Alternative hypotheses</strong></p>
+<li>machine effect = 3.2</li>
+<li>interaction = 1.1</li>
+</ul>
+<p>Interpret:</p>
 <ul>
-<li><p>Two-tailed: <span class="math display">\[
-H_1: p_1 \neq p_2
-\]</span> (the two population proportions are not equal)</p></li>
-<li><p>Left-tailed: <span class="math display">\[
-H_1: p_1 &lt; p_2
-\]</span> (population 1 proportion is less than population 2 proportion)</p></li>
-<li><p>Right-tailed: <span class="math display">\[
-H_1: p_1 &gt; p_2
-\]</span> (population 1 proportion is greater than population 2 proportion)</p></li>
-</ul></li>
-<li><p><strong>Confidence Interval</strong> Inference is made on the difference in proportions: <span class="math display">\[
-p_1 - p_2.
-\]</span></p></li>
+<li>machine effect: ____________________</li>
+<li>interaction: _______________________</li>
 </ul>
 </section>
-<section id="two-sample-variance-f-test" class="level3" data-number="12.4.2">
-<h3 data-number="12.4.2" class="anchored" data-anchor-id="two-sample-variance-f-test"><span class="header-section-number">12.4.2</span> Two-Sample Variance <em>F</em> Test</h3>
-<p>This test is used to compare <strong>two population variances</strong>.</p>
-<p><strong>Hypothesis Testing</strong></p>
-<p>Let <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> denote the two population variances.</p>
-<ul>
-<li><p><strong>Null hypothesis</strong> <span class="math display">\[
-H_0: \sigma_1^2 = \sigma_2^2
-\]</span> (the two population variances are equal)</p></li>
-<li><p><strong>Alternative hypotheses</strong></p>
-<ul>
-<li><p>Two-tailed: <span class="math display">\[
-H_1: \sigma_1^2 \neq \sigma_2^2
-\]</span> (the two population variances are not equal)</p></li>
-<li><p>Left-tailed: <span class="math display">\[
-H_1: \sigma_1^2 &lt; \sigma_2^2
-\]</span> (population 1 variance is less than population 2 variance)</p></li>
-<li><p>Right-tailed: <span class="math display">\[
-H_1: \sigma_1^2 &gt; \sigma_2^2
-\]</span> (population 1 variance is greater than population 2 variance)</p></li>
-</ul></li>
-<li><p><strong>Confidence Interval</strong> Inference is made on the ratio of variances: <span class="math display">\[
-\frac{\sigma_1^2}{\sigma_2^2}.
-\]</span></p></li>
-</ul>
-</section>
-<section id="summary" class="level3" data-number="12.4.3">
-<h3 data-number="12.4.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.4.3</span> Summary</h3>
+<section id="step-5-model-comparison" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="step-5-model-comparison"><span class="header-section-number">21.5.2</span> Step 5: Model Comparison</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Test</th>
-<th>Parameter of Interest</th>
-<th>CI Targets</th>
+<th>Model</th>
+<th>AIC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Two-sample <em>t</em>-test</td>
-<td><span class="math inline">\(\mu_1 - \mu_2\)</span></td>
-<td>Difference in means</td>
+<td>No random effect</td>
+<td>210</td>
 </tr>
 <tr class="even">
-<td>Two-proportion <em>Z</em> test</td>
-<td><span class="math inline">\(p_1 - p_2\)</span></td>
-<td>Difference in proportions</td>
-</tr>
-<tr class="odd">
-<td>Two-sample <em>F</em> test</td>
-<td><span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span></td>
-<td>Ratio of variances</td>
+<td>With random effect</td>
+<td>165</td>
 </tr>
 </tbody>
 </table>
-
-
+<p>Which is better? Why?</p>
 </section>
+</section>
+<section id="key-takeaways" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Key Takeaways</h1>
+<ul>
+<li>Mixed models handle clustered data</li>
+<li>Random effects capture variability across groups</li>
+<li>Interaction allows flexible modeling</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1172,13 +963,13 @@ H_1: \sigma_1^2 &gt; \sigma_2^2
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part2_7_power.html" class="pagination-link" aria-label="Power Analysis with application in one sample $t$-test">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Power Analysis with application in one sample <span class="math inline">\(t\)</span>-test</span></span>
+      <a href="./exercise_3_regression.html" class="pagination-link" aria-label="Exercise 3: Linear Regression and Interaction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 3: Linear Regression and Interaction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part3_1_ANOVA.html" class="pagination-link" aria-label="Analysis of Variance">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
