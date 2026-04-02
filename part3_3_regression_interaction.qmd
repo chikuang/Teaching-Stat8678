@@ -2,10 +2,10 @@
 
 > Learning Objectives
 >
-> 1. Understand interaction effects in regression models  
-> 2. Distinguish between main effects and interaction effects  
-> 3. Interpret regression coefficients in an interaction model  
-> 4. Compute and interpret simple slopes  
+> 1.  Understand interaction effects in regression models\
+> 2.  Distinguish between main effects and interaction effects\
+> 3.  Interpret regression coefficients in an interaction model\
+> 4.  Compute and interpret simple slopes
 
 ## Why Do We Need Interaction?
 
@@ -13,29 +13,27 @@ In many real-world problems, the effect of one variable may depend on another va
 
 For example:
 
-- Does the effect of study time depend on gender?
-- Does treatment effectiveness depend on age?
-- Does price sensitivity depend on income?
+-   Does the effect of study time depend on gender?
+-   Does treatment effectiveness depend on age?
+-   Does price sensitivity depend on income?
 
 If the relationship between predictors is not constant, a simple additive model is not sufficient.
 
 This motivates the need for **interaction terms**.
 
-> Without interaction → parallel lines  
-> With interaction → non-parallel lines  
+> Without interaction → parallel lines\
+> With interaction → non-parallel lines
 
 ## Visualizing Interaction Effects
 
 The easiest way to understand interaction is through visualization.
 
 ::: {.callout-important title="How to visually detect interaction"}
-
 For two groups:
 
-- **Parallel regression lines** suggest **no interaction**
-- **Non-parallel regression lines** suggest **interaction**
-- **Crossing lines** indicate a strong interaction effect
-
+-   **Parallel regression lines** suggest **no interaction**
+-   **Non-parallel regression lines** suggest **interaction**
+-   **Crossing lines** indicate a strong interaction effect
 :::
 
 ```{r interaction-illustartion, echo=FALSE, message=FALSE, warning=FALSE}
@@ -84,7 +82,7 @@ p2 <- ggplot(dat_int, aes(x = height, y = weight, color = sex)) +
 p1 + p2
 ```
 
-```r
+``` r
 PROC SGPLOT DATA=MEASUREMENT;
     TITLE "Interaction Visualization: WEIGHT vs HEIGHT by SEX";
     REG X=HEIGHT Y=WEIGHT / GROUP=SEX;
@@ -123,22 +121,20 @@ $$
 $$
 
 ::: {.callout-warning title="Important"}
-
 In a regression model that includes **interaction terms**, the coefficients of the individual variables are **no longer interpreted as overall main effects**.
 
 Instead, they represent the effect **when the interacting variable equals 0**.
-
 :::
 
 Thus:
 
-- $\beta_h$ represents the effect of **HEIGHT when SEX = 0**
-- $\beta_s$ represents the effect of **SEX when HEIGHT = 0**
+-   $\beta_h$ represents the effect of **HEIGHT when SEX = 0**
+-   $\beta_s$ represents the effect of **SEX when HEIGHT = 0**
 
 If we code
 
-- SEX = 0 → male  
-- SEX = 1 → female  
+-   SEX = 0 → male\
+-   SEX = 1 → female
 
 then we can construct the regression equations for **males and females** separately.
 
@@ -171,15 +167,13 @@ Thus, **slope for males** is $\beta_h$ and the **slope for females** is $\beta_h
 
 From the previous equations, we can see that the effect of **HEIGHT** differs for males and females.
 
-- For males (SEX = 0), the slope of height is
-  $$
-  \beta_h
-  $$
+-   For males (SEX = 0), the slope of height is $$
+    \beta_h
+    $$
 
-- For females (SEX = 1), the slope of height is
-  $$
-  \beta_h + \beta_{sh}
-  $$
+-   For females (SEX = 1), the slope of height is $$
+    \beta_h + \beta_{sh}
+    $$
 
 Thus, **HEIGHT has a different effect for males and females**.
 
@@ -193,11 +187,10 @@ represents the **difference between the height effects for males and females**.
 
 In other words, a one-unit increase in **SEX** (changing from male to female) changes the slope of **HEIGHT** by $\beta_{sh}$.
 
-It is important to note that this interpretation holds when the **main effects are included in the model together with the interaction term**.  
+It is important to note that this interpretation holds when the **main effects are included in the model together with the interaction term**.\
 If the interaction term were entered **without the corresponding main effects**, the interpretation of the coefficient would change.
 
 ::: {.callout-example title="A Numerical Example"}
-
 Suppose the fitted model is
 
 $$
@@ -208,23 +201,22 @@ $$
 
 Then:
 
-- Male slope = 2
-- Female slope = 2 + 1 = 3
+-   Male slope = 2
+-   Female slope = 2 + 1 = 3
 
 Interpretation:
 
-- For males, a one-unit increase in height increases expected weight by 2 units.
-- For females, a one-unit increase in height increases expected weight by 3 units.
+-   For males, a one-unit increase in height increases expected weight by 2 units.
+-   For females, a one-unit increase in height increases expected weight by 3 units.
 
 Thus, the effect of height is stronger for females.
-
 :::
 
 ## SAS Implementation
 
 ### Example dataset
 
-```r
+``` r
 DATA MEASUREMENT;
 INPUT SEX $ HEIGHT WEIGHT;
 DATALINES;
@@ -294,7 +286,7 @@ RUN;
 
 ### Fit the interaction model in SAS
 
-```r
+``` r
 PROC GLM DATA=MEASUREMENT;
 CLASS SEX;
 MODEL WEIGHT = HEIGHT SEX HEIGHT*SEX;
@@ -304,7 +296,7 @@ RUN;
 
 ### Plot fitted interaction in SAS
 
-```r
+``` r
 PROC PLM RESTORE=INTMODEL;
 EFFECTPLOT INTERACTION(X=HEIGHT SLICEBY=SEX);
 RUN;
@@ -312,7 +304,7 @@ RUN;
 
 ### Quick visualization in SAS
 
-```r
+``` r
 PROC SGPLOT DATA=MEASUREMENT;
 TITLE "Interaction Visualization: WEIGHT vs HEIGHT by SEX";
 REG X=HEIGHT Y=WEIGHT / GROUP=SEX;
@@ -324,7 +316,7 @@ TITLE;
 
 The following SAS code fits a regression model and produces diagnostic plots for checking model assumptions.
 
-```r
+``` r
 PROC REG DATA=MEASUREMENT;
     TITLE "Regression and Residual Plots";
     MODEL WEIGHT = HEIGHT;
@@ -352,10 +344,10 @@ RUN;
 
 Description of the Code
 
-- `PROC REG` fits the linear regression model relating weight to height.
-- `OUTPUT OUT=MYOUT R=RESID` saves the residual values from the regression model into a new dataset called `MYOUT`.
-- `PROC UNIVARIATE` is used to examine the distribution of the residuals.
-- `QQPLOT RESID` produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.
+-   `PROC REG` fits the linear regression model relating weight to height.
+-   `OUTPUT OUT=MYOUT R=RESID` saves the residual values from the regression model into a new dataset called `MYOUT`.
+-   `PROC UNIVARIATE` is used to examine the distribution of the residuals.
+-   `QQPLOT RESID` produces a Q–Q plot to visually assess whether the residuals follow a normal distribution.
 
 ## PROC PLM
 
@@ -363,29 +355,29 @@ This section relies heavily on **PROC PLM** to estimate, compare, and visualize 
 
 `PROC PLM` performs various analyses and plotting functions **after a regression model has been fitted**. It can be used for:
 
-- testing **custom hypotheses** about model parameters
-- computing **predicted values**
-- estimating **simple effects and contrasts**
-- creating **visualizations of predicted values**
+-   testing **custom hypotheses** about model parameters
+-   computing **predicted values**
+-   estimating **simple effects and contrasts**
+-   creating **visualizations of predicted values**
 
-Unlike most SAS procedures, **PROC PLM does not directly use a dataset as input**.  
+Unlike most SAS procedures, **PROC PLM does not directly use a dataset as input**.\
 Instead, it reads from an **item store**, which contains information about a previously fitted model.
 
 An item store can be created by several SAS modeling procedures, including:
 
-- `PROC GLM`
-- `PROC GENMOD`
-- `PROC LOGISTIC`
-- `PROC PHREG`
-- `PROC MIXED`
-- `PROC GLIMMIX`
+-   `PROC GLM`
+-   `PROC GENMOD`
+-   `PROC LOGISTIC`
+-   `PROC PHREG`
+-   `PROC MIXED`
+-   `PROC GLIMMIX`
 
-These procedures create the item store using a `STORE` statement.  
+These procedures create the item store using a `STORE` statement.\
 Later, `PROC PLM` accesses this stored model using the `RESTORE=` option.
 
 ### Example with PROC PLM
 
-```r
+``` r
 DATA EXERCISE;
     INPUT HOURS EFFORT $ LOSS;
     DATALINES;
@@ -403,7 +395,7 @@ DATA EXERCISE;
 RUN;
 ```
 
-```r
+``` r
 PROC GLM DATA=EXERCISE;
     CLASS EFFORT;
     MODEL LOSS = HOURS|EFFORT;
@@ -411,15 +403,15 @@ PROC GLM DATA=EXERCISE;
 RUN;
 
 PROC PLM RESTORE=CONTCONT;
-    EFFECTPLOT INTERACTION(X=HOURS SLICEBY=EFFORT);
+    EFFECTPLOT SLICEFIT(X=HOURS SLICEBY=EFFORT);
 RUN;
 ```
 
 ::: {.callout-note title="Key Takeaways"}
 
-- Interaction means the effect of one variable depends on another  
-- Main effects are no longer “global effects”  
-- Always interpret **simple slopes**  
-- Visualization is the easiest way to detect interaction  
+-   Interaction means the effect of one variable depends on another\
+-   Main effects are no longer “global effects”\
+-   Always interpret **simple slopes**\
+-   Visualization is the easiest way to detect interaction
 
 :::

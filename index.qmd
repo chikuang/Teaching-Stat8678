@@ -77,7 +77,8 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |     |        ⛱ Spring Break  🌊    |   |
 |   ✅   |        🛠 Class Activity II  |17  |
 |   ✅   |         Intro to Regression Analysis     | 18 |
-|   ⏳   |         Regression with Interaction Effects   | TBA|
+|     ✅    |         Regression with Interaction Effects   | 19--20 | 
+|   ✅   |        🛠 Class Activity III |20  |
 |   ⏳   |         Linear Mixed Effects Model I   |  TBA |
 |   ⏳   |         Linear Mixed Effects Model II   | TBA|
 <!-- 🚧🛠️⏳   -->
