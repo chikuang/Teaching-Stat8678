@@ -15,7 +15,7 @@
 In previous lectures, we studied linear regression models of the form
 
 $$
-Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, 
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i,
 \qquad \epsilon_i \sim N(0, \sigma^2).
 $$
 
@@ -25,7 +25,7 @@ However, in many real applications, this assumption is not reasonable. Observati
 
 This leads to **correlated data**, and ordinary regression is no longer the right model.
 
-## Two Common Settings where Independence Fails
+## Two Common Settings Where Independence Fails
 
 ::: {.callout-definition title="Clustered Data"}
 
@@ -37,7 +37,7 @@ Examples include:
 - patients within hospitals
 - calves within farms
 
-Observations within the same cluster tend to be similar, so for subjects $j$ and $k$ in the same cluster $i$,
+Observations within the same cluster tend to be similar. So for subjects $j$ and $k$ in the same cluster $i$,
 
 $$
 \operatorname{Corr}(Y_{ij}, Y_{ik}) \neq 0.
@@ -65,9 +65,9 @@ are typically correlated.
 
 :::
 
-## Why Ordinary Regression is Not Enough
+## Why Ordinary Regression Is Not Enough
 
-If we ignore clustering or repeated measurements and fit an ordinary regression model, we usually make the standard errors too small. As a result:
+If we ignore clustering or repeated measurements and fit an ordinary regression model, we often underestimate the variability in the data. As a result:
 
 - p-values may be misleading
 - confidence intervals may be too narrow
@@ -75,9 +75,20 @@ If we ignore clustering or repeated measurements and fit an ordinary regression 
 
 So the issue is not only the mean structure. We also need to model the **dependence structure** in the data.
 
+::: {.callout-example title="Main Idea"}
+
+Ordinary regression focuses on the **average relationship**.
+
+Mixed models do two things at the same time:
+
+- model the **average relationship**
+- model the **within-group dependence**
+
+:::
+
 ## Fixed Effects and Random Effects
 
-To do this, we extend regression by adding **random effects**.
+To handle correlated data, we extend regression by adding **random effects**.
 
 ::: {.callout-definition title="Fixed Effects vs Random Effects"}
 
@@ -114,16 +125,18 @@ where $u_i$ is the random effect for subject $i$.
 
 :::
 
-### Intuition
+**Intuition**
 
 - Fixed effects tell us about the **average relationship**
 - Random effects allow each cluster or subject to have their **own deviation**
 
 This leads to a model that combines both kinds of effects. That is why it is called a **mixed** model.
 
-## The Basic Linear Mixed Effect Model
+## Linear Mixed Effected model
 
-A simple linear mixed effect model is
+::: {.callout-definition title="Simple linear mixed effect model"}
+
+The simplest linear mixed effect model is the **random intercept model**, which is defined as 
 
 $$
 Y_{ij} = \beta_0 + \beta_1 X_{ij} + u_i + \epsilon_{ij},
@@ -135,7 +148,7 @@ where:
 - $u_i$ is a random effect for cluster or subject $i$
 - $\epsilon_{ij}$ is the residual error
 
-Assumptions:
+We usually assume
 
 $$
 u_i \sim N(0, \sigma_u^2),
@@ -143,9 +156,22 @@ u_i \sim N(0, \sigma_u^2),
 \epsilon_{ij} \sim N(0, \sigma^2),
 $$
 
-and we usually assume that $u_i$ and $\epsilon_{ij}$ are independent.
+and that $u_i$ and $\epsilon_{ij}$ are independent.
 
-## Why This Model Creates Correlation
+:::
+
+
+::: {.callout-example title="Interpretation"}
+
+In this model:
+
+- the fixed effects $\beta_0, \beta_1$ describe the overall trend
+- the random effect $u_i$ allows subject $i$ to deviate from that overall trend
+- the residual error $\epsilon_{ij}$ captures the remaining unexplained variation
+
+:::
+
+### Retionale behind of correlation in this model
 
 Two observations from the same subject share the same random effect $u_i$. That is exactly what creates correlation.
 
@@ -161,7 +187,11 @@ $$
 
 Because both contain the same $u_i$, they are correlated.
 
-## Variance Structure
+This is the main idea students should remember:
+
+> the shared random effect makes observations from the same subject or cluster similar.
+
+### Variance Structure
 
 For the random intercept model,
 
@@ -183,15 +213,19 @@ $$
 \frac{\sigma_u^2}{\sigma_u^2 + \sigma^2}.
 $$
 
-This is one of the key ideas behind mixed models:
+::: {.callout-note title="Key Interpretation"}
 
-> the random effect induces dependence.
+- $\sigma_u^2$ measures **between-subject** or **between-cluster** variability
+- $\sigma^2$ measures **within-subject** variability
+- If $\sigma_u^2$ is large, observations within the same subject are strongly correlated
 
-## Example Dataset
+:::
+
+## SAS Computing example Dataset
 
 To illustrate the idea, consider the following repeated-measures dataset.
 
-```r
+``` r
 DATA performance;
     INPUT id $ age group $ trial score;
     DATALINES;
@@ -223,7 +257,7 @@ In this dataset:
 
 Because each subject appears multiple times, the observations are not independent.
 
-## Step 1: A Model That Ignores Correlation
+### Step 1: A Model That Ignores Correlation
 
 If we fit ordinary regression,
 
@@ -238,7 +272,21 @@ this assumes all observations are independent.
 
 That is not appropriate here, because repeated scores from the same person are likely correlated.
 
-## Step 2: Random Intercept Model
+![](figs/part3/LMEM1_1.png)
+![](figs/part3/LMEM1_2.png)
+![](figs/part3/LMEM1_3.png)
+![](figs/part3/LMEM1_4.png)
+
+
+::: {.callout-warning title="Warning"}
+
+`PROC REG` is not designed for repeated-measures data with within-subject dependence.
+
+It may still produce estimates, but the inference can be misleading because the independence assumption is violated.
+
+:::
+
+### Step 2: Random Intercept Model
 
 A natural first mixed model is the **random intercept model**.
 
@@ -250,13 +298,16 @@ PROC MIXED DATA=performance;
 RUN;
 ```
 
+![](figs/part3/LMEM1_5.png)
+![](figs/part3/LMEM1_6.png)
+
 This corresponds to the model
 
 $$
 Y_{ij} = \beta_0 + \beta_1 \, trial_{ij} + u_i + \epsilon_{ij}.
 $$
 
-### Interpretation
+**Interpretation**
 
 - $\beta_0$ is the overall intercept
 - $\beta_1$ is the average effect of trial
@@ -266,9 +317,18 @@ So this model says:
 
 > everyone follows the same overall slope, but each subject may start from a different intercept.
 
-## Step 3: Add Another Fixed Effect
 
-We can also include group as a fixed effect.
+In the code above:
+
+- `CLASS id;` tells SAS that `id` is a grouping variable
+- `MODEL score = trial;` specifies the fixed-effects part of the model
+- `RANDOM INTERCEPT / SUBJECT=id;` tells SAS to fit a subject-specific random intercept
+
+This is usually the first mixed model to try when each subject is observed multiple times.
+
+### Step 3: Add Another Fixed Effect
+
+We can also include `group` as a fixed effect.
 
 ```r
 PROC MIXED DATA=performance;
@@ -277,6 +337,7 @@ PROC MIXED DATA=performance;
     RANDOM INTERCEPT / SUBJECT=id;
 RUN;
 ```
+
 
 This corresponds to
 
@@ -290,7 +351,16 @@ Now the model includes:
 - an overall difference between groups
 - a subject-specific random intercept
 
-## Step 4: Random Slope Model
+![](figs/part3/LMEM1_7.png)
+![](figs/part3/LMEM1_8.png)
+
+**Intuition**
+
+- `trial` asks whether scores tend to change over trials
+- `group` asks whether group A and group B differ on average
+- `id` as a random effect accounts for repeated measurements on the same subject
+
+### Step 4: Random Slope Model
 
 A more flexible model allows the effect of trial to vary by subject.
 
@@ -302,18 +372,28 @@ PROC MIXED DATA=performance;
 RUN;
 ```
 
+![](figs/part3/LMEM1_9.png)
+![](figs/part3/LMEM1_10.png)
+
 This corresponds to
 
 $$
 Y_{ij} = \beta_0 + \beta_1 trial_{ij} + u_{0i} + u_{1i} trial_{ij} + \epsilon_{ij}.
 $$
 
-### Interpretation
+**Interpretation**
 
 - $u_{0i}$ allows subject $i$ to have their own intercept
 - $u_{1i}$ allows subject $i$ to have their own slope
 
 This means different subjects can improve at different rates across trials.
+
+::: {.callout-example title="Interpretation"}
+
+- A **random intercept model** says subjects start at different levels
+- A **random slope model** says subjects may also change at different rates
+
+:::
 
 ## Conceptual Visualization
 
@@ -331,10 +411,10 @@ This is one reason mixed models are so useful for repeated-measures data.
 
 Which variable is most appropriate as a random effect?
 
-(A) `trial`  
-(B) `score`  
-(C) `id`  
-(D) `group`ㄐ
++ (A) `trial`
++ (B) `score`
++ (C) `id`
++ (D) `group`
 
 :::
 
@@ -342,10 +422,10 @@ Which variable is most appropriate as a random effect?
 
 Why include a random effect?
 
-(A) To increase sample size  
-(B) To model dependence  
-(C) To remove variables  
-(D) To normalize the data
++ (A) To increase sample size
++ (B) To model dependence
++ (C) To remove variables
++ (D) To normalize the data
 
 :::
 
@@ -353,14 +433,14 @@ Why include a random effect?
 
 Ignoring clustering most directly leads to:
 
-(A) Correct inference  
-(B) Smaller residuals  
-(C) Incorrect standard errors  
-(D) Better prediction
++ (A) Correct inference
++ (B) Smaller residuals
++ (C) Incorrect standard errors
++ (D) Better prediction
 
 :::
 
-## What to Remember from This Lecture
+## Summary of this class
 
 This first lecture on linear mixed models is mainly about **intuition**.
 
@@ -379,8 +459,6 @@ In the next lecture, we will go further into:
 - covariance structures
 - repeated-measures formulations
 - model comparison and diagnostics
-
-## Key Takeaways
 
 ::: {.callout-note title="Key Takeaways"}
 

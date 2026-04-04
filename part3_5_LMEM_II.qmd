@@ -4,46 +4,61 @@
 >
 > By the end of this lecture, you should be able to:
 >
-> 1. Implement **linear mixed models in SAS using `PROC MIXED`**
-> 2. Understand the roles of **MODEL, RANDOM, and CLASS statements**
-> 3. Interpret key outputs such as:
->     - Covariance parameter estimates
->     - Type 3 tests of fixed effects
->     - Fit statistics
-> 4. Compare **fixed-effects models vs mixed-effects models**
-> 5. Recognize how modeling correlation changes inference
+> 1. Implement **linear mixed models in SAS using `PROC MIXED`**  
+> 2. Understand the roles of the **CLASS**, **MODEL**, and **RANDOM** statements  
+> 3. Interpret key output tables, including:
+>    - covariance parameter estimates
+>    - tests of fixed effects
+>    - fit statistics  
+> 4. Compare **fixed-effects models** and **mixed-effects models**  
+> 5. Explain why modeling correlation can change standard errors, p-values, and conclusions  
 
 ## Introduction
 
-In the previous lecture, we introduced the **conceptual framework of linear mixed models**:
+In the previous lecture, we introduced the conceptual framework of linear mixed models:
 
 $$
-Y = X\beta + Z\gamma + \epsilon
+Y = X\beta + Z\gamma + \epsilon,
 $$
 
-- $X\beta$: fixed effects (population-level)
-- $Z\gamma$: random effects (cluster-level variability)
-- $\epsilon$: residual error
+where:
 
-In this lecture, we focus on **how to implement this model in SAS** using `PROC MIXED`.
+- $X\beta$ represents the **fixed-effects part** of the model
+- $Z\gamma$ represents the **random-effects part** of the model
+- $\epsilon$ is the residual error
 
-## Why PROC MIXED?
+In this lecture, we focus on **how to fit and interpret these models in SAS** using `PROC MIXED`.
 
-Recall:
+::: {.callout-note title="Main Goal of This Lecture"}
 
-- `PROC REG` → assumes independence
-- `PROC GLM` → handles categorical variables
-- `PROC MIXED` → handles **dependence + clustering**
+Last time, the main question was:
 
-Typical use cases:
+> **Why do we need mixed models?**
 
-- Clustered data (e.g., families, schools)
-- Longitudinal data (repeated measures)
+This time, the main question is:
 
+> **How do we fit, read, and interpret mixed models in SAS?**
 
-## Key Syntax in PROC MIXED
+:::
 
-```sas
+## Why `PROC MIXED`?
+
+Recall the roles of some common SAS procedures:
+
+- `PROC REG` fits ordinary regression models and assumes **independent observations**
+- `PROC GLM` handles fixed-effects models, including ANOVA-style models with categorical predictors
+- `PROC MIXED` extends these ideas to data with **dependence, clustering, or repeated measurements**
+
+Typical use cases include:
+
+- clustered data, such as students within schools or patients within hospitals
+- repeated-measures data, such as multiple observations on the same subject
+
+**A General Template for `PROC MIXED`**
+
+A basic mixed model in SAS has the form
+
+```r
 PROC MIXED DATA=dataset;
     CLASS categorical_variables;
     MODEL response = fixed_effects;
@@ -51,12 +66,30 @@ PROC MIXED DATA=dataset;
 RUN;
 ```
 
-::: {.callout-example title="Family Height"}
+**How to read this syntax?**
 
-```sas
+- `CLASS` tells SAS which variables are categorical
+- `MODEL` specifies the **fixed-effects part**
+- `RANDOM` specifies the **random-effects part**
+- `SUBJECT=` identifies the clustering variable
+
+::: {.callout-example title="A Useful Way to Think About PROC MIXED"}
+
+A mixed model has **two parts**:
+
+1. A **fixed-effects part**, which describes the average relationship  
+2. A **random-effects part**, which accounts for dependence among observations from the same subject or cluster  
+
+:::
+
+## Example Dataset: Family Heights
+
+To keep the ideas concrete, consider the following family-height data.
+
+```r
 DATA heights;
-INPUT Family Gender $ Height @@;
-DATALINES;
+    INPUT Family Gender $ Height @@;
+    DATALINES;
 1 F 67 1 F 66 1 F 64 1 M 71 1 M 72
 2 F 63 2 F 67 2 M 69 2 M 68 2 M 70
 3 F 63 3 M 64
@@ -65,34 +98,57 @@ DATALINES;
 RUN;
 ```
 
+In this dataset:
 
+- `Height` is the response variable
+- `Gender` is a categorical explanatory variable
+- `Family` identifies the cluster
 
-## Understanding the Data Structure
+So the natural grouping structure is:
 
-**Cluster = Family**
+> observations within the same family may be correlated
 
-Observations within a family are correlated.
+This means a standard fixed-effects model that assumes independence may not be appropriate.
 
+### Step 1: A Fixed-Effects Model
 
-## Step 1: Fixed Effects Model
+We begin with a model that treats family as a fixed effect.
 
-```sas
+```r
 PROC MIXED DATA=heights;
     CLASS Family Gender;
     MODEL Height = Gender Family Family*Gender;
 RUN;
 ```
 
-### Interpretation
+**What this model does**
 
-- Equivalent to ANOVA
-- Assumes independence
+This model is similar to a fixed-effects ANOVA model:
 
----
+- `Gender` is treated as a fixed effect
+- `Family` is also treated as a fixed effect
+- `Family*Gender` allows the gender difference to vary across families
 
-## Step 2: Mixed Effects Model
+**Interpretation**
 
-```sas
+This approach is useful if:
+
+- the specific families in the dataset are the only ones of interest
+- you do not want to generalize beyond these observed families
+
+However, this model does **not** use the idea that families may be viewed as a random sample from a larger population of families.
+
+::: {.callout-warning title="Important"}
+
+If family is really a random grouping factor, treating it only as fixed may not be the best way to represent the data structure.
+
+:::
+
+### Step 2: A Mixed-Effects Model
+
+Now we fit a mixed model that treats family-related effects as random.
+
+```r
 PROC MIXED DATA=heights;
     CLASS Family Gender;
     MODEL Height = Gender;
@@ -100,57 +156,276 @@ PROC MIXED DATA=heights;
 RUN;
 ```
 
----
-
-## Model Interpretation
+This model can be written conceptually as
 
 $$
-Y_{ij} = \beta_0 + \beta_1 Gender_{ij} + u_{Family} + u_{Family*Gender} + \epsilon_{ij}
+Y_{ij} = \beta_0 + \beta_1 \, \text{Gender}_{ij} + u_{\text{Family}} + u_{\text{Family} \times \text{Gender}} + \epsilon_{ij}.
 $$
 
+**Interpretation**
 
-## Key Output Tables
+- $\beta_0$ and $\beta_1$ are **fixed effects**
+- $u_{\text{Family}}$ allows different families to have different baseline levels
+- $u_{\text{Family} \times \text{Gender}}$ allows the gender effect to vary by family
+- $\epsilon_{ij}$ is the residual error
 
-### Covariance Parameter Estimates
+This model explicitly acknowledges that observations from the same family may be correlated.
 
-- Variance components for:
-  - Family
-  - Interaction
-  - Residual
+**Why the Mixed Model Is Different**
 
+The mixed model is different from the fixed-effects model because it recognizes that:
+
+- families are a source of variability
+- part of the total variation in height comes from **between-family differences**
+- part of the total variation comes from **within-family differences**
+
+That is why the mixed model gives more realistic standard errors and can lead to different conclusions.
+
+**The Most Important Output Tables**
+
+When we first use `PROC MIXED`, the output can feel overwhelming. The goal is **not** to read every table in detail. Instead, focus on a few key tables.
+
+## 1. Covariance Parameter Estimates
+
+This table reports estimated variance components for the random part of the model.
+
+Typical rows include:
+
+- `Family`
+- `Family*Gender`
+- `Residual`
+
+### How to interpret this table
+
+- A larger variance component means that source contributes more variability
+- If the `Family` variance is large, families differ substantially in baseline height
+- If the `Family*Gender` variance is large, the gender difference varies across families
+- The residual variance reflects remaining unexplained within-family variation
+
+::: {.callout-note title="Key Interpretation"}
+
+Covariance parameter estimates tell us **where the variability comes from**.
 
 :::
 
-### Type 3 Tests
+## 2. Tests of Fixed Effects
 
-- Hypothesis testing for fixed effects
+This table tests the fixed-effects part of the model.
 
+In the example above, the most important fixed effect is usually:
 
-### Fit Statistics
+- `Gender`
 
+This table answers questions such as:
+
+- Is there evidence of an overall gender difference in height?
+- After accounting for family-level variation, does gender still matter?
+
+### Why this matters
+
+The p-values here can differ from those in a fixed-effects model because the mixed model adjusts for the dependence structure in the data.
+
+## 3. Fit Statistics
+
+This table often includes quantities such as:
+
+- $-2$ log likelihood
 - AIC
 - BIC
-- Likelihood
 
+These are useful when comparing competing models.
 
-## Key Insight
+### General interpretation
 
-Modeling correlation changes:
+- Smaller values often indicate better fit, especially when comparing models fit to the same dataset
+- AIC and BIC are particularly useful when deciding whether adding random effects improves the model
 
-- Standard errors
+::: {.callout-example title="Practical Use of Fit Statistics"}
+
+If two models are fitted to the same data, and one has clearly smaller AIC and BIC, that model is usually preferred from a model-fit perspective.
+
+:::
+
+## Why Modeling Correlation Changes Inference
+
+One of the biggest lessons from mixed models is this:
+
+> if you ignore correlation, your inference may change.
+
+In practice, adding random effects can change:
+
+- standard errors
+- test statistics
 - p-values
-- inference
+- confidence intervals
 
-## Summary
+This does **not** necessarily mean the fixed-effect estimate changes dramatically. Sometimes the estimate is similar, but the uncertainty around it changes.
 
-- `PROC MIXED` handles correlated data
-- `MODEL` = fixed effects
-- `RANDOM` = random effects
-- Proper modeling is essential
+That is one reason mixed models are so important.
 
+## Comparing a Fixed-Effects Model and a Mixed Model
 
-## Key Takeaways
+A useful way to learn mixed models is to compare the two approaches.
 
-- Mixed models handle clustered data
-- Random effects capture dependence
-- Ignoring correlation leads to incorrect conclusions
+**Fixed-effects model**
+
+```r
+PROC MIXED DATA=heights;
+    CLASS Family Gender;
+    MODEL Height = Gender Family Family*Gender;
+RUN;
+```
+
+**Mixed-effects model**
+
+```r
+PROC MIXED DATA=heights;
+    CLASS Family Gender;
+    MODEL Height = Gender;
+    RANDOM Family Family*Gender;
+RUN;
+```
+
+**Conceptual comparison**
+
+- The fixed-effects model treats families as specific categories of direct interest
+- The mixed-effects model treats family as a source of random variability
+- The mixed-effects model is more natural when families are thought of as sampled from a larger population
+
+## Another Example: Repeated Measures
+
+Now return to the repeated-measures dataset from the previous lecture.
+
+```r
+DATA performance;
+    INPUT id $ age group $ trial score;
+    DATALINES;
+SY 34 A 1 14.3
+SY 34 A 2 21.4
+SY 34 A 3 27.6
+SY 34 A 4 31.1
+SY 34 A 5 33.2
+WL 33 A 1 13.2
+WL 33 A 2 21.4
+WL 33 A 3 23.3
+WL 33 A 4 30.0
+WL 33 A 5 38.6
+ZN 43 B 1 15.9
+ZN 43 B 2 23.4
+ZN 43 B 3 22.0
+ZN 43 B 4 29.0
+ZN 43 B 5 33.6
+;
+RUN;
+```
+
+A basic random intercept model is
+
+```r
+PROC MIXED DATA=performance;
+    CLASS id group;
+    MODEL score = trial group;
+    RANDOM INTERCEPT / SUBJECT=id;
+RUN;
+```
+
+**Intrepreation of the model**
+
+- `trial` measures the average trend across repeated trials
+- `group` compares group A and group B
+- `RANDOM INTERCEPT / SUBJECT=id;` allows each subject to have their own baseline
+
+### What output should students focus on?
+
+Again, focus on three things:
+
+1. covariance parameter estimates  
+2. tests of fixed effects  
+3. fit statistics  
+
+### How to Explain Results in Words?
+
+Students often know how to read p-values but struggle to explain mixed-model results in plain language. Here are some useful sentence patterns.
+
+**For a fixed effect**
+
+- “After accounting for family-level variability, there is evidence of a gender difference in height.”
+- “After accounting for repeated measurements within subjects, score tends to increase with trial.”
+
+**For a random effect**
+
+- “There is substantial between-family variability in baseline height.”
+- “There is meaningful variation across subjects in their baseline scores.”
+
+### For model comparison
+
+- “The mixed model fits better than the fixed-effects model based on smaller fit statistics.”
+
+## In-Class Questions
+
+::: {.callout-exercise title="Question 1"}
+
+In the code below, which part specifies the fixed effects?
+
+```r
+PROC MIXED DATA=performance;
+    CLASS id group;
+    MODEL score = trial group;
+    RANDOM INTERCEPT / SUBJECT=id;
+RUN;
+```
+
++ (A) `CLASS id group;`
++ (B) `MODEL score = trial group;`
++ (C) `RANDOM INTERCEPT / SUBJECT=id;`
++ (D) `PROC MIXED DATA=performance;`
+
+:::
+
+::: {.callout-exercise title="Question 2"}
+
+What does the `RANDOM` statement do?
+
++ (A) It creates a new variable
++ (B) It defines the variance structure due to clustering
++ (C) It removes dependence from the data
++ (D) It converts a continuous variable into a categorical variable
+
+:::
+
+::: {.callout-exercise title="Question 3"}
+
+If a mixed model and a fixed-effects model give different p-values, which is the most likely explanation?
+
++ (A) The raw data changed
++ (B) The mixed model accounts for correlation
++ (C) The response variable changed units
++ (D) SAS made an error
+
+:::
+
+## What to Remember from This Lecture
+
+The main lesson of this second lecture is:
+
+> `PROC MIXED` allows us to estimate both the fixed-effects part and the random-effects part of a model.
+
+When you read the output, focus on:
+
+1. the fixed effects  
+2. the random-effect variance components  
+3. the fit statistics  
+
+These three pieces usually tell the main story.
+
+::: {.callout-note title="Key Takeaways"}
+
+- `PROC MIXED` is used to fit linear mixed models in SAS
+- `CLASS` identifies categorical variables
+- `MODEL` specifies the fixed-effects part
+- `RANDOM` specifies the random-effects part
+- Covariance parameter estimates show how variability is split across sources
+- Tests of fixed effects tell us whether predictors are associated with the response
+- Modeling correlation can change standard errors, p-values, and conclusions
+
+:::
