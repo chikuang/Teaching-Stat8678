@@ -25,7 +25,8 @@ Students will:
 | | 4 | Vu, Ha |   |
 | | 5 | Umma Hafsah Himu |  |
 | | 6 | Kalen Jinnah, Ivanna Poliashenko, Sierra Doherty |  |
-| | 7 | Zhe Zhong | Bank Marketing Datasets | 
+| | 7 | Zhe Zhong | Bank Marketing Dataset | 
+| | 8 | Andrew Krause | Heart Disease Dataset |
 
 <!-- ✅  -->
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analysis Using SAS – STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>21&nbsp; Exercise 4: Linear Mixed Effects Model – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./exercise_1_macro.html" rel="next">
-<link href="./part3_5_LMEM_II.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./exercise_3_regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -179,7 +179,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project.html">Final Project</a></li><li class="breadcrumb-item"><a href="./project.html">Data Analysis Using SAS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise_1_macro.html">Hands on Class</a></li><li class="breadcrumb-item"><a href="./exercise_4_LMEM.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -343,7 +343,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project.html" class="sidebar-item-text sidebar-link active">
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Analysis Using SAS</span></a>
   </div>
 </li>
@@ -378,7 +378,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_4_LMEM.html" class="sidebar-item-text sidebar-link">
+  <a href="./exercise_4_LMEM.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></span></a>
   </div>
 </li>
@@ -400,26 +400,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">🎯 Project Overview</a></li>
-  <li><a href="#group-information" id="toc-group-information" class="nav-link" data-scroll-target="#group-information">Group Information</a></li>
-  <li><a href="#data-requirement" id="toc-data-requirement" class="nav-link" data-scroll-target="#data-requirement">📊 Data Requirement</a>
+  <li><a href="#dataset-multi-location-crop-yield-study" id="toc-dataset-multi-location-crop-yield-study" class="nav-link active" data-scroll-target="#dataset-multi-location-crop-yield-study"><span class="header-section-number">21.1</span> Dataset: Multi-Location Crop Yield Study</a></li>
+  <li><a href="#sas-dataset" id="toc-sas-dataset" class="nav-link" data-scroll-target="#sas-dataset"><span class="header-section-number">21.2</span> SAS Dataset</a></li>
+  <li><a href="#step-1-identify-model-structure" id="toc-step-1-identify-model-structure" class="nav-link" data-scroll-target="#step-1-identify-model-structure"><span class="header-section-number">21.3</span> Step 1: Identify Model Structure</a>
   <ul class="collapse">
-  <li><a href="#recommended-sources" id="toc-recommended-sources" class="nav-link" data-scroll-target="#recommended-sources">Recommended sources:</a></li>
-  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements:</a></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1"><span class="header-section-number">21.3.1</span> Task 1</a></li>
   </ul></li>
-  <li><a href="#group" id="toc-group" class="nav-link" data-scroll-target="#group">Group:</a></li>
-  <li><a href="#project-components" id="toc-project-components" class="nav-link" data-scroll-target="#project-components">Project Components</a></li>
-  <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">📄 Deliverables</a></li>
-  <li><a href="#grading-breakdown" id="toc-grading-breakdown" class="nav-link" data-scroll-target="#grading-breakdown">📊 Grading Breakdown</a></li>
+  <li><a href="#step-2-write-the-full-model" id="toc-step-2-write-the-full-model" class="nav-link" data-scroll-target="#step-2-write-the-full-model"><span class="header-section-number">21.4</span> Step 2: Write the Full Model</a></li>
+  <li><a href="#step-3-implement-in-sas" id="toc-step-3-implement-in-sas" class="nav-link" data-scroll-target="#step-3-implement-in-sas"><span class="header-section-number">21.5</span> Step 3: Implement in SAS</a>
+  <ul class="collapse">
+  <li><a href="#step-4-interpretation" id="toc-step-4-interpretation" class="nav-link" data-scroll-target="#step-4-interpretation"><span class="header-section-number">21.5.1</span> Step 4: Interpretation</a></li>
+  <li><a href="#step-5-model-comparison" id="toc-step-5-model-comparison" class="nav-link" data-scroll-target="#step-5-model-comparison"><span class="header-section-number">21.5.2</span> Step 5: Model Comparison</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways"><span class="header-section-number">22</span> Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project.html">Final Project</a></li><li class="breadcrumb-item"><a href="./project.html">Data Analysis Using SAS</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise_1_macro.html">Hands on Class</a></li><li class="breadcrumb-item"><a href="./exercise_4_LMEM.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data Analysis Using SAS</h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 4: Linear Mixed Effects Model</span></h1>
 </div>
 
 
@@ -437,345 +439,123 @@ window.Quarto = {
 
 
 <blockquote class="blockquote">
-<p><strong>Weight</strong>: 20% of final grade<br>
-<strong>Last modified</strong>: April 01, 2026<br>
-<strong>Due Date</strong>: Apr 27, 2026</p>
-</blockquote>
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">🎯 Project Overview</h2>
-<p>The goal of the final project is to apply <strong>statistical methods and SAS programming skills</strong> learned throughout the course to conduct a <strong>complete data analysis pipeline</strong>.</p>
-<p>Students will:</p>
-<ul>
-<li>Work with a <strong>real-world open dataset</strong></li>
-<li>Perform <strong>data cleaning, visualization, and modeling</strong></li>
-<li>Use <strong>SAS procedures and macros</strong></li>
-<li>Communicate results clearly through a <strong>written report</strong></li>
-</ul>
-</section>
-<section id="group-information" class="level2">
-<h2 class="anchored" data-anchor-id="group-information">Group Information</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 10%">
-<col style="width: 45%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Group</th>
-<th style="text-align: center;">Member</th>
-<th style="text-align: center;">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Zong Yang</td>
-<td style="text-align: center;">Financial Metric Transmission Mechanism within Coca-Cola’s Income Statement</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">Mangsa Limbu Pheudin, Shaswat Bhushan Jangam, Allswell Akomanyi-Addo</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">Wenpu Ma</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">Vu, Ha</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Umma Hafsah Himu</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">Kalen Jinnah, Ivanna Poliashenko, Sierra Doherty</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">Zhe Zhong</td>
-<td style="text-align: center;">Bank Marketing Datasets</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">Andrew Krause</td>
-<td style="text-align: center;">Heart Disease Dataset</td>
-</tr>
-</tbody>
-</table>
-<!-- ✅  -->
-</section>
-<section id="data-requirement" class="level2">
-<h2 class="anchored" data-anchor-id="data-requirement">📊 Data Requirement</h2>
-<p>You must use a <strong>public/open dataset</strong>.</p>
-<section id="recommended-sources" class="level3">
-<h3 class="anchored" data-anchor-id="recommended-sources">Recommended sources:</h3>
-<ul>
-<li>UCI Machine Learning Repository<br>
-</li>
-<li>Kaggle (public datasets only)<br>
-</li>
-<li>Data.gov<br>
-</li>
-<li>CDC / WHO datasets<br>
-</li>
-<li>Built-in SAS datasets (e.g., <code>sashelp.cars</code>, <code>sashelp.heart</code>, etc.)</li>
-</ul>
-</section>
-<section id="requirements" class="level3">
-<h3 class="anchored" data-anchor-id="requirements">Requirements:</h3>
-<ul>
-<li>At least <strong>100 observations</strong></li>
-<li>At least <strong>3–5 variables</strong></li>
-<li>Must include:
-<ul>
-<li>At least <strong>one categorical variable</strong></li>
-<li>At least <strong>one numerical variable</strong></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="group" class="level2">
-<h2 class="anchored" data-anchor-id="group">Group:</h2>
-<p>You can form group of <strong>2–3 students</strong>. If you prefer to work alone, that is also acceptable. PhD students MUST work individually.</p>
-</section>
-<section id="project-components" class="level2">
-<h2 class="anchored" data-anchor-id="project-components">Project Components</h2>
-<p>Your project must include the following components:</p>
-<p><strong>Research Question (10%)</strong></p>
-<p>Clearly state:</p>
-<ul>
-<li>What question are you trying to answer?</li>
-<li>Why is it interesting or important?</li>
-</ul>
-<p>Examples:</p>
-<ul>
-<li>Does treatment A outperform treatment B?</li>
-<li>What factors affect income?</li>
-<li>Is there an association between two categorical variables?</li>
-</ul>
-<p><strong>Data Cleaning &amp; Preparation (15%)</strong></p>
-<ul>
-<li>Import dataset into SAS</li>
-<li>Handle:
-<ul>
-<li>Missing values</li>
-<li>Data types</li>
-<li>Outliers (if necessary)</li>
-</ul></li>
-</ul>
-<p>Suggested tools:</p>
-<ul>
-<li><code>DATA</code> step</li>
-<li><code>PROC IMPORT</code></li>
-<li><code>PROC FORMAT</code></li>
-</ul>
-<p><strong>Exploratory Data Analysis (EDA) (15%)</strong></p>
-<p>Use SAS to explore the data:</p>
-<ul>
-<li>Summary statistics:
-<ul>
-<li><code>PROC MEANS</code></li>
-<li><code>PROC FREQ</code></li>
-</ul></li>
-<li>Visualizations:
-<ul>
-<li><code>PROC SGPLOT</code></li>
-</ul></li>
-</ul>
-<p>Examples:</p>
-<ul>
-<li>Histograms</li>
-<li>Boxplots</li>
-<li>Scatterplots</li>
-</ul>
-<p><strong>Statistical Analysis (30%)</strong></p>
-<p>You must include <strong>at least TWO of the following methods</strong>:</p>
-<ul>
-<li>Chi-square test (<code>PROC FREQ</code>)</li>
-<li>Two-sample t-test (<code>PROC TTEST</code>)</li>
-<li>ANOVA (<code>PROC ANOVA</code> or <code>PROC GLM</code>)</li>
-<li>Regression (<code>PROC REG</code>)</li>
-<li>Correlation (<code>PROC CORR</code>)</li>
-</ul>
-<p>You should:</p>
-<ul>
-<li>State hypotheses</li>
-<li>Report test statistics and p-values</li>
-<li>Interpret results in context</li>
-</ul>
-<p><strong>SAS Macro (15%)</strong></p>
-<p>You must create <strong>at least one SAS macro</strong>.</p>
-<p>Examples:</p>
-<ul>
-<li>A macro for:
-<ul>
-<li>Summary statistics</li>
-<li>Running multiple regressions</li>
-<li>Automating hypothesis tests</li>
-</ul></li>
-</ul>
-<p>Your macro must:</p>
-<ul>
-<li>Take at least <strong>2 input arguments</strong></li>
-<li>Be reusable</li>
-<li>Be clearly documented</li>
-</ul>
-<p>Example structure:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>%MACRO <span class="fu">analysis</span>(data, var);</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    PROC MEANS DATA<span class="ot">=</span><span class="er">&amp;</span>data;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        VAR <span class="sc">&amp;</span>var;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    RUN;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>%MEND;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Interpretation &amp; Conclusion (15%)</strong></p>
-<p>You must:</p>
-<ul>
-<li>Explain results in plain language</li>
-<li>Connect findings to your research question</li>
-<li>Discuss:</li>
-<li>Limitations</li>
-<li>Possible improvements</li>
-</ul>
-</section>
-<section id="deliverables" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables">📄 Deliverables</h2>
-<p><strong>1. Written Report (PDF)</strong></p>
-<p>Length: 8–10 pages (excluding references and appendices). You may put additional Figures and Tables in the appendix.</p>
-<p>Include:</p>
-<ul>
-<li>Introduction</li>
-<li>Data description</li>
-<li>Methods</li>
-<li>Results</li>
-<li>Conclusion</li>
-</ul>
-<p><strong>2. SAS Code File (.sas)</strong></p>
-<p>Must include:</p>
-<ul>
-<li>Clean and well-commented code</li>
-<li>Macro implementation</li>
-</ul>
-<p><strong>3. (Optional Bonus +5%)</strong></p>
-<ul>
-<li>Visualization dashboard</li>
-<li>Additional modeling (e.g., interaction, model comparison)</li>
-<li>Advanced macro usage</li>
-</ul>
-</section>
-<section id="grading-breakdown" class="level2">
-<h2 class="anchored" data-anchor-id="grading-breakdown">📊 Grading Breakdown</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Component</th>
-<th style="text-align: center;">Points</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Research Question</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Data Preparation</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">EDA</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Statistical Analysis</td>
-<td style="text-align: center;">30</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">SAS Macro</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Interpretation</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>Total</strong></td>
-<td style="text-align: center;"><strong>100 (20% course weight)</strong></td>
-</tr>
-</tbody>
-</table>
-<div id="callout-1" class="callout callout-style-default callout-warning callout-titled" title="Important Notes">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Important Notes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>You must write your own SAS code</li>
-<li>Collaboration is allowed for discussion, but not for code sharing between the groups</li>
-<li>Plagiarism will result in zero credit</li>
-</ul>
-</div>
-</div>
-<div id="callout-2" class="callout callout-style-default callout-note callout-titled" title="💡 Suggested Workflow">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>💡 Suggested Workflow
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Learning Objectives</p>
+<p>By the end of this activity, you should be able to:</p>
 <ol type="1">
-<li>Pick dataset early</li>
-<li>Perform EDA first</li>
-<li>Decide appropriate statistical methods</li>
-<li>Write SAS code</li>
-<li>Wrap repeated tasks into macros</li>
-<li>Write report last</li>
+<li>Identify clustered and hierarchical data structures</li>
+<li>Specify linear mixed models with multiple random effects</li>
+<li>Implement PROC MIXED in SAS</li>
+<li>Interpret fixed and random effects</li>
+<li>Understand interaction + mixed effects</li>
 </ol>
-</div>
-</div>
-<div id="callout-3" class="callout callout-style-default callout-note callout-titled" title="Key Learning Outcome">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Learning Outcome
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This project integrates:</p>
+</blockquote>
+<section id="dataset-multi-location-crop-yield-study" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="dataset-multi-location-crop-yield-study"><span class="header-section-number">21.1</span> Dataset: Multi-Location Crop Yield Study</h2>
+<p>We now consider a more complex dataset:</p>
 <ul>
-<li>Statistical thinking</li>
-<li>SAS programming</li>
-<li>Reproducible analysis</li>
-<li>Communication skills</li>
+<li>5 locations (randomly sampled farms)</li>
+<li>2 machine types (draper, stripper)</li>
+<li>2 crop varieties</li>
+<li>multiple observations per combination</li>
 </ul>
-<p>This is designed to simulate a real-world data analysis task.</p>
-</div>
-</div>
+</section>
+<section id="sas-dataset" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="sas-dataset"><span class="header-section-number">21.2</span> SAS Dataset</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA crop;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>INPUT location <span class="sc">$</span> machine <span class="sc">$</span> variety <span class="sc">$</span> yield;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DATALINES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A draper v1 <span class="fl">35.2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A draper v2 <span class="fl">34.8</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>A stripper v1 <span class="fl">38.5</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>A stripper v2 <span class="fl">39.1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>B draper v1 <span class="fl">30.5</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>B draper v2 <span class="fl">31.2</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>B stripper v1 <span class="fl">34.0</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>B stripper v2 <span class="fl">35.5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>C draper v1 <span class="fl">28.9</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>C draper v2 <span class="fl">29.5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>C stripper v1 <span class="fl">32.1</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>C stripper v2 <span class="fl">33.0</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>D draper v1 <span class="fl">36.0</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>D draper v2 <span class="fl">35.7</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>D stripper v1 <span class="fl">40.2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>D stripper v2 <span class="fl">41.0</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>E draper v1 <span class="fl">33.3</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>E draper v2 <span class="fl">34.1</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>E stripper v1 <span class="fl">37.5</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>E stripper v2 <span class="fl">38.0</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-1-identify-model-structure" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="step-1-identify-model-structure"><span class="header-section-number">21.3</span> Step 1: Identify Model Structure</h2>
+<section id="task-1" class="level3" data-number="21.3.1">
+<h3 data-number="21.3.1" class="anchored" data-anchor-id="task-1"><span class="header-section-number">21.3.1</span> Task 1</h3>
+<p>Identify:</p>
+<ul>
+<li>Response variable: ________</li>
+<li>Fixed effects: ________</li>
+<li>Random effects: ________</li>
+</ul>
+</section>
+</section>
+<section id="step-2-write-the-full-model" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="step-2-write-the-full-model"><span class="header-section-number">21.4</span> Step 2: Write the Full Model</h2>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} +
+\beta_3 (machine \times variety) + u_{location} + \epsilon
+\]</span></p>
+</section>
+<section id="step-3-implement-in-sas" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="step-3-implement-in-sas"><span class="header-section-number">21.5</span> Step 3: Implement in SAS</h2>
+<pre class="sas"><code>PROC MIXED DATA=crop;
+    CLASS location machine variety;
+    MODEL yield = machine variety machine*variety;
+    RANDOM location;
+RUN;</code></pre>
+<section id="step-4-interpretation" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="step-4-interpretation"><span class="header-section-number">21.5.1</span> Step 4: Interpretation</h3>
+<p>Suppose:</p>
+<ul>
+<li>machine effect = 3.2</li>
+<li>interaction = 1.1</li>
+</ul>
+<p>Interpret:</p>
+<ul>
+<li>machine effect: ____________________</li>
+<li>interaction: _______________________</li>
+</ul>
+</section>
+<section id="step-5-model-comparison" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="step-5-model-comparison"><span class="header-section-number">21.5.2</span> Step 5: Model Comparison</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>AIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No random effect</td>
+<td>210</td>
+</tr>
+<tr class="even">
+<td>With random effect</td>
+<td>165</td>
+</tr>
+</tbody>
+</table>
+<p>Which is better? Why?</p>
+</section>
+</section>
+<section id="key-takeaways" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Key Takeaways</h1>
+<ul>
+<li>Mixed models handle clustered data</li>
+<li>Random effects capture variability across groups</li>
+<li>Interaction allows flexible modeling</li>
+</ul>
 
 
 </section>
@@ -1183,13 +963,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part3_5_LMEM_II.html" class="pagination-link" aria-label="Linear Mixed Effect Models II">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></span>
+      <a href="./exercise_3_regression.html" class="pagination-link" aria-label="Exercise 3: Linear Regression and Interaction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 3: Linear Regression and Interaction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise_1_macro.html" class="pagination-link" aria-label="Writing Macro in SAS">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Writing Macro in SAS</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
