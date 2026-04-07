@@ -30,6 +30,7 @@ Students will:
 | | 9 | Taiwo Ayeni | Cardiovascular Risk Factors in the Framingham Heart Study  |
 | | 10 | Maya Creary | Is there a statistically significant difference in the "Inattentive" vs. "Hyperactive" symptom scores between male and female subjects? | 
 | | 11 |Seoyoung Kim | CDC Disability data | 
+| | 12 | Sifan You, Boshu Zhang | Relationship between car's weight and its fuel efficiency |
 
 
 <!-- ✅  -->
