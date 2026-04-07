@@ -23,7 +23,6 @@ A key assumption of this model is that the observations are **independent**.
 
 However, in many real applications, this assumption is not reasonable. Observations often come in groups, or the same subject is measured repeatedly. In such settings, observations from the same group tend to be more similar to each other than to observations from other groups.
 
-This leads to **correlated data**, and ordinary regression is no longer the right model.
 
 ## Two Common Settings Where Independence Fails
 
@@ -342,7 +341,7 @@ RUN;
 This corresponds to
 
 $$
-Y_{ij} = \beta_0 + \beta_1 \, trial_{ij} + \beta_2 \, group_i + u_i + \epsilon_{ij}.
+Y_{ij} = \beta_0 + \beta_1 \, trial_{ij} + \beta_2 \, group_{ij} + u_i + \epsilon_{ij}.
 $$
 
 Now the model includes:

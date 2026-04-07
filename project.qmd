@@ -1,7 +1,7 @@
 # Data Analysis Using SAS {.unnumbered}
 
 > **Weight**: 20% of final grade\
-> **Last modified**: April 01, 2026\
+> **Last modified**: April 6, 2026\
 > **Due Date**: Apr 27, 2026
 
 ## 🎯 Project Overview
@@ -27,6 +27,10 @@ Students will:
 | | 6 | Kalen Jinnah, Ivanna Poliashenko, Sierra Doherty |  |
 | | 7 | Zhe Zhong | Bank Marketing Dataset | 
 | | 8 | Andrew Krause | Heart Disease Dataset |
+| | 9 | Taiwo Ayeni | Cardiovascular Risk Factors in the Framingham Heart Study  |
+| | 10 | Maya Creary | Is there a statistically significant difference in the "Inattentive" vs. "Hyperactive" symptom scores between male and female subjects? | 
+| | 11 |Seoyoung Kim | CDC Disability data | 
+
 
 <!-- ✅  -->
 
