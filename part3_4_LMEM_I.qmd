@@ -406,7 +406,7 @@ This is one reason mixed models are so useful for repeated-measures data.
 
 ## In-Class Questions
 
-::: {.callout-exercise title="Question 1"}
+::: {.callout-exercise}
 
 Which variable is most appropriate as a random effect?
 
@@ -417,7 +417,7 @@ Which variable is most appropriate as a random effect?
 
 :::
 
-::: {.callout-exercise title="Question 2"}
+::: {.callout-exercise}
 
 Why include a random effect?
 
@@ -428,7 +428,7 @@ Why include a random effect?
 
 :::
 
-::: {.callout-exercise title="Question 3"}
+::: {.callout-exercise}
 
 Ignoring clustering most directly leads to:
 
