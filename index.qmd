@@ -80,7 +80,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   | 19--20  | Regression with Interaction Effects |
 |   ✅   |   20    | 🛠 Class Activity III |
 |   ✅   |   21    | Linear Mixed Effects Model I |
-|   ⏳   |   22    | Linear Mixed Effects Model II |
+|   ✅    |   22    | Linear Mixed Effects Model II |
 |   ⏳   |   TBA   | 🛠 Class Activity III |
 |   ⏳   |   TBA   | Model Selection |
 <!-- 🚧🛠️⏳   -->
