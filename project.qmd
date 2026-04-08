@@ -1,7 +1,7 @@
 # Data Analysis Using SAS {.unnumbered}
 
 > **Weight**: 20% of final grade\
-> **Last modified**: April 6, 2026\
+> **Last modified**: April 8, 2026\
 > **Due Date**: Apr 27, 2026
 
 ## 🎯 Project Overview
@@ -11,7 +11,7 @@ The goal of the final project is to apply **statistical methods and SAS programm
 Students will:
 
 -   Work with a **real-world open dataset**
--   Perform **data cleaning, visualization, and modeling**
+-   Perform **data cleaning, visualization, and modelling**
 -   Use **SAS procedures and macros**
 -   Communicate results clearly through a **written report**
 
@@ -33,6 +33,7 @@ Students will:
 | | 12 | Sifan You, Boshu Zhang | Relationship between car's weight and its fuel efficiency |
 | | 13 | Mostafa Farhadian  | Flood Insurance Claims Dataset | 
 | | 14 | Michael Dixon | African American high school students' Math scores | 
+| | 15 | Kamana Joshi, Sushil Khadka | | 
 
 
 <!-- ✅  -->
