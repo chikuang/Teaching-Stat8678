@@ -32,6 +32,7 @@ Students will:
 | | 11 |Seoyoung Kim | CDC Disability data | 
 | | 12 | Sifan You, Boshu Zhang | Relationship between car's weight and its fuel efficiency |
 | | 13 | Mostafa Farhadian  | Flood Insurance Claims Dataset | 
+| | 14 | Michael Dixon | African American high school students' Math scores | 
 
 
 <!-- ✅  -->
