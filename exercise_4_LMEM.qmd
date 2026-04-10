@@ -1,74 +1,182 @@
-# Exercise 4: Linear Mixed Effects Model
+# Exercise 4: Linear Mixed Effects Model {.unnumbered}
 
 > Learning Objectives
 >
 > By the end of this activity, you should be able to:
 >
-> 1.  Identify clustered and hierarchical data structures
-> 2.  Specify linear mixed models with multiple random effects
-> 3.  Implement PROC MIXED in SAS
-> 4.  Interpret fixed and random effects
-> 5.  Understand interaction + mixed effects
+> 1. Identify clustered and hierarchical data structures  
+> 2. Distinguish between fixed effects and random effects  
+> 3. Specify linear mixed models  
+> 4. Implement PROC MIXED in SAS  
+> 5. Interpret fixed and random effects  
+> 6. Compare models with and without random effects  
+
+---
+
+## Structure of This Activity (75 Minutes)
+
+- Part 1 (15 min): Understanding the data  
+- Part 2 (15 min): Model formulation  
+- Part 3 (25 min): SAS implementation  
+- Part 4 (20 min): Interpretation and discussion  
 
 ## Dataset: Multi-Location Crop Yield Study
 
-We now consider a more complex dataset:
+We study crop yields across:
 
--   5 locations (randomly sampled farms)
--   2 machine types (draper, stripper)
--   2 crop varieties
--   multiple observations per combination
+- Multiple locations (farms)
+- Machine types (draper vs stripper)
+- Crop varieties (v1, v2)
+
+Each location is **randomly sampled**, so observations within the same location are correlated.
 
 ## SAS Dataset
 
-``` r
+```r
 DATA crop;
 INPUT location $ machine $ variety $ yield;
 DATALINES;
-A draper v1 35.2
-A draper v2 34.8
-A stripper v1 38.5
-A stripper v2 39.1
-B draper v1 30.5
-B draper v2 31.2
-B stripper v1 34.0
-B stripper v2 35.5
-C draper v1 28.9
-C draper v2 29.5
-C stripper v1 32.1
-C stripper v2 33.0
-D draper v1 36.0
-D draper v2 35.7
-D stripper v1 40.2
-D stripper v2 41.0
-E draper v1 33.3
-E draper v2 34.1
-E stripper v1 37.5
-E stripper v2 38.0
+  A draper v1 35.2
+  A draper v2 34.8
+  A stripper v1 38.5
+  A stripper v2 39.1
+  B draper v1 30.5
+  B draper v2 31.2
+  B stripper v1 34.0
+  B stripper v2 35.5
+  C draper v1 28.9
+  C draper v2 29.5
+  C stripper v1 32.1
+  C stripper v2 33.0
+  D draper v1 36.0
+  D draper v2 35.7
+  D stripper v1 40.2
+  D stripper v2 41.0
+  E draper v1 33.3
+  E draper v2 34.1
+  E stripper v1 37.5
+  E stripper v2 38.0
 ;
 RUN;
 ```
 
-## Step 1: Identify Model Structure
+## Part 1: Understanding the Data (15 min)
 
-### Task 1
+If we would like to understand the data, first of all, we can ask ourselves some questions about the data structure and the variables involved.
 
-Identify:
+### Questions
 
--   Response variable: \_\_\_\_\_\_\_\_
--   Fixed effects: \_\_\_\_\_\_\_\_
--   Random effects: \_\_\_\_\_\_\_\_
+**1. What is the response variable in this study?**  
+**Answer:** The response variable is `yield`.
 
-## Step 2: Write the Full Model
+**2. What are the fixed effects in this study?**  
+**Answer:** The fixed effects are `machine`, `variety`, and possibly the interaction `machine*variety`.
+
+**3. What is the random effect in this study?**  
+**Answer:** The random effect is `location`.
+
+**4. Why is `location` treated as a random effect rather than a fixed effect?**  
+**Answer:** Because the locations are viewed as a random sample from a larger population of farms or locations. We are not only interested in these five specific locations, but in the variability across locations more generally. Treating `location` as a random effect allows us to account for location-to-location variability and to make inference beyond the observed sample.
+
+**5. Why are observations from the same location likely to be correlated?**  
+**Answer:** Because observations from the same location share common environmental and management conditions, such as soil, weather, and farm-specific characteristics. This creates within-location similarity and therefore correlation.
+
+**6. If we ignore the location effect, what problem might occur?**  
+**Answer:** Ignoring the location effect can lead to incorrect standard errors, misleading p-values, and overly optimistic conclusions, because the dependence among observations within the same location is not being modeled.
+
+
+## Part 2: Model Formulation (15 min)
+
+**7. Write a linear model for this study if we ignore the random location effect.**  
+
+One possible fixed-effects model is
 
 $$
-Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} + 
-\beta_3 (machine \times variety) + u_{location} + \epsilon
+Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} + \beta_3 (\text{machine} \times \text{variety}) + \epsilon.
 $$
 
-## Step 3: Implement in SAS
+Here:
 
-``` sas
+- $\beta_0$ is the overall intercept  
+- $\beta_1$ is the machine effect  
+- $\beta_2$ is the variety effect  
+- $\beta_3$ is the interaction effect between machine and variety  
+- $\epsilon$ is the residual error  
+
+**8. Write a mixed model for this study by adding a random effect for location.**  
+
+A mixed model is
+
+$$
+Y = \beta_0 + \beta_1 \text{machine} + \beta_2 \text{variety} + \beta_3 (\text{machine} \times \text{variety}) + u_{\text{location}} + \epsilon.
+$$
+
+**9. What does $u_{\text{location}}$ represent?**  
+**Answer:**  
+$u_{\text{location}}$ represents the random deviation associated with each location. It captures the idea that some locations may have systematically higher or lower yields than others because of unobserved location-specific conditions.
+
+**10. Why does $u_{\text{location}}$ induce correlation?**  
+**Answer:**  
+Because all observations from the same location share the same random effect $u_{\text{location}}$. This shared term makes observations within the same location more similar to each other than to observations from different locations, which induces within-location correlation.
+
+**11. In words, what is the difference between the fixed-effects model and the mixed-effects model?**  
+**Answer:**  
+The fixed-effects model only describes the average effects of machine type, variety, and their interaction.  
+The mixed-effects model does the same, but also accounts for extra variability across locations by including a random location effect.
+
+**12. Why is the mixed model more appropriate here?**  
+**Answer:**  
+Because the data are grouped by location, and observations from the same location are likely correlated. The mixed model explicitly accounts for that clustering structure.
+
+
+## Part 3: SAS Implementation (25 min)
+
+In this part, we compare a model **without random effects** and a model **with a random location effect**.
+
+The main idea is:
+
+- the fixed-effects model treats all observations as independent after accounting for the explanatory variables
+- the mixed-effects model recognizes that observations from the same location may still be correlated
+
+### Step 1: Fixed-effects model
+
+```r
+PROC GLM DATA=crop;
+    CLASS machine variety location;
+    MODEL yield = machine variety machine*variety location;
+RUN;
+QUIT;
+```
+
+
+Explanation
+
+This model treats:
+
++ `machine` as a fixed effect
++ `variety` as a fixed effect
++ `machine*variety` as an interaction effect
++ `location` as a fixed effect
+
+So this model asks:
+
++ Is `yield` associated with `machine` type?
++ Is `yield` associated with crop `variety`?
++ Does the `machine` effect depend on `variety`?
++ Do the five observed `locations` differ from one another?
+
+However, this model treats the five locations as the only locations of interest. It does not explicitly model location-to-location variability as a random source of variation.
+
+::: {.callout-exercise}
+
+What assumption does this model make about independence?
+
+:::
+
+
+### Step 2: Mixed-effects model
+
+```r
 PROC MIXED DATA=crop;
     CLASS location machine variety;
     MODEL yield = machine variety machine*variety;
@@ -76,29 +184,144 @@ PROC MIXED DATA=crop;
 RUN;
 ```
 
-### Step 4: Interpretation
 
-Suppose:
+Explanation
 
--   machine effect = 3.2
--   interaction = 1.1
+This model treats:
 
-Interpret:
++ `machine` as a fixed effect
++ `variety` as a fixed effect
++ `machine*variety` as a fixed interaction effect
++ `location` as a random effect
 
--   machine effect: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
--   interaction: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+This means that the model now assumes the observed locations are a random sample from a larger population of locations.
 
-### Step 5: Model Comparison
+The line `RANDOM location;` adds a random effect for location, so the model can capture location-to-location variability.
+
+
+Questions
+
+**15. What does RANDOM location; do?**\
+**Answer:** It adds a random effect for location, allowing each location to have its own deviation from the overall mean. This captures the variability across locations.
+
+**16. Why is this useful here?**\
+**Answer:** Because observations from the same location are likely correlated. The random effect accounts for that within-location dependence.
+
+**17. What is the main conceptual difference between this model and the previous one?**\
+**Answer:** The previous model treats location as fixed, while this model treats location as random and explicitly models variability across locations.
+
+
+
+### Step 3: Alternative interaction notation
+
+```r
+PROC MIXED DATA=crop;
+    CLASS location machine variety;
+    MODEL yield = machine|variety;
+    RANDOM location;
+RUN;
+```
+
+**Explanation**
+
+In SAS, the notation `machine|variety` is shorthand for `machine variety machine*variety`.
+
+So this model is mathematically the same as the previous mixed model.
+
+It is often more convenient because it automatically includes:
+
++ the main effect of machine
++ the main effect of variety
++ the interaction machine*variety
+
+**Questions**
+
+**18. What does machine|variety mean in the MODEL statement?**\
+**Answer:** It tells SAS to include machine, variety, and their interaction machine*variety.
+
+**19. Is this model different from the previous mixed model?**\
+**Answer:** No. It is just a shorter way to write the same fixed-effects structure.
+
+
+## Part 4: Interpretation (20 min)
+
+**Question 20**
+
+Suppose the fitted mixed model gives:
+
++ machine effect = 3.2
++ interaction effect = 1.1
+
+How would you interpret these?
+
+**Answer:**
+
++ Machine effect = 3.2: On average, changing from draper to stripper is associated with an increase of 3.2 units in yield, for the reference variety.
++ Interaction effect = 1.1: The effect of machine type depends on crop variety. In particular, the difference between stripper and draper changes by 1.1 units when moving from the reference variety to the other variety.
+
+Question 21
+
+Why should we be careful when interpreting the machine effect if the interaction is present?
+
+**Answer:**\
+Because when an interaction is included, the main effect of machine is interpreted conditionally. It usually represents the machine effect only for the reference level of variety, not an overall effect across all varieties.
+
+
+Question 22: Model Comparison
+
+Suppose we compare the following two models:
+
+
+### Task 8: Model Comparison
 
 | Model              | AIC |
 |--------------------|-----|
 | No random effect   | 210 |
 | With random effect | 165 |
 
-Which is better? Why?
+Which model is better? Why?
 
-# Key Takeaways
 
--   Mixed models handle clustered data
--   Random effects capture variability across groups
--   Interaction allows flexible modeling
+**Answer:**\
+The model with random effect is better because it has the smaller AIC value. In model comparison, a smaller AIC indicates a better balance between model fit and model complexity.
+
+Question 23
+
+**What does this comparison suggest about the role of location?**
+
+**Answer:**
+It suggests that location-to-location variability is important and should be included in the model. The data are better explained when location is treated as a random effect.
+
+**Question 24**
+
+**What might happen if we ignore the random location effect?**
+
+**Answer:**\
+Ignoring the random effect can lead to incorrect standard errors, misleading p-values, and conclusions that are too optimistic, because the within-location dependence is not being modeled.
+
+
+
+
+::: {.callout-exercise}
+
+What happens if we ignore the random effect?
+
+(A) Correct inference  
+(B) Smaller variance  
+(C) Incorrect standard errors  
+(D) No difference  
+
+:::
+
+
+::: {.callout-note title = "Key Takeaways" }
+
+
++ `PROC GLM` can fit a **fixed-effects model** with location treated as a **fixed factor**
++ `PROC MIXED` allows us to treat location as a **random effect**
++ `RANDOM location`; captures variability across locations
++ `machine|variety` is shorthand for main effects plus interaction
++ When interaction is present, main effects must be interpreted carefully
++ AIC can help compare competing models
+
+:::

@@ -30,6 +30,7 @@ book:
       - part3_3_regression_interaction.qmd
       - part3_4_LMEM_I.qmd
       - part3_5_LMEM_II.qmd
+      - part3_6_model_selection.qmd
     - part: "Final Project"
       chapters:
       - project.qmd

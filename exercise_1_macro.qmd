@@ -1,4 +1,4 @@
-# Writing Macro in SAS
+# Writing Macro in SAS {.unnumbered}
 
 > Learning Objectives
 >

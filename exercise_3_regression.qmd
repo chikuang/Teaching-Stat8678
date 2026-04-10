@@ -1,4 +1,4 @@
-# Exercise 3: Linear Regression and Interaction
+# Exercise 3: Linear Regression and Interaction {.unnumbered}
 
 > Learning Objectives
 >

@@ -1,4 +1,4 @@
-# Two-Sample t-Test and ANOVA in SAS
+# Two-Sample t-Test and ANOVA in SAS {.unnumbered}
 
 > Learning Objectives
 >

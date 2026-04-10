@@ -1,0 +1,442 @@
+# Model Selection in SAS
+
+> Learning Objectives
+>
+> By the end of this lecture, you should be able to:
+>
+> 1. Understand the main goal of **model selection**
+> 2. Explain the **bias-variance trade-off**
+> 3. Understand why **training error is not enough**
+> 4. Use **cross-validation** to assess prediction performance
+> 5. Interpret **AIC** and **BIC** as model comparison tools
+> 6. Implement model selection in SAS using **`PROC GLMSELECT`**
+
+## Introduction
+
+In many modern data problems, we often have several possible predictors.
+
+A natural practical question is:
+
+> We have many variables, but which ones should we use in the model?
+
+More generally, model selection includes questions such as:
+
+- which predictors to include
+- whether to use a simpler or more complex model
+- whether interaction terms are needed
+- how to choose tuning parameters or model forms
+
+The goal of model selection is **not** simply to fit the largest model possible. Instead, we want a model that is:
+
+- reasonably simple and interpretable
+- accurate for prediction on new data
+
+## Why Model Selection Matters
+
+A model that is too simple may miss important patterns in the data.
+
+A model that is too complex may fit the training data very well, but perform poorly on new data.
+
+So model selection is really about finding a model that **generalizes well**.
+
+::: {.callout-note title="Main Idea"}
+
+A good model balances:
+
+- **fit**
+- **simplicity**
+- **prediction performance**
+
+:::
+
+## Bias-Variance Trade-Off
+
+A central idea in model selection is the **bias-variance trade-off**.
+
+Suppose
+
+$$
+Y = f(X) + \epsilon, \qquad \epsilon \sim N(0, \sigma_\epsilon^2).
+$$
+
+Then the expected prediction error at a point \(x\) can be decomposed as
+
+$$
+E\big[(Y - \hat f(x))^2\big] = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}.
+$$
+
+### Intuition
+
+- A **simple model** often has **high bias** but **low variance**
+- A **complex model** often has **low bias** but **high variance**
+
+As model complexity increases:
+
+- bias usually decreases
+- variance usually increases
+
+So the total prediction error is often minimized at some intermediate level of complexity.
+
+::: {.callout-example title="Interpretation"}
+
+- If a model is **too simple**, it may underfit the data
+- If a model is **too flexible**, it may overfit the data
+- The best model is often somewhere in between
+
+:::
+
+## Why Training Error Is Not Enough
+
+Suppose we fit a model using the training data.
+
+Then the **training MSE** often underestimates the true prediction error, because the model has already seen those data.
+
+So if our goal is prediction, we need a better way to estimate how well the model performs on new observations.
+
+This motivates **cross-validation**.
+
+## Cross-Validation
+
+The goal of cross-validation is to estimate how well a model predicts new data.
+
+### Basic idea
+
+1. Split the data into two parts:
+   - a pseudo-training set
+   - a pseudo-test set
+2. Fit the model on the pseudo-training set
+3. Evaluate prediction error on the pseudo-test set
+
+This gives an estimate of test MSE.
+
+## K-Fold Cross-Validation
+
+In **K-fold cross-validation**:
+
+1. Randomly divide the data into \(K\) folds
+2. For each fold \(k\):
+   - use fold \(k\) as the test set
+   - use the remaining \(K-1\) folds as the training set
+3. Compute the prediction error for each fold
+4. Average the errors
+
+The cross-validation estimate is
+
+$$
+\widehat{\text{MSE}}_{CV}
+=
+\frac{1}{K}
+\sum_{k=1}^K \widehat{\text{MSE}}_k.
+$$
+
+If \(K=n\), this becomes **leave-one-out cross-validation (LOOCV)**.
+
+::: {.callout-example title="Why Use K-Fold Cross-Validation?"}
+
+A single train/test split can be unstable.
+
+K-fold cross-validation improves stability by averaging prediction error across multiple splits.
+
+:::
+
+## Information Criteria: AIC and BIC
+
+Besides prediction-based approaches, model selection can also be based on **information criteria**.
+
+Two common criteria are:
+
+- Akaike's Information Criterion (AIC)
+- Bayesian Information Criterion (BIC)
+
+### Main idea
+
+Both AIC and BIC try to balance:
+
+- goodness of fit
+- model complexity
+
+A model with more parameters may fit the data better, but it is also penalized for being more complex.
+
+### Interpretation
+
+- Smaller **AIC** is better
+- Smaller **BIC** is better
+
+In general:
+
+- AIC tends to be a bit more flexible
+- BIC tends to penalize complexity more strongly
+
+::: {.callout-note title="Practical Interpretation"}
+
+If two models are fitted to the same data, the one with the smaller AIC or BIC is usually preferred.
+
+:::
+
+## `PROC GLMSELECT`
+
+In SAS, one important procedure for model selection is `PROC GLMSELECT`.
+
+It is designed for model selection in general linear models, especially when there are many candidate effects.
+
+### Why `PROC GLMSELECT` is useful
+
+It provides flexibility for:
+
+- large numbers of candidate predictors
+- interaction terms
+- classification effects
+- training / validation / testing partitions
+- cross-validation
+- different selection criteria and stopping rules
+
+### Common selection methods
+
+Some common methods include:
+
+- `FORWARD`
+- `BACKWARD`
+- `STEPWISE`
+- `LASSO`
+
+## Example: Model Selection with a Toy Dataset
+
+To make the ideas concrete, consider a small dataset with a practical meaning.
+
+Suppose we want to predict a student's **final exam score** using:
+
+- `hours` = weekly study hours
+- `attendance` = class attendance percentage
+- `homework` = homework average
+- `sleep` = average hours of sleep per night
+- `parttime` = part-time work hours per week
+
+Our goal is to decide which predictors should be included in the model.
+
+## Step 1: Create the Dataset
+
+```r
+DATA studentperf;
+    INPUT hours attendance homework sleep parttime final;
+    DATALINES;
+5  92 88 7.5  5 84
+8  95 91 7.0  2 90
+3  85 80 6.5 12 72
+10 98 94 7.2  0 95
+6  90 86 8.0  8 83
+4  88 78 6.8 15 74
+9  96 93 7.1  4 92
+7  91 89 7.4  6 87
+2  80 75 6.0 18 68
+11 99 96 7.3  0 97
+1  78 70 5.8 20 63
+6  89 84 7.6 10 81
+8  94 90 7.0  3 89
+5  87 82 6.9 14 77
+9  97 95 7.8  1 94
+3  83 76 6.4 16 70
+7  92 88 7.1  7 86
+4  86 79 6.7 13 75
+10 98 97 7.5  0 96
+2  81 73 6.2 17 67
+;
+RUN;
+```
+
+### Variable meanings
+
+- `final` = final exam score
+- `hours` = study hours per week
+- `attendance` = attendance percentage
+- `homework` = homework average
+- `sleep` = average sleep per night
+- `parttime` = work hours per week
+
+## Why This Is a Model Selection Problem
+
+We have several candidate predictors, but not all of them may be equally useful.
+
+Questions include:
+
+- Do we need all predictors?
+- Which predictors improve prediction?
+- Can a simpler model perform as well as a larger model?
+
+## Step 2: Fit a Full Model
+
+```r
+PROC REG DATA=studentperf;
+    MODEL final = hours attendance homework sleep parttime;
+RUN;
+QUIT;
+```
+
+### Discussion
+
+This model includes **all candidate predictors**.
+
+Questions to ask:
+
+- Are all predictors significant?
+- Are some predictors redundant?
+- Can a smaller model perform similarly?
+
+::: {.callout-warning title="Important"}
+
+A full model is not always the best model.
+
+Some predictors may add complexity without adding much predictive value.
+
+:::
+
+## Step 3: Use `PROC GLMSELECT` with Cross-Validation
+
+```r
+PROC GLMSELECT DATA=studentperf PLOTS=ALL;
+    MODEL final = hours attendance homework sleep parttime
+          / SELECTION=STEPWISE
+            CHOOSE=CV
+            CVMETHOD=RANDOM(5);
+RUN;
+```
+
+### What this does
+
+- `SELECTION=STEPWISE` asks SAS to perform stepwise model selection
+- `CHOOSE=CV` tells SAS to choose the model using cross-validation
+- `CVMETHOD=RANDOM(5)` uses 5-fold cross-validation
+
+This helps us select a model that balances:
+
+- prediction accuracy
+- model simplicity
+
+## Step 4: Alternative Selection with AIC
+
+You can also use AIC as the selection criterion.
+
+```r
+PROC GLMSELECT DATA=studentperf PLOTS=ALL;
+    MODEL final = hours attendance homework sleep parttime
+          / SELECTION=FORWARD
+            CHOOSE=AIC;
+RUN;
+```
+
+### Interpretation
+
+This version uses:
+
+- `SELECTION=FORWARD` for forward selection
+- `CHOOSE=AIC` to pick the model with the best AIC
+
+So this is still model selection, but based on a different criterion.
+
+## How to Read the ASE Plot
+
+When you use `PLOTS=ALL`, one useful graph is the ASE plot.
+
+The ASE plot helps compare:
+
+- training error
+- validation or cross-validation error
+
+### Interpretation
+
+- Training error usually decreases as the model becomes more complex
+- Validation or test error may decrease at first, then increase
+- If validation error starts increasing, the model may be overfitting
+- The best model is often near the minimum of the validation or test ASE curve
+
+::: {.callout-warning title="Important"}
+
+A smaller training error does **not** always mean a better model.
+
+For prediction, validation or test error is more informative.
+
+:::
+
+## In-Class Questions
+
+::: {.callout-exercise title="Question 1"}
+
+Why is training MSE usually too optimistic as an estimate of prediction error?
+
+:::
+
+::: {.callout-exercise title="Question 2"}
+
+What is the main purpose of K-fold cross-validation?
+
+:::
+
+::: {.callout-exercise title="Question 3"}
+
+If a more complex model has lower training error but higher test error, what problem is occurring?
+
+:::
+
+::: {.callout-exercise title="Question 4"}
+
+What does a smaller AIC or BIC usually indicate?
+
+:::
+
+::: {.callout-exercise title="Question 5"}
+
+Why is `PROC GLMSELECT` useful when there are many candidate predictors and interactions?
+
+:::
+
+::: {.callout-exercise title="Question 6"}
+
+Which variables seem most useful for predicting final exam score in this example?
+
+:::
+
+## Teaching Interpretation of the Toy Example
+
+This example has a natural real-world meaning:
+
+- More study hours may improve exam performance
+- Better attendance may help
+- Strong homework performance may indicate understanding
+- Too many part-time work hours may reduce study time
+- Sleep may matter, but perhaps less strongly than the others
+
+This makes it easier to think about:
+
+- variable importance
+- model simplicity
+- prediction versus interpretation
+
+## What to Remember from This Lecture
+
+The central question in model selection is:
+
+> Which model gives the best balance between fit, prediction accuracy, and simplicity?
+
+There are two major perspectives:
+
+1. **Prediction-based selection**
+   - training/test split
+   - validation data
+   - cross-validation
+
+2. **Criterion-based selection**
+   - AIC
+   - BIC
+
+In SAS, `PROC GLMSELECT` provides a practical way to carry out model selection with both classical and modern options.
+
+
+::: {.callout-note title="Key Takeaways"}
+
+- Model selection is about choosing a model that is useful, not just complicated
+- Prediction error is often more important than training error
+- Cross-validation helps estimate out-of-sample performance
+- AIC and BIC balance fit and complexity
+- `PROC GLMSELECT` is a powerful SAS tool for model selection
+- Overfitting occurs when a model fits training data well but performs poorly on new data
+
+:::

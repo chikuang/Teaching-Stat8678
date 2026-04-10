@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Linear Mixed Effect Models II – STAT 8678 - SAS Programming &amp; Data Analysis</title>
+<title>18&nbsp; Model Selection in SAS – STAT 8678 - SAS Programming &amp; Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part3_6_model_selection.html" rel="next">
-<link href="./part3_4_LMEM_I.html" rel="prev">
+<link href="./project.html" rel="next">
+<link href="./part3_5_LMEM_II.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -179,7 +179,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_5_LMEM_II.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_6_model_selection.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Model Selection in SAS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -326,13 +326,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part3_5_LMEM_II.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part3_5_LMEM_II.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part3_6_model_selection.html" class="sidebar-item-text sidebar-link">
+  <a href="./part3_6_model_selection.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Model Selection in SAS</span></span></a>
   </div>
 </li>
@@ -406,44 +406,62 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">17.1</span> Introduction</a></li>
-  <li><a href="#why-proc-mixed" id="toc-why-proc-mixed" class="nav-link" data-scroll-target="#why-proc-mixed"><span class="header-section-number">17.2</span> Why <code>PROC MIXED</code>?</a></li>
-  <li><a href="#example-dataset-family-heights" id="toc-example-dataset-family-heights" class="nav-link" data-scroll-target="#example-dataset-family-heights"><span class="header-section-number">17.3</span> Example Dataset: Family Heights</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">18.1</span> Introduction</a></li>
+  <li><a href="#why-model-selection-matters" id="toc-why-model-selection-matters" class="nav-link" data-scroll-target="#why-model-selection-matters"><span class="header-section-number">18.2</span> Why Model Selection Matters</a></li>
+  <li><a href="#bias-variance-trade-off" id="toc-bias-variance-trade-off" class="nav-link" data-scroll-target="#bias-variance-trade-off"><span class="header-section-number">18.3</span> Bias-Variance Trade-Off</a>
   <ul class="collapse">
-  <li><a href="#step-1-a-fixed-effects-model" id="toc-step-1-a-fixed-effects-model" class="nav-link" data-scroll-target="#step-1-a-fixed-effects-model"><span class="header-section-number">17.3.1</span> Step 1: A Fixed-Effects Model</a></li>
-  <li><a href="#step-2-a-mixed-effects-model" id="toc-step-2-a-mixed-effects-model" class="nav-link" data-scroll-target="#step-2-a-mixed-effects-model"><span class="header-section-number">17.3.2</span> Step 2: A Mixed-Effects Model</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">18.3.1</span> Intuition</a></li>
   </ul></li>
-  <li><a href="#covariance-parameter-estimates" id="toc-covariance-parameter-estimates" class="nav-link" data-scroll-target="#covariance-parameter-estimates"><span class="header-section-number">17.4</span> 1. Covariance Parameter Estimates</a>
+  <li><a href="#why-training-error-is-not-enough" id="toc-why-training-error-is-not-enough" class="nav-link" data-scroll-target="#why-training-error-is-not-enough"><span class="header-section-number">18.4</span> Why Training Error Is Not Enough</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">18.5</span> Cross-Validation</a>
   <ul class="collapse">
-  <li><a href="#how-to-interpret-this-table" id="toc-how-to-interpret-this-table" class="nav-link" data-scroll-target="#how-to-interpret-this-table"><span class="header-section-number">17.4.1</span> How to interpret this table</a></li>
+  <li><a href="#basic-idea" id="toc-basic-idea" class="nav-link" data-scroll-target="#basic-idea"><span class="header-section-number">18.5.1</span> Basic idea</a></li>
   </ul></li>
-  <li><a href="#tests-of-fixed-effects" id="toc-tests-of-fixed-effects" class="nav-link" data-scroll-target="#tests-of-fixed-effects"><span class="header-section-number">17.5</span> 2. Tests of Fixed Effects</a>
+  <li><a href="#k-fold-cross-validation" id="toc-k-fold-cross-validation" class="nav-link" data-scroll-target="#k-fold-cross-validation"><span class="header-section-number">18.6</span> K-Fold Cross-Validation</a></li>
+  <li><a href="#information-criteria-aic-and-bic" id="toc-information-criteria-aic-and-bic" class="nav-link" data-scroll-target="#information-criteria-aic-and-bic"><span class="header-section-number">18.7</span> Information Criteria: AIC and BIC</a>
   <ul class="collapse">
-  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters"><span class="header-section-number">17.5.1</span> Why this matters</a></li>
+  <li><a href="#main-idea" id="toc-main-idea" class="nav-link" data-scroll-target="#main-idea"><span class="header-section-number">18.7.1</span> Main idea</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">18.7.2</span> Interpretation</a></li>
   </ul></li>
-  <li><a href="#fit-statistics" id="toc-fit-statistics" class="nav-link" data-scroll-target="#fit-statistics"><span class="header-section-number">17.6</span> 3. Fit Statistics</a>
+  <li><a href="#proc-glmselect" id="toc-proc-glmselect" class="nav-link" data-scroll-target="#proc-glmselect"><span class="header-section-number">18.8</span> <code>PROC GLMSELECT</code></a>
   <ul class="collapse">
-  <li><a href="#general-interpretation" id="toc-general-interpretation" class="nav-link" data-scroll-target="#general-interpretation"><span class="header-section-number">17.6.1</span> General interpretation</a></li>
+  <li><a href="#why-proc-glmselect-is-useful" id="toc-why-proc-glmselect-is-useful" class="nav-link" data-scroll-target="#why-proc-glmselect-is-useful"><span class="header-section-number">18.8.1</span> Why <code>PROC GLMSELECT</code> is useful</a></li>
+  <li><a href="#common-selection-methods" id="toc-common-selection-methods" class="nav-link" data-scroll-target="#common-selection-methods"><span class="header-section-number">18.8.2</span> Common selection methods</a></li>
   </ul></li>
-  <li><a href="#why-modeling-correlation-changes-inference" id="toc-why-modeling-correlation-changes-inference" class="nav-link" data-scroll-target="#why-modeling-correlation-changes-inference"><span class="header-section-number">17.7</span> Why Modeling Correlation Changes Inference</a></li>
-  <li><a href="#comparing-a-fixed-effects-model-and-a-mixed-model" id="toc-comparing-a-fixed-effects-model-and-a-mixed-model" class="nav-link" data-scroll-target="#comparing-a-fixed-effects-model-and-a-mixed-model"><span class="header-section-number">17.8</span> Comparing a Fixed-Effects Model and a Mixed Model</a></li>
-  <li><a href="#another-example-repeated-measures" id="toc-another-example-repeated-measures" class="nav-link" data-scroll-target="#another-example-repeated-measures"><span class="header-section-number">17.9</span> Another Example: Repeated Measures</a>
+  <li><a href="#example-model-selection-with-a-toy-dataset" id="toc-example-model-selection-with-a-toy-dataset" class="nav-link" data-scroll-target="#example-model-selection-with-a-toy-dataset"><span class="header-section-number">18.9</span> Example: Model Selection with a Toy Dataset</a></li>
+  <li><a href="#step-1-create-the-dataset" id="toc-step-1-create-the-dataset" class="nav-link" data-scroll-target="#step-1-create-the-dataset"><span class="header-section-number">18.10</span> Step 1: Create the Dataset</a>
   <ul class="collapse">
-  <li><a href="#what-output-should-students-focus-on" id="toc-what-output-should-students-focus-on" class="nav-link" data-scroll-target="#what-output-should-students-focus-on"><span class="header-section-number">17.9.1</span> What output should students focus on?</a></li>
-  <li><a href="#how-to-explain-results-in-words" id="toc-how-to-explain-results-in-words" class="nav-link" data-scroll-target="#how-to-explain-results-in-words"><span class="header-section-number">17.9.2</span> How to Explain Results in Words?</a></li>
-  <li><a href="#for-model-comparison" id="toc-for-model-comparison" class="nav-link" data-scroll-target="#for-model-comparison"><span class="header-section-number">17.9.3</span> For model comparison</a></li>
+  <li><a href="#variable-meanings" id="toc-variable-meanings" class="nav-link" data-scroll-target="#variable-meanings"><span class="header-section-number">18.10.1</span> Variable meanings</a></li>
   </ul></li>
-  <li><a href="#in-class-questions" id="toc-in-class-questions" class="nav-link" data-scroll-target="#in-class-questions"><span class="header-section-number">17.10</span> In-Class Questions</a></li>
-  <li><a href="#what-to-remember-from-this-lecture" id="toc-what-to-remember-from-this-lecture" class="nav-link" data-scroll-target="#what-to-remember-from-this-lecture"><span class="header-section-number">17.11</span> What to Remember from This Lecture</a></li>
+  <li><a href="#why-this-is-a-model-selection-problem" id="toc-why-this-is-a-model-selection-problem" class="nav-link" data-scroll-target="#why-this-is-a-model-selection-problem"><span class="header-section-number">18.11</span> Why This Is a Model Selection Problem</a></li>
+  <li><a href="#step-2-fit-a-full-model" id="toc-step-2-fit-a-full-model" class="nav-link" data-scroll-target="#step-2-fit-a-full-model"><span class="header-section-number">18.12</span> Step 2: Fit a Full Model</a>
+  <ul class="collapse">
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">18.12.1</span> Discussion</a></li>
+  </ul></li>
+  <li><a href="#step-3-use-proc-glmselect-with-cross-validation" id="toc-step-3-use-proc-glmselect-with-cross-validation" class="nav-link" data-scroll-target="#step-3-use-proc-glmselect-with-cross-validation"><span class="header-section-number">18.13</span> Step 3: Use <code>PROC GLMSELECT</code> with Cross-Validation</a>
+  <ul class="collapse">
+  <li><a href="#what-this-does" id="toc-what-this-does" class="nav-link" data-scroll-target="#what-this-does"><span class="header-section-number">18.13.1</span> What this does</a></li>
+  </ul></li>
+  <li><a href="#step-4-alternative-selection-with-aic" id="toc-step-4-alternative-selection-with-aic" class="nav-link" data-scroll-target="#step-4-alternative-selection-with-aic"><span class="header-section-number">18.14</span> Step 4: Alternative Selection with AIC</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">18.14.1</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#how-to-read-the-ase-plot" id="toc-how-to-read-the-ase-plot" class="nav-link" data-scroll-target="#how-to-read-the-ase-plot"><span class="header-section-number">18.15</span> How to Read the ASE Plot</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2"><span class="header-section-number">18.15.1</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#in-class-questions" id="toc-in-class-questions" class="nav-link" data-scroll-target="#in-class-questions"><span class="header-section-number">18.16</span> In-Class Questions</a></li>
+  <li><a href="#teaching-interpretation-of-the-toy-example" id="toc-teaching-interpretation-of-the-toy-example" class="nav-link" data-scroll-target="#teaching-interpretation-of-the-toy-example"><span class="header-section-number">18.17</span> Teaching Interpretation of the Toy Example</a></li>
+  <li><a href="#what-to-remember-from-this-lecture" id="toc-what-to-remember-from-this-lecture" class="nav-link" data-scroll-target="#what-to-remember-from-this-lecture"><span class="header-section-number">18.18</span> What to Remember from This Lecture</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_5_LMEM_II.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part3_1_ANOVA.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="./part3_6_model_selection.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Model Selection in SAS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Model Selection in SAS</span></h1>
 </div>
 
 
@@ -464,137 +482,288 @@ window.Quarto = {
 <p>Learning Objectives</p>
 <p>By the end of this lecture, you should be able to:</p>
 <ol type="1">
-<li>Implement <strong>linear mixed models in SAS using <code>PROC MIXED</code></strong><br>
-</li>
-<li>Understand the roles of the <strong>CLASS</strong>, <strong>MODEL</strong>, and <strong>RANDOM</strong> statements<br>
-</li>
-<li>Interpret key output tables, including:
-<ul>
-<li>covariance parameter estimates</li>
-<li>tests of fixed effects</li>
-<li>fit statistics<br>
-</li>
-</ul></li>
-<li>Compare <strong>fixed-effects models</strong> and <strong>mixed-effects models</strong><br>
-</li>
-<li>Explain why modeling correlation can change standard errors, p-values, and conclusions</li>
+<li>Understand the main goal of <strong>model selection</strong></li>
+<li>Explain the <strong>bias-variance trade-off</strong></li>
+<li>Understand why <strong>training error is not enough</strong></li>
+<li>Use <strong>cross-validation</strong> to assess prediction performance</li>
+<li>Interpret <strong>AIC</strong> and <strong>BIC</strong> as model comparison tools</li>
+<li>Implement model selection in SAS using <strong><code>PROC GLMSELECT</code></strong></li>
 </ol>
 </blockquote>
-<section id="introduction" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">17.1</span> Introduction</h2>
-<p>In the previous lecture, we introduced the conceptual framework of linear mixed models:</p>
-<p><span class="math display">\[
-Y = X\beta + Z\gamma + \epsilon,
-\]</span></p>
-<p>where:</p>
+<section id="introduction" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">18.1</span> Introduction</h2>
+<p>In many modern data problems, we often have several possible predictors.</p>
+<p>A natural practical question is:</p>
+<blockquote class="blockquote">
+<p>We have many variables, but which ones should we use in the model?</p>
+</blockquote>
+<p>More generally, model selection includes questions such as:</p>
 <ul>
-<li><span class="math inline">\(X\beta\)</span> represents the <strong>fixed-effects part</strong> of the model</li>
-<li><span class="math inline">\(Z\gamma\)</span> represents the <strong>random-effects part</strong> of the model</li>
-<li><span class="math inline">\(\epsilon\)</span> is the residual error</li>
+<li>which predictors to include</li>
+<li>whether to use a simpler or more complex model</li>
+<li>whether interaction terms are needed</li>
+<li>how to choose tuning parameters or model forms</li>
 </ul>
-<p>In this lecture, we focus on <strong>how to fit and interpret these models in SAS</strong> using <code>PROC MIXED</code>.</p>
-<div id="callout-1" class="callout callout-style-default callout-note callout-titled" title="Main Goal of This Lecture">
+<p>The goal of model selection is <strong>not</strong> simply to fit the largest model possible. Instead, we want a model that is:</p>
+<ul>
+<li>reasonably simple and interpretable</li>
+<li>accurate for prediction on new data</li>
+</ul>
+</section>
+<section id="why-model-selection-matters" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="why-model-selection-matters"><span class="header-section-number">18.2</span> Why Model Selection Matters</h2>
+<p>A model that is too simple may miss important patterns in the data.</p>
+<p>A model that is too complex may fit the training data very well, but perform poorly on new data.</p>
+<p>So model selection is really about finding a model that <strong>generalizes well</strong>.</p>
+<div id="callout-1" class="callout callout-style-default callout-note callout-titled" title="Main Idea">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Main Goal of This Lecture
+<span class="screen-reader-only">Note</span>Main Idea
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Last time, the main question was:</p>
-<blockquote class="blockquote">
-<p><strong>Why do we need mixed models?</strong></p>
-</blockquote>
-<p>This time, the main question is:</p>
-<blockquote class="blockquote">
-<p><strong>How do we fit, read, and interpret mixed models in SAS?</strong></p>
-</blockquote>
+<p>A good model balances:</p>
+<ul>
+<li><strong>fit</strong></li>
+<li><strong>simplicity</strong></li>
+<li><strong>prediction performance</strong></li>
+</ul>
 </div>
 </div>
 </section>
-<section id="why-proc-mixed" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="why-proc-mixed"><span class="header-section-number">17.2</span> Why <code>PROC MIXED</code>?</h2>
-<p>Recall the roles of some common SAS procedures:</p>
+<section id="bias-variance-trade-off" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="bias-variance-trade-off"><span class="header-section-number">18.3</span> Bias-Variance Trade-Off</h2>
+<p>A central idea in model selection is the <strong>bias-variance trade-off</strong>.</p>
+<p>Suppose</p>
+<p><span class="math display">\[
+Y = f(X) + \epsilon, \qquad \epsilon \sim N(0, \sigma_\epsilon^2).
+\]</span></p>
+<p>Then the expected prediction error at a point (x) can be decomposed as</p>
+<p><span class="math display">\[
+E\big[(Y - \hat f(x))^2\big] = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}.
+\]</span></p>
+<section id="intuition" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="intuition"><span class="header-section-number">18.3.1</span> Intuition</h3>
 <ul>
-<li><code>PROC REG</code> fits ordinary regression models and assumes <strong>independent observations</strong></li>
-<li><code>PROC GLM</code> handles fixed-effects models, including ANOVA-style models with categorical predictors</li>
-<li><code>PROC MIXED</code> extends these ideas to data with <strong>dependence, clustering, or repeated measurements</strong></li>
+<li>A <strong>simple model</strong> often has <strong>high bias</strong> but <strong>low variance</strong></li>
+<li>A <strong>complex model</strong> often has <strong>low bias</strong> but <strong>high variance</strong></li>
 </ul>
-<p>Typical use cases include:</p>
+<p>As model complexity increases:</p>
 <ul>
-<li>clustered data, such as students within schools or patients within hospitals</li>
-<li>repeated-measures data, such as multiple observations on the same subject</li>
+<li>bias usually decreases</li>
+<li>variance usually increases</li>
 </ul>
-<p><strong>A General Template for <code>PROC MIXED</code></strong></p>
-<p>A basic mixed model in SAS has the form</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>dataset;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    CLASS categorical_variables;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    MODEL response <span class="ot">=</span> fixed_effects;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    RANDOM random_effects <span class="sc">/</span> SUBJECT<span class="ot">=</span>cluster;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>How to read this syntax?</strong></p>
+<p>So the total prediction error is often minimized at some intermediate level of complexity.</p>
+<div class="callout-example" title="Interpretation">
 <ul>
-<li><code>CLASS</code> tells SAS which variables are categorical</li>
-<li><code>MODEL</code> specifies the <strong>fixed-effects part</strong></li>
-<li><code>RANDOM</code> specifies the <strong>random-effects part</strong></li>
-<li><code>SUBJECT=</code> identifies the clustering variable</li>
+<li>If a model is <strong>too simple</strong>, it may underfit the data</li>
+<li>If a model is <strong>too flexible</strong>, it may overfit the data</li>
+<li>The best model is often somewhere in between</li>
 </ul>
-<div class="callout-example" title="A Useful Way to Think About PROC MIXED">
-<p>A mixed model has <strong>two parts</strong>:</p>
+</div>
+</section>
+</section>
+<section id="why-training-error-is-not-enough" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="why-training-error-is-not-enough"><span class="header-section-number">18.4</span> Why Training Error Is Not Enough</h2>
+<p>Suppose we fit a model using the training data.</p>
+<p>Then the <strong>training MSE</strong> often underestimates the true prediction error, because the model has already seen those data.</p>
+<p>So if our goal is prediction, we need a better way to estimate how well the model performs on new observations.</p>
+<p>This motivates <strong>cross-validation</strong>.</p>
+</section>
+<section id="cross-validation" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="cross-validation"><span class="header-section-number">18.5</span> Cross-Validation</h2>
+<p>The goal of cross-validation is to estimate how well a model predicts new data.</p>
+<section id="basic-idea" class="level3" data-number="18.5.1">
+<h3 data-number="18.5.1" class="anchored" data-anchor-id="basic-idea"><span class="header-section-number">18.5.1</span> Basic idea</h3>
 <ol type="1">
-<li>A <strong>fixed-effects part</strong>, which describes the average relationship<br>
-</li>
-<li>A <strong>random-effects part</strong>, which accounts for dependence among observations from the same subject or cluster</li>
+<li>Split the data into two parts:
+<ul>
+<li>a pseudo-training set</li>
+<li>a pseudo-test set</li>
+</ul></li>
+<li>Fit the model on the pseudo-training set</li>
+<li>Evaluate prediction error on the pseudo-test set</li>
 </ol>
+<p>This gives an estimate of test MSE.</p>
+</section>
+</section>
+<section id="k-fold-cross-validation" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="k-fold-cross-validation"><span class="header-section-number">18.6</span> K-Fold Cross-Validation</h2>
+<p>In <strong>K-fold cross-validation</strong>:</p>
+<ol type="1">
+<li>Randomly divide the data into (K) folds</li>
+<li>For each fold (k):
+<ul>
+<li>use fold (k) as the test set</li>
+<li>use the remaining (K-1) folds as the training set</li>
+</ul></li>
+<li>Compute the prediction error for each fold</li>
+<li>Average the errors</li>
+</ol>
+<p>The cross-validation estimate is</p>
+<p><span class="math display">\[
+\widehat{\text{MSE}}_{CV}
+=
+\frac{1}{K}
+\sum_{k=1}^K \widehat{\text{MSE}}_k.
+\]</span></p>
+<p>If (K=n), this becomes <strong>leave-one-out cross-validation (LOOCV)</strong>.</p>
+<div class="callout-example" title="Why Use K-Fold Cross-Validation?">
+<p>A single train/test split can be unstable.</p>
+<p>K-fold cross-validation improves stability by averaging prediction error across multiple splits.</p>
 </div>
 </section>
-<section id="example-dataset-family-heights" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="example-dataset-family-heights"><span class="header-section-number">17.3</span> Example Dataset: Family Heights</h2>
-<p>To keep the ideas concrete, consider the following family-height data.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA heights;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    INPUT Family Gender <span class="sc">$</span> Height <span class="sc">@</span><span class="er">@</span>;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> F <span class="dv">67</span> <span class="dv">1</span> F <span class="dv">66</span> <span class="dv">1</span> F <span class="dv">64</span> <span class="dv">1</span> M <span class="dv">71</span> <span class="dv">1</span> M <span class="dv">72</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> F <span class="dv">63</span> <span class="dv">2</span> F <span class="dv">67</span> <span class="dv">2</span> M <span class="dv">69</span> <span class="dv">2</span> M <span class="dv">68</span> <span class="dv">2</span> M <span class="dv">70</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> F <span class="dv">63</span> <span class="dv">3</span> M <span class="dv">64</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> F <span class="dv">67</span> <span class="dv">4</span> F <span class="dv">66</span> <span class="dv">4</span> M <span class="dv">67</span> <span class="dv">4</span> M <span class="dv">67</span> <span class="dv">4</span> M <span class="dv">69</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In this dataset:</p>
+<section id="information-criteria-aic-and-bic" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="information-criteria-aic-and-bic"><span class="header-section-number">18.7</span> Information Criteria: AIC and BIC</h2>
+<p>Besides prediction-based approaches, model selection can also be based on <strong>information criteria</strong>.</p>
+<p>Two common criteria are:</p>
 <ul>
-<li><code>Height</code> is the response variable</li>
-<li><code>Gender</code> is a categorical explanatory variable</li>
-<li><code>Family</code> identifies the cluster</li>
+<li>Akaike’s Information Criterion (AIC)</li>
+<li>Bayesian Information Criterion (BIC)</li>
 </ul>
-<p>So the natural grouping structure is:</p>
-<blockquote class="blockquote">
-<p>observations within the same family may be correlated</p>
-</blockquote>
-<p>This means a standard fixed-effects model that assumes independence may not be appropriate.</p>
-<section id="step-1-a-fixed-effects-model" class="level3" data-number="17.3.1">
-<h3 data-number="17.3.1" class="anchored" data-anchor-id="step-1-a-fixed-effects-model"><span class="header-section-number">17.3.1</span> Step 1: A Fixed-Effects Model</h3>
-<p>We begin with a model that treats family as a fixed effect.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>heights;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    CLASS Family Gender;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    MODEL Height <span class="ot">=</span> Gender Family Family<span class="sc">*</span>Gender;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>What this model does</strong></p>
-<p>This model is similar to a fixed-effects ANOVA model:</p>
+<section id="main-idea" class="level3" data-number="18.7.1">
+<h3 data-number="18.7.1" class="anchored" data-anchor-id="main-idea"><span class="header-section-number">18.7.1</span> Main idea</h3>
+<p>Both AIC and BIC try to balance:</p>
 <ul>
-<li><code>Gender</code> is treated as a fixed effect</li>
-<li><code>Family</code> is also treated as a fixed effect</li>
-<li><code>Family*Gender</code> allows the gender difference to vary across families</li>
+<li>goodness of fit</li>
+<li>model complexity</li>
 </ul>
-<p><strong>Interpretation</strong></p>
-<p>This approach is useful if:</p>
+<p>A model with more parameters may fit the data better, but it is also penalized for being more complex.</p>
+</section>
+<section id="interpretation" class="level3" data-number="18.7.2">
+<h3 data-number="18.7.2" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">18.7.2</span> Interpretation</h3>
 <ul>
-<li>the specific families in the dataset are the only ones of interest</li>
-<li>you do not want to generalize beyond these observed families</li>
+<li>Smaller <strong>AIC</strong> is better</li>
+<li>Smaller <strong>BIC</strong> is better</li>
 </ul>
-<p>However, this model does <strong>not</strong> use the idea that families may be viewed as a random sample from a larger population of families.</p>
-<div id="callout-2" class="callout callout-style-default callout-warning callout-titled" title="Important">
+<p>In general:</p>
+<ul>
+<li>AIC tends to be a bit more flexible</li>
+<li>BIC tends to penalize complexity more strongly</li>
+</ul>
+<div id="callout-2" class="callout callout-style-default callout-note callout-titled" title="Practical Interpretation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Practical Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If two models are fitted to the same data, the one with the smaller AIC or BIC is usually preferred.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="proc-glmselect" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="proc-glmselect"><span class="header-section-number">18.8</span> <code>PROC GLMSELECT</code></h2>
+<p>In SAS, one important procedure for model selection is <code>PROC GLMSELECT</code>.</p>
+<p>It is designed for model selection in general linear models, especially when there are many candidate effects.</p>
+<section id="why-proc-glmselect-is-useful" class="level3" data-number="18.8.1">
+<h3 data-number="18.8.1" class="anchored" data-anchor-id="why-proc-glmselect-is-useful"><span class="header-section-number">18.8.1</span> Why <code>PROC GLMSELECT</code> is useful</h3>
+<p>It provides flexibility for:</p>
+<ul>
+<li>large numbers of candidate predictors</li>
+<li>interaction terms</li>
+<li>classification effects</li>
+<li>training / validation / testing partitions</li>
+<li>cross-validation</li>
+<li>different selection criteria and stopping rules</li>
+</ul>
+</section>
+<section id="common-selection-methods" class="level3" data-number="18.8.2">
+<h3 data-number="18.8.2" class="anchored" data-anchor-id="common-selection-methods"><span class="header-section-number">18.8.2</span> Common selection methods</h3>
+<p>Some common methods include:</p>
+<ul>
+<li><code>FORWARD</code></li>
+<li><code>BACKWARD</code></li>
+<li><code>STEPWISE</code></li>
+<li><code>LASSO</code></li>
+</ul>
+</section>
+</section>
+<section id="example-model-selection-with-a-toy-dataset" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="example-model-selection-with-a-toy-dataset"><span class="header-section-number">18.9</span> Example: Model Selection with a Toy Dataset</h2>
+<p>To make the ideas concrete, consider a small dataset with a practical meaning.</p>
+<p>Suppose we want to predict a student’s <strong>final exam score</strong> using:</p>
+<ul>
+<li><code>hours</code> = weekly study hours</li>
+<li><code>attendance</code> = class attendance percentage</li>
+<li><code>homework</code> = homework average</li>
+<li><code>sleep</code> = average hours of sleep per night</li>
+<li><code>parttime</code> = part-time work hours per week</li>
+</ul>
+<p>Our goal is to decide which predictors should be included in the model.</p>
+</section>
+<section id="step-1-create-the-dataset" class="level2" data-number="18.10">
+<h2 data-number="18.10" class="anchored" data-anchor-id="step-1-create-the-dataset"><span class="header-section-number">18.10</span> Step 1: Create the Dataset</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA studentperf;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    INPUT hours attendance homework sleep parttime final;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="dv">92</span> <span class="dv">88</span> <span class="fl">7.5</span>  <span class="dv">5</span> <span class="dv">84</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  <span class="dv">95</span> <span class="dv">91</span> <span class="fl">7.0</span>  <span class="dv">2</span> <span class="dv">90</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">85</span> <span class="dv">80</span> <span class="fl">6.5</span> <span class="dv">12</span> <span class="dv">72</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="dv">98</span> <span class="dv">94</span> <span class="fl">7.2</span>  <span class="dv">0</span> <span class="dv">95</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="dv">90</span> <span class="dv">86</span> <span class="fl">8.0</span>  <span class="dv">8</span> <span class="dv">83</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">88</span> <span class="dv">78</span> <span class="fl">6.8</span> <span class="dv">15</span> <span class="dv">74</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="dv">96</span> <span class="dv">93</span> <span class="fl">7.1</span>  <span class="dv">4</span> <span class="dv">92</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  <span class="dv">91</span> <span class="dv">89</span> <span class="fl">7.4</span>  <span class="dv">6</span> <span class="dv">87</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">80</span> <span class="dv">75</span> <span class="fl">6.0</span> <span class="dv">18</span> <span class="dv">68</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span> <span class="dv">99</span> <span class="dv">96</span> <span class="fl">7.3</span>  <span class="dv">0</span> <span class="dv">97</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">78</span> <span class="dv">70</span> <span class="fl">5.8</span> <span class="dv">20</span> <span class="dv">63</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="dv">89</span> <span class="dv">84</span> <span class="fl">7.6</span> <span class="dv">10</span> <span class="dv">81</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  <span class="dv">94</span> <span class="dv">90</span> <span class="fl">7.0</span>  <span class="dv">3</span> <span class="dv">89</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="dv">87</span> <span class="dv">82</span> <span class="fl">6.9</span> <span class="dv">14</span> <span class="dv">77</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="dv">97</span> <span class="dv">95</span> <span class="fl">7.8</span>  <span class="dv">1</span> <span class="dv">94</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">83</span> <span class="dv">76</span> <span class="fl">6.4</span> <span class="dv">16</span> <span class="dv">70</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  <span class="dv">92</span> <span class="dv">88</span> <span class="fl">7.1</span>  <span class="dv">7</span> <span class="dv">86</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">86</span> <span class="dv">79</span> <span class="fl">6.7</span> <span class="dv">13</span> <span class="dv">75</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="dv">98</span> <span class="dv">97</span> <span class="fl">7.5</span>  <span class="dv">0</span> <span class="dv">96</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">81</span> <span class="dv">73</span> <span class="fl">6.2</span> <span class="dv">17</span> <span class="dv">67</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="variable-meanings" class="level3" data-number="18.10.1">
+<h3 data-number="18.10.1" class="anchored" data-anchor-id="variable-meanings"><span class="header-section-number">18.10.1</span> Variable meanings</h3>
+<ul>
+<li><code>final</code> = final exam score</li>
+<li><code>hours</code> = study hours per week</li>
+<li><code>attendance</code> = attendance percentage</li>
+<li><code>homework</code> = homework average</li>
+<li><code>sleep</code> = average sleep per night</li>
+<li><code>parttime</code> = work hours per week</li>
+</ul>
+</section>
+</section>
+<section id="why-this-is-a-model-selection-problem" class="level2" data-number="18.11">
+<h2 data-number="18.11" class="anchored" data-anchor-id="why-this-is-a-model-selection-problem"><span class="header-section-number">18.11</span> Why This Is a Model Selection Problem</h2>
+<p>We have several candidate predictors, but not all of them may be equally useful.</p>
+<p>Questions include:</p>
+<ul>
+<li>Do we need all predictors?</li>
+<li>Which predictors improve prediction?</li>
+<li>Can a simpler model perform as well as a larger model?</li>
+</ul>
+</section>
+<section id="step-2-fit-a-full-model" class="level2" data-number="18.12">
+<h2 data-number="18.12" class="anchored" data-anchor-id="step-2-fit-a-full-model"><span class="header-section-number">18.12</span> Step 2: Fit a Full Model</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROC REG DATA<span class="ot">=</span>studentperf;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    MODEL final <span class="ot">=</span> hours attendance homework sleep parttime;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>RUN;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>QUIT;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="discussion" class="level3" data-number="18.12.1">
+<h3 data-number="18.12.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">18.12.1</span> Discussion</h3>
+<p>This model includes <strong>all candidate predictors</strong>.</p>
+<p>Questions to ask:</p>
+<ul>
+<li>Are all predictors significant?</li>
+<li>Are some predictors redundant?</li>
+<li>Can a smaller model perform similarly?</li>
+</ul>
+<div id="callout-3" class="callout callout-style-default callout-warning callout-titled" title="Important">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -604,290 +773,144 @@ Y = X\beta + Z\gamma + \epsilon,
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If family is really a random grouping factor, treating it only as fixed may not be the best way to represent the data structure.</p>
+<p>A full model is not always the best model.</p>
+<p>Some predictors may add complexity without adding much predictive value.</p>
 </div>
 </div>
 </section>
-<section id="step-2-a-mixed-effects-model" class="level3" data-number="17.3.2">
-<h3 data-number="17.3.2" class="anchored" data-anchor-id="step-2-a-mixed-effects-model"><span class="header-section-number">17.3.2</span> Step 2: A Mixed-Effects Model</h3>
-<p>Now we fit a mixed model that treats family-related effects as random.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>heights;</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    CLASS Family Gender;</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    MODEL Height <span class="ot">=</span> Gender;</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    RANDOM Family Family<span class="sc">*</span>Gender;</span>
+</section>
+<section id="step-3-use-proc-glmselect-with-cross-validation" class="level2" data-number="18.13">
+<h2 data-number="18.13" class="anchored" data-anchor-id="step-3-use-proc-glmselect-with-cross-validation"><span class="header-section-number">18.13</span> Step 3: Use <code>PROC GLMSELECT</code> with Cross-Validation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROC GLMSELECT DATA<span class="ot">=</span>studentperf PLOTS<span class="ot">=</span>ALL;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    MODEL final <span class="ot">=</span> hours attendance homework sleep parttime</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="sc">/</span> SELECTION<span class="ot">=</span>STEPWISE</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            CHOOSE<span class="ot">=</span>CV</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            CVMETHOD<span class="ot">=</span><span class="fu">RANDOM</span>(<span class="dv">5</span>);</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="what-this-does" class="level3" data-number="18.13.1">
+<h3 data-number="18.13.1" class="anchored" data-anchor-id="what-this-does"><span class="header-section-number">18.13.1</span> What this does</h3>
+<ul>
+<li><code>SELECTION=STEPWISE</code> asks SAS to perform stepwise model selection</li>
+<li><code>CHOOSE=CV</code> tells SAS to choose the model using cross-validation</li>
+<li><code>CVMETHOD=RANDOM(5)</code> uses 5-fold cross-validation</li>
+</ul>
+<p>This helps us select a model that balances:</p>
+<ul>
+<li>prediction accuracy</li>
+<li>model simplicity</li>
+</ul>
+</section>
+</section>
+<section id="step-4-alternative-selection-with-aic" class="level2" data-number="18.14">
+<h2 data-number="18.14" class="anchored" data-anchor-id="step-4-alternative-selection-with-aic"><span class="header-section-number">18.14</span> Step 4: Alternative Selection with AIC</h2>
+<p>You can also use AIC as the selection criterion.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PROC GLMSELECT DATA<span class="ot">=</span>studentperf PLOTS<span class="ot">=</span>ALL;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    MODEL final <span class="ot">=</span> hours attendance homework sleep parttime</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>          <span class="sc">/</span> SELECTION<span class="ot">=</span>FORWARD</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            CHOOSE<span class="ot">=</span>AIC;</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This model can be written conceptually as</p>
-<p><span class="math display">\[
-Y_{ij} = \beta_0 + \beta_1 \, \text{Gender}_{ij} + u_{\text{Family}} + u_{\text{Family} \times \text{Gender}} + \epsilon_{ij}.
-\]</span></p>
-<p><strong>Interpretation</strong></p>
+<section id="interpretation-1" class="level3" data-number="18.14.1">
+<h3 data-number="18.14.1" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">18.14.1</span> Interpretation</h3>
+<p>This version uses:</p>
 <ul>
-<li><span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are <strong>fixed effects</strong></li>
-<li><span class="math inline">\(u_{\text{Family}}\)</span> allows different families to have different baseline levels</li>
-<li><span class="math inline">\(u_{\text{Family} \times \text{Gender}}\)</span> allows the gender effect to vary by family</li>
-<li><span class="math inline">\(\epsilon_{ij}\)</span> is the residual error</li>
+<li><code>SELECTION=FORWARD</code> for forward selection</li>
+<li><code>CHOOSE=AIC</code> to pick the model with the best AIC</li>
 </ul>
-<p>This model explicitly acknowledges that observations from the same family may be correlated.</p>
-<p><strong>Why the Mixed Model Is Different</strong></p>
-<p>The mixed model is different from the fixed-effects model because it recognizes that:</p>
-<ul>
-<li>families are a source of variability</li>
-<li>part of the total variation in height comes from <strong>between-family differences</strong></li>
-<li>part of the total variation comes from <strong>within-family differences</strong></li>
-</ul>
-<p>That is why the mixed model gives more realistic standard errors and can lead to different conclusions.</p>
-<p><strong>The Most Important Output Tables</strong></p>
-<p>When we first use <code>PROC MIXED</code>, the output can feel overwhelming. The goal is <strong>not</strong> to read every table in detail. Instead, focus on a few key tables.</p>
+<p>So this is still model selection, but based on a different criterion.</p>
 </section>
 </section>
-<section id="covariance-parameter-estimates" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="covariance-parameter-estimates"><span class="header-section-number">17.4</span> 1. Covariance Parameter Estimates</h2>
-<p>This table reports estimated variance components for the random part of the model.</p>
-<p>Typical rows include:</p>
+<section id="how-to-read-the-ase-plot" class="level2" data-number="18.15">
+<h2 data-number="18.15" class="anchored" data-anchor-id="how-to-read-the-ase-plot"><span class="header-section-number">18.15</span> How to Read the ASE Plot</h2>
+<p>When you use <code>PLOTS=ALL</code>, one useful graph is the ASE plot.</p>
+<p>The ASE plot helps compare:</p>
 <ul>
-<li><code>Family</code></li>
-<li><code>Family*Gender</code></li>
-<li><code>Residual</code></li>
+<li>training error</li>
+<li>validation or cross-validation error</li>
 </ul>
-<section id="how-to-interpret-this-table" class="level3" data-number="17.4.1">
-<h3 data-number="17.4.1" class="anchored" data-anchor-id="how-to-interpret-this-table"><span class="header-section-number">17.4.1</span> How to interpret this table</h3>
+<section id="interpretation-2" class="level3" data-number="18.15.1">
+<h3 data-number="18.15.1" class="anchored" data-anchor-id="interpretation-2"><span class="header-section-number">18.15.1</span> Interpretation</h3>
 <ul>
-<li>A larger variance component means that source contributes more variability</li>
-<li>If the <code>Family</code> variance is large, families differ substantially in baseline height</li>
-<li>If the <code>Family*Gender</code> variance is large, the gender difference varies across families</li>
-<li>The residual variance reflects remaining unexplained within-family variation</li>
+<li>Training error usually decreases as the model becomes more complex</li>
+<li>Validation or test error may decrease at first, then increase</li>
+<li>If validation error starts increasing, the model may be overfitting</li>
+<li>The best model is often near the minimum of the validation or test ASE curve</li>
 </ul>
-<div id="callout-3" class="callout callout-style-default callout-note callout-titled" title="Key Interpretation">
+<div id="callout-4" class="callout callout-style-default callout-warning callout-titled" title="Important">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Interpretation
+<span class="screen-reader-only">Warning</span>Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Covariance parameter estimates tell us <strong>where the variability comes from</strong>.</p>
+<p>A smaller training error does <strong>not</strong> always mean a better model.</p>
+<p>For prediction, validation or test error is more informative.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="tests-of-fixed-effects" class="level2" data-number="17.5">
-<h2 data-number="17.5" class="anchored" data-anchor-id="tests-of-fixed-effects"><span class="header-section-number">17.5</span> 2. Tests of Fixed Effects</h2>
-<p>This table tests the fixed-effects part of the model.</p>
-<p>In the example above, the most important fixed effect is usually:</p>
-<ul>
-<li><code>Gender</code></li>
-</ul>
-<p>This table answers questions such as:</p>
-<ul>
-<li>Is there evidence of an overall gender difference in height?</li>
-<li>After accounting for family-level variation, does gender still matter?</li>
-</ul>
-<section id="why-this-matters" class="level3" data-number="17.5.1">
-<h3 data-number="17.5.1" class="anchored" data-anchor-id="why-this-matters"><span class="header-section-number">17.5.1</span> Why this matters</h3>
-<p>The p-values here can differ from those in a fixed-effects model because the mixed model adjusts for the dependence structure in the data.</p>
-</section>
-</section>
-<section id="fit-statistics" class="level2" data-number="17.6">
-<h2 data-number="17.6" class="anchored" data-anchor-id="fit-statistics"><span class="header-section-number">17.6</span> 3. Fit Statistics</h2>
-<p>This table often includes quantities such as:</p>
-<ul>
-<li><span class="math inline">\(-2\)</span> log likelihood</li>
-<li>AIC</li>
-<li>BIC</li>
-</ul>
-<p>These are useful when comparing competing models.</p>
-<section id="general-interpretation" class="level3" data-number="17.6.1">
-<h3 data-number="17.6.1" class="anchored" data-anchor-id="general-interpretation"><span class="header-section-number">17.6.1</span> General interpretation</h3>
-<ul>
-<li>Smaller values often indicate better fit, especially when comparing models fit to the same dataset</li>
-<li>AIC and BIC are particularly useful when deciding whether adding random effects improves the model</li>
-</ul>
-<div class="callout-example" title="Practical Use of Fit Statistics">
-<p>If two models are fitted to the same data, and one has clearly smaller AIC and BIC, that model is usually preferred from a model-fit perspective.</p>
-</div>
-</section>
-</section>
-<section id="why-modeling-correlation-changes-inference" class="level2" data-number="17.7">
-<h2 data-number="17.7" class="anchored" data-anchor-id="why-modeling-correlation-changes-inference"><span class="header-section-number">17.7</span> Why Modeling Correlation Changes Inference</h2>
-<p>One of the biggest lessons from mixed models is this:</p>
-<blockquote class="blockquote">
-<p>if you ignore correlation, your inference may change.</p>
-</blockquote>
-<p>In practice, adding random effects can change:</p>
-<ul>
-<li>standard errors</li>
-<li>test statistics</li>
-<li>p-values</li>
-<li>confidence intervals</li>
-</ul>
-<p>This does <strong>not</strong> necessarily mean the fixed-effect estimate changes dramatically. Sometimes the estimate is similar, but the uncertainty around it changes.</p>
-<p>That is one reason mixed models are so important.</p>
-</section>
-<section id="comparing-a-fixed-effects-model-and-a-mixed-model" class="level2" data-number="17.8">
-<h2 data-number="17.8" class="anchored" data-anchor-id="comparing-a-fixed-effects-model-and-a-mixed-model"><span class="header-section-number">17.8</span> Comparing a Fixed-Effects Model and a Mixed Model</h2>
-<p>A useful way to learn mixed models is to compare the two approaches.</p>
-<p><strong>Fixed-effects model</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>heights;</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    CLASS Family Gender;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    MODEL Height <span class="ot">=</span> Gender Family Family<span class="sc">*</span>Gender;</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Mixed-effects model</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>heights;</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    CLASS Family Gender;</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    MODEL Height <span class="ot">=</span> Gender;</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    RANDOM Family Family<span class="sc">*</span>Gender;</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Conceptual comparison</strong></p>
-<ul>
-<li>The fixed-effects model treats families as specific categories of direct interest</li>
-<li>The mixed-effects model treats family as a source of random variability</li>
-<li>The mixed-effects model is more natural when families are thought of as sampled from a larger population</li>
-</ul>
-</section>
-<section id="another-example-repeated-measures" class="level2" data-number="17.9">
-<h2 data-number="17.9" class="anchored" data-anchor-id="another-example-repeated-measures"><span class="header-section-number">17.9</span> Another Example: Repeated Measures</h2>
-<p>Now return to the repeated-measures dataset from the previous lecture.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DATA performance;</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    INPUT id <span class="sc">$</span> age group <span class="sc">$</span> trial score;</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    DATALINES;</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>SY <span class="dv">34</span> A <span class="dv">1</span> <span class="fl">14.3</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>SY <span class="dv">34</span> A <span class="dv">2</span> <span class="fl">21.4</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>SY <span class="dv">34</span> A <span class="dv">3</span> <span class="fl">27.6</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>SY <span class="dv">34</span> A <span class="dv">4</span> <span class="fl">31.1</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>SY <span class="dv">34</span> A <span class="dv">5</span> <span class="fl">33.2</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>WL <span class="dv">33</span> A <span class="dv">1</span> <span class="fl">13.2</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>WL <span class="dv">33</span> A <span class="dv">2</span> <span class="fl">21.4</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>WL <span class="dv">33</span> A <span class="dv">3</span> <span class="fl">23.3</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>WL <span class="dv">33</span> A <span class="dv">4</span> <span class="fl">30.0</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>WL <span class="dv">33</span> A <span class="dv">5</span> <span class="fl">38.6</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ZN <span class="dv">43</span> B <span class="dv">1</span> <span class="fl">15.9</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>ZN <span class="dv">43</span> B <span class="dv">2</span> <span class="fl">23.4</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>ZN <span class="dv">43</span> B <span class="dv">3</span> <span class="fl">22.0</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>ZN <span class="dv">43</span> B <span class="dv">4</span> <span class="fl">29.0</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>ZN <span class="dv">43</span> B <span class="dv">5</span> <span class="fl">33.6</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A basic random intercept model is</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>performance;</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    CLASS id group;</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    MODEL score <span class="ot">=</span> trial group;</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    RANDOM INTERCEPT <span class="sc">/</span> SUBJECT<span class="ot">=</span>id;</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Intrepreation of the model</strong></p>
-<ul>
-<li><code>trial</code> measures the average trend across repeated trials</li>
-<li><code>group</code> compares group A and group B</li>
-<li><code>RANDOM INTERCEPT / SUBJECT=id;</code> allows each subject to have their own baseline</li>
-</ul>
-<section id="what-output-should-students-focus-on" class="level3" data-number="17.9.1">
-<h3 data-number="17.9.1" class="anchored" data-anchor-id="what-output-should-students-focus-on"><span class="header-section-number">17.9.1</span> What output should students focus on?</h3>
-<p>Again, focus on three things:</p>
-<ol type="1">
-<li>covariance parameter estimates<br>
-</li>
-<li>tests of fixed effects<br>
-</li>
-<li>fit statistics</li>
-</ol>
-</section>
-<section id="how-to-explain-results-in-words" class="level3" data-number="17.9.2">
-<h3 data-number="17.9.2" class="anchored" data-anchor-id="how-to-explain-results-in-words"><span class="header-section-number">17.9.2</span> How to Explain Results in Words?</h3>
-<p>Students often know how to read p-values but struggle to explain mixed-model results in plain language. Here are some useful sentence patterns.</p>
-<p><strong>For a fixed effect</strong></p>
-<ul>
-<li>“After accounting for family-level variability, there is evidence of a gender difference in height.”</li>
-<li>“After accounting for repeated measurements within subjects, score tends to increase with trial.”</li>
-</ul>
-<p><strong>For a random effect</strong></p>
-<ul>
-<li>“There is substantial between-family variability in baseline height.”</li>
-<li>“There is meaningful variation across subjects in their baseline scores.”</li>
-</ul>
-</section>
-<section id="for-model-comparison" class="level3" data-number="17.9.3">
-<h3 data-number="17.9.3" class="anchored" data-anchor-id="for-model-comparison"><span class="header-section-number">17.9.3</span> For model comparison</h3>
-<ul>
-<li>“The mixed model fits better than the fixed-effects model based on smaller fit statistics.”</li>
-</ul>
-</section>
-</section>
-<section id="in-class-questions" class="level2" data-number="17.10">
-<h2 data-number="17.10" class="anchored" data-anchor-id="in-class-questions"><span class="header-section-number">17.10</span> In-Class Questions</h2>
+<section id="in-class-questions" class="level2" data-number="18.16">
+<h2 data-number="18.16" class="anchored" data-anchor-id="in-class-questions"><span class="header-section-number">18.16</span> In-Class Questions</h2>
 <div class="callout-exercise" title="Question 1">
-<p>In the code below, which part specifies the fixed effects?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PROC MIXED DATA<span class="ot">=</span>performance;</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    CLASS id group;</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    MODEL score <span class="ot">=</span> trial group;</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    RANDOM INTERCEPT <span class="sc">/</span> SUBJECT<span class="ot">=</span>id;</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>RUN;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><ol type="A">
-<li><code>CLASS id group;</code></li>
-</ol></li>
-<li><ol start="2" type="A">
-<li><code>MODEL score = trial group;</code></li>
-</ol></li>
-<li><ol start="3" type="A">
-<li><code>RANDOM INTERCEPT / SUBJECT=id;</code></li>
-</ol></li>
-<li><ol start="4" type="A">
-<li><code>PROC MIXED DATA=performance;</code></li>
-</ol></li>
-</ul>
+<p>Why is training MSE usually too optimistic as an estimate of prediction error?</p>
 </div>
 <div class="callout-exercise" title="Question 2">
-<p>What does the <code>RANDOM</code> statement do?</p>
-<ul>
-<li><ol type="A">
-<li>It creates a new variable</li>
-</ol></li>
-<li><ol start="2" type="A">
-<li>It defines the variance structure due to clustering</li>
-</ol></li>
-<li><ol start="3" type="A">
-<li>It removes dependence from the data</li>
-</ol></li>
-<li><ol start="4" type="A">
-<li>It converts a continuous variable into a categorical variable</li>
-</ol></li>
-</ul>
+<p>What is the main purpose of K-fold cross-validation?</p>
 </div>
 <div class="callout-exercise" title="Question 3">
-<p>If a mixed model and a fixed-effects model give different p-values, which is the most likely explanation?</p>
-<ul>
-<li><ol type="A">
-<li>The raw data changed</li>
-</ol></li>
-<li><ol start="2" type="A">
-<li>The mixed model accounts for correlation</li>
-</ol></li>
-<li><ol start="3" type="A">
-<li>The response variable changed units</li>
-</ol></li>
-<li><ol start="4" type="A">
-<li>SAS made an error</li>
-</ol></li>
-</ul>
+<p>If a more complex model has lower training error but higher test error, what problem is occurring?</p>
+</div>
+<div class="callout-exercise" title="Question 4">
+<p>What does a smaller AIC or BIC usually indicate?</p>
+</div>
+<div class="callout-exercise" title="Question 5">
+<p>Why is <code>PROC GLMSELECT</code> useful when there are many candidate predictors and interactions?</p>
+</div>
+<div class="callout-exercise" title="Question 6">
+<p>Which variables seem most useful for predicting final exam score in this example?</p>
 </div>
 </section>
-<section id="what-to-remember-from-this-lecture" class="level2" data-number="17.11">
-<h2 data-number="17.11" class="anchored" data-anchor-id="what-to-remember-from-this-lecture"><span class="header-section-number">17.11</span> What to Remember from This Lecture</h2>
-<p>The main lesson of this second lecture is:</p>
+<section id="teaching-interpretation-of-the-toy-example" class="level2" data-number="18.17">
+<h2 data-number="18.17" class="anchored" data-anchor-id="teaching-interpretation-of-the-toy-example"><span class="header-section-number">18.17</span> Teaching Interpretation of the Toy Example</h2>
+<p>This example has a natural real-world meaning:</p>
+<ul>
+<li>More study hours may improve exam performance</li>
+<li>Better attendance may help</li>
+<li>Strong homework performance may indicate understanding</li>
+<li>Too many part-time work hours may reduce study time</li>
+<li>Sleep may matter, but perhaps less strongly than the others</li>
+</ul>
+<p>This makes it easier to think about:</p>
+<ul>
+<li>variable importance</li>
+<li>model simplicity</li>
+<li>prediction versus interpretation</li>
+</ul>
+</section>
+<section id="what-to-remember-from-this-lecture" class="level2" data-number="18.18">
+<h2 data-number="18.18" class="anchored" data-anchor-id="what-to-remember-from-this-lecture"><span class="header-section-number">18.18</span> What to Remember from This Lecture</h2>
+<p>The central question in model selection is:</p>
 <blockquote class="blockquote">
-<p><code>PROC MIXED</code> allows us to estimate both the fixed-effects part and the random-effects part of a model.</p>
+<p>Which model gives the best balance between fit, prediction accuracy, and simplicity?</p>
 </blockquote>
-<p>When you read the output, focus on:</p>
+<p>There are two major perspectives:</p>
 <ol type="1">
-<li>the fixed effects<br>
-</li>
-<li>the random-effect variance components<br>
-</li>
-<li>the fit statistics</li>
+<li><strong>Prediction-based selection</strong>
+<ul>
+<li>training/test split</li>
+<li>validation data</li>
+<li>cross-validation</li>
+</ul></li>
+<li><strong>Criterion-based selection</strong>
+<ul>
+<li>AIC</li>
+<li>BIC</li>
+</ul></li>
 </ol>
-<p>These three pieces usually tell the main story.</p>
-<div id="callout-4" class="callout callout-style-default callout-note callout-titled" title="Key Takeaways">
+<p>In SAS, <code>PROC GLMSELECT</code> provides a practical way to carry out model selection with both classical and modern options.</p>
+<div id="callout-5" class="callout callout-style-default callout-note callout-titled" title="Key Takeaways">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -898,13 +921,12 @@ Y_{ij} = \beta_0 + \beta_1 \, \text{Gender}_{ij} + u_{\text{Family}} + u_{\text{
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><code>PROC MIXED</code> is used to fit linear mixed models in SAS</li>
-<li><code>CLASS</code> identifies categorical variables</li>
-<li><code>MODEL</code> specifies the fixed-effects part</li>
-<li><code>RANDOM</code> specifies the random-effects part</li>
-<li>Covariance parameter estimates show how variability is split across sources</li>
-<li>Tests of fixed effects tell us whether predictors are associated with the response</li>
-<li>Modeling correlation can change standard errors, p-values, and conclusions</li>
+<li>Model selection is about choosing a model that is useful, not just complicated</li>
+<li>Prediction error is often more important than training error</li>
+<li>Cross-validation helps estimate out-of-sample performance</li>
+<li>AIC and BIC balance fit and complexity</li>
+<li><code>PROC GLMSELECT</code> is a powerful SAS tool for model selection</li>
+<li>Overfitting occurs when a model fits training data well but performs poorly on new data</li>
 </ul>
 </div>
 </div>
@@ -1315,13 +1337,13 @@ Y_{ij} = \beta_0 + \beta_1 \, \text{Gender}_{ij} + u_{\text{Family}} + u_{\text{
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part3_4_LMEM_I.html" class="pagination-link" aria-label="Linear Mixed Effect Models I">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models I</span></span>
+      <a href="./part3_5_LMEM_II.html" class="pagination-link" aria-label="Linear Mixed Effect Models II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Linear Mixed Effect Models II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part3_6_model_selection.html" class="pagination-link" aria-label="Model Selection in SAS">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Model Selection in SAS</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./project.html" class="pagination-link" aria-label="Data Analysis Using SAS">
+        <span class="nav-page-text">Data Analysis Using SAS</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
