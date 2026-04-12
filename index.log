@@ -1,0 +1,2900 @@
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.2.16)  12 APR 2026 14:24
+ restricted system commands enabled.
+**index.tex
+(./index.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended collection.
+luaotfload | conf : Root cache directory is "/Users/chikuang/Library/TinyTeX/texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-resolved path "/Users/chikuang/Library/TinyTeX/texmf-dist/tex/luatex/luaotfload/fontloader-2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/Users/chikuang/Library/TinyTeX/texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrreprt.cls
+Document Class: scrreprt 2026/02/02 v3.49.2 KOMA-Script document class (report)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2026/02/02 v3.49.2 KOMA-Script package (file load hooks)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2026/02/02 v3.49.2 KOMA-Script package (using LaTeX hooks)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2026/02/02 v3.49.2 KOMA-Script package (logo)
+))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line 370.
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2026/02/02 v3.49.2 KOMA-Script package (handling toc-files)
+\scr@dte@tocline@numberwidth=\skip49
+\scr@dte@tocline@numbox=\box53
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 143.
+Class scrreprt Info: File `scrsize11pt.clo' used instead of
+(scrreprt)           file `scrsize11.clo' to setup font sizes on input line 2710.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2026/02/02 v3.49.2 KOMA-Script font size class option (11pt)
+luaotfload | db : Font names database loaded from /Users/chikuang/Library/TinyTeX/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2026/02/02 v3.49.2 KOMA-Script package (type area)
+\ta@bcor=\skip50
+\ta@div=\count273
+Package typearea Info: You've used standard option `letterpaper'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `paper=letter'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `paper=letter' there
+(typearea)             instead of `letterpaper', too.
+\ta@hblk=\skip51
+\ta@vblk=\skip52
+\ta@temp=\skip53
+\footheight=\skip54
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 11
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 614.295pt
+(typearea)              \textwidth      = 446.76004pt
+(typearea)              DIV departure   = -14%
+(typearea)              \evensidemargin = 11.49748pt
+(typearea)              \oddsidemargin  = 11.49748pt
+(typearea)             \paperheight     = 794.96999pt
+(typearea)              \textheight     = 582.20026pt
+(typearea)              \topmargin      = -37.40001pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
+(typearea)              on input line 1810.
+)
+\c_scrreprt_cmdhook_cctab=\catcodetable14
+\c@part=\count274
+\c@chapter=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\scr@dte@chapter@maxnumwidth=\skip55
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\chapter on input line 5934.
+\scr@dte@section@maxnumwidth=\skip56
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\section on input line 5945.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\section on input line 5945.
+\scr@dte@part@maxnumwidth=\skip57
+Class scrreprt Info: using compatibility default `afterindent=true'
+(scrreprt)           for `\part on input line 5954.
+\scr@dte@subsection@maxnumwidth=\skip58
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subsection on input line 5964.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subsection on input line 5964.
+\scr@dte@subsubsection@maxnumwidth=\skip59
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subsubsection on input line 5974.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subsubsection on input line 5974.
+\scr@dte@paragraph@maxnumwidth=\skip60
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\paragraph on input line 5985.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\paragraph on input line 5985.
+\scr@dte@subparagraph@maxnumwidth=\skip61
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subparagraph on input line 5995.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subparagraph on input line 5995.
+\abovecaptionskip=\skip62
+\belowcaptionskip=\skip63
+\c@pti@nb@sid@b@x=\box54
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 7225.
+\scr@dte@figure@maxnumwidth=\skip64
+\c@figure=\count281
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 7238.
+\scr@dte@table@maxnumwidth=\skip65
+\c@table=\count282
+Class scrreprt Info: Redefining `\numberline' on input line 7409.
+\bibindent=\dimen147
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 274.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2024/09/29 v3.02 Predefined colors according to SVG 1.1 (UK)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
+File: x11nam.def 2024/09/29 v3.02 Predefined colors according to Unix/X11 (UK)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip66
+For additional information on amsmath, use the `?' option.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen148
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen149
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count283
+LaTeX Info: Redefining \frac on input line 235.
+\uproot@=\count284
+\leftroot@=\count285
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count286
+\DOTSCASE@=\count287
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box55
+\strutbox@=\box56
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen150
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count288
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count289
+\dotsspace@=\muskip17
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks19
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks20
+\eqnshift@=\dimen151
+\alignsep@=\dimen152
+\tagshift@=\dimen153
+\tagwidth@=\dimen154
+\totwidth@=\dimen155
+\lineht@=\dimen156
+\@envbody=\toks21
+\multlinegap=\skip67
+\multlinetaggap=\skip68
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2025-10-09 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count295
+Inserting `l3color' in `luaotfload.parse_color'.))
+Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-luatex.sty
+Package: unicode-math-luatex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+\l__fontspec_script_int=\count296
+\l__fontspec_language_int=\count297
+\l__fontspec_strnum_int=\count298
+\l__fontspec_tmp_int=\count299
+\l__fontspec_tmpa_int=\count300
+\l__fontspec_tmpb_int=\count301
+\l__fontspec_tmpc_int=\count302
+\l__fontspec_em_int=\count303
+\l__fontspec_emdef_int=\count304
+\l__fontspec_strong_int=\count305
+\l__fontspec_strongdef_int=\count306
+\l__fontspec_tmpa_dim=\dimen157
+\l__fontspec_tmpb_dim=\dimen158
+\l__fontspec_tmpc_dim=\dimen159
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+LaTeX Encoding Info:    Redeclaring text command \capitalcedilla (encoding TS1) on input line 49.
+LaTeX Encoding Info:    Redeclaring text command \capitalogonek (encoding TS1) on input line 52.
+LaTeX Encoding Info:    Redeclaring text command \capitalgrave (encoding TS1) on input line 55.
+LaTeX Encoding Info:    Redeclaring text command \capitalacute (encoding TS1) on input line 56.
+LaTeX Encoding Info:    Redeclaring text command \capitalcircumflex (encoding TS1) on input line 57.
+LaTeX Encoding Info:    Redeclaring text command \capitaltilde (encoding TS1) on input line 58.
+LaTeX Encoding Info:    Redeclaring text command \capitaldieresis (encoding TS1) on input line 59.
+LaTeX Encoding Info:    Redeclaring text command \capitalhungarumlaut (encoding TS1) on input line 60.
+LaTeX Encoding Info:    Redeclaring text command \capitalring (encoding TS1) on input line 61.
+LaTeX Encoding Info:    Redeclaring text command \capitalcaron (encoding TS1) on input line 62.
+LaTeX Encoding Info:    Redeclaring text command \capitalbreve (encoding TS1) on input line 63.
+LaTeX Encoding Info:    Redeclaring text command \capitalmacron (encoding TS1) on input line 64.
+LaTeX Encoding Info:    Redeclaring text command \capitaldotaccent (encoding TS1) on input line 65.
+LaTeX Encoding Info:    Redeclaring text command \t (encoding TS1) on input line 66.
+LaTeX Encoding Info:    Redeclaring text command \capitaltie (encoding TS1) on input line 67.
+LaTeX Encoding Info:    Redeclaring text command \newtie (encoding TS1) on input line 68.
+LaTeX Encoding Info:    Redeclaring text command \capitalnewtie (encoding TS1) on input line 69.
+LaTeX Encoding Info:    Redeclaring text symbol \textcapitalcompwordmark (encoding TS1) on input line 70.
+LaTeX Encoding Info:    Redeclaring text symbol \textascendercompwordmark (encoding TS1) on input line 71.
+LaTeX Encoding Info:    Redeclaring text symbol \textquotestraightbase (encoding TS1) on input line 72.
+LaTeX Encoding Info:    Redeclaring text symbol \textquotestraightdblbase (encoding TS1) on input line 73.
+LaTeX Encoding Info:    Redeclaring text symbol \texttwelveudash (encoding TS1) on input line 74.
+LaTeX Encoding Info:    Redeclaring text symbol \textthreequartersemdash (encoding TS1) on input line 75.
+LaTeX Encoding Info:    Redeclaring text symbol \textleftarrow (encoding TS1) on input line 76.
+LaTeX Encoding Info:    Redeclaring text symbol \textrightarrow (encoding TS1) on input line 77.
+LaTeX Encoding Info:    Redeclaring text symbol \textblank (encoding TS1) on input line 78.
+LaTeX Encoding Info:    Redeclaring text symbol \textdollar (encoding TS1) on input line 79.
+LaTeX Encoding Info:    Redeclaring text symbol \textquotesingle (encoding TS1) on input line 80.
+LaTeX Encoding Info:    Redeclaring text command \textasteriskcentered (encoding TS1) on input line 81.
+LaTeX Encoding Info:    Redeclaring text symbol \textdblhyphen (encoding TS1) on input line 92.
+LaTeX Encoding Info:    Redeclaring text symbol \textfractionsolidus (encoding TS1) on input line 93.
+LaTeX Encoding Info:    Redeclaring text symbol \textzerooldstyle (encoding TS1) on input line 94.
+LaTeX Encoding Info:    Redeclaring text symbol \textoneoldstyle (encoding TS1) on input line 95.
+LaTeX Encoding Info:    Redeclaring text symbol \texttwooldstyle (encoding TS1) on input line 96.
+LaTeX Encoding Info:    Redeclaring text symbol \textthreeoldstyle (encoding TS1) on input line 97.
+LaTeX Encoding Info:    Redeclaring text symbol \textfouroldstyle (encoding TS1) on input line 98.
+LaTeX Encoding Info:    Redeclaring text symbol \textfiveoldstyle (encoding TS1) on input line 99.
+LaTeX Encoding Info:    Redeclaring text symbol \textsixoldstyle (encoding TS1) on input line 100.
+LaTeX Encoding Info:    Redeclaring text symbol \textsevenoldstyle (encoding TS1) on input line 101.
+LaTeX Encoding Info:    Redeclaring text symbol \texteightoldstyle (encoding TS1) on input line 102.
+LaTeX Encoding Info:    Redeclaring text symbol \textnineoldstyle (encoding TS1) on input line 103.
+LaTeX Encoding Info:    Redeclaring text symbol \textlangle (encoding TS1) on input line 104.
+LaTeX Encoding Info:    Redeclaring text symbol \textminus (encoding TS1) on input line 105.
+LaTeX Encoding Info:    Redeclaring text symbol \textrangle (encoding TS1) on input line 106.
+LaTeX Encoding Info:    Redeclaring text symbol \textmho (encoding TS1) on input line 107.
+LaTeX Encoding Info:    Redeclaring text symbol \textbigcircle (encoding TS1) on input line 108.
+LaTeX Encoding Info:    Redeclaring text command \textcircled (encoding TS1) on input line 109.
+LaTeX Encoding Info:    Redeclaring text symbol \textohm (encoding TS1) on input line 115.
+LaTeX Encoding Info:    Redeclaring text symbol \textlbrackdbl (encoding TS1) on input line 116.
+LaTeX Encoding Info:    Redeclaring text symbol \textrbrackdbl (encoding TS1) on input line 117.
+LaTeX Encoding Info:    Redeclaring text symbol \textuparrow (encoding TS1) on input line 118.
+LaTeX Encoding Info:    Redeclaring text symbol \textdownarrow (encoding TS1) on input line 119.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciigrave (encoding TS1) on input line 120.
+LaTeX Encoding Info:    Redeclaring text symbol \textborn (encoding TS1) on input line 121.
+LaTeX Encoding Info:    Redeclaring text symbol \textdivorced (encoding TS1) on input line 122.
+LaTeX Encoding Info:    Redeclaring text symbol \textdied (encoding TS1) on input line 123.
+LaTeX Encoding Info:    Redeclaring text symbol \textleaf (encoding TS1) on input line 124.
+LaTeX Encoding Info:    Redeclaring text symbol \textmarried (encoding TS1) on input line 125.
+LaTeX Encoding Info:    Redeclaring text symbol \textmusicalnote (encoding TS1) on input line 126.
+LaTeX Encoding Info:    Redeclaring text symbol \texttildelow (encoding TS1) on input line 127.
+LaTeX Encoding Info:    Redeclaring text symbol \textdblhyphenchar (encoding TS1) on input line 128.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciibreve (encoding TS1) on input line 129.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciicaron (encoding TS1) on input line 130.
+LaTeX Encoding Info:    Redeclaring text symbol \textacutedbl (encoding TS1) on input line 131.
+LaTeX Encoding Info:    Redeclaring text symbol \textgravedbl (encoding TS1) on input line 132.
+LaTeX Encoding Info:    Redeclaring text symbol \textdagger (encoding TS1) on input line 133.
+LaTeX Encoding Info:    Redeclaring text symbol \textdaggerdbl (encoding TS1) on input line 134.
+LaTeX Encoding Info:    Redeclaring text symbol \textbardbl (encoding TS1) on input line 135.
+LaTeX Encoding Info:    Redeclaring text symbol \textperthousand (encoding TS1) on input line 136.
+LaTeX Encoding Info:    Redeclaring text symbol \textbullet (encoding TS1) on input line 137.
+LaTeX Encoding Info:    Redeclaring text symbol \textcelsius (encoding TS1) on input line 138.
+LaTeX Encoding Info:    Redeclaring text symbol \textdollaroldstyle (encoding TS1) on input line 139.
+LaTeX Encoding Info:    Redeclaring text symbol \textcentoldstyle (encoding TS1) on input line 140.
+LaTeX Encoding Info:    Redeclaring text symbol \textflorin (encoding TS1) on input line 141.
+LaTeX Encoding Info:    Redeclaring text symbol \textcolonmonetary (encoding TS1) on input line 142.
+LaTeX Encoding Info:    Redeclaring text symbol \textwon (encoding TS1) on input line 143.
+LaTeX Encoding Info:    Redeclaring text symbol \textnaira (encoding TS1) on input line 144.
+LaTeX Encoding Info:    Redeclaring text symbol \textguarani (encoding TS1) on input line 145.
+LaTeX Encoding Info:    Redeclaring text symbol \textpeso (encoding TS1) on input line 146.
+LaTeX Encoding Info:    Redeclaring text symbol \textlira (encoding TS1) on input line 147.
+LaTeX Encoding Info:    Redeclaring text symbol \textrecipe (encoding TS1) on input line 148.
+LaTeX Encoding Info:    Redeclaring text symbol \textinterrobang (encoding TS1) on input line 149.
+LaTeX Encoding Info:    Redeclaring text symbol \textinterrobangdown (encoding TS1) on input line 150.
+LaTeX Encoding Info:    Redeclaring text symbol \textdong (encoding TS1) on input line 151.
+LaTeX Encoding Info:    Redeclaring text symbol \texttrademark (encoding TS1) on input line 152.
+LaTeX Encoding Info:    Redeclaring text symbol \textpertenthousand (encoding TS1) on input line 153.
+LaTeX Encoding Info:    Redeclaring text symbol \textpilcrow (encoding TS1) on input line 154.
+LaTeX Encoding Info:    Redeclaring text symbol \textbaht (encoding TS1) on input line 155.
+LaTeX Encoding Info:    Redeclaring text symbol \textnumero (encoding TS1) on input line 156.
+LaTeX Encoding Info:    Redeclaring text symbol \textdiscount (encoding TS1) on input line 157.
+LaTeX Encoding Info:    Redeclaring text symbol \textestimated (encoding TS1) on input line 158.
+LaTeX Encoding Info:    Redeclaring text symbol \textopenbullet (encoding TS1) on input line 159.
+LaTeX Encoding Info:    Redeclaring text symbol \textservicemark (encoding TS1) on input line 160.
+LaTeX Encoding Info:    Redeclaring text symbol \textlquill (encoding TS1) on input line 161.
+LaTeX Encoding Info:    Redeclaring text symbol \textrquill (encoding TS1) on input line 162.
+LaTeX Encoding Info:    Redeclaring text symbol \textcent (encoding TS1) on input line 163.
+LaTeX Encoding Info:    Redeclaring text symbol \textsterling (encoding TS1) on input line 164.
+LaTeX Encoding Info:    Redeclaring text symbol \textcurrency (encoding TS1) on input line 165.
+LaTeX Encoding Info:    Redeclaring text symbol \textyen (encoding TS1) on input line 166.
+LaTeX Encoding Info:    Redeclaring text symbol \textbrokenbar (encoding TS1) on input line 167.
+LaTeX Encoding Info:    Redeclaring text symbol \textsection (encoding TS1) on input line 168.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciidieresis (encoding TS1) on input line 169.
+LaTeX Encoding Info:    Redeclaring text symbol \textcopyright (encoding TS1) on input line 170.
+LaTeX Encoding Info:    Redeclaring text symbol \textordfeminine (encoding TS1) on input line 171.
+LaTeX Encoding Info:    Redeclaring text symbol \textcopyleft (encoding TS1) on input line 172.
+LaTeX Encoding Info:    Redeclaring text symbol \textlnot (encoding TS1) on input line 173.
+LaTeX Encoding Info:    Redeclaring text symbol \textcircledP (encoding TS1) on input line 174.
+LaTeX Encoding Info:    Redeclaring text symbol \textregistered (encoding TS1) on input line 175.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciimacron (encoding TS1) on input line 176.
+LaTeX Encoding Info:    Redeclaring text symbol \textdegree (encoding TS1) on input line 177.
+LaTeX Encoding Info:    Redeclaring text symbol \textpm (encoding TS1) on input line 178.
+LaTeX Encoding Info:    Redeclaring text symbol \texttwosuperior (encoding TS1) on input line 179.
+LaTeX Encoding Info:    Redeclaring text symbol \textthreesuperior (encoding TS1) on input line 180.
+LaTeX Encoding Info:    Redeclaring text symbol \textasciiacute (encoding TS1) on input line 181.
+LaTeX Encoding Info:    Redeclaring text symbol \textmu (encoding TS1) on input line 182.
+LaTeX Encoding Info:    Redeclaring text symbol \textparagraph (encoding TS1) on input line 183.
+LaTeX Encoding Info:    Redeclaring text symbol \textperiodcentered (encoding TS1) on input line 184.
+LaTeX Encoding Info:    Redeclaring text symbol \textreferencemark (encoding TS1) on input line 185.
+LaTeX Encoding Info:    Redeclaring text symbol \textonesuperior (encoding TS1) on input line 186.
+LaTeX Encoding Info:    Redeclaring text symbol \textordmasculine (encoding TS1) on input line 187.
+LaTeX Encoding Info:    Redeclaring text symbol \textsurd (encoding TS1) on input line 188.
+LaTeX Encoding Info:    Redeclaring text symbol \textonequarter (encoding TS1) on input line 189.
+LaTeX Encoding Info:    Redeclaring text symbol \textonehalf (encoding TS1) on input line 190.
+LaTeX Encoding Info:    Redeclaring text symbol \textthreequarters (encoding TS1) on input line 191.
+LaTeX Encoding Info:    Redeclaring text symbol \texteuro (encoding TS1) on input line 192.
+LaTeX Encoding Info:    Redeclaring text symbol \texttimes (encoding TS1) on input line 193.
+LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on input line 194.
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/lualatex/lualatex-math/lualatex-math.sty
+Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting with LuaLaTeX
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count307
+)
+Lua module: lualatex-math 2013/08/03 v1.3 Patches for mathematics typesetting with LuaLaTeX)
+\g__um_fam_int=\count308
+\g__um_fonts_used_int=\count309
+\l__um_primecount_int=\count310
+\g__um_primekern_muskip=\muskip18
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2025/07/09 v3.2b Micro-typographical refinements (RS)
+\MT@toks=\toks23
+\MT@tempbox=\box57
+\MT@count=\count311
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
+LaTeX Info: Redefining \leftprotrusion on input line 1088.
+\MT@prot@toks=\toks24
+LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen160
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count312
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-luatex.def
+File: microtype-luatex.def 2025/07/09 v3.2b Definitions specific to luatex (RS)
+Lua module: microtype 2025/07/09 v3.2b microtype module.
+Module microtype Info: overwriting function `keepligature' on input line 63
+LaTeX Info: Redefining \lsstyle on input line 779.
+LaTeX Info: Redefining \lslig on input line 779.
+\MT@outer@space=\skip69
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2025/07/09 v3.2b microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2025/07/28 4.6 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count313
+\FV@InFile=\read2
+\FV@TabBox=\box58
+\c@FancyVerbLine=\count314
+\FV@StepNumber=\count315
+\FV@OutFile=\write3
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip70
+\fb@frw=\dimen161
+\fb@frh=\dimen162
+\FrameRule=\dimen163
+\FrameSep=\dimen164
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip71
+\LTright=\skip72
+\LTpre=\skip73
+\LTpost=\skip74
+\LTchunksize=\count316
+\LTcapwidth=\dimen165
+\LT@head=\box59
+\LT@firsthead=\box60
+\LT@foot=\box61
+\LT@lastfoot=\box62
+\LT@gbox=\box63
+\LT@cols=\count317
+\LT@rows=\count318
+\c@LT@tables=\count319
+\c@LT@chunks=\count320
+\LT@p@ftn=\toks25
+)
+Class scrreprt Info: longtable captions redefined on input line 110.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen166
+\lightrulewidth=\dimen167
+\cmidrulewidth=\dimen168
+\belowrulesep=\dimen169
+\belowbottomsep=\dimen170
+\aboverulesep=\dimen171
+\abovetopsep=\dimen172
+\cmidrulesep=\dimen173
+\cmidrulekern=\dimen174
+\defaultaddspace=\dimen175
+\@cmidla=\count321
+\@cmidlb=\count322
+\@aboverulesep=\dimen176
+\@belowrulesep=\dimen177
+\@thisruleclass=\count323
+\@lastruleclass=\count324
+\@thisrulewidth=\dimen178
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen179
+\ar@mcellbox=\box64
+\extrarowheight=\dimen180
+\NC@list=\toks26
+\extratabsurround=\skip75
+\backup@length=\skip76
+\ar@cellbox=\box65
+)
+\c@none=\count325
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count326
+\calc@Bcount=\count327
+\calc@Adimen=\dimen181
+\calc@Bdimen=\dimen182
+\calc@Askip=\skip77
+\calc@Bskip=\skip78
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count328
+\calc@Cskip=\skip79
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box66
+\fn@width=\dimen183
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 106.
+)
+\Gin@req@height=\dimen184
+\Gin@req@width=\dimen185
+)
+\pandoc@box=\box67
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2025/11/28 version 6.9.0 text color boxes
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks27
+\pgfutil@tempdima=\dimen186
+\pgfutil@tempdimb=\dimen187
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box68
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks28
+\pgfkeys@temptoks=\toks29
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks30
+))
+\pgf@x=\dimen188
+\pgf@y=\dimen189
+\pgf@xa=\dimen190
+\pgf@ya=\dimen191
+\pgf@xb=\dimen192
+\pgf@yb=\dimen193
+\pgf@xc=\dimen194
+\pgf@yc=\dimen195
+\pgf@xd=\dimen196
+\pgf@yd=\dimen197
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count329
+\c@pgf@countb=\count330
+\c@pgf@countc=\count331
+\c@pgf@countd=\count332
+\t@pgf@toka=\toks31
+\t@pgf@tokb=\toks32
+\t@pgf@tokc=\toks33
+\pgf@sys@id@count=\count333
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-luatex.def
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+File: pgfsys-luatex.def 2025-08-29 v3.1.11a (3.1.11a)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count334
+\pgfsyssoftpath@bigbuffer@items=\count335
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen198
+\pgfmath@count=\count336
+\pgfmath@box=\box69
+\pgfmath@toks=\toks34
+\pgfmath@stack@operand=\toks35
+\pgfmath@stack@operation=\toks36
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count337
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen199
+\pgf@picmaxx=\dimen256
+\pgf@picminy=\dimen257
+\pgf@picmaxy=\dimen258
+\pgf@pathminx=\dimen259
+\pgf@pathmaxx=\dimen260
+\pgf@pathminy=\dimen261
+\pgf@pathmaxy=\dimen262
+\pgf@xx=\dimen263
+\pgf@xy=\dimen264
+\pgf@yx=\dimen265
+\pgf@yy=\dimen266
+\pgf@zx=\dimen267
+\pgf@zy=\dimen268
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen269
+\pgf@path@lasty=\dimen270
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen271
+\pgf@shorten@start@additional=\dimen272
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box70
+\pgf@hbox=\box71
+\pgf@layerbox@main=\box72
+\pgf@picture@serial@count=\count338
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen273
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen274
+\pgf@pt@y=\dimen275
+\pgf@pt@temp=\dimen276
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen277
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen278
+\pgf@sys@shading@range@num=\count339
+\pgf@shadingcount=\count340
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box73
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box74
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen279
+\pgf@nodesepend=\dimen280
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen281
+\pgffor@skip=\dimen282
+\pgffor@stack=\toks37
+\pgffor@toks=\toks38
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count341
+\pgfplotmarksize=\dimen283
+)
+\tikz@lastx=\dimen284
+\tikz@lasty=\dimen285
+\tikz@lastxsaved=\dimen286
+\tikz@lastysaved=\dimen287
+\tikz@lastmovetox=\dimen288
+\tikz@lastmovetoy=\dimen289
+\tikzleveldistance=\dimen290
+\tikzsiblingdistance=\dimen291
+\tikz@figbox=\box75
+\tikz@figbox@bg=\box76
+\tikz@tempbox=\box77
+\tikz@tempbox@bg=\box78
+\tikztreelevel=\count342
+\tikznumberofchildren=\count343
+\tikznumberofcurrentchild=\count344
+\tikz@fig@count=\count345
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count346
+\pgfmatrixcurrentcolumn=\count347
+\pgf@matrix@numberofcolumns=\count348
+)
+\tikz@expandcount=\count349
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks39
+\verbatim@line=\toks40
+\verbatim@in@stream=\read4
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box79
+\tcb@upperbox=\box80
+\tcb@lowerbox=\box81
+\tcb@phantombox=\box82
+\c@tcbbreakpart=\count350
+\c@tcblayer=\count351
+\c@tcolorbox@number=\count352
+\l__tcobox_tmpa_box=\box83
+\l__tcobox_tmpa_dim=\dimen292
+\tcb@temp=\box84
+\tcb@temp=\box85
+\tcb@temp=\box86
+\tcb@temp=\box87
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.9.0'
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box88
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.9.0'
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.9.0'
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+))
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box89
+\tcb@totalupperbox=\box90
+\tcb@totallowerbox=\box91
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
+Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-helper.sty
+Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome5
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
+\@catcodetablestackcnt=\count353
+)
+\CatcodeTableOther=\catcodetable15
+\CatcodeTableExpl=\catcodetable16
+)
+LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on input line 69.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd)
+LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on input line 70.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.fd))) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks41
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count354
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen293
+\Hy@linkcounter=\count355
+\Hy@pagecounter=\count356
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count357
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4072.
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count358
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip19
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen294
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count359
+\Field@Width=\dimen295
+\Fld@charsize=\dimen296
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count360
+\c@Item=\count361
+\c@Hfootnote=\count362
+)
+Package hyperref Info: Driver (autodetected): hluatex.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hluatex.def
+File: hluatex.def 2026-01-29 v7.01p Hyperref driver for luaTeX
+\Fld@listcount=\count363
+\c@bookmark@seq@number=\count364
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip80
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
+\BKM@id=\count365
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+Package tocbasic Info: Loading of class-dependent code for package caption3
+(tocbasic)             prevented on line 50.
+
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen297
+\captionmargin=\dimen298
+\caption@leftmargin=\dimen299
+\caption@rightmargin=\dimen300
+\caption@width=\dimen301
+\caption@indent=\dimen302
+\caption@parindent=\dimen303
+\caption@hangindent=\dimen304
+)
+\c@caption@flags=\count366
+\c@continuedfloat=\count367
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count368
+\float@exts=\toks42
+\float@box=\box92
+\@float@everytoks=\toks43
+\@floatcapt=\box93
+)
+\@float@every@codelisting=\toks44
+\c@codelisting=\count369
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count370
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count371
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 222.
+(./index.aux)
+\openout1 = index.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 228.
+LaTeX Font Info:    ... okay on input line 228.
+Package scrbase Info: activating english \abstractname on input line 228.
+Package scrbase Info: activating english \partname on input line 228.
+Package scrbase Info: activating english \chaptername on input line 228.
+Package scrbase Info: activating english \appendixname on input line 228.
+Package scrbase Info: activating english \figurename on input line 228.
+Package scrbase Info: activating english \tablename on input line 228.
+Package scrbase Info: activating english \contentsname on input line 228.
+Package scrbase Info: activating english \listfigurename on input line 228.
+Package scrbase Info: activating english \listtablename on input line 228.
+Package scrbase Info: activating english \bibname on input line 228.
+Package scrbase Info: activating english \indexname on input line 228.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 228.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 228.
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'latinmodern-math.otf(0)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 228.
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'latinmodern-math.otf(1)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;+ssty=1;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;"
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 228.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 228.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 228.
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'latinmodern-math.otf(2)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf},RawFeature={mathfontdimen=tex2}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;+ssty=1;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 228.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 228.
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},RawFeature={mathfontdimen=xetex},BoldFont={latinmodern-math.otf},RawFeature={mathfontdimen=tex3}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;+ssty=1;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]:mode=base;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex3;"
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 228.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 228.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 228.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 228.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 228.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 228.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 228.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 228.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Info: Redefining \microtypecontext on input line 228.
+Package microtype Info: Applying patch `item' on input line 228.
+Package microtype Info: Applying patch `toc' on input line 228.
+Package microtype Info: Applying patch `eqnum' on input line 228.
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 228.
+
+Package microtype Info: Applying patch `verbatim' on input line 228.
+LaTeX Info: Redefining \microtypesetup on input line 228.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
+)
+Package hyperref Info: Link coloring ON on input line 228.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\g__cctab_next_cctab=\catcodetable17
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 230.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 230.
+(/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+) (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
+
+
+
+{/Users/chikuang/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Package tocbasic Info: character protrusion at toc deactivated on input line 234.
+(./index.toc [2
+
+] [3] [4]
+Overfull \hbox (1.09496pt too wide) detected at line 127
+ []\TU/lmss/bx/n/10.95 113
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 137
+ []\TU/lmss/bx/n/10.95 128
+ []
+
+
+Overfull \hbox (2.8275pt too wide) detected at line 147
+ []\TU/lmss/bx/n/12 141
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 148
+ []\TU/lmss/bx/n/10.95 142
+ []
+
+[5]
+Overfull \hbox (1.09496pt too wide) detected at line 159
+ []\TU/lmss/bx/n/10.95 156
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 170
+ []\TU/lmss/bx/n/10.95 172
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 184
+ []\TU/lmss/bx/n/10.95 189
+ []
+
+[6]
+Overfull \hbox (1.09496pt too wide) detected at line 200
+ []\TU/lmss/bx/n/10.95 206
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 220
+ []\TU/lmss/bx/n/10.95 217
+ []
+
+[7]
+Overfull \hbox (2.8275pt too wide) detected at line 250
+ []\TU/lmss/bx/n/12 228
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 251
+ []\TU/lmss/bx/n/10.95 229
+ []
+
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📄 (U+1F4C4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📄 (U+1F4C4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+
+Overfull \hbox (2.8275pt too wide) detected at line 261
+ []\TU/lmss/bx/n/12 235
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 262
+ []\TU/lmss/bx/n/10.95 236
+ []
+
+[8
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📄 (U+1F4C4) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmroman10-regular]:+tlig;!
+]
+Overfull \hbox (1.09496pt too wide) detected at line 269
+ []\TU/lmss/bx/n/10.95 245
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 300
+ []\TU/lmss/bx/n/10.95 254
+ []
+
+[9]
+Overfull \hbox (1.09496pt too wide) detected at line 327
+ []\TU/lmss/bx/n/10.95 262
+ []
+
+
+Overfull \hbox (1.09496pt too wide) detected at line 340
+ []\TU/lmss/bx/n/10.95 271
+ []
+
+)
+\tf@toc=\write5
+
+\openout5 = index.toc
+[10] [11
+
+]
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📜 (U+1F4DC) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 🖌 (U+1F58C) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 📜 (U+1F4DC) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 🖌 (U+1F58C) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⛱ (U+26F1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🌊 (U+1F30A) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⛱ (U+26F1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🌊 (U+1F30A) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+ignored error Infinite glue shrinkage found in box being split [12
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+] [13
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📜 (U+1F4DC) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no 🖌 (U+1F58C) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 📘 (U+1F4D8) in font [lmroman10-bold]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⛱ (U+26F1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🌊 (U+1F30A) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 🛠 (U+1F6E0) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ⏳ (U+23F3) in font [lmroman10-regular]:+tlig;!
+]
+part I.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 439.
+[14
+
+]
+chapter 1.
+<figs/part1/operation_flowchart.png, id=702, 1877.0125pt x 809.0225pt>
+File: figs/part1/operation_flowchart.png Graphic file (type png)
+<use figs/part1/operation_flowchart.png>
+Package luatex.def Info: figs/part1/operation_flowchart.png  used on input line 489.
+(luatex.def)             Requested size: 1877.00793pt x 809.02054pt.
+
+Overfull \hbox (10.9302pt too wide) in paragraph at lines 489--490
+[][] 
+ []
+
+[15
+
+]
+<figs/part1/operation_sas_install.png, id=712, 1694.33pt x 439.6425pt>
+File: figs/part1/operation_sas_install.png Graphic file (type png)
+<use figs/part1/operation_sas_install.png>
+Package luatex.def Info: figs/part1/operation_sas_install.png  used on input line 509.
+(luatex.def)             Requested size: 1694.32588pt x 439.64142pt.
+
+Overfull \hbox (10.93604pt too wide) in paragraph at lines 509--510
+[][] 
+ []
+
+[16<./figs/part1/operation_flowchart.png><./figs/part1/operation_sas_install.png>]
+<figs/part1/operation_windows_layout.png, id=720, 1688.3075pt x 1180.41pt>
+File: figs/part1/operation_windows_layout.png Graphic file (type png)
+<use figs/part1/operation_windows_layout.png>
+Package luatex.def Info: figs/part1/operation_windows_layout.png  used on input line 561.
+(luatex.def)             Requested size: 1688.30339pt x 1180.40714pt.
+
+Overfull \hbox (10.94528pt too wide) in paragraph at lines 561--562
+[][] 
+ []
+
+[17] [18<./figs/part1/operation_windows_layout.png>]
+<figs/part1/operation_3steps.png, id=730, 1238.6275pt x 1100.11pt>
+File: figs/part1/operation_3steps.png Graphic file (type png)
+<use figs/part1/operation_3steps.png>
+Package luatex.def Info: figs/part1/operation_3steps.png  used on input line 617.
+(luatex.def)             Requested size: 1238.6245pt x 1100.10733pt.
+
+Overfull \hbox (10.94601pt too wide) in paragraph at lines 617--618
+[][] 
+ []
+
+[19]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 623.
+[20<./figs/part1/operation_3steps.png>] [21] (/Users/chikuang/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-TU-empty.cfg
+File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstandard glyph set (RS)
+) [22] [23]
+<figs/part1/operation_data_type.jpg, id=754, 1541.76pt x 1027.84pt>
+File: figs/part1/operation_data_type.jpg Graphic file (type jpg)
+<use figs/part1/operation_data_type.jpg>
+Package luatex.def Info: figs/part1/operation_data_type.jpg  used on input line 868.
+(luatex.def)             Requested size: 1541.75624pt x 1027.8375pt.
+
+Overfull \hbox (10.93604pt too wide) in paragraph at lines 868--869
+[][] 
+ []
+
+[24]
+ignored error Infinite glue shrinkage found in box being split [25<./figs/part1/operation_data_type.jpg>] [26]
+chapter 2.
+<figs/part1/syntax_1.png, id=768, 1298.8525pt x 714.67pt>
+File: figs/part1/syntax_1.png Graphic file (type png)
+<use figs/part1/syntax_1.png>
+Package luatex.def Info: figs/part1/syntax_1.png  used on input line 944.
+(luatex.def)             Requested size: 1298.84933pt x 714.66824pt.
+
+Overfull \hbox (10.94687pt too wide) in paragraph at lines 944--945
+[][] 
+ []
+
+<figs/part1/syntax_ex1.png, id=769, 1298.8525pt x 415.5525pt>
+File: figs/part1/syntax_ex1.png Graphic file (type png)
+<use figs/part1/syntax_ex1.png>
+Package luatex.def Info: figs/part1/syntax_ex1.png  used on input line 948.
+(luatex.def)             Requested size: 1298.84933pt x 415.55148pt.
+
+Overfull \hbox (10.94687pt too wide) in paragraph at lines 948--949
+[][] 
+ []
+
+[27
+
+<./figs/part1/syntax_1.png>]
+<figs/part1/syntax_fig0.png, id=780, 969.6225pt x 616.3025pt>
+File: figs/part1/syntax_fig0.png Graphic file (type png)
+<use figs/part1/syntax_fig0.png>
+Package luatex.def Info: figs/part1/syntax_fig0.png  used on input line 963.
+(luatex.def)             Requested size: 969.62013pt x 616.301pt.
+
+Overfull \hbox (10.96149pt too wide) in paragraph at lines 963--964
+[][] 
+ []
+
+[28<./figs/part1/syntax_ex1.png><./figs/part1/syntax_fig0.png>]
+<figs/part1/syntax_fig1.png, id=785, 1202.4925pt x 624.3325pt>
+File: figs/part1/syntax_fig1.png Graphic file (type png)
+<use figs/part1/syntax_fig1.png>
+Package luatex.def Info: figs/part1/syntax_fig1.png  used on input line 970.
+(luatex.def)             Requested size: 1202.48956pt x 624.33098pt.
+
+Overfull \hbox (10.94006pt too wide) in paragraph at lines 970--971
+[][] 
+ []
+
+<figs/part1/syntax_fig2.png, id=786, 1475.5125pt x 1027.84pt>
+File: figs/part1/syntax_fig2.png Graphic file (type png)
+<use figs/part1/syntax_fig2.png>
+Package luatex.def Info: figs/part1/syntax_fig2.png  used on input line 986.
+(luatex.def)             Requested size: 1475.50891pt x 1027.8375pt.
+
+Overfull \hbox (10.94476pt too wide) in paragraph at lines 986--987
+[][] 
+ []
+
+[29<./figs/part1/syntax_fig1.png>]
+<figs/part1/syntax_2.png, id=791, 837.1275pt x 617.30624pt>
+File: figs/part1/syntax_2.png Graphic file (type png)
+<use figs/part1/syntax_2.png>
+Package luatex.def Info: figs/part1/syntax_2.png  used on input line 1030.
+(luatex.def)             Requested size: 837.12546pt x 617.30473pt.
+
+Overfull \hbox (10.94383pt too wide) in paragraph at lines 1030--1031
+[][] 
+ []
+
+[30<./figs/part1/syntax_fig2.png>]
+<figs/part1/syntax_error1.png, id=798, 954.56625pt x 112.42pt>
+File: figs/part1/syntax_error1.png Graphic file (type png)
+<use figs/part1/syntax_error1.png>
+Package luatex.def Info: figs/part1/syntax_error1.png  used on input line 1055.
+(luatex.def)             Requested size: 954.56393pt x 112.41972pt.
+
+Overfull \hbox (10.94264pt too wide) in paragraph at lines 1055--1056
+[][] 
+ []
+
+[31<./figs/part1/syntax_2.png>]
+<figs/part1/syntax_ex2.png, id=804, 931.48pt x 527.9725pt>
+File: figs/part1/syntax_ex2.png Graphic file (type png)
+<use figs/part1/syntax_ex2.png>
+Package luatex.def Info: figs/part1/syntax_ex2.png  used on input line 1069.
+(luatex.def)             Requested size: 931.47772pt x 527.9712pt.
+
+Overfull \hbox (10.95416pt too wide) in paragraph at lines 1069--1070
+[][] 
+ []
+
+<figs/part1/syntax_ex2_2.png, id=805, 927.465pt x 526.96875pt>
+File: figs/part1/syntax_ex2_2.png Graphic file (type png)
+<use figs/part1/syntax_ex2_2.png>
+Package luatex.def Info: figs/part1/syntax_ex2_2.png  used on input line 1081.
+(luatex.def)             Requested size: 927.46274pt x 526.96745pt.
+
+Overfull \hbox (10.95313pt too wide) in paragraph at lines 1081--1082
+[][] 
+ []
+
+[32<./figs/part1/syntax_error1.png><./figs/part1/syntax_ex2.png>] [33<./figs/part1/syntax_ex2_2.png>]
+chapter 3.
+[34
+
+]
+<figs/part1/import_1.png, id=824, 882.29625pt x 410.53375pt>
+File: figs/part1/import_1.png Graphic file (type png)
+<use figs/part1/import_1.png>
+Package luatex.def Info: figs/part1/import_1.png  used on input line 1186.
+(luatex.def)             Requested size: 882.2941pt x 410.53275pt.
+
+Overfull \hbox (10.95096pt too wide) in paragraph at lines 1186--1187
+[][] 
+ []
+
+[35<./figs/part1/import_1.png>]
+<figs/part1/import_2.png, id=829, 1009.7725pt x 457.71pt>
+File: figs/part1/import_2.png Graphic file (type png)
+<use figs/part1/import_2.png>
+Package luatex.def Info: figs/part1/import_2.png  used on input line 1250.
+(luatex.def)             Requested size: 1009.77003pt x 457.7089pt.
+
+Overfull \hbox (10.95648pt too wide) in paragraph at lines 1250--1251
+[][] 
+ []
+
+[36] [37<./figs/part1/import_2.png>] [38]
+chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1306--1309
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1311
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1311--1313
+
+ []
+
+[39
+
+] [40] [41]
+<part1_4_rv_files/figure-pdf/normal-1.pdf, id=870, 397.485pt x 252.945pt>
+File: part1_4_rv_files/figure-pdf/normal-1.pdf Graphic file (type pdf)
+<use part1_4_rv_files/figure-pdf/normal-1.pdf>
+Package luatex.def Info: part1_4_rv_files/figure-pdf/normal-1.pdf  used on input line 1541.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+<part1_4_rv_files/figure-pdf/68-95-99.7-1.pdf, id=871, 397.485pt x 252.945pt>
+File: part1_4_rv_files/figure-pdf/68-95-99.7-1.pdf Graphic file (type pdf)
+<use part1_4_rv_files/figure-pdf/68-95-99.7-1.pdf>
+Package luatex.def Info: part1_4_rv_files/figure-pdf/68-95-99.7-1.pdf  used on input line 1555.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[42<./part1_4_rv_files/figure-pdf/normal-1.pdf>] [43<./part1_4_rv_files/figure-pdf/68-95-99.7-1.pdf>] [44]
+part II.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 1702.
+[45
+
+]
+chapter 5.
+[46
+
+] [47] [48]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1893.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1893.
+[49] [50]
+<figs/part2/L6_inference1/L6_table.png, id=929, 515.9275pt x 379.4175pt>
+File: figs/part2/L6_inference1/L6_table.png Graphic file (type png)
+<use figs/part2/L6_inference1/L6_table.png>
+Package luatex.def Info: figs/part2/L6_inference1/L6_table.png  used on input line 2032.
+(luatex.def)             Requested size: 515.92624pt x 379.41656pt.
+
+Overfull \hbox (10.96494pt too wide) in paragraph at lines 2032--2033
+[][] 
+ []
+
+[51<./figs/part2/L6_inference1/L6_table.png>]
+File: figs/part2/L6_inference1/L6_table.png Graphic file (type png)
+<use figs/part2/L6_inference1/L6_table.png>
+Package luatex.def Info: figs/part2/L6_inference1/L6_table.png  used on input line 2059.
+(luatex.def)             Requested size: 515.92624pt x 379.41656pt.
+
+Overfull \hbox (10.96494pt too wide) in paragraph at lines 2059--2060
+[][] 
+ []
+
+<figs/part2/L6_inference1/ttest_plot_2side.png, id=935, 481.8pt x 361.35pt>
+File: figs/part2/L6_inference1/ttest_plot_2side.png Graphic file (type png)
+<use figs/part2/L6_inference1/ttest_plot_2side.png>
+Package luatex.def Info: figs/part2/L6_inference1/ttest_plot_2side.png  used on input line 2061.
+(luatex.def)             Requested size: 481.79881pt x 361.34912pt.
+
+Overfull \hbox (10.96542pt too wide) in paragraph at lines 2061--2062
+[][] 
+ []
+
+<figs/part2/L6_inference1/ttest_plot_2side1.png, id=936, 481.8pt x 361.35pt>
+File: figs/part2/L6_inference1/ttest_plot_2side1.png Graphic file (type png)
+<use figs/part2/L6_inference1/ttest_plot_2side1.png>
+Package luatex.def Info: figs/part2/L6_inference1/ttest_plot_2side1.png  used on input line 2063.
+(luatex.def)             Requested size: 481.79881pt x 361.34912pt.
+[52]
+Overfull \hbox (10.96542pt too wide) in paragraph at lines 2063--2064
+[][] 
+ []
+
+[53<./figs/part2/L6_inference1/ttest_plot_2side.png>] [54<./figs/part2/L6_inference1/ttest_plot_2side1.png>] [55]
+<part2_1_intro_inference1_files/figure-pdf/unnamed-chunk-1-1.pdf, id=953, 397.485pt x 252.945pt>
+File: part2_1_intro_inference1_files/figure-pdf/unnamed-chunk-1-1.pdf Graphic file (type pdf)
+<use part2_1_intro_inference1_files/figure-pdf/unnamed-chunk-1-1.pdf>
+Package luatex.def Info: part2_1_intro_inference1_files/figure-pdf/unnamed-chunk-1-1.pdf  used on input line 2194.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[56] [57<./part2_1_intro_inference1_files/figure-pdf/unnamed-chunk-1-1.pdf>]
+chapter 6.
+[58
+
+] [59]
+File: figs/part2/L6_inference1/ttest_plot_2side.png Graphic file (type png)
+<use figs/part2/L6_inference1/ttest_plot_2side.png>
+Package luatex.def Info: figs/part2/L6_inference1/ttest_plot_2side.png  used on input line 2366.
+(luatex.def)             Requested size: 481.79881pt x 361.34912pt.
+
+Overfull \hbox (10.96542pt too wide) in paragraph at lines 2366--2367
+[][] 
+ []
+
+File: figs/part2/L6_inference1/ttest_plot_2side1.png Graphic file (type png)
+<use figs/part2/L6_inference1/ttest_plot_2side1.png>
+Package luatex.def Info: figs/part2/L6_inference1/ttest_plot_2side1.png  used on input line 2368.
+(luatex.def)             Requested size: 481.79881pt x 361.34912pt.
+
+Overfull \hbox (10.96542pt too wide) in paragraph at lines 2368--2369
+[][] 
+ []
+
+[60] [61]
+<figs/part2/L7_inference2/KS.png, id=997, 792.9625pt x 1144.275pt>
+File: figs/part2/L7_inference2/KS.png Graphic file (type png)
+<use figs/part2/L7_inference2/KS.png>
+Package luatex.def Info: figs/part2/L7_inference2/KS.png  used on input line 2410.
+(luatex.def)             Requested size: 792.96056pt x 1144.2722pt.
+[62] [63<./figs/part2/L7_inference2/KS.png>] [64] [65] [66]
+chapter 7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2625--2627
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2627--2629
+
+ []
+
+[67
+
+] [68] [69] [70]
+Underfull \hbox (badness 10000) in paragraph at lines 2907--2908
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2917--2918
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2924--2925
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2929--2930
+
+ []
+
+[71]
+Underfull \hbox (badness 10000) in paragraph at lines 2937--2938
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2944--2945
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2949--2950
+
+ []
+
+<part2_3_1sample_nonparametric_test_files/figure-pdf/test-1.pdf, id=1045, 397.485pt x 252.945pt>
+File: part2_3_1sample_nonparametric_test_files/figure-pdf/test-1.pdf Graphic file (type pdf)
+<use part2_3_1sample_nonparametric_test_files/figure-pdf/test-1.pdf>
+Package luatex.def Info: part2_3_1sample_nonparametric_test_files/figure-pdf/test-1.pdf  used on input line 2969.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+[72] [73<./part2_3_1sample_nonparametric_test_files/figure-pdf/test-1.pdf>]
+chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3002--3004
+
+ []
+
+[74
+
+] [75] [76]
+<figs/part2/L9_proportion/prop1.png, id=1073, 533.995pt x 548.0475pt>
+File: figs/part2/L9_proportion/prop1.png Graphic file (type png)
+<use figs/part2/L9_proportion/prop1.png>
+Package luatex.def Info: figs/part2/L9_proportion/prop1.png  used on input line 3165.
+(luatex.def)             Requested size: 223.38008pt x 229.2585pt.
+[77<./figs/part2/L9_proportion/prop1.png>]
+<figs/part2/L9_proportion/prop2.png, id=1078, 519.9425pt x 236.885pt>
+File: figs/part2/L9_proportion/prop2.png Graphic file (type png)
+<use figs/part2/L9_proportion/prop2.png>
+Package luatex.def Info: figs/part2/L9_proportion/prop2.png  used on input line 3194.
+(luatex.def)             Requested size: 519.94124pt x 236.88441pt.
+
+Overfull \hbox (10.95099pt too wide) in paragraph at lines 3194--3195
+[][] 
+ []
+
+[78<./figs/part2/L9_proportion/prop2.png>]
+<figs/part2/L9_proportion/prop3.png, id=1083, 568.1225pt x 578.16pt>
+File: figs/part2/L9_proportion/prop3.png Graphic file (type png)
+<use figs/part2/L9_proportion/prop3.png>
+Package luatex.def Info: figs/part2/L9_proportion/prop3.png  used on input line 3241.
+(luatex.def)             Requested size: 223.37866pt x 227.32529pt.
+[79<./figs/part2/L9_proportion/prop3.png>]
+<figs/part2/L9_proportion/prop4.png, id=1088, 835.12pt x 313.17pt>
+File: figs/part2/L9_proportion/prop4.png Graphic file (type png)
+<use figs/part2/L9_proportion/prop4.png>
+Package luatex.def Info: figs/part2/L9_proportion/prop4.png  used on input line 3276.
+(luatex.def)             Requested size: 835.11795pt x 313.16922pt.
+
+Overfull \hbox (10.95563pt too wide) in paragraph at lines 3276--3277
+[][] 
+ []
+
+[80<./figs/part2/L9_proportion/prop4.png>] [81]
+Underfull \hbox (badness 10000) in paragraph at lines 3345--3347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3347--3349
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3349--3351
+
+ []
+
+<figs/part2/L9_proportion/prop5.png, id=1098, 1417.295pt x 1055.945pt>
+File: figs/part2/L9_proportion/prop5.png Graphic file (type png)
+<use figs/part2/L9_proportion/prop5.png>
+Package luatex.def Info: figs/part2/L9_proportion/prop5.png  used on input line 3374.
+(luatex.def)             Requested size: 1417.29155pt x 1055.94243pt.
+
+Overfull \hbox (10.94301pt too wide) in paragraph at lines 3374--3375
+[][] 
+ []
+
+[82] [83<./figs/part2/L9_proportion/prop5.png>]
+chapter 9.
+[84
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 3467--3469
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3469--3471
+
+ []
+
+[85] [86] [87]
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+[88]
+<figs/part2/L10_Macro/MACRO_car.png, id=1133, 965.6075pt x 149.55875pt>
+File: figs/part2/L10_Macro/MACRO_car.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_car.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_car.png  used on input line 3787.
+(luatex.def)             Requested size: 965.60515pt x 149.55838pt.
+
+Overfull \hbox (10.95325pt too wide) in paragraph at lines 3787--3788
+[][] 
+ []
+
+[89
+Missing character: There is no ❌ (U+274C) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ✅ (U+2705) in font [lmroman10-regular]:+tlig;!
+<./figs/part2/L10_Macro/MACRO_car.png>]
+File: figs/part2/L10_Macro/MACRO_car.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_car.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_car.png  used on input line 3811.
+(luatex.def)             Requested size: 965.60515pt x 149.55838pt.
+
+Overfull \hbox (10.95325pt too wide) in paragraph at lines 3811--3812
+[][] 
+ []
+
+<figs/part2/L10_Macro/MACRO_car3.png, id=1138, 928.46875pt x 101.37875pt>
+File: figs/part2/L10_Macro/MACRO_car3.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_car3.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_car3.png  used on input line 3832.
+(luatex.def)             Requested size: 928.46649pt x 101.3785pt.
+
+Overfull \hbox (10.95494pt too wide) in paragraph at lines 3832--3833
+[][] 
+ []
+
+[90<./figs/part2/L10_Macro/MACRO_car3.png>]
+<figs/part2/L10_Macro/MACRO_car4.png, id=1143, 858.20625pt x 100.375pt>
+File: figs/part2/L10_Macro/MACRO_car4.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_car4.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_car4.png  used on input line 3869.
+(luatex.def)             Requested size: 858.20416pt x 100.37474pt.
+
+Overfull \hbox (10.9574pt too wide) in paragraph at lines 3869--3870
+[][] 
+ []
+
+[91<./figs/part2/L10_Macro/MACRO_car4.png>]
+Underfull \vbox (badness 10000) detected at line 3987
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3987
+ []
+
+[92] [93]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 4035.
+[94]
+<figs/part2/L10_Macro/MACRO_var1.png, id=1161, 364.36125pt x 103.38625pt>
+File: figs/part2/L10_Macro/MACRO_var1.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_var1.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_var1.png  used on input line 4065.
+(luatex.def)             Requested size: 364.36035pt x 103.38599pt.
+<figs/part2/L10_Macro/MACRO_var2.png, id=1162, 176.66pt x 126.4725pt>
+File: figs/part2/L10_Macro/MACRO_var2.png Graphic file (type png)
+<use figs/part2/L10_Macro/MACRO_var2.png>
+Package luatex.def Info: figs/part2/L10_Macro/MACRO_var2.png  used on input line 4067.
+(luatex.def)             Requested size: 176.65956pt x 126.47218pt.
+<figs/part2/L10_Macro/interval.png, id=1163, 1745.52126pt x 953.5625pt>
+File: figs/part2/L10_Macro/interval.png Graphic file (type png)
+<use figs/part2/L10_Macro/interval.png>
+Package luatex.def Info: figs/part2/L10_Macro/interval.png  used on input line 4096.
+(luatex.def)             Requested size: 1745.51701pt x 953.56018pt.
+[95<./figs/part2/L10_Macro/MACRO_var1.png><./figs/part2/L10_Macro/MACRO_var2.png>] [96<./figs/part2/L10_Macro/interval.png>]
+chapter 10.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 20.74pt on input line 4101.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 20.74pt on input line 4101.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 20.74pt on input line 4101.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4133--4135
+
+ []
+
+[97
+
+]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 10.95pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 7.665pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 5.475pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 10.95pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 7.665pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 5.475pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 10.95pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 7.665pt on input line 4177.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 5.475pt on input line 4177.
+[98]
+Underfull \hbox (badness 10000) in paragraph at lines 4316--4318
+
+ []
+
+[99]
+Underfull \hbox (badness 10000) in paragraph at lines 4339--4341
+
+ []
+
+
+Overfull \hbox (0.10857pt too wide) in alignment at lines 4400--4418
+ [][][][][][][] 
+ []
+
+
+Overfull \hbox (0.10857pt too wide) in alignment at lines 4418--4420
+ [][][][][][][] 
+ []
+
+
+Overfull \hbox (0.10857pt too wide) in alignment at lines 4420--4424
+ [][][][][][][] 
+ []
+
+[100] [101] [102]
+<figs/part2/L11_chi-square/dice_1.png, id=1203, 578.16pt x 385.44pt>
+File: figs/part2/L11_chi-square/dice_1.png Graphic file (type png)
+<use figs/part2/L11_chi-square/dice_1.png>
+Package luatex.def Info: figs/part2/L11_chi-square/dice_1.png  used on input line 4532.
+(luatex.def)             Requested size: 578.15858pt x 385.43906pt.
+<figs/part2/L11_chi-square/dice_2.png, id=1204, 238.8925pt x 186.6975pt>
+File: figs/part2/L11_chi-square/dice_2.png Graphic file (type png)
+<use figs/part2/L11_chi-square/dice_2.png>
+Package luatex.def Info: figs/part2/L11_chi-square/dice_2.png  used on input line 4533.
+(luatex.def)             Requested size: 238.8919pt x 186.69704pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4532--4534
+[][]
+ []
+
+[103<./figs/part2/L11_chi-square/dice_1.png><./figs/part2/L11_chi-square/dice_2.png>]
+<figs/part2/L11_chi-square/dice_3.png, id=1209, 1296.845pt x 1007.765pt>
+File: figs/part2/L11_chi-square/dice_3.png Graphic file (type png)
+<use figs/part2/L11_chi-square/dice_3.png>
+Package luatex.def Info: figs/part2/L11_chi-square/dice_3.png  used on input line 4565.
+(luatex.def)             Requested size: 1296.84184pt x 1007.76254pt.
+<figs/part2/L11_chi-square/dice_4.png, id=1210, 694.595pt x 291.0875pt>
+File: figs/part2/L11_chi-square/dice_4.png Graphic file (type png)
+<use figs/part2/L11_chi-square/dice_4.png>
+Package luatex.def Info: figs/part2/L11_chi-square/dice_4.png  used on input line 4566.
+(luatex.def)             Requested size: 694.5933pt x 291.08678pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4565--4567
+[][]
+ []
+
+
+Overfull \hbox (10.96556pt too wide) in paragraph at lines 4565--4567
+[] 
+ []
+
+[104] [105<./figs/part2/L11_chi-square/dice_3.png><./figs/part2/L11_chi-square/dice_4.png>]
+<figs/part2/L11_chi-square/dice_5.png, id=1219, 475.7775pt x 102.3825pt>
+File: figs/part2/L11_chi-square/dice_5.png Graphic file (type png)
+<use figs/part2/L11_chi-square/dice_5.png>
+Package luatex.def Info: figs/part2/L11_chi-square/dice_5.png  used on input line 4583.
+(luatex.def)             Requested size: 475.77632pt x 102.38225pt.
+
+Overfull \hbox (10.97075pt too wide) in paragraph at lines 4583--4584
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4625--4627
+
+ []
+
+[106<./figs/part2/L11_chi-square/dice_5.png>] [107]
+<figs/part2/L11_chi-square/tomato_1.png, id=1230, 720.6925pt x 313.17pt>
+File: figs/part2/L11_chi-square/tomato_1.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_1.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_1.png  used on input line 4702.
+(luatex.def)             Requested size: 720.69075pt x 313.16922pt.
+
+Overfull \hbox (10.94872pt too wide) in paragraph at lines 4702--4703
+[][] 
+ []
+
+<figs/part2/L11_chi-square/tomato_2.png, id=1231, 287.0725pt x 198.7425pt>
+File: figs/part2/L11_chi-square/tomato_2.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_2.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_2.png  used on input line 4721.
+(luatex.def)             Requested size: 287.0718pt x 198.742pt.
+[108<./figs/part2/L11_chi-square/tomato_1.png>]
+<figs/part2/L11_chi-square/tomato_3.png, id=1236, 1304.875pt x 1027.84pt>
+File: figs/part2/L11_chi-square/tomato_3.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_3.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_3.png  used on input line 4740.
+(luatex.def)             Requested size: 1304.87183pt x 1027.8375pt.
+
+Overfull \hbox (10.94768pt too wide) in paragraph at lines 4740--4741
+[][] 
+ []
+
+[109<./figs/part2/L11_chi-square/tomato_2.png>]
+<figs/part2/L11_chi-square/tomato_4.png, id=1241, 702.625pt x 238.8925pt>
+File: figs/part2/L11_chi-square/tomato_4.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_4.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_4.png  used on input line 4763.
+(luatex.def)             Requested size: 702.62328pt x 238.8919pt.
+
+Overfull \hbox (10.96298pt too wide) in paragraph at lines 4763--4764
+[][] 
+ []
+
+[110<./figs/part2/L11_chi-square/tomato_3.png>]
+<figs/part2/L11_chi-square/tomato_5.png, id=1246, 485.815pt x 106.3975pt>
+File: figs/part2/L11_chi-square/tomato_5.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_5.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_5.png  used on input line 4780.
+(luatex.def)             Requested size: 485.81381pt x 106.39723pt.
+
+Overfull \hbox (10.94504pt too wide) in paragraph at lines 4780--4781
+[][] 
+ []
+
+[111<./figs/part2/L11_chi-square/tomato_4.png><./figs/part2/L11_chi-square/tomato_5.png>]
+<figs/part2/L11_chi-square/tomato_6.png, id=1253, 1650.165pt x 1218.5525pt>
+File: figs/part2/L11_chi-square/tomato_6.png Graphic file (type png)
+<use figs/part2/L11_chi-square/tomato_6.png>
+Package luatex.def Info: figs/part2/L11_chi-square/tomato_6.png  used on input line 4807.
+(luatex.def)             Requested size: 1650.16098pt x 1218.54953pt.
+
+Overfull \hbox (10.94908pt too wide) in paragraph at lines 4807--4808
+[][] 
+ []
+
+[112<./figs/part2/L11_chi-square/tomato_6.png>]
+chapter 11.
+[113
+
+] [114] [115]
+<figs/part2/L12_power/power_1.png, id=1277, 343.2825pt x 628.3475pt>
+File: figs/part2/L12_power/power_1.png Graphic file (type png)
+<use figs/part2/L12_power/power_1.png>
+Package luatex.def Info: figs/part2/L12_power/power_1.png  used on input line 5041.
+(luatex.def)             Requested size: 343.28165pt x 628.34596pt.
+[116] [117<./figs/part2/L12_power/power_1.png>]
+<figs/part2/L12_power/power_2.png, id=1288, 347.2975pt x 638.385pt>
+File: figs/part2/L12_power/power_2.png Graphic file (type png)
+<use figs/part2/L12_power/power_2.png>
+Package luatex.def Info: figs/part2/L12_power/power_2.png  used on input line 5064.
+(luatex.def)             Requested size: 347.29665pt x 638.38342pt.
+[118] [119<./figs/part2/L12_power/power_2.png>]
+<figs/part2/L12_power/power_3.png, id=1297, 357.335pt x 869.2475pt>
+File: figs/part2/L12_power/power_3.png Graphic file (type png)
+<use figs/part2/L12_power/power_3.png>
+Package luatex.def Info: figs/part2/L12_power/power_3.png  used on input line 5092.
+(luatex.def)             Requested size: 357.33412pt x 869.24538pt.
+[120] [121<./figs/part2/L12_power/power_3.png>]
+<figs/part2/L12_power/power_4.png, id=1307, 461.725pt x 881.2925pt>
+File: figs/part2/L12_power/power_4.png Graphic file (type png)
+<use figs/part2/L12_power/power_4.png>
+Package luatex.def Info: figs/part2/L12_power/power_4.png  used on input line 5112.
+(luatex.def)             Requested size: 461.72388pt x 881.29034pt.
+[122] [123<./figs/part2/L12_power/power_4.png>] [124]
+Underfull \hbox (badness 10000) in paragraph at lines 5196--5197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5201--5202
+
+ []
+
+[125]
+Underfull \hbox (badness 10000) in paragraph at lines 5227--5229
+
+ []
+
+<part2_7_power_files/figure-pdf/unnamed-chunk-1-1.pdf, id=1324, 397.485pt x 252.945pt>
+File: part2_7_power_files/figure-pdf/unnamed-chunk-1-1.pdf Graphic file (type pdf)
+<use part2_7_power_files/figure-pdf/unnamed-chunk-1-1.pdf>
+Package luatex.def Info: part2_7_power_files/figure-pdf/unnamed-chunk-1-1.pdf  used on input line 5245.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 5257--5259
+
+ []
+
+[126<./part2_7_power_files/figure-pdf/unnamed-chunk-1-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 5263--5265
+
+ []
+
+[127]
+chapter 12.
+<figs/part2/L13_2sample_t/2sample_t_1.png, id=1341, 1899.095pt x 873.2625pt>
+File: figs/part2/L13_2sample_t/2sample_t_1.png Graphic file (type png)
+<use figs/part2/L13_2sample_t/2sample_t_1.png>
+Package luatex.def Info: figs/part2/L13_2sample_t/2sample_t_1.png  used on input line 5368.
+(luatex.def)             Requested size: 1899.09038pt x 873.26036pt.
+
+Overfull \hbox (10.941pt too wide) in paragraph at lines 5368--5369
+[][] 
+ []
+
+[128
+
+] [129<./figs/part2/L13_2sample_t/2sample_t_1.png>]
+<figs/part2/L13_2sample_t/2sample_t_2.png, id=1356, 291.0875pt x 1118.1775pt>
+File: figs/part2/L13_2sample_t/2sample_t_2.png Graphic file (type png)
+<use figs/part2/L13_2sample_t/2sample_t_2.png>
+Package luatex.def Info: figs/part2/L13_2sample_t/2sample_t_2.png  used on input line 5433.
+(luatex.def)             Requested size: 134.03067pt x 514.86269pt.
+[130]
+<figs/part2/L13_2sample_t/2sample_t_3.png, id=1361, 517.935pt x 654.445pt>
+File: figs/part2/L13_2sample_t/2sample_t_3.png Graphic file (type png)
+<use figs/part2/L13_2sample_t/2sample_t_3.png>
+Package luatex.def Info: figs/part2/L13_2sample_t/2sample_t_3.png  used on input line 5445.
+(luatex.def)             Requested size: 223.37946pt x 282.25467pt.
+[131<./figs/part2/L13_2sample_t/2sample_t_2.png>]
+LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <14.4> not available
+(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 5448.
+[132<./figs/part2/L13_2sample_t/2sample_t_3.png>]
+Missing character: There is no μ (U+03BC) in font [lmmono10-regular]:!
+Missing character: There is no μ (U+03BC) in font [lmmono10-regular]:!
+Missing character: There is no α (U+03B1) in font [lmmono10-regular]:!
+[133]
+<figs/part2/L13_2sample_t/2sample_t_4.png, id=1381, 969.6225pt x 1023.825pt>
+File: figs/part2/L13_2sample_t/2sample_t_4.png Graphic file (type png)
+<use figs/part2/L13_2sample_t/2sample_t_4.png>
+Package luatex.def Info: figs/part2/L13_2sample_t/2sample_t_4.png  used on input line 5577.
+(luatex.def)             Requested size: 969.62013pt x 1023.8225pt.
+
+Overfull \hbox (10.96149pt too wide) in paragraph at lines 5577--5578
+[][] 
+ []
+
+[134
+Missing character: There is no μ (U+03BC) in font [lmmono10-regular]:!
+Missing character: There is no μ (U+03BC) in font [lmmono10-regular]:!
+Missing character: There is no α (U+03B1) in font [lmmono10-regular]:!
+]
+Underfull \hbox (badness 10000) in paragraph at lines 5588--5591
+
+ []
+
+[135<./figs/part2/L13_2sample_t/2sample_t_4.png>] [136]
+<figs/part2/L13_2sample_t/2sample_t_5_paired.png, id=1394, 658.46pt x 515.9275pt>
+File: figs/part2/L13_2sample_t/2sample_t_5_paired.png Graphic file (type png)
+<use figs/part2/L13_2sample_t/2sample_t_5_paired.png>
+Package luatex.def Info: figs/part2/L13_2sample_t/2sample_t_5_paired.png  used on input line 5648.
+(luatex.def)             Requested size: 658.4584pt x 515.92624pt.
+
+Overfull \hbox (10.96225pt too wide) in paragraph at lines 5648--5649
+[][] 
+ []
+
+[137<./figs/part2/L13_2sample_t/2sample_t_5_paired.png>]
+LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <12> not available
+(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 5712.
+[138] [139] [140]
+part III.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 5806.
+[141
+
+]
+chapter 13.
+[142
+
+] [143]
+Underfull \hbox (badness 10000) in paragraph at lines 5986--5988
+
+ []
+
+[144] [145] [146]
+<figs/part3/anova1.png, id=1458, 405.515pt x 369.38pt>
+File: figs/part3/anova1.png Graphic file (type png)
+<use figs/part3/anova1.png>
+Package luatex.def Info: figs/part3/anova1.png  used on input line 6104.
+(luatex.def)             Requested size: 405.51399pt x 369.37909pt.
+<figs/part3/anova2.png, id=1459, 728.7225pt x 584.1825pt>
+File: figs/part3/anova2.png Graphic file (type png)
+<use figs/part3/anova2.png>
+Package luatex.def Info: figs/part3/anova2.png  used on input line 6105.
+(luatex.def)             Requested size: 728.72072pt x 584.18106pt.
+<figs/part3/anova3.png, id=1460, 1306.8825pt x 987.69pt>
+File: figs/part3/anova3.png Graphic file (type png)
+<use figs/part3/anova3.png>
+Package luatex.def Info: figs/part3/anova3.png  used on input line 6106.
+(luatex.def)             Requested size: 1306.87932pt x 987.68759pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6104--6107
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6104--6107
+[]
+ []
+
+
+Overfull \hbox (10.93704pt too wide) in paragraph at lines 6104--6107
+[] 
+ []
+
+[147<./figs/part3/anova1.png>]
+<figs/part3/anova4.png, id=1465, 556.0775pt x 297.11pt>
+File: figs/part3/anova4.png Graphic file (type png)
+<use figs/part3/anova4.png>
+Package luatex.def Info: figs/part3/anova4.png  used on input line 6108.
+(luatex.def)             Requested size: 556.07614pt x 297.10927pt.
+[148<./figs/part3/anova2.png>]
+Overfull \hbox (10.95322pt too wide) in paragraph at lines 6108--6109
+[][] 
+ []
+
+[149<./figs/part3/anova3.png>] [150<./figs/part3/anova4.png>]
+<figs/part3/anova5.png, id=1478, 724.7075pt x 564.1075pt>
+File: figs/part3/anova5.png Graphic file (type png)
+<use figs/part3/anova5.png>
+Package luatex.def Info: figs/part3/anova5.png  used on input line 6186.
+(luatex.def)             Requested size: 724.70573pt x 564.10611pt.
+
+Overfull \hbox (10.9606pt too wide) in paragraph at lines 6186--6187
+[][] 
+ []
+
+[151] [152<./figs/part3/anova5.png>]
+<figs/part3/anova6.png, id=1489, 1198.4775pt x 1176.395pt>
+File: figs/part3/anova6.png Graphic file (type png)
+<use figs/part3/anova6.png>
+Package luatex.def Info: figs/part3/anova6.png  used on input line 6268.
+(luatex.def)             Requested size: 1198.47458pt x 1176.39215pt.
+
+Overfull \hbox (10.94797pt too wide) in paragraph at lines 6268--6269
+[][] 
+ []
+
+[153] [154<./figs/part3/anova6.png>] [155]
+chapter 14.
+[156
+
+]
+<figs/part3/regression1.png, id=1512, 734.745pt x 774.895pt>
+File: figs/part3/regression1.png Graphic file (type png)
+<use figs/part3/regression1.png>
+Package luatex.def Info: figs/part3/regression1.png  used on input line 6440.
+(luatex.def)             Requested size: 734.7432pt x 774.89311pt.
+
+Overfull \hbox (10.95992pt too wide) in paragraph at lines 6440--6441
+[][] 
+ []
+
+[157] [158<./figs/part3/regression1.png>] [159] [160]
+<figs/part3/regression2.png, id=1529, 720.6925pt x 969.6225pt>
+File: figs/part3/regression2.png Graphic file (type png)
+<use figs/part3/regression2.png>
+Package luatex.def Info: figs/part3/regression2.png  used on input line 6597.
+(luatex.def)             Requested size: 720.69075pt x 969.62013pt.
+<figs/part3/regression3.png, id=1530, 1037.8775pt x 1192.455pt>
+File: figs/part3/regression3.png Graphic file (type png)
+<use figs/part3/regression3.png>
+Package luatex.def Info: figs/part3/regression3.png  used on input line 6598.
+(luatex.def)             Requested size: 1037.87498pt x 1192.4521pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6597--6599
+[][]
+ []
+
+
+Overfull \hbox (10.95953pt too wide) in paragraph at lines 6597--6599
+[] 
+ []
+
+[161] [162<./figs/part3/regression2.png>] [163<./figs/part3/regression3.png>] [164] [165]
+<figs/part3/regression4.png, id=1552, 1078.0275pt x 800.9925pt>
+File: figs/part3/regression4.png Graphic file (type png)
+<use figs/part3/regression4.png>
+Package luatex.def Info: figs/part3/regression4.png  used on input line 6745.
+(luatex.def)             Requested size: 1078.02487pt x 800.99054pt.
+<figs/part3/regression6.png, id=1553, 1092.08pt x 909.3975pt>
+File: figs/part3/regression6.png Graphic file (type png)
+<use figs/part3/regression6.png>
+Package luatex.def Info: figs/part3/regression6.png  used on input line 6746.
+(luatex.def)             Requested size: 1092.07735pt x 909.3953pt.
+<figs/part3/regression7.png, id=1554, 558.085pt x 794.97pt>
+File: figs/part3/regression7.png Graphic file (type png)
+<use figs/part3/regression7.png>
+Package luatex.def Info: figs/part3/regression7.png  used on input line 6747.
+(luatex.def)             Requested size: 558.08365pt x 794.96806pt.
+<figs/part3/regression8.png, id=1555, 612.2875pt x 959.585pt>
+File: figs/part3/regression8.png Graphic file (type png)
+<use figs/part3/regression8.png>
+Package luatex.def Info: figs/part3/regression8.png  used on input line 6748.
+(luatex.def)             Requested size: 612.28601pt x 959.58266pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6745--6749
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6745--6749
+[]
+ []
+
+[166] [167<./figs/part3/regression4.png>] [168<./figs/part3/regression6.png>] [169<./figs/part3/regression7.png>] [170<./figs/part3/regression8.png>] [171]
+chapter 15.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6763--6765
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6765--6767
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6767--6769
+
+ []
+
+[172
+
+]
+<part3_3_regression_interaction_files/figure-pdf/interaction-illustartion-1.pdf, id=1589, 397.485pt x 252.945pt>
+File: part3_3_regression_interaction_files/figure-pdf/interaction-illustartion-1.pdf Graphic file (type pdf)
+<use part3_3_regression_interaction_files/figure-pdf/interaction-illustartion-1.pdf>
+Package luatex.def Info: part3_3_regression_interaction_files/figure-pdf/interaction-illustartion-1.pdf  used on input line 6821.
+(luatex.def)             Requested size: 397.48402pt x 252.94438pt.
+<figs/part3/interaction1.png, id=1590, 1182.4175pt x 883.3pt>
+File: figs/part3/interaction1.png Graphic file (type png)
+<use figs/part3/interaction1.png>
+Package luatex.def Info: figs/part3/interaction1.png  used on input line 6833.
+(luatex.def)             Requested size: 1182.41461pt x 883.29785pt.
+
+Overfull \hbox (10.95128pt too wide) in paragraph at lines 6833--6834
+[][] 
+ []
+
+[173<./part3_3_regression_interaction_files/figure-pdf/interaction-illustartion-1.pdf>] [174<./figs/part3/interaction1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 6896--6898
+
+ []
+
+[175] [176] [177] [178]
+<figs/part3/interaction2.png, id=1624, 672.5125pt x 861.2175pt>
+File: figs/part3/interaction2.png Graphic file (type png)
+<use figs/part3/interaction2.png>
+Package luatex.def Info: figs/part3/interaction2.png  used on input line 7131.
+(luatex.def)             Requested size: 672.51085pt x 861.2154pt.
+
+Overfull \hbox (10.95363pt too wide) in paragraph at lines 7131--7132
+[][] 
+ []
+
+<figs/part3/interaction3.png, id=1625, 1078.0275pt x 1190.4475pt>
+File: figs/part3/interaction3.png Graphic file (type png)
+<use figs/part3/interaction3.png>
+Package luatex.def Info: figs/part3/interaction3.png  used on input line 7133.
+(luatex.def)             Requested size: 1078.02487pt x 1190.4446pt.
+[179]
+Overfull \hbox (10.9544pt too wide) in paragraph at lines 7133--7134
+[][] 
+ []
+
+<figs/part3/interaction4.png, id=1630, 1029.8475pt x 780.9175pt>
+File: figs/part3/interaction4.png Graphic file (type png)
+<use figs/part3/interaction4.png>
+Package luatex.def Info: figs/part3/interaction4.png  used on input line 7135.
+(luatex.def)             Requested size: 1029.845pt x 780.91559pt.
+[180<./figs/part3/interaction2.png>]
+Overfull \hbox (10.9443pt too wide) in paragraph at lines 7135--7136
+[][] 
+ []
+
+<figs/part3/interaction5.png, id=1635, 1037.8775pt x 784.9325pt>
+File: figs/part3/interaction5.png Graphic file (type png)
+<use figs/part3/interaction5.png>
+Package luatex.def Info: figs/part3/interaction5.png  used on input line 7137.
+(luatex.def)             Requested size: 1037.87498pt x 784.93057pt.
+[181<./figs/part3/interaction3.png>]
+Overfull \hbox (10.95953pt too wide) in paragraph at lines 7137--7138
+[][] 
+ []
+
+<figs/part3/interaction6.png, id=1641, 521.95pt x 995.72pt>
+File: figs/part3/interaction6.png Graphic file (type png)
+<use figs/part3/interaction6.png>
+Package luatex.def Info: figs/part3/interaction6.png  used on input line 7139.
+(luatex.def)             Requested size: 521.94872pt x 995.71758pt.
+[182<./figs/part3/interaction4.png>]
+<figs/part3/interaction7.png, id=1646, 279.0425pt x 738.76pt>
+File: figs/part3/interaction7.png Graphic file (type png)
+<use figs/part3/interaction7.png>
+Package luatex.def Info: figs/part3/interaction7.png  used on input line 7141.
+(luatex.def)             Requested size: 279.04181pt x 738.75818pt.
+[183<./figs/part3/interaction5.png>] [184<./figs/part3/interaction6.png>]
+<figs/part3/interaction8.png, id=1655, 521.95pt x 1007.765pt>
+File: figs/part3/interaction8.png Graphic file (type png)
+<use figs/part3/interaction8.png>
+Package luatex.def Info: figs/part3/interaction8.png  used on input line 7143.
+(luatex.def)             Requested size: 521.94872pt x 1007.76254pt.
+[185<./figs/part3/interaction7.png>] [186<./figs/part3/interaction8.png>] [187]
+Underfull \hbox (badness 10000) in paragraph at lines 7255--7257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7257--7259
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7259--7261
+
+ []
+
+[188]
+chapter 16.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7278--7281
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7281--7284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7284--7287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7287--7289
+
+ []
+
+[189
+
+] [190] [191] [192] [193]
+<figs/part3/LMEM1_1.png, id=1698, 734.745pt x 923.45pt>
+File: figs/part3/LMEM1_1.png Graphic file (type png)
+<use figs/part3/LMEM1_1.png>
+Package luatex.def Info: figs/part3/LMEM1_1.png  used on input line 7626.
+(luatex.def)             Requested size: 734.7432pt x 923.44774pt.
+<figs/part3/LMEM1_2.png, id=1699, 1023.825pt x 1132.23pt>
+File: figs/part3/LMEM1_2.png Graphic file (type png)
+<use figs/part3/LMEM1_2.png>
+Package luatex.def Info: figs/part3/LMEM1_2.png  used on input line 7627.
+(luatex.def)             Requested size: 1023.8225pt x 1132.22723pt.
+<figs/part3/LMEM1_3.png, id=1700, 1011.78pt x 776.9025pt>
+File: figs/part3/LMEM1_3.png Graphic file (type png)
+<use figs/part3/LMEM1_3.png>
+Package luatex.def Info: figs/part3/LMEM1_3.png  used on input line 7628.
+(luatex.def)             Requested size: 1011.77753pt x 776.90059pt.
+<figs/part3/LMEM1_4.png, id=1701, 1017.8025pt x 782.925pt>
+File: figs/part3/LMEM1_4.png Graphic file (type png)
+<use figs/part3/LMEM1_4.png>
+Package luatex.def Info: figs/part3/LMEM1_4.png  used on input line 7629.
+(luatex.def)             Requested size: 1017.80003pt x 782.9231pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7626--7630
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7626--7630
+[]
+ []
+
+
+Overfull \hbox (10.95285pt too wide) in paragraph at lines 7626--7630
+[] 
+ []
+
+[194] [195<./figs/part3/LMEM1_1.png>] [196<./figs/part3/LMEM1_2.png>] [197<./figs/part3/LMEM1_3.png>]
+<figs/part3/LMEM1_5.png, id=1718, 531.9875pt x 1074.0125pt>
+File: figs/part3/LMEM1_5.png Graphic file (type png)
+<use figs/part3/LMEM1_5.png>
+Package luatex.def Info: figs/part3/LMEM1_5.png  used on input line 7656.
+(luatex.def)             Requested size: 531.9862pt x 1074.00987pt.
+<figs/part3/LMEM1_6.png, id=1719, 600.2425pt x 911.405pt>
+File: figs/part3/LMEM1_6.png Graphic file (type png)
+<use figs/part3/LMEM1_6.png>
+Package luatex.def Info: figs/part3/LMEM1_6.png  used on input line 7657.
+(luatex.def)             Requested size: 600.24103pt x 911.40277pt.
+
+Overfull \hbox (238.44139pt too wide) in paragraph at lines 7656--7658
+[][] [] 
+ []
+
+[198<./figs/part3/LMEM1_4.png>] [199<./figs/part3/LMEM1_5.png><./figs/part3/LMEM1_6.png>]
+<figs/part3/LMEM1_7.png, id=1729, 604.2575pt x 1118.1775pt>
+File: figs/part3/LMEM1_7.png Graphic file (type png)
+<use figs/part3/LMEM1_7.png>
+Package luatex.def Info: figs/part3/LMEM1_7.png  used on input line 7734.
+(luatex.def)             Requested size: 604.25603pt x 1118.17477pt.
+<figs/part3/LMEM1_8.png, id=1730, 622.325pt x 953.5625pt>
+File: figs/part3/LMEM1_8.png Graphic file (type png)
+<use figs/part3/LMEM1_8.png>
+Package luatex.def Info: figs/part3/LMEM1_8.png  used on input line 7735.
+(luatex.def)             Requested size: 622.32347pt x 953.56018pt.
+
+Overfull \hbox (261.23pt too wide) in paragraph at lines 7734--7736
+[][] [] 
+ []
+
+[200] [201<./figs/part3/LMEM1_7.png><./figs/part3/LMEM1_8.png>]
+<figs/part3/LMEM1_9.png, id=1740, 564.1075pt x 1078.0275pt>
+File: figs/part3/LMEM1_9.png Graphic file (type png)
+<use figs/part3/LMEM1_9.png>
+Package luatex.def Info: figs/part3/LMEM1_9.png  used on input line 7764.
+(luatex.def)             Requested size: 564.10611pt x 1078.02487pt.
+<figs/part3/LMEM1_10.png, id=1741, 612.2875pt x 959.585pt>
+File: figs/part3/LMEM1_10.png Graphic file (type png)
+<use figs/part3/LMEM1_10.png>
+Package luatex.def Info: figs/part3/LMEM1_10.png  used on input line 7765.
+(luatex.def)             Requested size: 612.28601pt x 959.58266pt.
+
+Overfull \hbox (242.76353pt too wide) in paragraph at lines 7764--7766
+[][] [] 
+ []
+
+[202] [203<./figs/part3/LMEM1_9.png><./figs/part3/LMEM1_10.png>] [204] [205]
+chapter 17.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8014--8017
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8017--8020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8029--8030
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8032--8035
+
+ []
+
+[206
+
+]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 8081.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8144--8147
+
+ []
+
+[207] [208] [209] [210] [211] [212]
+Underfull \hbox (badness 10000) in paragraph at lines 8547--8549
+
+ []
+
+[213]
+Underfull \hbox (badness 10000) in paragraph at lines 8549--8551
+
+ []
+
+[214]
+Underfull \hbox (badness 10000) in paragraph at lines 8734--8736
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8736--8738
+
+ []
+
+[215] [216]
+chapter 18.
+[217
+
+] [218] [219] [220] [221] [222] [223] [224] [225] [226] [227]
+part IV.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 9436.
+[228
+
+]
+Missing character: There is no 🎯 (U+1F3AF) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 🎯 (U+1F3AF) in font [lmsans10-bold]:+tlig;!
+ignored error Infinite glue shrinkage found in box being split [229
+
+Missing character: There is no 🎯 (U+1F3AF) in font [lmsans10-bold]:+tlig;!
+]
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 9537--9539
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9539--9541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9541--9543
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9543--9545
+
+ []
+
+[230
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+] [231] [232]
+Missing character: There is no 📄 (U+1F4C4) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 📄 (U+1F4C4) in font [lmsans10-bold]:+tlig;!
+[233
+Missing character: There is no 📄 (U+1F4C4) in font [lmsans10-bold]:+tlig;!
+]
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+[234
+Missing character: There is no 📊 (U+1F4CA) in font [lmsans10-bold]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+]
+part V.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 9902.
+[235
+
+]
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+[236
+
+] [237
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+]
+Underfull \hbox (badness 10000) in paragraph at lines 10134--10137
+
+ []
+
+[238]
+Underfull \hbox (badness 10000) in paragraph at lines 10137--10138
+
+ []
+
+[239] [240] [241] [242]
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+[243
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no ₀ (U+2080) in font [lmroman10-regular]:+tlig;!
+] [244]
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+[245
+
+] [246
+Missing character: There is no 💡 (U+1F4A1) in font [lmroman10-regular]:+tlig;!
+] [247] [248] [249] [250] [251] [252] [253] [254
+
+]
+Underfull \vbox (badness 10000) detected at line 11222
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 11222
+ []
+
+[255] [256] [257] [258] [259] [260] [261]
+Underfull \hbox (badness 10000) in paragraph at lines 11597--11599
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11599--11601
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11601--11603
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11603--11605
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11605--11607
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11622--11624
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11624--11626
+
+ []
+
+
+Underfull \hbox (

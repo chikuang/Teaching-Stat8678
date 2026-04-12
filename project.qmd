@@ -22,8 +22,8 @@ Students will:
 |  | 1 | Zong Yang| Financial Metric Transmission Mechanism within Coca-Cola’s Income Statement|
 | | 2 | Mangsa Limbu Pheudin, Shaswat Bhushan Jangam, Allswell Akomanyi-Addo| |
 | | 3 | Wenpu Ma |  |
-| | 4 | Vu, Ha |   |
-| | 5 | Umma Hafsah Himu |  |
+| | 4 | Vu, Ha |  Drug Safety Classification and Risk Analysis of FDA Drug Adverse Reports |
+| | 5 | Umma Hafsah Himu | Clinical and Demographic Predictors of Heart Disease |
 | | 6 | Kalen Jinnah, Ivanna Poliashenko, Sierra Doherty |  |
 | | 7 | Zhe Zhong | Bank Marketing Dataset | 
 | | 8 | Andrew Krause | Heart Disease Dataset |
