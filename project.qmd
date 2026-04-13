@@ -21,7 +21,7 @@ Students will:
 |:-:|:----:|:-------------------------:|:---------------------:|
 |  | 1 | Zong Yang| Financial Metric Transmission Mechanism within Coca-Cola’s Income Statement|
 | | 2 | Mangsa Limbu Pheudin, Shaswat Bhushan Jangam, Allswell Akomanyi-Addo| |
-| | 3 | Wenpu Ma |  |
+| | 3 | Wenpu Ma | Analysis of blood lead levels in the treatment of lead-exposed children |
 | | 4 | Vu, Ha |  Drug Safety Classification and Risk Analysis of FDA Drug Adverse Reports |
 | | 5 | Umma Hafsah Himu | Clinical and Demographic Predictors of Heart Disease |
 | | 6 | Kalen Jinnah, Ivanna Poliashenko, Sierra Doherty | Baseball bat speed Analysis |
