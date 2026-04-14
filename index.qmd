@@ -81,7 +81,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   |   20    | 🛠 Class Activity III |
 |   ✅   |   21    | Linear Mixed Effects Model I |
 |   ✅    |   22    | Linear Mixed Effects Model II |
-|   ⏳   |   TBA   | 🛠 Class Activity III |
+|   ✅   |   23   | 🛠 Class Activity IV |
 |   ⏳   |   TBA   | Model Selection |
 <!-- 🚧🛠️⏳   -->
 
