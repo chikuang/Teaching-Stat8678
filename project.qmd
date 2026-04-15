@@ -34,7 +34,7 @@ Students will:
 | | 13 | Mostafa Farhadian  | Flood Insurance Claims Dataset | 
 | | 14 | Michael Dixon | African American high school students' Math scores | 
 | | 15 | Kamana Joshi, Sushil Khadka | | 
-| | 16 | Seth Kwarteng  | | 
+| | 16 | Seth Kwarteng  | UCI Parkinsons dataset | 
 | | 17 | Sierra Doherty | | 
 
 
