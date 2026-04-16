@@ -82,7 +82,9 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅   |   21    | Linear Mixed Effects Model I |
 |   ✅    |   22    | Linear Mixed Effects Model II |
 |   ✅   |   23   | 🛠 Class Activity IV |
-|   ⏳   |   TBA   | Model Selection |
+|   ✅    |   24   | Model Selection |
+|   ️⏳   |   25  | Nested Model |
+|   ️⏳   |   26  | Predictive Modelling |
 <!-- 🚧🛠️⏳   -->
 
 ## Recommended Textbooks
