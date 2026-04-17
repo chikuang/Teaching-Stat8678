@@ -17,26 +17,26 @@ Students will:
 
 ## Group Information
 
-|   | Group | Member | Topic |
-|:----------------:|:----------------:|:----------------:|:----------------:|
-|  | 1 | Zong Yang | Financial Metric Transmission Mechanism within Coca-Cola’s Income Statement |
-|  | 2 | Mangsa Limbu Pheudin, Shaswat Bhushan Jangam, Allswell Akomanyi-Addo | Analysis of blood lead levels in the treatment of lead-exposed children |
-|  | 3 | Wenpu Ma | Cleveland Heart Disease Data |
-|  | 4 | Vu, Ha | Drug Safety Classification and Risk Analysis of FDA Drug Adverse Reports |
-|  | 5 | Umma Hafsah Himu | Clinical and Demographic Predictors of Heart Disease |
-|  | 6 | Kalen Jinnah, Ivanna Poliashenko | Baseball bat speed Analysis |
-|  | 7 | Zhe Zhong | Bank Marketing Dataset |
-|  | 8 | Andrew Krause | Heart Disease Dataset |
-|  | 9 | Taiwo Ayeni | Cardiovascular Risk Factors in the Framingham Heart Study |
-|  | 10 | Maya Creary | Is there a statistically significant difference in the "Inattentive" vs. "Hyperactive" symptom scores between male and female subjects? |
-|  | 11 | Seoyoung Kim | CDC Disability data |
-|  | 12 | Sifan You, Boshu Zhang | Relationship between car's weight and its fuel efficiency |
-|  | 13 | Mostafa Farhadian | Flood Insurance Claims Dataset |
-|  | 14 | Michael Dixon | African American high school students' Math scores |
-|  | 15 | Kamana Joshi, Sushil Khadka | Spotify Audio Features |
-|  | 16 | Seth Kwarteng | UCI Parkinsons dataset |
-|  | 17 | Sierra Doherty | Braves ABS challenges |
-|  | 18 | Daniel Geiger |  African Mosquito Dataset |
+| Group | Member | Topic |
+|:---:|:-----------:|:----------------:|
+| 1 | Zong Yang | Financial Metric Transmission Mechanism within Coca-Cola’s Income Statement |
+| 2 | Mangsa Limbu Pheudin, Shaswat Bhushan Jangam, Allswell Akomanyi-Addo | Analysis of blood lead levels in the treatment of lead-exposed children |
+| 3 | Wenpu Ma | Cleveland Heart Disease Data |
+| 4 | Vu, Ha | Drug Safety Classification and Risk Analysis of FDA Drug Adverse Reports |
+| 5 | Umma Hafsah Himu | Clinical and Demographic Predictors of Heart Disease |
+| 6 | Kalen Jinnah, Ivanna Poliashenko | Baseball bat speed Analysis |
+| 7 | Zhe Zhong | Bank Marketing Dataset |
+| 8 | Andrew Krause | Heart Disease Dataset |
+| 9 | Taiwo Ayeni | Cardiovascular Risk Factors in the Framingham Heart Study |
+| 10 | Maya Creary | Is there a statistically significant difference in the "Inattentive" vs. "Hyperactive" symptom scores between male and female subjects? |
+| 11 | Seoyoung Kim | CDC Disability data |
+| 12 | Sifan You, Boshu Zhang | Relationship between car's weight and its fuel efficiency |
+| 13 | Mostafa Farhadian | Flood Insurance Claims Dataset |
+| 14 | Michael Dixon | African American high school students' Math scores |
+| 15 | Kamana Joshi, Sushil Khadka | Spotify Audio Features |
+| 16 | Seth Kwarteng | UCI Parkinsons dataset |
+| 17 | Sierra Doherty | Braves ABS challenges |
+| 18 | Daniel Geiger |  African Mosquito Dataset |
 
 <!-- ✅  -->
 
