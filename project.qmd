@@ -36,7 +36,7 @@ Students will:
 |  | 15 | Kamana Joshi, Sushil Khadka |  |
 |  | 16 | Seth Kwarteng | UCI Parkinsons dataset |
 |  | 17 | Sierra Doherty | Braves ABS challenges |
-|  | 18 | Daniel Geiger |   |
+|  | 18 | Daniel Geiger |  African Mosquito Dataset |
 
 <!-- ✅  -->
 
