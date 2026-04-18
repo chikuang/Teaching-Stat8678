@@ -25,7 +25,6 @@ Examples include:
 
 This shift in focus leads us to **predictive modelling**.
 
----
 
 ## Inference vs Prediction
 
@@ -66,9 +65,8 @@ A model can be useful for inference but not especially good for prediction, and 
 
 A model with many terms may fit the current data very well, but may perform poorly on future data. This is one reason why predictive modelling requires different evaluation tools.
 
----
 
-## 20.3 Training Error vs Test Error
+## Training Error vs Test Error
 
 Suppose we fit a model using a given dataset.
 
@@ -149,9 +147,7 @@ Examples:
 
 In this lecture, we will use familiar regression-based models to build a bridge from classical statistics to predictive modelling.
 
----
-
-## 20.6 Performance Metrics for Regression
+## Performance Metrics for Regression
 
 Suppose we observe actual values $y_1, \ldots, y_n$ and predicted values $\hat{y}_1, \ldots, \hat{y}_n$.
 
@@ -181,9 +177,7 @@ $$
 - RMSE penalizes large errors more heavily than MAE.
 - MAE is often easier to interpret directly.
 
----
-
-## 20.7 Performance Metrics for Classification
+## Performance Metrics for Classification
 
 For binary outcomes, the model often produces either:
 
@@ -215,9 +209,8 @@ $$
 
 In this lecture, we focus on basic classification accuracy and predicted probabilities, while later topics in machine learning can expand these ideas.
 
----
 
-## 20.8 A Simple Predictive Modelling Workflow in SAS
+## A Simple Predictive Modelling Workflow in SAS
 
 A common SAS workflow for predictive modelling is:
 
@@ -229,15 +222,14 @@ A common SAS workflow for predictive modelling is:
 
 This workflow is useful whether the model is simple or complex.
 
----
 
-## 20.9 Example 1: Continuous Outcome Prediction
+## Example 1: Continuous Outcome Prediction
 
 In this example, we use a regression model to predict a continuous response.
 
 ### Step 1: Split the data
 
-```sas
+```r
 PROC SURVEYSELECT DATA=mydata
     OUT=split_data
     SEED=12345
@@ -255,7 +247,7 @@ This creates an output dataset with an indicator variable named `Selected`:
 
 ### Step 2: Create training and test datasets
 
-```sas
+```r
 DATA train test;
     SET split_data;
     IF Selected = 1 THEN OUTPUT train;
@@ -265,7 +257,7 @@ RUN;
 
 ### Step 3: Fit a regression model on the training set
 
-```sas
+```r
 PROC REG DATA=train;
     MODEL Y = X1 X2 X3;
     SCORE DATA=test OUT=test_pred PREDICT;
@@ -275,7 +267,7 @@ QUIT;
 
 ### Step 4: Compute prediction errors
 
-```sas
+```r
 DATA test_pred;
     SET test_pred;
     error  = Y - MODEL1;
@@ -290,15 +282,15 @@ RUN;
 
 The mean of `abserr` is the MAE. The mean of `sqerr` is the MSE. Taking the square root of the MSE gives the RMSE.
 
----
 
-## 20.10 Example 2: Binary Outcome Prediction with Logistic Regression
+
+## Example 2: Binary Outcome Prediction with Logistic Regression
 
 Now suppose the response is binary, such as whether a customer responds to an offer.
 
 ### Step 1: Fit logistic regression on the training data
 
-```sas
+```r
 PROC LOGISTIC DATA=train;
     MODEL response(event='1') = X1 X2 X3;
     SCORE DATA=test OUT=logit_scored;
@@ -312,7 +304,7 @@ A common rule is:
 - predict 1 if predicted probability $\ge 0.5$,
 - predict 0 otherwise.
 
-```sas
+```r
 DATA logit_scored;
     SET logit_scored;
     pred_class = (P_1 >= 0.5);
@@ -321,7 +313,7 @@ RUN;
 
 ### Step 3: Compare predicted and observed classes
 
-```sas
+```r
 PROC FREQ DATA=logit_scored;
     TABLES response*pred_class / NOCOL NOROW NOPERCENT;
 RUN;
@@ -329,9 +321,8 @@ RUN;
 
 From this table, we can calculate classification accuracy.
 
----
 
-## 20.11 Why Predictive Modelling Changes the Way We Think
+## Why Predictive Modelling Changes the Way We Think
 
 In classical regression analysis, we often ask:
 
@@ -350,9 +341,7 @@ A variable can be statistically significant but add little predictive value.
 
 Conversely, a model chosen for prediction may prioritize accuracy over easy interpretation.
 
----
-
-## 20.12 Relationship to Model Selection
+## Relationship to Model Selection
 
 This lecture connects directly to the previous lecture on model selection.
 
@@ -374,9 +363,7 @@ These are related questions, but they are not identical.
 
 This distinction is central to modern data analysis and machine learning.
 
----
-
-## 20.13 Practical Notes for SAS Users
+## Practical Notes for SAS Users
 
 When building predictive models in SAS, keep the following points in mind:
 
@@ -390,9 +377,7 @@ When building predictive models in SAS, keep the following points in mind:
 
 This is especially important in real data analysis projects.
 
----
-
-## 20.14 Looking Ahead
+## Looking Ahead
 
 This lecture provides the bridge from classical statistics to machine learning.
 
@@ -405,9 +390,7 @@ Once we adopt the predictive modelling viewpoint, it becomes natural to ask:
 
 These questions motivate the next lecture on **machine learning in SAS**.
 
----
-
-## 20.15 Chapter Summary
+## Chapter Summary
 
 In this lecture, we introduced predictive modelling as a different perspective on statistical modelling.
 
@@ -426,9 +409,7 @@ In this lecture, we introduced predictive modelling as a different perspective o
 - scoring test data,
 - evaluating performance using prediction errors and classification tables.
 
----
-
-## 20.16 Practice Problems
+## Practice Problems
 
 1. Explain the difference between inference and prediction in your own words.
 2. Why is test error usually more informative than training error in predictive modelling?

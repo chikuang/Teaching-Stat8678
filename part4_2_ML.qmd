@@ -23,7 +23,7 @@ In this lecture, we take one more step and ask:
 
 The goal of this lecture is not to turn this course into a full machine learning course. Instead, the goal is to introduce several important ideas in a way that is connected to the statistical models you already know.
 
-## What Is Machine Learning?
+## What Is ML?
 
 There is no single perfect definition of machine learning, but in many practical settings it refers to:
 
@@ -52,7 +52,7 @@ In many real applications, the boundary between statistics and machine learning 
 
 A useful first distinction is between **supervised learning** and **unsupervised learning**.
 
-### Supervised Learning
+**Supervised Learning**
 
 In supervised learning, we observe:
 
@@ -78,13 +78,11 @@ Typical supervised learning methods include:
 - support vector machines,
 - neural networks.
 
-### Unsupervised Learning
+**Unsupervised Learning**
 
 In unsupervised learning, we observe predictors $X$ but no response variable.
 
 The goal is to discover structure in the data.
-
-
 
 ::: {.callout-example title="Examples of Unsupervised Learning"}
 
@@ -181,7 +179,7 @@ Decision trees are appealing because they are:
 - capable of capturing nonlinear relationships,
 - capable of handling interactions automatically.
 
-### Example
+::: {.callout-example}
 
 A decision tree for loan default might work like this:
 
@@ -189,28 +187,27 @@ A decision tree for loan default might work like this:
 2. Among lower-income individuals, split on credit score.
 3. Among higher-income individuals, split on debt level.
 
+:::
+
 The final prediction depends on the path through the tree.
 
-## Strengths and Weaknesses of Trees
 
-### Strengths
+**Strengths and Weaknesses of Trees**
 
-- easy to interpret,
-- naturally capture interactions,
-- do not require linearity,
-- useful for both regression and classification.
++ Strengths 
+  - easy to interpret,
+  - naturally capture interactions,
+  - do not require linearity,
+  - useful for both regression and classification.
 
-### Weaknesses
-
-- can be unstable,
-- small changes in data may lead to a different tree,
-- a single tree may not predict as accurately as ensemble methods.
++ Weaknesses
+  - can be unstable,
+  - small changes in data may lead to a different tree,
+  - a single tree may not predict as accurately as ensemble methods.
 
 This motivates methods such as **bagging** and **random forests**.
 
----
-
-## 21.8 Random Forests and Ensemble Thinking
+## Random Forests and Ensemble Thinking
 
 A random forest is an **ensemble method** built from many decision trees.
 
@@ -240,12 +237,10 @@ Compared with a single tree, a random forest is usually:
 - more accurate,
 - less interpretable.
 
-This is a common pattern in machine learning:
+This is a common pattern in ML:
 better predictive performance may come at the cost of simpler interpretation.
 
----
-
-## 21.9 Regularization and High-Dimensional Prediction
+## Regularization and High-Dimensional Prediction
 
 Another important machine learning idea is **regularization**.
 
@@ -283,7 +278,7 @@ Regularization helps us move from classical regression toward modern predictive 
 
 ## A Simple Machine Learning Workflow in SAS
 
-A practical machine learning workflow in SAS looks like this:
+A practical ML workflow in SAS looks like this:
 
 1. split the data into training and test sets,
 2. fit multiple candidate models,
@@ -365,11 +360,9 @@ This procedure illustrates an important idea:
 - variable selection can be handled in a prediction-oriented framework,
 - model complexity can be controlled automatically.
 
----
+## Comparing Models
 
-## 21.14 Comparing Models
-
-One of the most important lessons in machine learning is that we should compare models using the same evaluation framework.
+One of the most important lessons in ML is that we should compare models using the same evaluation framework.
 
 For example, we might compare:
 
@@ -402,9 +395,7 @@ A random forest may be:
 - even more accurate,
 - but much less transparent.
 
----
-
-## 21.15 Bias-Variance Trade-off
+## Bias-Variance Trade-off
 
 A central concept in machine learning is the **bias-variance trade-off**.
 
@@ -429,15 +420,13 @@ This idea is closely related to:
 
 In other words, machine learning builds on ideas that are already present in statistics.
 
----
-
-## 21.16 Why This Matters for SAS Users
+## Why This Matters for SAS Users
 
 Students sometimes think machine learning is something completely separate that requires a different software ecosystem.
 
 That is not true.
 
-SAS supports important machine learning workflows, including:
+SAS supports important ML workflows, including:
 
 - data splitting,
 - regression-based prediction,
@@ -447,9 +436,7 @@ SAS supports important machine learning workflows, including:
 
 This means the tools you have learned in SAS can be extended naturally into modern predictive analytics.
 
----
-
-## 21.17 Practical Advice for Students
+## Practical Advice
 
 When using machine learning methods, remember:
 
@@ -459,9 +446,8 @@ When using machine learning methods, remember:
 4. Always compare models using a clear test-set or validation framework.
 5. Good predictive modelling requires both statistical thinking and computational implementation.
 
----
 
-## 21.18 Looking Ahead
+## Looking Ahead
 
 This lecture is only an introduction, but it shows how SAS can be used for modern predictive analysis.
 
@@ -476,9 +462,8 @@ After this course, students interested in advanced topics could continue with:
 
 The key point is that the ideas from this course already provide a strong foundation for these topics.
 
----
 
-## 21.19 Chapter Summary
+## Chapter Summary
 
 In this lecture, we introduced machine learning as an extension of predictive modelling.
 
