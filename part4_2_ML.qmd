@@ -1,4 +1,3 @@
-
 # Introduction to Machine Learning in SAS
 
 > **Learning Objectives**
@@ -105,7 +104,7 @@ Typical unsupervised learning methods include:
 
 We focus mainly on **supervised learning**, because it connects directly to predictive modelling and to many SAS procedures.
 
-## Classical Models vs Machine Learning Models
+## Classical Models vs ML Models
 
 Classical statistical models often emphasize:
 
