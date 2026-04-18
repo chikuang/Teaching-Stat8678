@@ -31,6 +31,11 @@ book:
       - part3_4_LMEM_I.qmd
       - part3_5_LMEM_II.qmd
       - part3_6_model_selection.qmd
+      - part3_7_nested_model.qmd
+    - part: "Advanced Topics"
+      chapters:
+      - part4_1_predictive.qmd
+      - part4_2_ML.qmd
     - part: "Final Project"
       chapters:
       - project.qmd

@@ -1,0 +1,516 @@
+
+# Introduction to Machine Learning in SAS
+
+> **Learning Objectives**
+>
+> By the end of this lecture, you should be able to:
+>
+> 1. Explain what **machine learning** means in a predictive modelling context.
+> 2. Distinguish between **supervised** and **unsupervised** learning.
+> 3. Understand the basic ideas behind **decision trees**, **random forests**, and **regularization**.
+> 4. Compare classical statistical models with more flexible machine learning methods.
+> 5. Implement basic machine learning workflows in SAS for prediction and model comparison.
+
+## Introduction
+
+In the previous lecture, we introduced predictive modelling and emphasized the importance of evaluating models using out-of-sample performance. That lecture served as a bridge from classical statistical modelling to modern prediction.
+
+In this lecture, we take one more step and ask:
+
+- What do people mean by **machine learning** (ML)?
+- How is it related to regression and classification?
+- What kinds of predictive methods are available in SAS?
+- When might a more flexible model be useful?
+
+The goal of this lecture is not to turn this course into a full machine learning course. Instead, the goal is to introduce several important ideas in a way that is connected to the statistical models you already know.
+
+## What Is Machine Learning?
+
+There is no single perfect definition of machine learning, but in many practical settings it refers to:
+
+> using data-driven algorithms to learn patterns from data for prediction, classification, or discovery.
+
+Compared with traditional statistical modelling, machine learning often places stronger emphasis on:
+
+- prediction,
+- flexibility,
+- automatic pattern detection,
+- performance on unseen data.
+
+### Important Note
+
+Machine learning is **not separate from statistics**. Many machine learning methods are extensions of ideas you already know:
+
+- regression,
+- classification,
+- optimization,
+- variable selection,
+- bias-variance trade-off.
+
+In many real applications, the boundary between statistics and machine learning is not sharp.
+
+## Supervised vs Unsupervised Learning
+
+A useful first distinction is between **supervised learning** and **unsupervised learning**.
+
+### Supervised Learning
+
+In supervised learning, we observe:
+
+- predictors $X$,
+- a response $Y$.
+
+The goal is to learn a rule that predicts $Y$ from $X$.
+
+::: {.callout-example title="Examples of Supervised Learning"}
+
+- predicting house price from location and size,
+- predicting whether a patient has a disease,
+- predicting whether an email is spam.
+
+:::
+
+Typical supervised learning methods include:
+
+- linear regression,
+- logistic regression,
+- decision trees,
+- random forests,
+- support vector machines,
+- neural networks.
+
+### Unsupervised Learning
+
+In unsupervised learning, we observe predictors $X$ but no response variable.
+
+The goal is to discover structure in the data.
+
+
+
+::: {.callout-example title="Examples of Unsupervised Learning"}
+
+- grouping customers into segments,
+- detecting clusters,
+- dimension reduction.
+
+:::
+
+
+Typical unsupervised learning methods include:
+
+- clustering,
+- principal component analysis.
+
+### Focus of This Lecture
+
+We focus mainly on **supervised learning**, because it connects directly to predictive modelling and to many SAS procedures.
+
+## Classical Models vs Machine Learning Models
+
+Classical statistical models often emphasize:
+
+- interpretability,
+- effect estimation,
+- statistical significance,
+- model assumptions.
+
+Machine learning methods often emphasize:
+
+- predictive accuracy,
+- flexibility,
+- automatic adaptation to nonlinear patterns,
+- performance on new data.
+
+### Comparison
+
+| Perspective | Classical Statistical Modelling | Machine Learning |
+|-------------|----------------------------------|------------------|
+| Main goal | explanation and inference | prediction |
+| Focus | parameter interpretation | predictive performance |
+| Model form | often specified in advance | often more flexible |
+| Evaluation | significance, AIC, BIC | test error, accuracy, AUC |
+
+### Important Message
+
+This is a difference in emphasis, not a strict separation. For example:
+
+- linear regression can be used as a predictive model,
+- machine learning models can sometimes still be interpreted.
+
+## Why Flexible Models Can Help
+
+A linear model assumes a relatively simple relationship between the response and predictors.
+
+But in real data, relationships may be:
+
+- nonlinear,
+- involve interactions,
+- vary across different parts of the predictor space,
+- too complex to describe with a simple formula.
+
+More flexible models can adapt to such patterns.
+
+However, flexibility comes with a cost:
+
+- a flexible model may overfit,
+- interpretation may become harder,
+- tuning becomes more important.
+
+This is why we must always evaluate models on new data.
+
+## Decision Trees
+
+One of the most intuitive machine learning methods is the **decision tree**.
+
+### Basic Idea
+
+A decision tree splits the predictor space into regions by asking a sequence of questions such as:
+
+- Is age < 40?
+- Is income > 60,000?
+- Is blood pressure > 130?
+
+For regression, each terminal node gives a predicted numeric value.  
+For classification, each terminal node gives a predicted class or class probability.
+
+### Why Students Usually Like Trees
+
+Decision trees are appealing because they are:
+
+- easy to visualize,
+- easy to explain,
+- capable of capturing nonlinear relationships,
+- capable of handling interactions automatically.
+
+### Example
+
+A decision tree for loan default might work like this:
+
+1. Split first on income.
+2. Among lower-income individuals, split on credit score.
+3. Among higher-income individuals, split on debt level.
+
+The final prediction depends on the path through the tree.
+
+## Strengths and Weaknesses of Trees
+
+### Strengths
+
+- easy to interpret,
+- naturally capture interactions,
+- do not require linearity,
+- useful for both regression and classification.
+
+### Weaknesses
+
+- can be unstable,
+- small changes in data may lead to a different tree,
+- a single tree may not predict as accurately as ensemble methods.
+
+This motivates methods such as **bagging** and **random forests**.
+
+---
+
+## 21.8 Random Forests and Ensemble Thinking
+
+A random forest is an **ensemble method** built from many decision trees.
+
+### Main Idea
+
+Instead of relying on one tree, we build many trees using random variation in the data and predictors, then combine their predictions.
+
+This often improves predictive performance because:
+
+- a single tree may be noisy or unstable,
+- averaging many trees reduces variability,
+- the combined model is often more robust.
+
+### Why Random Forests Work Well
+
+Random forests can:
+
+- model nonlinear relationships,
+- handle many predictors,
+- capture interactions,
+- provide strong predictive accuracy in many settings.
+
+### Trade-off
+
+Compared with a single tree, a random forest is usually:
+
+- more accurate,
+- less interpretable.
+
+This is a common pattern in machine learning:
+better predictive performance may come at the cost of simpler interpretation.
+
+---
+
+## 21.9 Regularization and High-Dimensional Prediction
+
+Another important machine learning idea is **regularization**.
+
+### Motivation
+
+Suppose we have many predictors.
+
+Problems may include:
+
+- overfitting,
+- unstable coefficient estimates,
+- multicollinearity,
+- poor test performance.
+
+Regularization adds a penalty that discourages overly complex models.
+
+### Example: LASSO
+
+LASSO regression estimates coefficients by balancing:
+
+- goodness of fit,
+- model complexity.
+
+As a result, some coefficients may be shrunk toward zero, and some may become exactly zero.
+
+This makes LASSO useful for:
+
+- variable selection,
+- prediction in larger models,
+- controlling overfitting.
+
+### Big Picture
+
+Regularization helps us move from classical regression toward modern predictive modelling in a principled way.
+
+## A Simple Machine Learning Workflow in SAS
+
+A practical machine learning workflow in SAS looks like this:
+
+1. split the data into training and test sets,
+2. fit multiple candidate models,
+3. score the models on the test set,
+4. compare predictive performance,
+5. choose a model based on out-of-sample results.
+
+This is similar to the workflow from the previous lecture, but now we may compare more flexible models.
+
+## SAS Example: Decision Tree
+
+One useful SAS procedure for tree-based methods is `PROC HPSPLIT`.
+
+### Example: Classification Tree
+
+```r
+PROC HPSPLIT DATA=train;
+    CLASS response;
+    MODEL response = X1 X2 X3 X4 X5;
+    GROW GINI;
+    PRUNE COSTCOMPLEXITY;
+    CODE FILE='tree_score.sas';
+RUN;
+```
+
+### Explanation
+
+- `GROW GINI` is a common splitting rule for classification.
+- `PRUNE COSTCOMPLEXITY` reduces overfitting by simplifying the tree.
+- `CODE FILE=...` creates scoring code that can be applied to new data.
+
+### Scoring the Test Set
+
+```r
+DATA tree_scored;
+    SET test;
+    %INCLUDE 'tree_score.sas';
+RUN;
+```
+
+After scoring, we can compare predicted classes to observed classes.
+
+## SAS Example: Random Forest
+
+A useful SAS procedure for random forests is `PROC HPFOREST`.
+
+```r
+PROC HPFOREST DATA=train;
+    TARGET response / LEVEL=nominal;
+    INPUT X1 X2 X3 X4 X5 / LEVEL=interval;
+    SCORE OUT=forest_train;
+RUN;
+```
+
+Depending on your SAS environment, you may also use procedure-specific scoring output for validation or test datasets.
+
+### Interpretation
+
+The random forest builds many trees and aggregates their predictions. In practice, this often gives better predictive accuracy than a single tree.
+
+## SAS Example: Regularization with GLMSELECT
+
+SAS also provides tools for regression-based model selection and shrinkage.
+
+A useful procedure is `PROC GLMSELECT`.
+
+```r
+PROC GLMSELECT DATA=train;
+    MODEL Y = X1 X2 X3 X4 X5 / SELECTION=LASSO;
+    PARTITION FRACTION(TEST=0.3);
+RUN;
+```
+
+### Why This Is Useful
+
+This procedure illustrates an important idea:
+
+- classical regression and machine learning are connected,
+- variable selection can be handled in a prediction-oriented framework,
+- model complexity can be controlled automatically.
+
+---
+
+## 21.14 Comparing Models
+
+One of the most important lessons in machine learning is that we should compare models using the same evaluation framework.
+
+For example, we might compare:
+
+- logistic regression,
+- a classification tree,
+- a random forest.
+
+### Questions to Ask
+
+- Which method has the highest test accuracy?
+- Which method gives the best balance between performance and interpretability?
+- Is the improvement in prediction large enough to justify a more complex model?
+
+### Example Discussion
+
+A logistic regression model may be:
+
+- easier to interpret,
+- easier to communicate,
+- better when the relationship is approximately linear.
+
+A tree-based model may be:
+
+- better at capturing nonlinear relationships,
+- better at capturing interactions,
+- harder to summarize with a few coefficients.
+
+A random forest may be:
+
+- even more accurate,
+- but much less transparent.
+
+---
+
+## 21.15 Bias-Variance Trade-off
+
+A central concept in machine learning is the **bias-variance trade-off**.
+
+### Informal Idea
+
+- a very simple model may be too rigid and miss important patterns,
+- a very flexible model may follow noise too closely.
+
+So good prediction often requires balancing:
+
+- **bias**: error from being too simple,
+- **variance**: error from being too sensitive to the sample.
+
+### Connection to Earlier Topics
+
+This idea is closely related to:
+
+- overfitting,
+- model selection,
+- regularization,
+- test-set evaluation.
+
+In other words, machine learning builds on ideas that are already present in statistics.
+
+---
+
+## 21.16 Why This Matters for SAS Users
+
+Students sometimes think machine learning is something completely separate that requires a different software ecosystem.
+
+That is not true.
+
+SAS supports important machine learning workflows, including:
+
+- data splitting,
+- regression-based prediction,
+- tree-based methods,
+- forests and ensemble methods,
+- regularization and model comparison.
+
+This means the tools you have learned in SAS can be extended naturally into modern predictive analytics.
+
+---
+
+## 21.17 Practical Advice for Students
+
+When using machine learning methods, remember:
+
+1. Do not evaluate performance only on the training set.
+2. A more complex model is not automatically better.
+3. Interpretability still matters in many applications.
+4. Always compare models using a clear test-set or validation framework.
+5. Good predictive modelling requires both statistical thinking and computational implementation.
+
+---
+
+## 21.18 Looking Ahead
+
+This lecture is only an introduction, but it shows how SAS can be used for modern predictive analysis.
+
+After this course, students interested in advanced topics could continue with:
+
+- cross-validation,
+- boosting,
+- support vector machines,
+- neural networks,
+- deep learning,
+- high-dimensional data analysis.
+
+The key point is that the ideas from this course already provide a strong foundation for these topics.
+
+---
+
+## 21.19 Chapter Summary
+
+In this lecture, we introduced machine learning as an extension of predictive modelling.
+
+### Main Ideas
+
+- Machine learning emphasizes prediction, flexibility, and out-of-sample performance.
+- Supervised learning uses predictors and a response; unsupervised learning looks for structure without a response.
+- Decision trees provide intuitive nonlinear prediction rules.
+- Random forests improve prediction by aggregating many trees.
+- Regularization helps control model complexity and improve prediction.
+
+### SAS Skills Introduced
+
+- tree modelling with `PROC HPSPLIT`,
+- random forests with `PROC HPFOREST`,
+- regularized regression with `PROC GLMSELECT`,
+- model comparison using predictive performance.
+
+### Final Message
+
+> Machine learning does not replace statistics.  
+> It extends statistical modelling when prediction and flexibility become central goals.
+
+## Practice Problems
+
+1. Explain the difference between supervised and unsupervised learning.
+2. Why might a decision tree outperform a linear model in some datasets?
+3. What is the main advantage of a random forest over a single tree?
+4. Why does regularization help when many predictors are available?
+5. Compare logistic regression and a tree-based classifier in terms of interpretability and flexibility.
+6. In SAS, which procedures introduced in this lecture would you consider for:
+   - a classification tree,
+   - a random forest,
+   - LASSO regression?
