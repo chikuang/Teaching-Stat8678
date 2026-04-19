@@ -30,7 +30,7 @@ This shift in focus leads us to **predictive modelling**.
 
 Although the same model can often be used for both purposes, inference and prediction are not the same.
 
-### Inference
+**Inference**
 
 Inference focuses on questions such as:
 
@@ -45,7 +45,7 @@ The emphasis is on:
 - hypothesis testing,
 - interpretability.
 
-### Prediction
+**Prediction**
 
 Prediction focuses on questions such as:
 
@@ -59,7 +59,7 @@ The emphasis is on:
 - generalization to new data,
 - out-of-sample performance.
 
-### Key Idea
+**Key Idea**
 
 A model can be useful for inference but not especially good for prediction, and vice versa.
 
@@ -90,7 +90,7 @@ As a result:
 
 A standard approach in predictive modelling is to divide the data into separate parts.
 
-### Common split
+**Common split**
 
 - **Training set**: used to fit the model
 - **Validation set**: sometimes used to tune or compare models
@@ -101,19 +101,22 @@ In this lecture, we focus on the simpler and very common setup:
 - **training set**
 - **test set**
 
-### Why not use all observations for fitting?
+Question: Why not use all observations for fitting?
 
 Because if we evaluate the model on the same data used to fit it, we usually obtain an overly optimistic assessment of performance.
 
-### Data Leakage
+**Data Leakage**
 
 A major concern in predictive modelling is **data leakage**, which occurs when information from the test data influences model building. This makes performance look better than it really is.
 
-Examples of leakage:
+
+::: {.callout-example title="Examples of leakage"}
 
 - choosing variables after looking at the test set,
 - using test-set summaries in data preprocessing,
 - evaluating many models on the same test set and reporting only the best one.
+
+:::
 
 ## Predictive Models for Continuous and Binary Outcomes
 
@@ -151,31 +154,27 @@ In this lecture, we will use familiar regression-based models to build a bridge 
 
 Suppose we observe actual values $y_1, \ldots, y_n$ and predicted values $\hat{y}_1, \ldots, \hat{y}_n$.
 
-### Mean Squared Error (MSE)
-
+1. Mean Squared Error (MSE)
 $$
 MSE = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
 $$
-
-### Root Mean Squared Error (RMSE)
+2. Root Mean Squared Error (RMSE)
 
 $$
 RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}
 $$
 
-RMSE is popular because it is measured on the same scale as the response.
+  + RMSE is popular because it is measured on the *same scale* as the response.
 
-### Mean Absolute Error (MAE)
+3. Mean Absolute Error (MAE)
 
 $$
 MAE = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
 $$
 
-### Interpretation
-
-- Smaller RMSE or MAE indicates better predictive performance.
-- RMSE penalizes large errors more heavily than MAE.
-- MAE is often easier to interpret directly.
+  - Smaller RMSE or MAE indicates better predictive performance.
+  - RMSE penalizes large errors more heavily than MAE.
+  - MAE is often easier to interpret directly.
 
 ## Performance Metrics for Classification
 
@@ -184,50 +183,50 @@ For binary outcomes, the model often produces either:
 - a predicted class, or
 - a predicted probability.
 
-### Confusion Matrix
+1. Confusion Matrix
 
-A confusion matrix summarizes:
+    A confusion matrix summarizes:
 
-- true positives,
-- true negatives,
-- false positives,
-- false negatives.
+  - true positives,
+  - true negatives,
+  - false positives,
+  - false negatives.
 
-### Classification Accuracy
+2. Classification Accuracy
 
 $$
 \text{Accuracy} = \frac{\text{Number of correct classifications}}{\text{Total number of observations}}
 $$
 
-### Other Useful Metrics
+3. Other Useful Metrics
 
-- sensitivity,
-- specificity,
-- precision,
-- ROC curve,
-- AUC.
+  - sensitivity,
+  - specificity,
+  - precision,
+  - ROC curve,
+  - AUC.
 
-In this lecture, we focus on basic classification accuracy and predicted probabilities, while later topics in machine learning can expand these ideas.
+In this lecture, we focus on basic classification accuracy and predicted probabilities, while later topics in ML can expand these ideas.
 
 
-## A Simple Predictive Modelling Workflow in SAS
+::: {.callout-note title="Predictive Modelling Workflow"}
 
-A common SAS workflow for predictive modelling is:
+A common workflow for predictive modelling is:
 
 1. split the data into training and test sets,
 2. fit a model using the training set,
-3. score the model on the test set,
+3. evaluate the model on the test set,
 4. compare predicted and observed outcomes,
 5. compute predictive performance measures.
 
-This workflow is useful whether the model is simple or complex.
+:::
 
 
-## Example 1: Continuous Outcome Prediction
+::: {.callout-example title="Continuous Outcome Prediction"}
 
 In this example, we use a regression model to predict a continuous response.
 
-### Step 1: Split the data
+**Step 1: Split the data**
 
 ```r
 PROC SURVEYSELECT DATA=mydata
@@ -238,14 +237,12 @@ PROC SURVEYSELECT DATA=mydata
 RUN;
 ```
 
-### Explanation
-
-This creates an output dataset with an indicator variable named `Selected`:
+The chunk above creates an output dataset with an indicator variable named `Selected`:
 
 - `Selected=1`: observation goes to the training set
 - `Selected=0`: observation goes to the test set
 
-### Step 2: Create training and test datasets
+**Step 2: Create training and test datasets**
 
 ```r
 DATA train test;
@@ -255,7 +252,7 @@ DATA train test;
 RUN;
 ```
 
-### Step 3: Fit a regression model on the training set
+**Step 3: Fit a regression model on the training set**
 
 ```r
 PROC REG DATA=train;
@@ -265,7 +262,7 @@ RUN;
 QUIT;
 ```
 
-### Step 4: Compute prediction errors
+**Step 4: Compute prediction errors**
 
 ```r
 DATA test_pred;
@@ -282,13 +279,14 @@ RUN;
 
 The mean of `abserr` is the MAE. The mean of `sqerr` is the MSE. Taking the square root of the MSE gives the RMSE.
 
+:::
 
 
-## Example 2: Binary Outcome Prediction with Logistic Regression
+:::{.callout-example title="Binary Outcome Prediction with Logistic Regression"}
 
 Now suppose the response is binary, such as whether a customer responds to an offer.
 
-### Step 1: Fit logistic regression on the training data
+**Step 1: Fit logistic regression on the training data**
 
 ```r
 PROC LOGISTIC DATA=train;
@@ -297,7 +295,7 @@ PROC LOGISTIC DATA=train;
 RUN;
 ```
 
-### Step 2: Convert probabilities into predicted classes
+**Step 2: Convert probabilities into predicted classes**
 
 A common rule is:
 
@@ -311,7 +309,7 @@ DATA logit_scored;
 RUN;
 ```
 
-### Step 3: Compare predicted and observed classes
+**Step 3: Compare predicted and observed classes**
 
 ```r
 PROC FREQ DATA=logit_scored;
@@ -321,6 +319,7 @@ RUN;
 
 From this table, we can calculate classification accuracy.
 
+:::
 
 ## Why Predictive Modelling Changes the Way We Think
 
@@ -335,29 +334,31 @@ In predictive modelling, we instead ask:
 - Which model gives the best out-of-sample performance?
 - Is a simpler model good enough?
 
-### Important Shift
+::: {.callout-warning title="Important Shift"}
 
-A variable can be statistically significant but add little predictive value.
+A variable can be **statistically significant** but **add little predictive value.**
 
 Conversely, a model chosen for prediction may prioritize accuracy over easy interpretation.
+
+:::
 
 ## Relationship to Model Selection
 
 This lecture connects directly to the previous lecture on model selection.
 
-### In model selection for inference, we often ask:
+**In model selection for inference, we often ask:**
 
 - Is the coefficient significant?
 - Which model has the smallest AIC or BIC?
 
-### In predictive modelling, we often ask:
+**In predictive modelling, we often ask:**
 
 - Which model has the smallest test RMSE?
 - Which classifier performs best on unseen data?
 
 These are related questions, but they are not identical.
 
-### Key Message
+**Key Message**
 
 > A good explanatory model is not always the best predictive model.
 
@@ -377,7 +378,7 @@ When building predictive models in SAS, keep the following points in mind:
 
 This is especially important in real data analysis projects.
 
-## Looking Ahead
+## Things to think about
 
 This lecture provides the bridge from classical statistics to machine learning.
 
@@ -390,11 +391,11 @@ Once we adopt the predictive modelling viewpoint, it becomes natural to ask:
 
 These questions motivate the next lecture on **machine learning in SAS**.
 
-## Chapter Summary
+## Summary
 
 In this lecture, we introduced predictive modelling as a different perspective on statistical modelling.
 
-### Main Ideas
+**Main Ideas**
 
 - Inference and prediction are related but distinct goals.
 - Training performance and test performance are not the same.
@@ -402,14 +403,14 @@ In this lecture, we introduced predictive modelling as a different perspective o
 - Regression and logistic regression can both be used as predictive models.
 - Predictive performance should be evaluated using suitable metrics.
 
-### SAS Skills Learned
+**SAS Commands**
 
 - splitting data using `PROC SURVEYSELECT`,
 - fitting predictive models with `PROC REG` and `PROC LOGISTIC`,
 - scoring test data,
 - evaluating performance using prediction errors and classification tables.
 
-## Practice Problems
+## Practice Problems to yourself
 
 1. Explain the difference between inference and prediction in your own words.
 2. Why is test error usually more informative than training error in predictive modelling?

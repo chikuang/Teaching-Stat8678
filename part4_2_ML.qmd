@@ -111,14 +111,14 @@ Classical statistical models often emphasize:
 - statistical significance,
 - model assumptions.
 
-Machine learning methods often emphasize:
+ML methods often emphasize:
 
 - predictive accuracy,
 - flexibility,
 - automatic adaptation to nonlinear patterns,
 - performance on new data.
 
-### Comparison
+**Comparison**
 
 | Perspective | Classical Statistical Modelling | Machine Learning |
 |-------------|----------------------------------|------------------|
