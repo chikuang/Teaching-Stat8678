@@ -1,14 +1,14 @@
-# Nested Models and Nested Designs
+# Nested Models
 
 > **Learning Objectives**
 >
 > By the end of this lecture, you should be able to:
 >
-> 1. Distinguish between **nested models** (full vs reduced models) and **nested designs** (hierarchical data structures).
-> 2. Perform and interpret a **partial F-test** and a **likelihood ratio test (LRT)** for model comparison.
-> 3. Explain the difference between **crossed** and **nested** factors.
-> 4. Implement nested model testing in SAS using `PROC REG` and the `TEST` statement.
-> 5. Specify hierarchical nested effects in `PROC GLM` and `PROC MIXED` using `B(A)` syntax.
+> 1.  Distinguish between **nested models** (full vs reduced models) and **nested designs** (hierarchical data structures).
+> 2.  Perform and interpret a **partial F-test** and a **likelihood ratio test (LRT)** for model comparison.
+> 3.  Explain the difference between **crossed** and **nested** factors.
+> 4.  Implement nested model testing in SAS using `PROC REG` and the `TEST` statement.
+> 5.  Specify hierarchical nested effects in `PROC GLM` and `PROC MIXED` using `B(A)` syntax.
 
 ## Introduction
 
@@ -16,12 +16,12 @@ In the previous chapter, we studied model selection methods such as AIC, BIC, an
 
 The word **nested** appears in two related but distinct contexts in statistics:
 
-1. **Nested models**: a simpler model is obtained from a more complex model by imposing parameter restrictions.
-2. **Nested designs**: one factor exists only within the levels of another factor, creating a hierarchical data structure.
+1.  **Nested models**: a simpler model is obtained from a more complex model by imposing parameter restrictions.
+2.  **Nested designs**: one factor exists only within the levels of another factor, creating a hierarchical data structure.
 
 This chapter connects regression, ANOVA, and mixed models by treating both ideas carefully.
 
-:::{.callout-definition title="Nested Models"}
+::: {.callout-definition title="Nested Models"}
 
 A model $M_0$ is said to be **nested** within a model $M_1$ if $M_0$ can be obtained from $M_1$ by imposing constraints on the parameters, usually by setting some coefficients equal to zero.
 
@@ -31,24 +31,19 @@ A model $M_0$ is said to be **nested** within a model $M_1$ if $M_0$ can be obta
 
 Consider the following regression models.
 
-**Full model** $M_1$:
-$$
+**Full model** $M_1$: $$
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \varepsilon
 $$
 
-**Reduced model** $M_0$:
-$$
+**Reduced model** $M_0$: $$
 Y = \beta_0 + \beta_1 X_1 + \varepsilon
 $$
 
-The reduced model is nested within the full model because it is obtained by imposing the restrictions
-$$
+The reduced model is nested within the full model because it is obtained by imposing the restrictions $$
 \beta_2 = \beta_3 = 0.
 $$
 
 In other words, the reduced model is a special case of the full model.
-
-### Why This Matters
 
 Nested models allow us to answer a very specific question:
 
@@ -60,31 +55,27 @@ This leads naturally to formal hypothesis testing.
 
 For linear regression models fit by least squares, the standard test for comparing nested models is the **partial F-test**.
 
-We test
-$$
+We test $$
 H_0: \beta_2 = \beta_3 = 0
-$$
-against
-$$
+$$ against $$
 H_a: \text{at least one of } \beta_2, \beta_3 \text{ is nonzero.}
 $$
 
 Let:
 
-- $SSE_R$: error sum of squares for the reduced model
-- $SSE_F$: error sum of squares for the full model
-- $df_R$: error degrees of freedom for the reduced model
-- $df_F$: error degrees of freedom for the full model
+-   $SSE_R$: error sum of squares for the reduced model
+-   $SSE_F$: error sum of squares for the full model
+-   $df_R$: error degrees of freedom for the reduced model
+-   $df_F$: error degrees of freedom for the full model
 
-Then the test statistic is
-$$
+Then the test statistic is $$
 F = \frac{(SSE_R - SSE_F)/(df_R - df_F)}{SSE_F/df_F}.
 $$
 
-### Interpretation
+**Interpretation**
 
-- If the full model does **not** improve fit much, then $SSE_R - SSE_F$ will be small, and the $F$-statistic will be small.
-- If the full model improves fit substantially, then the $F$-statistic will be large.
+-   If the full model does **not** improve fit much, then $SSE_R - SSE_F$ will be small, and the $F$-statistic will be small.
+-   If the full model improves fit substantially, then the $F$-statistic will be large.
 
 A small $p$-value provides evidence against $H_0$, suggesting that the additional predictors should be retained.
 
@@ -92,31 +83,28 @@ A small $p$-value provides evidence against $H_0$, suggesting that the additiona
 
 For likelihood-based models, such as generalized linear models and many mixed models, we often compare nested models using the **likelihood ratio test**.
 
-:::{.callout-definition title="Likelihood Ratio Test"}
+::: {.callout-definition title="Likelihood Ratio Test"}
 
-Let $\ell_{\text{Full}}$ and $\ell_{\text{Reduced}}$ be the maximized log-likelihoods under the full and reduced models, respectively. The likelihood ratio test statistic is
-$$
+Let $\ell_{\text{Full}}$ and $\ell_{\text{Reduced}}$ be the maximized log-likelihoods under the full and reduced models, respectively. The likelihood ratio test statistic is $$
 LRT = 2\left(\ell_{\text{Full}} - \ell_{\text{Reduced}}\right).
 $$
 
-Under regularity conditions and under $H_0$,
-$$
+Under regularity conditions and under $H_0$, $$
 LRT \sim \chi^2_{\,df_R - df_F},
-$$
-where $df_R - df_F$ is the difference in the number of free parameters between the two models.
+$$ where $df_R - df_F$ is the difference in the number of free parameters between the two models.
 
 :::
 
 ### When Do We Use It?
 
-- **Partial F-test**: typically used for nested linear models fit by least squares.
-- **LRT**: commonly used for generalized linear models, mixed models, and other likelihood-based settings.
+-   **Partial F-test**: typically used for nested linear models fit by least squares.
+-   **LRT**: commonly used for generalized linear models, mixed models, and other likelihood-based settings.
 
-## SAS Implementation for Nested Models
+## SAS Implementation
 
 In SAS, we can test nested regression models directly using `PROC REG` and the `TEST` statement.
 
-```r
+``` r
 PROC REG DATA=my_data;
     MODEL Y = X1 X2 X3;
 
@@ -128,18 +116,13 @@ QUIT;
 
 ### What Does This Do?
 
-This code fits the full model
-$$
+This code fits the full model $$
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \varepsilon
-$$
-and tests whether the restrictions
-$$
+$$ and tests whether the restrictions $$
 \beta_2 = \beta_3 = 0
-$$
-are reasonable.
+$$ are reasonable.
 
 If the test is significant, then the reduced model is too simple and the additional terms should remain in the model.
-
 
 ## Concept 2: Nested Designs
 
@@ -148,16 +131,14 @@ In ANOVA and mixed models, the word **nested** refers to a hierarchical factor s
 A factor $B$ is nested within a factor $A$ if each level of $B$ appears in only one level of $A$.
 
 ::: {.callout-example}
-
 Suppose:
 
-- $A$ = Region
-- $B$ = City
+-   $A$ = Region
+-   $B$ = City
 
 If each city belongs to exactly one region, then **City is nested within Region**.
 
-We write this as:
-$$
+We write this as: $$
 \text{City(Region)}.
 $$
 
@@ -173,8 +154,8 @@ Two factors are **crossed** if every level of one factor appears with every leve
 
 Example:
 
-- Treatment and gender
-- Every treatment level can be observed for every gender
+-   Treatment and gender
+-   Every treatment level can be observed for every gender
 
 In this case, an interaction term such as $A \times B$ is meaningful.
 
@@ -184,31 +165,29 @@ A factor is **nested** when its levels exist only within the levels of another f
 
 Example:
 
-- Students within classrooms
-- Classrooms within schools
-- Cities within regions
+-   Students within classrooms
+-   Classrooms within schools
+-   Cities within regions
 
 You cannot meaningfully combine a nested level with all levels of the parent factor. For example, New York City is not a city within the Midwest region.
 
 ### Summary Table
 
-| Structure | Description |
-|-----------|-------------|
+| Structure | Description                                    |
+|-----------|------------------------------------------------|
 | Crossed   | Every level of A appears with every level of B |
-| Nested    | Levels of B exist only within levels of A |
+| Nested    | Levels of B exist only within levels of A      |
 
 ## Statistical Formulation for a Nested Design
 
-A standard nested ANOVA model is
-$$
+A standard nested ANOVA model is $$
 y_{ijk} = \mu + \alpha_i + \beta_{j(i)} + \varepsilon_{ijk},
-$$
-where
+$$ where
 
-- $\mu$ is the overall mean,
-- $\alpha_i$ is the effect of factor $A$ (for example, Region),
-- \(\beta_{j(i)}\) is the effect of factor $B$ nested within $A$ (for example, City within Region),
-- $\varepsilon_{ijk}$ is the random error term.
+-   $\mu$ is the overall mean,
+-   $\alpha_i$ is the effect of factor $A$ (for example, Region),
+-   (\beta\_{j(i)}) is the effect of factor $B$ nested within $A$ (for example, City within Region),
+-   $\varepsilon_{ijk}$ is the random error term.
 
 This is a **hierarchical** structure rather than a factorial one.
 
@@ -216,7 +195,7 @@ This is a **hierarchical** structure rather than a factorial one.
 
 ### Example Data
 
-```r
+``` r
 DATA nested_data;
     INPUT Region $ City $ Y;
     DATALINES;
@@ -232,7 +211,7 @@ RUN;
 
 ### `PROC GLM`: Fixed-Effects Perspective
 
-```r
+``` r
 PROC GLM DATA=nested_data;
     CLASS Region City;
     MODEL Y = Region City(Region);
@@ -244,7 +223,7 @@ This specification treats the nested structure explicitly using `City(Region)`.
 
 ### `PROC MIXED`: Hierarchical or Random-Effects Perspective
 
-```r
+``` r
 PROC MIXED DATA=nested_data;
     CLASS Region City;
     MODEL Y = Region;
@@ -260,74 +239,69 @@ This version is often more appropriate when the nested factor is viewed as a **r
 A key modelling decision is whether factors are treated as **fixed** or **random**.
 
 | Component | Fixed Effect Interpretation | Random Effect Interpretation |
-|-----------|-----------------------------|------------------------------|
+|----------------|----------------------------|-----------------------------|
 | Region | Compare these specific regions | Regions are sampled from a larger population |
 | City(Region) | Compare these specific cities within each region | City-to-city variation within region |
 
-:::{.callout-warning title="Important Note"}
-
+::: {.callout-warning title="Important Note"}
 `PROC GLM` and `PROC MIXED` are not simply interchangeable. The interpretation changes depending on whether the factor is treated as fixed or random.
 
-- Use `PROC GLM` when you want to compare specific factor levels directly.
-- Use `PROC MIXED` when you want to model hierarchical variation and random effects.
-
-
+-   Use `PROC GLM` when you want to compare specific factor levels directly.
+-   Use `PROC MIXED` when you want to model hierarchical variation and random effects.
 :::
 
 **Interpreting the Output**
 
 In a nested design, the total variation is decomposed into:
 
-1. variation **between** regions,
-2. variation **among cities within regions**,
-3. residual variation **within cities**.
+1.  variation **between** regions,
+2.  variation **among cities within regions**,
+3.  residual variation **within cities**.
 
 This is called **hierarchical variance decomposition**.
 
 So the interpretation is different from a crossed two-way ANOVA. We are not asking whether Region and City interact; instead, we are asking how variability is distributed across levels of a hierarchy.
 
-
 ## Connection to Model Selection
 
 This chapter connects naturally to the previous lecture on model selection.
 
-* General Model Selection Asks
+-   General Model Selection Asks
 
 > Which model fits the data best overall?
 
-* Nested Model Comparison Asks
+-   Nested Model Comparison Asks
 
 > Does the added complexity of a larger model significantly improve fit over a simpler baseline?
 
 This is why nested models are so important:
 
-- they provide the formal basis for **partial F-tests**,
-- they motivate **likelihood ratio tests**,
-- and they help us think carefully about when extra structure is statistically justified.
+-   they provide the formal basis for **partial F-tests**,
+-   they motivate **likelihood ratio tests**,
+-   and they help us think carefully about when extra structure is statistically justified.
 
 At the same time, nested designs remind us that data structure also matters. A model can be more complex not only because it has more parameters, but also because it reflects a deeper hierarchical organization of the data.
-
 
 ## Summary
 
 Nested structures connect three core ideas in statistical modelling:
 
-1. **Model building**: specifying appropriate structure for the data,
-2. **estimation**: fitting full and reduced models or decomposing variance,
-3. **inference**: deciding whether added complexity is justified.
+1.  **Model building**: specifying appropriate structure for the data,
+2.  **estimation**: fitting full and reduced models or decomposing variance,
+3.  **inference**: deciding whether added complexity is justified.
 
 ### Key Takeaways
 
-- **Nested models** concern **parameter restrictions**.
-- **Nested designs** concern **hierarchical factor structures**.
-- The **partial F-test** is used for nested linear models.
-- The **likelihood ratio test** is used for many likelihood-based nested comparisons.
-- In SAS, nested structures are expressed using `TEST`, `B(A)`, and `RANDOM`.
+-   **Nested models** concern **parameter restrictions**.
+-   **Nested designs** concern **hierarchical factor structures**.
+-   The **partial F-test** is used for nested linear models.
+-   The **likelihood ratio test** is used for many likelihood-based nested comparisons.
+-   In SAS, nested structures are expressed using `TEST`, `B(A)`, and `RANDOM`.
 
 ## Practice Problems
 
-1. Show mathematically how a reduced regression model is nested within a full model through parameter constraints.
-2. Suppose students are nested within classrooms, and classrooms are nested within schools. Write an appropriate SAS model specification.
-3. Fit a full regression model using `PROC REG`, carry out a `TEST` statement, and verify the partial F-statistic manually using the reduced and full model $SSE$ values.
-4. Explain the difference between `PROC GLM` and `PROC MIXED` for a nested design.
-5. Give one example of crossed factors and one example of nested factors, and explain why they differ.
+1.  Show mathematically how a reduced regression model is nested within a full model through parameter constraints.
+2.  Suppose students are nested within classrooms, and classrooms are nested within schools. Write an appropriate SAS model specification.
+3.  Fit a full regression model using `PROC REG`, carry out a `TEST` statement, and verify the partial F-statistic manually using the reduced and full model $SSE$ values.
+4.  Explain the difference between `PROC GLM` and `PROC MIXED` for a nested design.
+5.  Give one example of crossed factors and one example of nested factors, and explain why they differ.
