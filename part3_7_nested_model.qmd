@@ -95,7 +95,7 @@ $$ where $df_R - df_F$ is the difference in the number of free parameters betwee
 
 :::
 
-### When Do We Use It?
+**When to use which?**
 
 -   **Partial F-test**: typically used for nested linear models fit by least squares.
 -   **LRT**: commonly used for generalized linear models, mixed models, and other likelihood-based settings.
@@ -128,7 +128,11 @@ If the test is significant, then the reduced model is too simple and the additio
 
 In ANOVA and mixed models, the word **nested** refers to a hierarchical factor structure.
 
+::: {.callout-definition title="Nested Designs"}
+
 A factor $B$ is nested within a factor $A$ if each level of $B$ appears in only one level of $A$.
+
+:::
 
 ::: {.callout-example}
 Suppose:
@@ -148,18 +152,21 @@ $$
 
 It is important to distinguish **crossed** factors from **nested** factors.
 
-### Crossed Factors
+**Crossed Factors**
 
 Two factors are **crossed** if every level of one factor appears with every level of the other factor.
 
-Example:
+
+::: {.callout-example}
 
 -   Treatment and gender
 -   Every treatment level can be observed for every gender
 
+:::
+
 In this case, an interaction term such as $A \times B$ is meaningful.
 
-### Nested Factors
+**Nested Factors**
 
 A factor is **nested** when its levels exist only within the levels of another factor.
 
@@ -171,7 +178,7 @@ Example:
 
 You cannot meaningfully combine a nested level with all levels of the parent factor. For example, New York City is not a city within the Midwest region.
 
-### Summary Table
+**Summary Table**
 
 | Structure | Description                                    |
 |-----------|------------------------------------------------|
@@ -186,7 +193,7 @@ $$ where
 
 -   $\mu$ is the overall mean,
 -   $\alpha_i$ is the effect of factor $A$ (for example, Region),
--   (\beta\_{j(i)}) is the effect of factor $B$ nested within $A$ (for example, City within Region),
+-   $\beta_{j(i)}$ is the effect of factor $B$ nested within $A$ (for example, City within Region),
 -   $\varepsilon_{ijk}$ is the random error term.
 
 This is a **hierarchical** structure rather than a factorial one.
