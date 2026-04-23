@@ -85,7 +85,7 @@ Those chapters are based on the lecture notes. This part will be updated frequen
 |   ✅    |   24   | Model Selection |
 |   ✅  |   25  | Nested Model |
 |        |         | **📘 Part 4: Advanced Topic** |
-|   ️⏳   |   26  | Predictive Modelling |
+|   ✅   |   26  | Predictive Modelling |
 |   ️⏳  | 27 | Machine Learning | 
 <!-- 🚧🛠️⏳   -->
 
