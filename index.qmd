@@ -2,7 +2,7 @@
 
 ## Thank you
 
-The course is finished (except of the final project). Thank you everyone for the participation and attention. Hope you all have learned something from this course, and have fun. Wish everyone has a good summer vacation! 🏀😼😊
+The course is **finished**. Thank you all for the participation and attention. Hope you all have learned something from this course, and have fun. Wish everyone has a good summer vacation! 🏀😼😊
 
 ## Description
 
@@ -49,7 +49,7 @@ MATH 4544/6544 -- Biostatistics, or equivalent.
 
 ## Final Project
 
--   [ ] Due on May 1, 2026
+-   [x] Due on May 1, 2026
 
 More information can be found on the [project page](https://chikuang.github.io/course/stat8678/project.html)
 
